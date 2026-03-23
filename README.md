@@ -133,12 +133,6 @@ Metrics used:
 
 ---
 
-## 🖥️ Application Preview
-
-![App Screenshot](./assets/screenshot.png)
-
----
-
 ## 🚀 Getting Started
 
 ### 1. Clone the repo
