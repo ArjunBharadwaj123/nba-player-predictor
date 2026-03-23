@@ -1,7 +1,23 @@
-.env
-data/raw/
-data/processed/
-models/saved/
+# Python
 __pycache__/
 *.pyc
-.ipynb_checkpoints/
+*.pyo
+*.pyd
+.env
+
+# Data
+data/raw/
+data/processed/
+
+# Models
+models/saved/
+
+# Node
+node_modules/
+dashboard/node_modules/
+
+# OS
+.DS_Store
+
+# Logs
+*.log
