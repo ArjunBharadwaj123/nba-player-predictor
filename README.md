@@ -225,5 +225,5 @@ Predictions are probabilistic and should not be considered guaranteed outcomes.
 
 ## 👤 Author
 
-Your Name  
+Arjun Bharadwaj  
 GitHub: https://github.com/ArjunBharadwaj123
