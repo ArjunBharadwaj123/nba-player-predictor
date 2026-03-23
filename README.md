@@ -159,7 +159,7 @@ npm run dev
 
 ---
 
-📂 Project Structure
+## 📁 Project Structure
 ├── README.md
 ├── api
 │   ├── init.py
@@ -192,6 +192,7 @@ npm run dev
 ├── bbref_scraper.py
 ├── nba_api_client.py
 └── next_game.py
+
 ---
 
 ## 🔍 Example Output
