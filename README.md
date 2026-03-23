@@ -159,42 +159,39 @@ npm run dev
 
 ---
 
-## 📁 Project Structure
-.
+📂 Project Structure
 ├── README.md
 ├── api
-│ ├── init.py
-│ ├── main.py
-│ └── routers
+│   ├── init.py
+│   ├── main.py
+│   └── routers
 ├── config.py
 ├── dashboard
-│ ├── index.html
-│ ├── package.json
-│ ├── public
-│ ├── src
-│ └── vite.config.js
+│   ├── index.html
+│   ├── package.json
+│   ├── public
+│   ├── src
+│   └── vite.config.js
 ├── data
-│ ├── processed
-│ └── raw
+│   ├── processed
+│   └── raw
 ├── explainability
-│ └── shap_explainer.py
+│   └── shap_explainer.py
 ├── features
-│ ├── build_dataset.py
-│ ├── engineer.py
-│ └── feature_config.py
+│   ├── build_dataset.py
+│   ├── engineer.py
+│   └── feature_config.py
 ├── models
-│ ├── evaluate.py
-│ ├── predict.py
-│ ├── train.py
-│ └── saved
+│   ├── evaluate.py
+│   ├── predict.py
+│   ├── train.py
+│   └── saved
 ├── notebooks
 ├── requirements.txt
 └── scraping
 ├── bbref_scraper.py
 ├── nba_api_client.py
 └── next_game.py
-
-
 ---
 
 ## 🔍 Example Output
