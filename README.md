@@ -156,9 +156,13 @@ npm run dev
 ## 📁 Project Structure
 ├── README.md
 ├── api
-│   ├── init.py
+│   ├── __init__.py
 │   ├── main.py
 │   └── routers
+│       ├── __init__.py
+│       └── predict.py
+├── assets
+│   └── screenshot.png
 ├── config.py
 ├── dashboard
 │   ├── index.html
@@ -166,26 +170,26 @@ npm run dev
 │   ├── public
 │   ├── src
 │   └── vite.config.js
-├── data
-│   ├── processed
-│   └── raw
 ├── explainability
+│   ├── __init__.py
 │   └── shap_explainer.py
 ├── features
+│   ├── __init__.py
 │   ├── build_dataset.py
 │   ├── engineer.py
 │   └── feature_config.py
 ├── models
+│   ├── __init__.py
 │   ├── evaluate.py
 │   ├── predict.py
-│   ├── train.py
-│   └── saved
+│   └── train.py
 ├── notebooks
 ├── requirements.txt
 └── scraping
-├── bbref_scraper.py
-├── nba_api_client.py
-└── next_game.py
+    ├── __init__.py
+    ├── bbref_scraper.py
+    ├── nba_api_client.py
+    └── next_game.py
 
 ---
 
