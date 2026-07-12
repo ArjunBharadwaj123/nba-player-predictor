@@ -154,42 +154,45 @@ npm run dev
 ---
 
 ## 📁 Project Structure
-├── README.md
-├── api
+```
+nba-player-predictor/
+├── api/
 │   ├── __init__.py
-│   ├── main.py
-│   └── routers
+│   ├── main.py                       # FastAPI app entrypoint
+│   └── routers/
 │       ├── __init__.py
-│       └── predict.py
-├── assets
-│   └── screenshot.png
-├── config.py
-├── dashboard
+│       └── predict.py                # Prediction endpoints
+├── assets/
+│   └── screenshot.png                # App preview image
+├── dashboard/
 │   ├── index.html
 │   ├── package.json
-│   ├── public
-│   ├── src
+│   ├── public/
+│   ├── src/                          # React (Vite) frontend
 │   └── vite.config.js
-├── explainability
+├── explainability/
 │   ├── __init__.py
-│   └── shap_explainer.py
-├── features
+│   └── shap_explainer.py             # SHAP-based prediction reasoning
+├── features/
 │   ├── __init__.py
-│   ├── build_dataset.py
-│   ├── engineer.py
+│   ├── build_dataset.py              # Builds training dataset
+│   ├── engineer.py                   # Feature engineering
 │   └── feature_config.py
-├── models
+├── models/
 │   ├── __init__.py
-│   ├── evaluate.py
-│   ├── predict.py
-│   └── train.py
-├── notebooks
+│   ├── evaluate.py                   # Model evaluation (MAE/RMSE/R²)
+│   ├── predict.py                    # Load model + run predictions
+│   └── train.py                      # XGBoost training
+├── notebooks/                        # Exploratory analysis
+├── scraping/
+│   ├── __init__.py
+│   ├── bbref_scraper.py              # Basketball Reference scraper
+│   ├── nba_api_client.py             # NBA API client
+│   └── next_game.py                  # Upcoming matchup lookup
+├── config.py
 ├── requirements.txt
-└── scraping
-    ├── __init__.py
-    ├── bbref_scraper.py
-    ├── nba_api_client.py
-    └── next_game.py
+└── README.md
+```
 
 ---
 
