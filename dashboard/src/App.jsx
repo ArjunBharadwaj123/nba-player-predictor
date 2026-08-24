@@ -1,147 +1,9 @@
 import { useState, useCallback, useRef, useEffect } from "react";
 
-const API = "http://localhost:8000";
-
-const PLAYERS = [
-  { name: "Aaron Fox",                id: "foxde01",    pos: "PG" },
-  { name: "Aaron Holiday",            id: "holidar01",  pos: "PG" },
-  { name: "Aaron Nesmith",            id: "nesmiaa01",  pos: "SG" },
-  { name: "Alex Caruso",              id: "carusal01",  pos: "SF" },
-  { name: "Alperen Sengun",           id: "sengual01",  pos: "C"  },
-  { name: "Andrew Wiggins",           id: "wiggian01",  pos: "SF" },
-  { name: "Anthony Davis",            id: "davisan02",  pos: "C"  },
-  { name: "Anthony Edwards",          id: "edwaran01",  pos: "SG" },
-  { name: "Bam Adebayo",              id: "adebaba01",  pos: "PF" },
-  { name: "Bogdan Bogdanovic",        id: "bogdabo01",  pos: "SG" },
-  { name: "Bobby Portis",             id: "portibo01",  pos: "SF" },
-  { name: "Bol Bol",                  id: "bolbo01",    pos: "C"  },
-  { name: "Bradley Beal",             id: "bealbr01",   pos: "SG" },
-  { name: "Brandon Ingram",           id: "ingrabr01",  pos: "SF" },
-  { name: "Cam Johnson",              id: "johnsca02",  pos: "SF" },
-  { name: "Caris LeVert",             id: "leverca01",  pos: "PG" },
-  { name: "Chet Holmgren",            id: "holmgch01",  pos: "C"  },
-  { name: "Chris Paul",               id: "paulch01",   pos: "PG" },
-  { name: "CJ McCollum",              id: "mccolcj01",  pos: "PG" },
-  { name: "Clint Capela",             id: "capelcl01",  pos: "C"  },
-  { name: "Cole Anthony",             id: "anthoca02",  pos: "PG" },
-  { name: "Collin Sexton",            id: "sextoco01",  pos: "PG" },
-  { name: "Dalton Knecht",            id: "knechda01",  pos: "SF" },
-  { name: "Daniel Gafford",           id: "gaffodan01", pos: "C"  },
-  { name: "Damian Lillard",           id: "lillada01",  pos: "PG" },
-  { name: "Darius Garland",           id: "garlada01",  pos: "PG" },
-  { name: "Darrius Sabonis",          id: "sabondo01",  pos: "C"  },
-  { name: "De'Aaron Fox",             id: "foxde01",    pos: "PG" },
-  { name: "De'Andre Hunter",          id: "huntede01",  pos: "SF" },
-  { name: "Dejounte Murray",          id: "murrade01",  pos: "PG" },
-  { name: "Dennis Schroder",          id: "schrode01",  pos: "PG" },
-  { name: "Desmond Bane",             id: "banede01",   pos: "SG" },
-  { name: "Devin Booker",             id: "bookede01",  pos: "SG" },
-  { name: "Devin Vassell",            id: "vassede01",  pos: "SG" },
-  { name: "Domantas Sabonis",         id: "sabondo01",  pos: "C"  },
-  { name: "Donovan Mitchell",         id: "mitchdo01",  pos: "SG" },
-  { name: "Draymond Green",           id: "greendra01", pos: "SF" },
-  { name: "Gabe Vincent",             id: "vincega01",  pos: "PG" },
-  { name: "Gary Trent Jr.",           id: "trentga02",  pos: "SG" },
-  { name: "Georges Niang",            id: "niangge01",  pos: "SF" },
-  { name: "Giannis Antetokounmpo",    id: "antetgi01",  pos: "PF" },
-  { name: "Goga Bitadze",             id: "bitadgo01",  pos: "PF" },
-  { name: "Harrison Barnes",          id: "barneha01",  pos: "SF" },
-  { name: "Herbert Jones",            id: "joneshe01",  pos: "SF" },
-  { name: "Immanuel Quickley",        id: "quickim01",  pos: "PG" },
-  { name: "Isaiah Hartenstein",       id: "harteis01",  pos: "C"  },
-  { name: "Isaiah Stewart",           id: "stewais01",  pos: "PF" },
-  { name: "Ivica Zubac",              id: "zubaciv01",  pos: "C"  },
-  { name: "Ja Morant",                id: "moranja01",  pos: "PG" },
-  { name: "Jaden Ivey",               id: "iveyja01",   pos: "PG" },
-  { name: "Jakob Poeltl",             id: "poeltja01",  pos: "C"  },
-  { name: "Jalen Duren",              id: "durenja01",  pos: "C"  },
-  { name: "Jalen Green",              id: "greenja05",  pos: "SG" },
-  { name: "Jalen McDaniels",          id: "mcdanja01",  pos: "SF" },
-  { name: "Jalen Smith",              id: "smitija04",  pos: "C"  },
-  { name: "Jamal Murray",             id: "murraja01",  pos: "PG" },
-  { name: "James Harden",             id: "hardeja01",  pos: "PG" },
-  { name: "James Wiseman",            id: "wisemja01",  pos: "C"  },
-  { name: "Jarred Vanderbilt",        id: "vandeja01",  pos: "PF" },
-  { name: "Jaylen Brown",             id: "brownja02",  pos: "SG" },
-  { name: "Jayson Tatum",             id: "tatumja01",  pos: "SF" },
-  { name: "Jerami Grant",             id: "grantjer01", pos: "PF" },
-  { name: "Joel Embiid",              id: "embiijo01",  pos: "C"  },
-  { name: "John Collins",             id: "collijo01",  pos: "PF" },
-  { name: "Jonathan Kuminga",         id: "kuminga01",  pos: "SF" },
-  { name: "Jordan Clarkson",          id: "clarkjo02",  pos: "PG" },
-  { name: "Josh Giddey",              id: "giddejo01",  pos: "PG" },
-  { name: "Josh Hart",                id: "hartjo01",   pos: "SG" },
-  { name: "Jrue Holiday",             id: "holidjr01",  pos: "PG" },
-  { name: "Julius Randle",            id: "randlju01",  pos: "PF" },
-  { name: "Justin Champagnie",        id: "champju01",  pos: "PF" },
-  { name: "Karl-Anthony Towns",       id: "townska01",  pos: "C"  },
-  { name: "Kawhi Leonard",            id: "leonaka01",  pos: "SF" },
-  { name: "Keegan Murray",            id: "murrake01",  pos: "PF" },
-  { name: "Keldon Johnson",           id: "johnske04",  pos: "PF" },
-  { name: "Keon Ellis",               id: "elliske01",  pos: "SG" },
-  { name: "Kevin Durant",             id: "duranke01",  pos: "SF" },
-  { name: "Kevon Looney",             id: "looneke01",  pos: "C"  },
-  { name: "Keyonte George",           id: "georgke01",  pos: "PG" },
-  { name: "Khris Middleton",          id: "middlkh01",  pos: "SF" },
-  { name: "Klay Thompson",            id: "thompkl01",  pos: "SG" },
-  { name: "Kyle Kuzma",               id: "kuzmaky01",  pos: "SF" },
-  { name: "Kyrie Irving",             id: "irvinky01",  pos: "PG" },
-  { name: "Larry Nance Jr.",          id: "nancela02",  pos: "SF" },
-  { name: "Kawhi Leonard",            id: "leonaka01",  pos: "SF" },
-  { name: "LeBron James",             id: "jamesle01",  pos: "SF" },
-  { name: "Lonzo Ball",               id: "balllo01",   pos: "PG" },
-  { name: "Luka Doncic",              id: "doncilu01",  pos: "PG" },
-  { name: "Malcolm Brogdon",          id: "brogdma01",  pos: "SG" },
-  { name: "Malik Monk",               id: "monkma01",   pos: "SG" },
-  { name: "Mark Williams",            id: "willima07",  pos: "C"  },
-  { name: "Markelle Fultz",           id: "fultzma01",  pos: "PG" },
-  { name: "Mason Plumlee",            id: "plumlma01",  pos: "C"  },
-  { name: "Matisse Thybulle",         id: "thybumat01", pos: "SF" },
-  { name: "Michael Porter Jr.",       id: "portemi01",  pos: "PF" },
-  { name: "Mikal Bridges",            id: "bridgmi01",  pos: "SF" },
-  { name: "Miles McBride",            id: "mcbrimi01",  pos: "PG" },
-  { name: "Mitchell Robinson",        id: "robinmi02",  pos: "C"  },
-  { name: "Mo Bamba",                 id: "bambamo01",  pos: "C"  },
-  { name: "Naji Marshall",            id: "marshna01",  pos: "PF" },
-  { name: "Nic Batum",                id: "batumni01",  pos: "SF" },
-  { name: "Nicolas Claxton",          id: "claxtni01",  pos: "C"  },
-  { name: "Nikola Jokic",             id: "jokicni01",  pos: "C"  },
-  { name: "Nikola Vucevic",           id: "vucevni01",  pos: "C"  },
-  { name: "OG Anunoby",               id: "anunoog01",  pos: "SF" },
-  { name: "Obi Toppin",               id: "toppiobi01", pos: "PF" },
-  { name: "Ousmane Dieng",            id: "diengou01",  pos: "SF" },
-  { name: "Pascal Siakam",            id: "siakapa01",  pos: "PF" },
-  { name: "Pat Connaughton",          id: "connapa01",  pos: "SG" },
-  { name: "Patrick Williams",         id: "willipa05",  pos: "SF" },
-  { name: "Patty Mills",              id: "millspa02",  pos: "PG" },
-  { name: "Paul George",              id: "georgpa01",  pos: "SF" },
-  { name: "Payton Pritchard",         id: "pritcpa01",  pos: "PG" },
-  { name: "PJ Washington",            id: "washipa02",  pos: "PF" },
-  { name: "Precious Achiuwa",         id: "achiupr01",  pos: "PF" },
-  { name: "Royce O'Neale",            id: "onealro01",  pos: "SF" },
-  { name: "Rudy Gobert",              id: "goberru01",  pos: "C"  },
-  { name: "Shaedon Sharpe",           id: "sharpsh01",  pos: "SG" },
-  { name: "Shai Gilgeous-Alexander",  id: "gilgesh01",  pos: "PG" },
-  { name: "Spencer Dinwiddie",        id: "dinwspe01",  pos: "PG" },
-  { name: "Stephen Curry",            id: "curryst01",  pos: "PG" },
-  { name: "Steven Adams",             id: "adamsst01",  pos: "C"  },
-  { name: "Svi Mykhailiuk",           id: "mykhasv01",  pos: "SG" },
-  { name: "Taurean Prince",           id: "princta01",  pos: "SF" },
-  { name: "Terry Rozier",             id: "roziete01",  pos: "PG" },
-  { name: "Tim Hardaway Jr.",         id: "hardati01",  pos: "SF" },
-  { name: "Trae Young",               id: "youngtr01",  pos: "PG" },
-  { name: "Trendon Watford",          id: "watfotr01",  pos: "SG" },
-  { name: "Tyrese Haliburton",        id: "halibty01",  pos: "PG" },
-  { name: "Tyrese Maxey",             id: "maxeyty01",  pos: "SG" },
-  { name: "Victor Wembanyama",        id: "wembavi01",  pos: "C"  },
-  { name: "Walker Kessler",           id: "kesslwa01",  pos: "C"  },
-  { name: "Wesley Matthews",          id: "matthwe01",  pos: "SG" },
-  { name: "Willy Hernangomez",        id: "hernawi01",  pos: "PF" },
-  { name: "Zach Collins",             id: "colliza01",  pos: "C"  },
-  { name: "Zach LaVine",              id: "lavinza01",  pos: "SG" },
-  { name: "Ziaire Williams",          id: "willizi01",  pos: "SG" },
-  { name: "Zion Williamson",          id: "willizi02",  pos: "PF" },
-].filter((p, i, arr) => arr.findIndex(x => x.id === p.id) === i); // dedupe by id
+// Backend base URL. In production set VITE_API_URL in Vercel's env vars to the
+// deployed API (e.g. https://nba-player-predictor-api.onrender.com).
+// Falls back to the local dev server when unset.
+const API = import.meta.env.VITE_API_URL || "http://localhost:8000";
 
 const STAT_LABELS = { pts:"Points", reb:"Rebounds", ast:"Assists", stl:"Steals", blk:"Blocks", minutes:"Minutes" };
 const STAT_COLORS = { pts:"#185FA5", reb:"#0F6E56", ast:"#534AB7", stl:"#993C1D", blk:"#854F0B", minutes:"#5F5E5A" };
@@ -229,7 +91,7 @@ const ProbGauge = ({ prob, direction, threshold, stat }) => {
 
 // ── Player search ─────────────────────────────────────────────────────────────
 
-const PlayerSearch = ({ onSelect, selectedPlayer }) => {
+const PlayerSearch = ({ onSelect, selectedPlayer, players }) => {
   const [query, setQuery]     = useState("");
   const [open, setOpen]       = useState(false);
   const [focused, setFocused] = useState(0);
@@ -238,7 +100,7 @@ const PlayerSearch = ({ onSelect, selectedPlayer }) => {
 
   const results = query.length < 1
     ? []
-    : PLAYERS.filter(p =>
+    : players.filter(p =>
         p.name.toLowerCase().includes(query.toLowerCase())
       ).slice(0, 8);
 
@@ -431,6 +293,8 @@ const PlayerSearch = ({ onSelect, selectedPlayer }) => {
 // ── Main app ──────────────────────────────────────────────────────────────────
 
 export default function App() {
+  const [players, setPlayers]   = useState([]);
+  const [playersErr, setPlayersErr] = useState(null);
   const [player, setPlayer]     = useState(null);
   const [context, setContext]   = useState(null);
   const [ctxLoad, setCtxLoad]   = useState(false);
@@ -444,6 +308,15 @@ export default function App() {
   const [probResult, setProbResult] = useState(null);
   const [probLoad, setProbLoad]     = useState(false);
   const [probError, setProbErr]     = useState(null);
+
+  // Load the searchable roster from the API (players the model can predict).
+  // Replaces the old hardcoded list, so it stays in sync with scraped data.
+  useEffect(() => {
+    fetch(`${API}/players`)
+      .then(r => r.json())
+      .then(d => setPlayers(d.players || []))
+      .catch(() => setPlayersErr("Couldn't load players — is the API running on :8000?"));
+  }, []);
 
   const handleSelectPlayer = p => {
     setPlayer(p);
@@ -540,10 +413,22 @@ export default function App() {
 
       {/* Step 1: Search */}
       <Card style={{ marginBottom: 12 }}>
-        <div style={{ fontSize: 11, fontWeight: 500, color: "var(--color-text-tertiary)", textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: 10 }}>
-          Player
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: 10 }}>
+          <div style={{ fontSize: 11, fontWeight: 500, color: "var(--color-text-tertiary)", textTransform: "uppercase", letterSpacing: "0.08em" }}>
+            Player
+          </div>
+          {players.length > 0 && (
+            <div style={{ fontSize: 11, color: "var(--color-text-tertiary)" }}>
+              {players.length} players
+            </div>
+          )}
         </div>
-        <PlayerSearch onSelect={handleSelectPlayer} selectedPlayer={player} />
+        {playersErr && (
+          <div style={{ padding: "10px 14px", borderRadius: "var(--border-radius-md)", background: "#FCEBEB", color: "#791F1F", fontSize: 13, marginBottom: 10 }}>
+            {playersErr}
+          </div>
+        )}
+        <PlayerSearch onSelect={handleSelectPlayer} selectedPlayer={player} players={players} />
 
         {/* Step 2: Find game — only shows once player is selected */}
         {player && !context && !ctxLoad && (

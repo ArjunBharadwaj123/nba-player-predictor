@@ -7,10 +7,20 @@ __pycache__/
 
 # Data
 data/raw/
-data/processed/
+data/processed/*
+# ...but keep the processed files the deployed API reads at runtime
+# (features + feature names for /players & /predict, opp defense + roster for /next-game).
+# The larger training_dataset.csv stays ignored — it's only used for model training.
+!data/processed/features.csv
+!data/processed/feature_names.txt
+!data/processed/opp_pos_defense.csv
+!data/processed/roster.json
 
 # Models
-models/saved/
+models/saved/*
+# ...but keep the trained model artifacts the deployed API loads at startup
+!models/saved/*.pkl
+!models/saved/*.json
 
 # Node
 node_modules/

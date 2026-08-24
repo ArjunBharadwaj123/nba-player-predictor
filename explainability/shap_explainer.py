@@ -70,6 +70,23 @@ def load_models() -> dict:
     return models
 
 
+def load_quantile_models() -> dict:
+    """Load the p15/p85 quantile models used for prediction intervals.
+    Returns {stat: {"q15": model, "q85": model}} for whatever is on disk."""
+    quantiles = {}
+    for target in TARGETS:
+        entry = {}
+        for tag in ("q15", "q85"):
+            path = MODELS_DIR / f"{target}_{tag}.pkl"
+            if path.exists():
+                with open(path, "rb") as f:
+                    entry[tag] = pickle.load(f)
+        if len(entry) == 2:
+            quantiles[target] = entry
+    log.info("  Loaded quantile models for: %s", list(quantiles.keys()))
+    return quantiles
+
+
 def load_feature_names() -> list:
     """Load the canonical feature name list."""
     path = PROCESSED / "feature_names.txt"
@@ -134,6 +151,8 @@ FEATURE_LABELS = [
                                "Fewer assists recently (last 5 avg: {val:.1f})"),
     ("rolling_last10_ast",     "High assist baseline (last 10 avg: {val:.1f})",
                                "Low assist baseline (last 10 avg: {val:.1f})"),
+    ("pred_minutes",           "Projected for heavy minutes ({val:.0f} proj)",
+                               "Projected for limited minutes ({val:.0f} proj)"),
     ("rolling_last5_minutes",  "Playing heavy minutes recently ({val:.0f} avg)",
                                "Lighter minutes load recently ({val:.0f} avg)"),
     ("rolling_last5_minutes_std", "Consistent minutes (low variance: {val:.1f})",
@@ -188,11 +207,14 @@ def _match_label(feature_name: str, shap_val: float,
     a back-to-back regardless of which direction it pushed the prediction.
 
     Returns None if no matching label is found (unnamed features are skipped).
+
+    Matching is exact on the feature name: substring matching would mislabel
+    e.g. `rolling_last5_pts_per_min` as `rolling_last5_pts` ("0.7 pts").
     """
     BINARY_FEATURES = {"back_to_back", "home_game"}
 
     for pattern, pos_label, neg_label in FEATURE_LABELS:
-        if pattern in feature_name:
+        if pattern == feature_name:
             # Binary features: use feature value to pick label
             if feature_name in BINARY_FEATURES:
                 template = neg_label if feature_val > 0.5 else pos_label
@@ -325,6 +347,7 @@ def explain_prediction(
     models: dict,
     feature_names: list,
     n_reasons: int = 5,
+    quantile_models: dict | None = None,
 ) -> dict:
     """
     Generate predictions + SHAP explanations for a single player/game row.
@@ -343,16 +366,32 @@ def explain_prediction(
             "reasoning_text": "Reasoning:\n+ Strong recent scoring..."
         }
     """
-    X = feature_row[feature_names].copy()
+    row = feature_row.copy()
 
-    # Fill any NaN features with 0 — XGBoost handles NaN internally
-    # but explicit fill avoids SHAP warnings
-    X = X.fillna(X.median() if len(X) > 1 else 0)
+    def _model_cols(model):
+        """The exact columns a model was trained on (falls back to the base list)."""
+        cols = getattr(model, "feature_names_in_", None)
+        return list(cols) if cols is not None else feature_names
+
+    def _make_X(model):
+        """Build a one-row frame in the model's expected column order, NaN-filled."""
+        cols = _model_cols(model)
+        X = row.reindex(columns=cols).copy()
+        return X.fillna(X.median() if len(X) > 1 else 0)
+
+    # Minutes drives the counting stats, so predict it first and expose the
+    # projection as `pred_minutes` before predicting anything else. This mirrors
+    # the out-of-fold stacking done at train time (never uses actual minutes).
+    if "minutes" in models:
+        pm = float(models["minutes"].predict(_make_X(models["minutes"]))[0])
+        row["pred_minutes"] = max(0.0, pm)
 
     predictions = {}
     all_reasons = {}
 
     for target, model in models.items():
+        X = _make_X(model)
+
         # Predict
         pred = float(model.predict(X)[0])
         pred = max(0.0, round(pred, 1))   # clip negatives (can't score -2 pts)
@@ -363,9 +402,25 @@ def explain_prediction(
         feat_vals = X.values[0]
 
         reasons = generate_reasoning(
-            shap_vals, feature_names, feat_vals, target, n_reasons
+            shap_vals, _model_cols(model), feat_vals, target, n_reasons
         )
         all_reasons[target] = reasons
+
+    # Model-based prediction intervals (p15–p85). Uses the same pred_minutes-
+    # augmented row, so counting-stat bands respect projected minutes too.
+    ranges = {}
+    if quantile_models:
+        for target, qm in quantile_models.items():
+            if "q15" not in qm or "q85" not in qm:
+                continue
+            lo = float(qm["q15"].predict(_make_X(qm["q15"]))[0])
+            hi = float(qm["q85"].predict(_make_X(qm["q85"]))[0])
+            lo = max(0.0, lo)
+            hi = max(hi, lo + 0.1)
+            # Keep the point prediction inside its own band.
+            pt = predictions.get(target, (lo + hi) / 2)
+            lo, hi = min(lo, pt), max(hi, pt)
+            ranges[target] = (round(lo, 1), round(hi, 1))
 
     # Fantasy score
     fantasy = compute_fantasy_score(predictions)
@@ -378,6 +433,7 @@ def explain_prediction(
         "fantasy_score" : round(fantasy, 1),
         "all_reasons"   : all_reasons,
         "reasoning_text": reasoning_text,
+        "ranges"        : ranges,
     }
 
 

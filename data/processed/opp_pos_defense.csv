@@ -1,0 +1,751 @@
+season,opponent_abbrev,position,pts_allowed_per_game,rank
+2022,ATL,Point Guard,15.11,26
+2022,BOS,Point Guard,14.11,1
+2022,BKN,Point Guard,14.92,20
+2022,CHA,Point Guard,15.03,22
+2022,CHI,Point Guard,15.04,23
+2022,CLE,Point Guard,14.47,5
+2022,DAL,Point Guard,14.5,7
+2022,DEN,Point Guard,14.82,15
+2022,DET,Point Guard,15.06,24
+2022,GSW,Point Guard,14.17,2
+2022,HOU,Point Guard,15.47,30
+2022,IND,Point Guard,15.35,28
+2022,LAC,Point Guard,14.55,8
+2022,LAL,Point Guard,14.99,21
+2022,MEM,Point Guard,14.47,5
+2022,MIA,Point Guard,14.41,4
+2022,MIL,Point Guard,14.77,14
+2022,MIN,Point Guard,14.75,13
+2022,NOP,Point Guard,14.89,18
+2022,NYK,Point Guard,14.65,11
+2022,OKC,Point Guard,14.85,16
+2022,ORL,Point Guard,14.9,19
+2022,PHI,Point Guard,14.65,11
+2022,PHX,Point Guard,14.19,3
+2022,POR,Point Guard,15.46,29
+2022,SAC,Point Guard,15.26,27
+2022,SAS,Point Guard,14.85,16
+2022,TOR,Point Guard,14.61,9
+2022,UTA,Point Guard,14.62,10
+2022,WAS,Point Guard,15.1,25
+2022,ATL,Shooting Guard,13.48,26
+2022,BOS,Shooting Guard,12.59,1
+2022,BKN,Shooting Guard,13.31,20
+2022,CHA,Shooting Guard,13.41,22
+2022,CHI,Shooting Guard,13.42,23
+2022,CLE,Shooting Guard,12.91,5
+2022,DAL,Shooting Guard,12.93,7
+2022,DEN,Shooting Guard,13.22,15
+2022,DET,Shooting Guard,13.43,24
+2022,GSW,Shooting Guard,12.64,2
+2022,HOU,Shooting Guard,13.8,30
+2022,IND,Shooting Guard,13.69,28
+2022,LAC,Shooting Guard,12.98,8
+2022,LAL,Shooting Guard,13.37,21
+2022,MEM,Shooting Guard,12.91,5
+2022,MIA,Shooting Guard,12.85,4
+2022,MIL,Shooting Guard,13.17,14
+2022,MIN,Shooting Guard,13.16,13
+2022,NOP,Shooting Guard,13.28,18
+2022,NYK,Shooting Guard,13.06,11
+2022,OKC,Shooting Guard,13.24,16
+2022,ORL,Shooting Guard,13.29,19
+2022,PHI,Shooting Guard,13.06,11
+2022,PHX,Shooting Guard,12.66,3
+2022,POR,Shooting Guard,13.79,29
+2022,SAC,Shooting Guard,13.61,27
+2022,SAS,Shooting Guard,13.24,16
+2022,TOR,Shooting Guard,13.03,9
+2022,UTA,Shooting Guard,13.04,10
+2022,WAS,Shooting Guard,13.47,25
+2022,ATL,Small Forward,12.35,26
+2022,BOS,Small Forward,11.54,1
+2022,BKN,Small Forward,12.2,20
+2022,CHA,Small Forward,12.29,22
+2022,CHI,Small Forward,12.3,23
+2022,CLE,Small Forward,11.83,5
+2022,DAL,Small Forward,11.85,7
+2022,DEN,Small Forward,12.12,15
+2022,DET,Small Forward,12.31,24
+2022,GSW,Small Forward,11.58,2
+2022,HOU,Small Forward,12.65,30
+2022,IND,Small Forward,12.55,28
+2022,LAC,Small Forward,11.9,8
+2022,LAL,Small Forward,12.26,21
+2022,MEM,Small Forward,11.83,5
+2022,MIA,Small Forward,11.78,4
+2022,MIL,Small Forward,12.07,14
+2022,MIN,Small Forward,12.06,13
+2022,NOP,Small Forward,12.17,18
+2022,NYK,Small Forward,11.97,11
+2022,OKC,Small Forward,12.14,16
+2022,ORL,Small Forward,12.18,19
+2022,PHI,Small Forward,11.97,11
+2022,PHX,Small Forward,11.6,3
+2022,POR,Small Forward,12.64,29
+2022,SAC,Small Forward,12.47,27
+2022,SAS,Small Forward,12.14,16
+2022,TOR,Small Forward,11.94,9
+2022,UTA,Small Forward,11.95,10
+2022,WAS,Small Forward,12.34,25
+2022,ATL,Power Forward,11.13,26
+2022,BOS,Power Forward,10.39,1
+2022,BKN,Power Forward,10.99,20
+2022,CHA,Power Forward,11.07,22
+2022,CHI,Power Forward,11.08,23
+2022,CLE,Power Forward,10.66,5
+2022,DAL,Power Forward,10.68,7
+2022,DEN,Power Forward,10.91,15
+2022,DET,Power Forward,11.09,24
+2022,GSW,Power Forward,10.43,2
+2022,HOU,Power Forward,11.39,30
+2022,IND,Power Forward,11.31,28
+2022,LAC,Power Forward,10.72,8
+2022,LAL,Power Forward,11.04,21
+2022,MEM,Power Forward,10.66,5
+2022,MIA,Power Forward,10.61,4
+2022,MIL,Power Forward,10.87,14
+2022,MIN,Power Forward,10.86,13
+2022,NOP,Power Forward,10.96,18
+2022,NYK,Power Forward,10.79,11
+2022,OKC,Power Forward,10.93,16
+2022,ORL,Power Forward,10.97,19
+2022,PHI,Power Forward,10.79,11
+2022,PHX,Power Forward,10.45,3
+2022,POR,Power Forward,11.38,29
+2022,SAC,Power Forward,11.24,27
+2022,SAS,Power Forward,10.93,16
+2022,TOR,Power Forward,10.76,9
+2022,UTA,Power Forward,10.77,10
+2022,WAS,Power Forward,11.12,25
+2022,ATL,Center,9.6,26
+2022,BOS,Center,8.96,1
+2022,BKN,Center,9.48,20
+2022,CHA,Center,9.55,22
+2022,CHI,Center,9.56,23
+2022,CLE,Center,9.19,5
+2022,DAL,Center,9.21,7
+2022,DEN,Center,9.41,15
+2022,DET,Center,9.56,23
+2022,GSW,Center,9.0,2
+2022,HOU,Center,9.83,30
+2022,IND,Center,9.75,28
+2022,LAC,Center,9.24,8
+2022,LAL,Center,9.52,21
+2022,MEM,Center,9.19,5
+2022,MIA,Center,9.15,4
+2022,MIL,Center,9.38,14
+2022,MIN,Center,9.37,13
+2022,NOP,Center,9.45,18
+2022,NYK,Center,9.3,11
+2022,OKC,Center,9.43,16
+2022,ORL,Center,9.46,19
+2022,PHI,Center,9.3,11
+2022,PHX,Center,9.02,3
+2022,POR,Center,9.82,29
+2022,SAC,Center,9.69,27
+2022,SAS,Center,9.43,16
+2022,TOR,Center,9.28,9
+2022,UTA,Center,9.29,10
+2022,WAS,Center,9.59,25
+2023,ATL,Point Guard,14.97,22
+2023,BOS,Point Guard,14.35,2
+2023,BKN,Point Guard,14.73,15
+2023,CHA,Point Guard,14.88,20
+2023,CHI,Point Guard,14.47,5
+2023,CLE,Point Guard,14.26,1
+2023,DAL,Point Guard,15.06,25
+2023,DEN,Point Guard,14.73,15
+2023,DET,Point Guard,15.28,27
+2023,GSW,Point Guard,14.71,14
+2023,HOU,Point Guard,15.39,29
+2023,IND,Point Guard,15.19,26
+2023,LAC,Point Guard,14.74,17
+2023,LAL,Point Guard,14.69,12
+2023,MEM,Point Guard,14.36,3
+2023,MIA,Point Guard,14.64,9
+2023,MIL,Point Guard,14.39,4
+2023,MIN,Point Guard,14.67,10
+2023,NOP,Point Guard,14.53,6
+2023,NYK,Point Guard,14.82,19
+2023,OKC,Point Guard,14.69,12
+2023,ORL,Point Guard,14.75,18
+2023,PHI,Point Guard,14.62,8
+2023,PHX,Point Guard,14.57,7
+2023,POR,Point Guard,15.31,28
+2023,SAC,Point Guard,15.05,23
+2023,SAS,Point Guard,15.52,30
+2023,TOR,Point Guard,14.67,10
+2023,UTA,Point Guard,15.05,23
+2023,WAS,Point Guard,14.91,21
+2023,ATL,Shooting Guard,13.35,22
+2023,BOS,Shooting Guard,12.8,2
+2023,BKN,Shooting Guard,13.13,15
+2023,CHA,Shooting Guard,13.27,20
+2023,CHI,Shooting Guard,12.9,5
+2023,CLE,Shooting Guard,12.72,1
+2023,DAL,Shooting Guard,13.43,25
+2023,DEN,Shooting Guard,13.13,15
+2023,DET,Shooting Guard,13.63,27
+2023,GSW,Shooting Guard,13.12,14
+2023,HOU,Shooting Guard,13.72,29
+2023,IND,Shooting Guard,13.55,26
+2023,LAC,Shooting Guard,13.15,17
+2023,LAL,Shooting Guard,13.1,12
+2023,MEM,Shooting Guard,12.81,3
+2023,MIA,Shooting Guard,13.05,9
+2023,MIL,Shooting Guard,12.83,4
+2023,MIN,Shooting Guard,13.09,10
+2023,NOP,Shooting Guard,12.96,6
+2023,NYK,Shooting Guard,13.22,19
+2023,OKC,Shooting Guard,13.1,12
+2023,ORL,Shooting Guard,13.16,18
+2023,PHI,Shooting Guard,13.04,8
+2023,PHX,Shooting Guard,13.0,7
+2023,POR,Shooting Guard,13.65,28
+2023,SAC,Shooting Guard,13.42,23
+2023,SAS,Shooting Guard,13.84,30
+2023,TOR,Shooting Guard,13.09,10
+2023,UTA,Shooting Guard,13.42,23
+2023,WAS,Shooting Guard,13.3,21
+2023,ATL,Small Forward,12.24,22
+2023,BOS,Small Forward,11.73,2
+2023,BKN,Small Forward,12.04,15
+2023,CHA,Small Forward,12.17,20
+2023,CHI,Small Forward,11.83,5
+2023,CLE,Small Forward,11.66,1
+2023,DAL,Small Forward,12.32,25
+2023,DEN,Small Forward,12.04,15
+2023,DET,Small Forward,12.5,27
+2023,GSW,Small Forward,12.03,14
+2023,HOU,Small Forward,12.58,29
+2023,IND,Small Forward,12.42,26
+2023,LAC,Small Forward,12.05,17
+2023,LAL,Small Forward,12.01,12
+2023,MEM,Small Forward,11.74,3
+2023,MIA,Small Forward,11.97,9
+2023,MIL,Small Forward,11.76,4
+2023,MIN,Small Forward,12.0,10
+2023,NOP,Small Forward,11.88,6
+2023,NYK,Small Forward,12.11,19
+2023,OKC,Small Forward,12.01,12
+2023,ORL,Small Forward,12.06,18
+2023,PHI,Small Forward,11.95,8
+2023,PHX,Small Forward,11.91,7
+2023,POR,Small Forward,12.52,28
+2023,SAC,Small Forward,12.3,23
+2023,SAS,Small Forward,12.69,30
+2023,TOR,Small Forward,12.0,10
+2023,UTA,Small Forward,12.3,23
+2023,WAS,Small Forward,12.19,21
+2023,ATL,Power Forward,11.03,22
+2023,BOS,Power Forward,10.57,2
+2023,BKN,Power Forward,10.85,15
+2023,CHA,Power Forward,10.96,20
+2023,CHI,Power Forward,10.65,5
+2023,CLE,Power Forward,10.5,1
+2023,DAL,Power Forward,11.09,25
+2023,DEN,Power Forward,10.85,15
+2023,DET,Power Forward,11.26,27
+2023,GSW,Power Forward,10.84,14
+2023,HOU,Power Forward,11.33,29
+2023,IND,Power Forward,11.19,26
+2023,LAC,Power Forward,10.86,17
+2023,LAL,Power Forward,10.82,12
+2023,MEM,Power Forward,10.58,3
+2023,MIA,Power Forward,10.78,9
+2023,MIL,Power Forward,10.6,4
+2023,MIN,Power Forward,10.81,10
+2023,NOP,Power Forward,10.7,6
+2023,NYK,Power Forward,10.91,19
+2023,OKC,Power Forward,10.82,12
+2023,ORL,Power Forward,10.86,17
+2023,PHI,Power Forward,10.77,8
+2023,PHX,Power Forward,10.73,7
+2023,POR,Power Forward,11.28,28
+2023,SAC,Power Forward,11.08,23
+2023,SAS,Power Forward,11.43,30
+2023,TOR,Power Forward,10.81,10
+2023,UTA,Power Forward,11.08,23
+2023,WAS,Power Forward,10.98,21
+2023,ATL,Center,9.51,22
+2023,BOS,Center,9.11,2
+2023,BKN,Center,9.35,15
+2023,CHA,Center,9.45,20
+2023,CHI,Center,9.19,5
+2023,CLE,Center,9.06,1
+2023,DAL,Center,9.57,25
+2023,DEN,Center,9.35,15
+2023,DET,Center,9.71,27
+2023,GSW,Center,9.34,14
+2023,HOU,Center,9.77,29
+2023,IND,Center,9.65,26
+2023,LAC,Center,9.36,17
+2023,LAL,Center,9.33,12
+2023,MEM,Center,9.12,3
+2023,MIA,Center,9.3,9
+2023,MIL,Center,9.14,4
+2023,MIN,Center,9.32,10
+2023,NOP,Center,9.23,6
+2023,NYK,Center,9.41,19
+2023,OKC,Center,9.33,12
+2023,ORL,Center,9.37,18
+2023,PHI,Center,9.29,8
+2023,PHX,Center,9.25,7
+2023,POR,Center,9.72,28
+2023,SAC,Center,9.56,23
+2023,SAS,Center,9.86,30
+2023,TOR,Center,9.32,10
+2023,UTA,Center,9.56,23
+2023,WAS,Center,9.47,21
+2024,ATL,Point Guard,15.3,27
+2024,BOS,Point Guard,14.29,2
+2024,BKN,Point Guard,14.91,20
+2024,CHA,Point Guard,15.41,29
+2024,CHI,Point Guard,14.95,22
+2024,CLE,Point Guard,14.49,7
+2024,DAL,Point Guard,14.85,18
+2024,DEN,Point Guard,14.51,8
+2024,DET,Point Guard,15.25,25
+2024,GSW,Point Guard,14.8,15
+2024,HOU,Point Guard,14.58,10
+2024,IND,Point Guard,15.2,24
+2024,LAC,Point Guard,14.81,16
+2024,LAL,Point Guard,14.84,17
+2024,MEM,Point Guard,14.69,12
+2024,MIA,Point Guard,14.41,5
+2024,MIL,Point Guard,14.86,19
+2024,MIN,Point Guard,14.01,1
+2024,NOP,Point Guard,14.46,6
+2024,NYK,Point Guard,14.53,9
+2024,OKC,Point Guard,14.35,4
+2024,ORL,Point Guard,14.32,3
+2024,PHI,Point Guard,14.6,11
+2024,PHX,Point Guard,14.69,12
+2024,POR,Point Guard,15.07,23
+2024,SAC,Point Guard,14.78,14
+2024,SAS,Point Guard,14.94,21
+2024,TOR,Point Guard,15.26,26
+2024,UTA,Point Guard,15.46,30
+2024,WAS,Point Guard,15.37,28
+2024,ATL,Shooting Guard,13.65,27
+2024,BOS,Shooting Guard,12.75,2
+2024,BKN,Shooting Guard,13.3,20
+2024,CHA,Shooting Guard,13.74,29
+2024,CHI,Shooting Guard,13.34,22
+2024,CLE,Shooting Guard,12.92,7
+2024,DAL,Shooting Guard,13.24,18
+2024,DEN,Shooting Guard,12.94,8
+2024,DET,Shooting Guard,13.6,25
+2024,GSW,Shooting Guard,13.2,15
+2024,HOU,Shooting Guard,13.0,10
+2024,IND,Shooting Guard,13.56,24
+2024,LAC,Shooting Guard,13.21,16
+2024,LAL,Shooting Guard,13.23,17
+2024,MEM,Shooting Guard,13.11,12
+2024,MIA,Shooting Guard,12.85,5
+2024,MIL,Shooting Guard,13.26,19
+2024,MIN,Shooting Guard,12.49,1
+2024,NOP,Shooting Guard,12.9,6
+2024,NYK,Shooting Guard,12.96,9
+2024,OKC,Shooting Guard,12.79,4
+2024,ORL,Shooting Guard,12.77,3
+2024,PHI,Shooting Guard,13.03,11
+2024,PHX,Shooting Guard,13.11,12
+2024,POR,Shooting Guard,13.44,23
+2024,SAC,Shooting Guard,13.19,14
+2024,SAS,Shooting Guard,13.32,21
+2024,TOR,Shooting Guard,13.61,26
+2024,UTA,Shooting Guard,13.79,30
+2024,WAS,Shooting Guard,13.71,28
+2024,ATL,Small Forward,12.51,27
+2024,BOS,Small Forward,11.69,2
+2024,BKN,Small Forward,12.19,20
+2024,CHA,Small Forward,12.59,29
+2024,CHI,Small Forward,12.23,22
+2024,CLE,Small Forward,11.84,7
+2024,DAL,Small Forward,12.14,18
+2024,DEN,Small Forward,11.87,8
+2024,DET,Small Forward,12.47,25
+2024,GSW,Small Forward,12.1,15
+2024,HOU,Small Forward,11.92,10
+2024,IND,Small Forward,12.43,24
+2024,LAC,Small Forward,12.11,16
+2024,LAL,Small Forward,12.13,17
+2024,MEM,Small Forward,12.01,12
+2024,MIA,Small Forward,11.78,5
+2024,MIL,Small Forward,12.15,19
+2024,MIN,Small Forward,11.45,1
+2024,NOP,Small Forward,11.82,6
+2024,NYK,Small Forward,11.88,9
+2024,OKC,Small Forward,11.73,4
+2024,ORL,Small Forward,11.71,3
+2024,PHI,Small Forward,11.94,11
+2024,PHX,Small Forward,12.01,12
+2024,POR,Small Forward,12.32,23
+2024,SAC,Small Forward,12.09,14
+2024,SAS,Small Forward,12.21,21
+2024,TOR,Small Forward,12.48,26
+2024,UTA,Small Forward,12.64,30
+2024,WAS,Small Forward,12.56,28
+2024,ATL,Power Forward,11.27,27
+2024,BOS,Power Forward,10.53,2
+2024,BKN,Power Forward,10.98,20
+2024,CHA,Power Forward,11.35,29
+2024,CHI,Power Forward,11.01,22
+2024,CLE,Power Forward,10.67,7
+2024,DAL,Power Forward,10.94,18
+2024,DEN,Power Forward,10.69,8
+2024,DET,Power Forward,11.23,25
+2024,GSW,Power Forward,10.9,15
+2024,HOU,Power Forward,10.74,10
+2024,IND,Power Forward,11.19,24
+2024,LAC,Power Forward,10.91,16
+2024,LAL,Power Forward,10.93,17
+2024,MEM,Power Forward,10.82,12
+2024,MIA,Power Forward,10.61,5
+2024,MIL,Power Forward,10.95,19
+2024,MIN,Power Forward,10.32,1
+2024,NOP,Power Forward,10.65,6
+2024,NYK,Power Forward,10.7,9
+2024,OKC,Power Forward,10.57,4
+2024,ORL,Power Forward,10.55,3
+2024,PHI,Power Forward,10.76,11
+2024,PHX,Power Forward,10.82,12
+2024,POR,Power Forward,11.1,23
+2024,SAC,Power Forward,10.89,14
+2024,SAS,Power Forward,11.0,21
+2024,TOR,Power Forward,11.24,26
+2024,UTA,Power Forward,11.38,30
+2024,WAS,Power Forward,11.32,28
+2024,ATL,Center,9.72,27
+2024,BOS,Center,9.08,2
+2024,BKN,Center,9.47,20
+2024,CHA,Center,9.78,29
+2024,CHI,Center,9.5,22
+2024,CLE,Center,9.2,7
+2024,DAL,Center,9.43,18
+2024,DEN,Center,9.22,8
+2024,DET,Center,9.69,25
+2024,GSW,Center,9.4,15
+2024,HOU,Center,9.26,10
+2024,IND,Center,9.65,24
+2024,LAC,Center,9.41,16
+2024,LAL,Center,9.42,17
+2024,MEM,Center,9.33,12
+2024,MIA,Center,9.15,5
+2024,MIL,Center,9.44,19
+2024,MIN,Center,8.9,1
+2024,NOP,Center,9.19,6
+2024,NYK,Center,9.23,9
+2024,OKC,Center,9.11,4
+2024,ORL,Center,9.09,3
+2024,PHI,Center,9.28,11
+2024,PHX,Center,9.33,12
+2024,POR,Center,9.57,23
+2024,SAC,Center,9.39,14
+2024,SAS,Center,9.49,21
+2024,TOR,Center,9.69,25
+2024,UTA,Center,9.82,30
+2024,WAS,Center,9.76,28
+2025,ATL,Point Guard,14.95,18
+2025,BOS,Point Guard,14.33,4
+2025,BKN,Point Guard,15.02,23
+2025,CHA,Point Guard,15.06,24
+2025,CHI,Point Guard,14.95,18
+2025,CLE,Point Guard,14.55,8
+2025,DAL,Point Guard,14.97,20
+2025,DEN,Point Guard,14.98,21
+2025,DET,Point Guard,14.65,10
+2025,GSW,Point Guard,14.45,7
+2025,HOU,Point Guard,14.36,5
+2025,IND,Point Guard,14.75,13
+2025,LAC,Point Guard,14.24,3
+2025,LAL,Point Guard,14.82,17
+2025,MEM,Point Guard,14.66,11
+2025,MIA,Point Guard,14.58,9
+2025,MIL,Point Guard,14.67,12
+2025,MIN,Point Guard,14.42,6
+2025,NOP,Point Guard,15.51,29
+2025,NYK,Point Guard,14.75,13
+2025,OKC,Point Guard,13.88,1
+2025,ORL,Point Guard,14.2,2
+2025,PHI,Point Guard,15.27,26
+2025,PHX,Point Guard,15.32,27
+2025,POR,Point Guard,14.8,16
+2025,SAC,Point Guard,15.01,22
+2025,SAS,Point Guard,15.14,25
+2025,TOR,Point Guard,14.79,15
+2025,UTA,Point Guard,15.54,30
+2025,WAS,Point Guard,15.36,28
+2025,ATL,Shooting Guard,13.33,18
+2025,BOS,Shooting Guard,12.78,4
+2025,BKN,Shooting Guard,13.4,23
+2025,CHA,Shooting Guard,13.43,24
+2025,CHI,Shooting Guard,13.33,18
+2025,CLE,Shooting Guard,12.98,8
+2025,DAL,Shooting Guard,13.35,20
+2025,DEN,Shooting Guard,13.36,21
+2025,DET,Shooting Guard,13.06,10
+2025,GSW,Shooting Guard,12.89,7
+2025,HOU,Shooting Guard,12.81,5
+2025,IND,Shooting Guard,13.16,13
+2025,LAC,Shooting Guard,12.7,3
+2025,LAL,Shooting Guard,13.21,17
+2025,MEM,Shooting Guard,13.07,11
+2025,MIA,Shooting Guard,13.0,9
+2025,MIL,Shooting Guard,13.09,12
+2025,MIN,Shooting Guard,12.87,6
+2025,NOP,Shooting Guard,13.83,29
+2025,NYK,Shooting Guard,13.16,13
+2025,OKC,Shooting Guard,12.38,1
+2025,ORL,Shooting Guard,12.67,2
+2025,PHI,Shooting Guard,13.62,26
+2025,PHX,Shooting Guard,13.67,27
+2025,POR,Shooting Guard,13.2,16
+2025,SAC,Shooting Guard,13.39,22
+2025,SAS,Shooting Guard,13.5,25
+2025,TOR,Shooting Guard,13.19,15
+2025,UTA,Shooting Guard,13.86,30
+2025,WAS,Shooting Guard,13.7,28
+2025,ATL,Small Forward,12.22,18
+2025,BOS,Small Forward,11.72,4
+2025,BKN,Small Forward,12.28,23
+2025,CHA,Small Forward,12.31,24
+2025,CHI,Small Forward,12.22,18
+2025,CLE,Small Forward,11.9,8
+2025,DAL,Small Forward,12.24,20
+2025,DEN,Small Forward,12.25,21
+2025,DET,Small Forward,11.97,10
+2025,GSW,Small Forward,11.81,7
+2025,HOU,Small Forward,11.74,5
+2025,IND,Small Forward,12.06,13
+2025,LAC,Small Forward,11.64,3
+2025,LAL,Small Forward,12.11,17
+2025,MEM,Small Forward,11.98,11
+2025,MIA,Small Forward,11.92,9
+2025,MIL,Small Forward,12.0,12
+2025,MIN,Small Forward,11.79,6
+2025,NOP,Small Forward,12.68,29
+2025,NYK,Small Forward,12.06,13
+2025,OKC,Small Forward,11.35,1
+2025,ORL,Small Forward,11.61,2
+2025,PHI,Small Forward,12.48,26
+2025,PHX,Small Forward,12.53,27
+2025,POR,Small Forward,12.1,16
+2025,SAC,Small Forward,12.27,22
+2025,SAS,Small Forward,12.38,25
+2025,TOR,Small Forward,12.09,15
+2025,UTA,Small Forward,12.71,30
+2025,WAS,Small Forward,12.56,28
+2025,ATL,Power Forward,11.01,18
+2025,BOS,Power Forward,10.56,4
+2025,BKN,Power Forward,11.06,22
+2025,CHA,Power Forward,11.09,24
+2025,CHI,Power Forward,11.01,18
+2025,CLE,Power Forward,10.72,8
+2025,DAL,Power Forward,11.03,20
+2025,DEN,Power Forward,11.04,21
+2025,DET,Power Forward,10.79,10
+2025,GSW,Power Forward,10.64,7
+2025,HOU,Power Forward,10.58,5
+2025,IND,Power Forward,10.86,13
+2025,LAC,Power Forward,10.49,3
+2025,LAL,Power Forward,10.91,17
+2025,MEM,Power Forward,10.8,11
+2025,MIA,Power Forward,10.74,9
+2025,MIL,Power Forward,10.81,12
+2025,MIN,Power Forward,10.62,6
+2025,NOP,Power Forward,11.42,29
+2025,NYK,Power Forward,10.86,13
+2025,OKC,Power Forward,10.22,1
+2025,ORL,Power Forward,10.46,2
+2025,PHI,Power Forward,11.25,26
+2025,PHX,Power Forward,11.29,27
+2025,POR,Power Forward,10.9,16
+2025,SAC,Power Forward,11.06,22
+2025,SAS,Power Forward,11.15,25
+2025,TOR,Power Forward,10.89,15
+2025,UTA,Power Forward,11.45,30
+2025,WAS,Power Forward,11.31,28
+2025,ATL,Center,9.49,18
+2025,BOS,Center,9.1,4
+2025,BKN,Center,9.54,23
+2025,CHA,Center,9.57,24
+2025,CHI,Center,9.49,18
+2025,CLE,Center,9.24,8
+2025,DAL,Center,9.51,20
+2025,DEN,Center,9.52,21
+2025,DET,Center,9.3,10
+2025,GSW,Center,9.18,7
+2025,HOU,Center,9.12,5
+2025,IND,Center,9.37,13
+2025,LAC,Center,9.05,3
+2025,LAL,Center,9.41,17
+2025,MEM,Center,9.31,11
+2025,MIA,Center,9.26,9
+2025,MIL,Center,9.32,12
+2025,MIN,Center,9.16,6
+2025,NOP,Center,9.85,29
+2025,NYK,Center,9.37,13
+2025,OKC,Center,8.81,1
+2025,ORL,Center,9.02,2
+2025,PHI,Center,9.7,26
+2025,PHX,Center,9.73,27
+2025,POR,Center,9.4,16
+2025,SAC,Center,9.53,22
+2025,SAS,Center,9.62,25
+2025,TOR,Center,9.39,15
+2025,UTA,Center,9.87,30
+2025,WAS,Center,9.76,28
+2026,ATL,Point Guard,14.62,11
+2026,BOS,Point Guard,14.43,4
+2026,BKN,Point Guard,15.28,27
+2026,CHA,Point Guard,14.74,15
+2026,CHI,Point Guard,15.1,23
+2026,CLE,Point Guard,14.66,13
+2026,DAL,Point Guard,14.83,17
+2026,DEN,Point Guard,14.97,20
+2026,DET,Point Guard,14.09,2
+2026,GSW,Point Guard,14.68,14
+2026,HOU,Point Guard,14.53,8
+2026,IND,Point Guard,15.23,26
+2026,LAC,Point Guard,14.94,19
+2026,LAL,Point Guard,14.97,20
+2026,MEM,Point Guard,15.06,22
+2026,MIA,Point Guard,14.46,5
+2026,MIL,Point Guard,15.21,25
+2026,MIN,Point Guard,14.59,9
+2026,NOP,Point Guard,15.13,24
+2026,NYK,Point Guard,14.47,6
+2026,OKC,Point Guard,13.71,1
+2026,ORL,Point Guard,14.64,12
+2026,PHI,Point Guard,14.82,16
+2026,PHX,Point Guard,14.6,10
+2026,POR,Point Guard,14.83,17
+2026,SAC,Point Guard,15.48,28
+2026,SAS,Point Guard,14.28,3
+2026,TOR,Point Guard,14.48,7
+2026,UTA,Point Guard,15.57,29
+2026,WAS,Point Guard,15.58,30
+2026,ATL,Shooting Guard,13.04,11
+2026,BOS,Shooting Guard,12.87,4
+2026,BKN,Shooting Guard,13.63,27
+2026,CHA,Shooting Guard,13.15,15
+2026,CHI,Shooting Guard,13.47,23
+2026,CLE,Shooting Guard,13.08,13
+2026,DAL,Shooting Guard,13.23,17
+2026,DEN,Shooting Guard,13.36,20
+2026,DET,Shooting Guard,12.57,2
+2026,GSW,Shooting Guard,13.09,14
+2026,HOU,Shooting Guard,12.96,8
+2026,IND,Shooting Guard,13.59,26
+2026,LAC,Shooting Guard,13.32,19
+2026,LAL,Shooting Guard,13.36,20
+2026,MEM,Shooting Guard,13.44,22
+2026,MIA,Shooting Guard,12.89,5
+2026,MIL,Shooting Guard,13.56,25
+2026,MIN,Shooting Guard,13.01,9
+2026,NOP,Shooting Guard,13.49,24
+2026,NYK,Shooting Guard,12.91,6
+2026,OKC,Shooting Guard,12.23,1
+2026,ORL,Shooting Guard,13.06,12
+2026,PHI,Shooting Guard,13.22,16
+2026,PHX,Shooting Guard,13.02,10
+2026,POR,Shooting Guard,13.23,17
+2026,SAC,Shooting Guard,13.81,28
+2026,SAS,Shooting Guard,12.73,3
+2026,TOR,Shooting Guard,12.92,7
+2026,UTA,Shooting Guard,13.89,29
+2026,WAS,Shooting Guard,13.9,30
+2026,ATL,Small Forward,11.96,11
+2026,BOS,Small Forward,11.8,4
+2026,BKN,Small Forward,12.5,27
+2026,CHA,Small Forward,12.05,15
+2026,CHI,Small Forward,12.35,23
+2026,CLE,Small Forward,11.99,13
+2026,DAL,Small Forward,12.13,17
+2026,DEN,Small Forward,12.24,20
+2026,DET,Small Forward,11.52,2
+2026,GSW,Small Forward,12.0,14
+2026,HOU,Small Forward,11.88,8
+2026,IND,Small Forward,12.45,26
+2026,LAC,Small Forward,12.21,19
+2026,LAL,Small Forward,12.24,20
+2026,MEM,Small Forward,12.32,22
+2026,MIA,Small Forward,11.82,5
+2026,MIL,Small Forward,12.43,25
+2026,MIN,Small Forward,11.93,9
+2026,NOP,Small Forward,12.37,24
+2026,NYK,Small Forward,11.83,6
+2026,OKC,Small Forward,11.21,1
+2026,ORL,Small Forward,11.97,12
+2026,PHI,Small Forward,12.12,16
+2026,PHX,Small Forward,11.94,10
+2026,POR,Small Forward,12.13,17
+2026,SAC,Small Forward,12.65,28
+2026,SAS,Small Forward,11.67,3
+2026,TOR,Small Forward,11.84,7
+2026,UTA,Small Forward,12.73,29
+2026,WAS,Small Forward,12.74,30
+2026,ATL,Power Forward,10.77,11
+2026,BOS,Power Forward,10.63,4
+2026,BKN,Power Forward,11.26,27
+2026,CHA,Power Forward,10.86,15
+2026,CHI,Power Forward,11.12,23
+2026,CLE,Power Forward,10.8,13
+2026,DAL,Power Forward,10.92,17
+2026,DEN,Power Forward,11.03,20
+2026,DET,Power Forward,10.38,2
+2026,GSW,Power Forward,10.81,14
+2026,HOU,Power Forward,10.7,8
+2026,IND,Power Forward,11.22,26
+2026,LAC,Power Forward,11.0,19
+2026,LAL,Power Forward,11.03,20
+2026,MEM,Power Forward,11.09,22
+2026,MIA,Power Forward,10.65,5
+2026,MIL,Power Forward,11.2,25
+2026,MIN,Power Forward,10.74,9
+2026,NOP,Power Forward,11.14,24
+2026,NYK,Power Forward,10.66,6
+2026,OKC,Power Forward,10.09,1
+2026,ORL,Power Forward,10.78,12
+2026,PHI,Power Forward,10.91,16
+2026,PHX,Power Forward,10.75,10
+2026,POR,Power Forward,10.92,17
+2026,SAC,Power Forward,11.4,28
+2026,SAS,Power Forward,10.51,3
+2026,TOR,Power Forward,10.67,7
+2026,UTA,Power Forward,11.47,29
+2026,WAS,Power Forward,11.48,30
+2026,ATL,Center,9.29,11
+2026,BOS,Center,9.17,4
+2026,BKN,Center,9.71,27
+2026,CHA,Center,9.36,15
+2026,CHI,Center,9.59,23
+2026,CLE,Center,9.31,13
+2026,DAL,Center,9.42,17
+2026,DEN,Center,9.51,20
+2026,DET,Center,8.95,2
+2026,GSW,Center,9.32,14
+2026,HOU,Center,9.23,8
+2026,IND,Center,9.67,26
+2026,LAC,Center,9.49,19
+2026,LAL,Center,9.51,20
+2026,MEM,Center,9.57,22
+2026,MIA,Center,9.18,5
+2026,MIL,Center,9.66,25
+2026,MIN,Center,9.26,9
+2026,NOP,Center,9.61,24
+2026,NYK,Center,9.19,6
+2026,OKC,Center,8.71,1
+2026,ORL,Center,9.3,12
+2026,PHI,Center,9.41,16
+2026,PHX,Center,9.27,10
+2026,POR,Center,9.42,17
+2026,SAC,Center,9.83,28
+2026,SAS,Center,9.07,3
+2026,TOR,Center,9.2,7
+2026,UTA,Center,9.89,29
+2026,WAS,Center,9.9,30

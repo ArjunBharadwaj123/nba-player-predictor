@@ -1,0 +1,344 @@
+{
+  "feature_names": [
+    "rolling_last3_pts",
+    "rolling_last3_reb",
+    "rolling_last3_ast",
+    "rolling_last3_stl",
+    "rolling_last3_blk",
+    "rolling_last3_minutes",
+    "rolling_last3_usage_rate",
+    "rolling_last3_fg_pct",
+    "rolling_last3_fg3_pct",
+    "rolling_last3_ft_pct",
+    "rolling_last3_tov",
+    "rolling_last3_fantasy_score",
+    "rolling_last5_pts",
+    "rolling_last5_reb",
+    "rolling_last5_ast",
+    "rolling_last5_stl",
+    "rolling_last5_blk",
+    "rolling_last5_minutes",
+    "rolling_last5_usage_rate",
+    "rolling_last5_fg_pct",
+    "rolling_last5_fg3_pct",
+    "rolling_last5_ft_pct",
+    "rolling_last5_tov",
+    "rolling_last5_fantasy_score",
+    "rolling_last10_pts",
+    "rolling_last10_reb",
+    "rolling_last10_ast",
+    "rolling_last10_stl",
+    "rolling_last10_blk",
+    "rolling_last10_minutes",
+    "rolling_last10_usage_rate",
+    "rolling_last10_fg_pct",
+    "rolling_last10_fg3_pct",
+    "rolling_last10_ft_pct",
+    "rolling_last10_tov",
+    "rolling_last10_fantasy_score",
+    "season_avg_pts",
+    "season_avg_reb",
+    "season_avg_ast",
+    "season_avg_stl",
+    "season_avg_blk",
+    "season_avg_minutes",
+    "season_avg_usage_rate",
+    "ewm_pts",
+    "ewm_reb",
+    "ewm_ast",
+    "ewm_minutes",
+    "ewm_usage_rate",
+    "venue_last10_pts",
+    "venue_last10_reb",
+    "venue_last10_ast",
+    "venue_last10_minutes",
+    "trend_pts",
+    "trend_reb",
+    "trend_ast",
+    "trend_fantasy_score",
+    "trend_usage_rate",
+    "rolling_last3_ts_pct",
+    "rolling_last5_ts_pct",
+    "rolling_last5_pts_per_min",
+    "rolling_last5_minutes_std",
+    "home_game",
+    "back_to_back",
+    "team_pace",
+    "opp_def_rating",
+    "games_played_season",
+    "rest_days_capped",
+    "opp_def_rank",
+    "position_enc",
+    "opp_pace",
+    "pace_sum",
+    "usage_x_minutes",
+    "days_into_season",
+    "games_in_last_7_days",
+    "home_court_factor",
+    "opp_pts_allowed_pos",
+    "opp_pos_defense_rank",
+    "start_rate_last10",
+    "is_likely_starter",
+    "season_phase",
+    "is_late_season",
+    "vs_opp_rolling3_pts",
+    "vs_opp_rolling3_reb",
+    "vs_opp_rolling3_ast"
+  ],
+  "stacked_feature": "pred_minutes",
+  "counting_stats": [
+    "pts",
+    "reb",
+    "ast",
+    "stl",
+    "blk"
+  ],
+  "models": {
+    "pts": {
+      "cv_mae": 5.429036637108796,
+      "cv_mae_std": 0.059246291671542134,
+      "cv_rmse": 6.997105968296651,
+      "cv_r2": 0.5094734163694138,
+      "top_features": [
+        [
+          "ewm_pts",
+          0.3373236358165741
+        ],
+        [
+          "season_avg_pts",
+          0.12998154759407043
+        ],
+        [
+          "usage_x_minutes",
+          0.10661670565605164
+        ],
+        [
+          "rolling_last10_pts",
+          0.09371519088745117
+        ],
+        [
+          "venue_last10_pts",
+          0.06869850307703018
+        ],
+        [
+          "ewm_usage_rate",
+          0.019536087289452553
+        ],
+        [
+          "season_avg_usage_rate",
+          0.010260297916829586
+        ],
+        [
+          "rolling_last5_usage_rate",
+          0.009282439947128296
+        ]
+      ],
+      "n_training_rows": 26031
+    },
+    "reb": {
+      "cv_mae": 2.1529238353791245,
+      "cv_mae_std": 0.034663585230285544,
+      "cv_rmse": 2.793938892233392,
+      "cv_r2": 0.4908450821246902,
+      "top_features": [
+        [
+          "rolling_last10_reb",
+          0.35309404134750366
+        ],
+        [
+          "ewm_reb",
+          0.14030644297599792
+        ],
+        [
+          "season_avg_reb",
+          0.10268916934728622
+        ],
+        [
+          "venue_last10_reb",
+          0.07922501862049103
+        ],
+        [
+          "position_enc",
+          0.014646574854850769
+        ],
+        [
+          "opp_pts_allowed_pos",
+          0.009905804879963398
+        ],
+        [
+          "rolling_last10_minutes",
+          0.008480098098516464
+        ],
+        [
+          "rolling_last5_fantasy_score",
+          0.007558110170066357
+        ]
+      ],
+      "n_training_rows": 26031
+    },
+    "ast": {
+      "cv_mae": 1.6627605472555245,
+      "cv_mae_std": 0.03596736572501547,
+      "cv_rmse": 2.1851558834805336,
+      "cv_r2": 0.5221034776814062,
+      "top_features": [
+        [
+          "ewm_ast",
+          0.24279595911502838
+        ],
+        [
+          "rolling_last10_ast",
+          0.21485662460327148
+        ],
+        [
+          "season_avg_ast",
+          0.13780811429023743
+        ],
+        [
+          "venue_last10_ast",
+          0.08763004094362259
+        ],
+        [
+          "rolling_last5_ast",
+          0.01107810903340578
+        ],
+        [
+          "season_avg_usage_rate",
+          0.010453389957547188
+        ],
+        [
+          "rolling_last5_tov",
+          0.009372242726385593
+        ],
+        [
+          "vs_opp_rolling3_ast",
+          0.008745032362639904
+        ]
+      ],
+      "n_training_rows": 26031
+    },
+    "stl": {
+      "cv_mae": 0.7834242535948258,
+      "cv_mae_std": 0.00826570289138072,
+      "cv_rmse": 1.0017960150434342,
+      "cv_r2": 0.07812928347217463,
+      "top_features": [
+        [
+          "rolling_last10_stl",
+          0.08135855197906494
+        ],
+        [
+          "season_avg_stl",
+          0.06818127632141113
+        ],
+        [
+          "ewm_minutes",
+          0.03627406433224678
+        ],
+        [
+          "ewm_ast",
+          0.036270622164011
+        ],
+        [
+          "rolling_last10_ast",
+          0.03412139043211937
+        ],
+        [
+          "rolling_last10_minutes",
+          0.022922227159142494
+        ],
+        [
+          "pred_minutes",
+          0.02199549227952957
+        ],
+        [
+          "season_avg_ast",
+          0.01976580172777176
+        ]
+      ],
+      "n_training_rows": 26031
+    },
+    "blk": {
+      "cv_mae": 0.6258886180127641,
+      "cv_mae_std": 0.016656761573357465,
+      "cv_rmse": 0.8404843886381717,
+      "cv_r2": 0.22438890616042903,
+      "top_features": [
+        [
+          "rolling_last5_blk",
+          0.11805437505245209
+        ],
+        [
+          "rolling_last10_blk",
+          0.09386995434761047
+        ],
+        [
+          "season_avg_blk",
+          0.08500358462333679
+        ],
+        [
+          "position_enc",
+          0.050351664423942566
+        ],
+        [
+          "rolling_last3_blk",
+          0.03351579234004021
+        ],
+        [
+          "opp_pts_allowed_pos",
+          0.026405492797493935
+        ],
+        [
+          "home_court_factor",
+          0.019781386479735374
+        ],
+        [
+          "rolling_last3_ft_pct",
+          0.014742382802069187
+        ]
+      ],
+      "n_training_rows": 26031
+    },
+    "minutes": {
+      "cv_mae": 4.178876476226286,
+      "cv_mae_std": 0.04976635357523432,
+      "cv_rmse": 5.5035081969712945,
+      "cv_r2": 0.5467636663589148,
+      "top_features": [
+        [
+          "rolling_last10_minutes",
+          0.36251768469810486
+        ],
+        [
+          "ewm_minutes",
+          0.20342864096164703
+        ],
+        [
+          "rolling_last5_minutes",
+          0.07034274935722351
+        ],
+        [
+          "season_avg_minutes",
+          0.059691913425922394
+        ],
+        [
+          "rolling_last3_minutes",
+          0.026949316263198853
+        ],
+        [
+          "ewm_pts",
+          0.019539030268788338
+        ],
+        [
+          "rolling_last5_pts",
+          0.011268651112914085
+        ],
+        [
+          "venue_last10_minutes",
+          0.01093535590916872
+        ]
+      ],
+      "n_training_rows": 26031
+    }
+  }
+}

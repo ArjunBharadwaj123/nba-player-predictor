@@ -1,0 +1,15 @@
+# Render Blueprint for the NBA Player Predictor FastAPI backend.
+# Deploy: push to GitHub, then in Render → New → Blueprint, pick this repo.
+# Docs: https://render.com/docs/blueprint-spec
+services:
+  - type: web
+    name: nba-player-predictor-api
+    runtime: python
+    plan: free
+    region: oregon
+    buildCommand: pip install -r requirements-api.txt
+    startCommand: uvicorn api.main:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /health
+    envVars:
+      - key: PYTHON_VERSION
+        value: "3.12"

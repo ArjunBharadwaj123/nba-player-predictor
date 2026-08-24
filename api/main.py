@@ -47,6 +47,7 @@ from explainability.shap_explainer import (
     explain_prediction,
     load_feature_names,
     load_models,
+    load_quantile_models,
 )
 
 logging.basicConfig(
@@ -86,7 +87,8 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-_models: dict       = {}
+_models: dict        = {}
+_quantile_models: dict = {}
 _feature_names: list = []
 _features_df        = None
 _live_cache: dict   = {}   # player_name.lower() -> fresh BBRef game log df
@@ -94,10 +96,13 @@ _live_cache: dict   = {}   # player_name.lower() -> fresh BBRef game log df
 
 @app.on_event("startup")
 async def startup():
-    global _models, _feature_names, _features_df
+    global _models, _quantile_models, _feature_names, _features_df
     log.info("Loading models...")
     _models = load_models()
     log.info("  Loaded: %s", list(_models.keys()))
+
+    log.info("Loading quantile (interval) models...")
+    _quantile_models = load_quantile_models()
 
     log.info("Loading feature names...")
     _feature_names = load_feature_names()
@@ -312,13 +317,15 @@ def build_feature_row(req: PredictRequest, df: pd.DataFrame) -> pd.DataFrame:
                 row["opp_pts_allowed_pos"]  = float(match.iloc[0]["pts_allowed_per_game"])
                 row["opp_pos_defense_rank"] = float(match.iloc[0]["rank"])
             else:
-                row["opp_pts_allowed_pos"]  = 0.0
+                # On-scale fallback (median allowed), not 0.0 which the model
+                # would read as "opponent allows nothing" and mangle the prediction.
+                row["opp_pts_allowed_pos"]  = float(pos_df["pts_allowed_per_game"].median())
                 row["opp_pos_defense_rank"] = 15.0
         except Exception:
-            row["opp_pts_allowed_pos"]  = 0.0
+            row["opp_pts_allowed_pos"]  = 22.0
             row["opp_pos_defense_rank"] = 15.0
     else:
-        row["opp_pts_allowed_pos"]  = 0.0
+        row["opp_pts_allowed_pos"]  = 22.0
         row["opp_pos_defense_rank"] = 15.0
 
     return row.to_frame().T
@@ -393,11 +400,12 @@ def build_warnings(req: PredictRequest, df: pd.DataFrame,
 @app.get("/health")
 def health():
     return {
-        "status":        "ok",
-        "models_loaded": list(_models.keys()),
-        "feature_count": len(_feature_names),
-        "next_game_api": _NEXT_GAME_OK,
-        "scipy":         _SCIPY,
+        "status":          "ok",
+        "models_loaded":   list(_models.keys()),
+        "quantile_models": list(_quantile_models.keys()),
+        "feature_count":   len(_feature_names),
+        "next_game_api":   _NEXT_GAME_OK,
+        "scipy":           _SCIPY,
     }
 
 
@@ -446,12 +454,18 @@ def predict(req: PredictRequest, game_date: str = "", injury_warning: str = ""):
         raise HTTPException(status_code=500, detail="Feature building failed: " + str(exc))
 
     try:
-        result = explain_prediction(feature_row, _models, _feature_names)
+        result = explain_prediction(
+            feature_row, _models, _feature_names,
+            quantile_models=_quantile_models,
+        )
     except Exception as exc:
         raise HTTPException(status_code=500, detail="Prediction failed: " + str(exc))
 
     preds    = result["predictions"]
+    # Prefer calibrated quantile bands; fall back to the historical-std band
+    # for any stat whose quantile models aren't available.
     ranges   = compute_ranges(req.player_name, preds, df)
+    ranges.update(result.get("ranges") or {})
     warnings = build_warnings(req, df, preds, injury_warning or None)
 
     return PredictResponse(
@@ -574,12 +588,21 @@ def probability(
 
 @app.get("/players")
 def list_players():
+    """Players the model can actually predict (i.e. present in features.csv),
+    enriched with the BBRef id + position the frontend needs to fetch context.
+    Auto-stays in sync with whatever has been scraped — no hardcoded list."""
     df = _get_df()
+    agg = {"games": ("game_date", "count"), "last_game": ("game_date", "max")}
+    if "player_id" in df.columns:
+        agg["id"] = ("player_id", "last")
+    if "position" in df.columns:
+        agg["pos"] = ("position", "last")
     players = (
         df.groupby("player_name")
-        .agg(games=("game_date", "count"), last_game=("game_date", "max"))
+        .agg(**agg)
         .reset_index()
-        .sort_values("player_name")
+        .rename(columns={"player_name": "name"})
+        .sort_values("name")
     )
     return {"players": players.to_dict(orient="records"), "total": len(players)}
 
