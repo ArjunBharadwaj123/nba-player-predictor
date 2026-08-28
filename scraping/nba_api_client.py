@@ -410,12 +410,6 @@ def quality_report_schedule(schedule: pd.DataFrame) -> None:
 
 
 # ─────────────────────────────────────────────────────────────────────────────
-# CLI
-# ─────────────────────────────────────────────────────────────────────────────
-
-
-
-# ─────────────────────────────────────────────────────────────────────────────
 # Positional defense: opponent pts allowed per game by position
 # ─────────────────────────────────────────────────────────────────────────────
 
@@ -514,3 +508,85 @@ def fetch_positional_defense(seasons: list = None) -> pd.DataFrame:
 
     log.info(f"Saved -> {out} ({len(combined):,} rows)")
     return combined
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+# CLI
+# ─────────────────────────────────────────────────────────────────────────────
+
+def _parse_seasons(arg: str) -> list:
+    """Parse a --seasons value like "2022,2023,2026" into a list of ints.
+
+    Defaults to all training seasons plus the current season.
+    """
+    if not arg:
+        return TRAINING_SEASONS + [CURRENT_SEASON]
+    return [int(s.strip()) for s in arg.split(",") if s.strip()]
+
+
+def run(mode: str = "all", seasons: list = None) -> None:
+    """Fetch team context data.
+
+    Modes:
+        teams    — team advanced stats only (team_stats_*.csv, all_team_stats.csv)
+        schedule — schedule + rest days only (schedule_*.csv, all_schedules.csv)
+        defense  — positional defense only (opp_pos_defense.csv)
+        all      — everything, and build the joined schedule_with_context.csv
+
+    This is the function pipeline/update.py invokes via
+    `python scraping/nba_api_client.py --mode all`. Prior to this entrypoint
+    existing, that subprocess call was a silent no-op.
+    """
+    if seasons is None:
+        seasons = TRAINING_SEASONS + [CURRENT_SEASON]
+
+    log.info(f"=== nba_api_client run: mode={mode} seasons={seasons} ===")
+
+    team_stats = pd.DataFrame()
+    schedules  = pd.DataFrame()
+
+    if mode in ("teams", "all"):
+        team_stats = fetch_all_team_stats(seasons)
+        quality_report_teams(team_stats)
+
+    if mode in ("schedule", "all"):
+        schedules = fetch_all_schedules(seasons)
+        quality_report_schedule(schedules)
+
+    if mode == "all":
+        if team_stats.empty or schedules.empty:
+            log.error(
+                "  Cannot build schedule_with_context.csv — "
+                "team stats or schedules missing (see errors above)."
+            )
+        else:
+            build_opponent_def_ratings(team_stats, schedules)
+
+    if mode in ("defense", "all"):
+        fetch_positional_defense(seasons)
+
+    log.info("=== nba_api_client run complete ===")
+
+
+def main() -> None:
+    parser = argparse.ArgumentParser(
+        description="Fetch NBA team context data (pace, ratings, rest, defense)."
+    )
+    parser.add_argument(
+        "--mode",
+        choices=["all", "teams", "schedule", "defense"],
+        default="all",
+        help="Which data to fetch (default: all).",
+    )
+    parser.add_argument(
+        "--seasons",
+        default="",
+        help="Comma-separated season ending years, e.g. '2022,2023,2026'. "
+             "Defaults to all training seasons + current season.",
+    )
+    args = parser.parse_args()
+    run(mode=args.mode, seasons=_parse_seasons(args.seasons))
+
+
+if __name__ == "__main__":
+    main()

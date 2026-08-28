@@ -8,6 +8,8 @@
     "rolling_last3_minutes",
     "rolling_last3_usage_rate",
     "rolling_last3_fg_pct",
+    "rolling_last3_fg3",
+    "rolling_last3_fg3a",
     "rolling_last3_fg3_pct",
     "rolling_last3_ft_pct",
     "rolling_last3_tov",
@@ -20,6 +22,8 @@
     "rolling_last5_minutes",
     "rolling_last5_usage_rate",
     "rolling_last5_fg_pct",
+    "rolling_last5_fg3",
+    "rolling_last5_fg3a",
     "rolling_last5_fg3_pct",
     "rolling_last5_ft_pct",
     "rolling_last5_tov",
@@ -32,6 +36,8 @@
     "rolling_last10_minutes",
     "rolling_last10_usage_rate",
     "rolling_last10_fg_pct",
+    "rolling_last10_fg3",
+    "rolling_last10_fg3a",
     "rolling_last10_fg3_pct",
     "rolling_last10_ft_pct",
     "rolling_last10_tov",
@@ -91,254 +97,296 @@
     "reb",
     "ast",
     "stl",
-    "blk"
+    "blk",
+    "fg3"
   ],
   "models": {
     "pts": {
-      "cv_mae": 5.429036637108796,
-      "cv_mae_std": 0.059246291671542134,
-      "cv_rmse": 6.997105968296651,
-      "cv_r2": 0.5094734163694138,
+      "cv_mae": 4.943834018707276,
+      "cv_mae_std": 0.03107779809208508,
+      "cv_rmse": 6.350693938081916,
+      "cv_r2": 0.4774730920791626,
       "top_features": [
         [
           "ewm_pts",
-          0.3373236358165741
-        ],
-        [
-          "season_avg_pts",
-          0.12998154759407043
-        ],
-        [
-          "usage_x_minutes",
-          0.10661670565605164
+          0.33979538083076477
         ],
         [
           "rolling_last10_pts",
-          0.09371519088745117
+          0.2135278582572937
+        ],
+        [
+          "season_avg_pts",
+          0.10751091688871384
+        ],
+        [
+          "usage_x_minutes",
+          0.06957627832889557
         ],
         [
           "venue_last10_pts",
-          0.06869850307703018
-        ],
-        [
-          "ewm_usage_rate",
-          0.019536087289452553
-        ],
-        [
-          "season_avg_usage_rate",
-          0.010260297916829586
-        ],
-        [
-          "rolling_last5_usage_rate",
-          0.009282439947128296
-        ]
-      ],
-      "n_training_rows": 26031
-    },
-    "reb": {
-      "cv_mae": 2.1529238353791245,
-      "cv_mae_std": 0.034663585230285544,
-      "cv_rmse": 2.793938892233392,
-      "cv_r2": 0.4908450821246902,
-      "top_features": [
-        [
-          "rolling_last10_reb",
-          0.35309404134750366
-        ],
-        [
-          "ewm_reb",
-          0.14030644297599792
-        ],
-        [
-          "season_avg_reb",
-          0.10268916934728622
-        ],
-        [
-          "venue_last10_reb",
-          0.07922501862049103
-        ],
-        [
-          "position_enc",
-          0.014646574854850769
-        ],
-        [
-          "opp_pts_allowed_pos",
-          0.009905804879963398
-        ],
-        [
-          "rolling_last10_minutes",
-          0.008480098098516464
-        ],
-        [
-          "rolling_last5_fantasy_score",
-          0.007558110170066357
-        ]
-      ],
-      "n_training_rows": 26031
-    },
-    "ast": {
-      "cv_mae": 1.6627605472555245,
-      "cv_mae_std": 0.03596736572501547,
-      "cv_rmse": 2.1851558834805336,
-      "cv_r2": 0.5221034776814062,
-      "top_features": [
-        [
-          "ewm_ast",
-          0.24279595911502838
-        ],
-        [
-          "rolling_last10_ast",
-          0.21485662460327148
-        ],
-        [
-          "season_avg_ast",
-          0.13780811429023743
-        ],
-        [
-          "venue_last10_ast",
-          0.08763004094362259
-        ],
-        [
-          "rolling_last5_ast",
-          0.01107810903340578
-        ],
-        [
-          "season_avg_usage_rate",
-          0.010453389957547188
-        ],
-        [
-          "rolling_last5_tov",
-          0.009372242726385593
-        ],
-        [
-          "vs_opp_rolling3_ast",
-          0.008745032362639904
-        ]
-      ],
-      "n_training_rows": 26031
-    },
-    "stl": {
-      "cv_mae": 0.7834242535948258,
-      "cv_mae_std": 0.00826570289138072,
-      "cv_rmse": 1.0017960150434342,
-      "cv_r2": 0.07812928347217463,
-      "top_features": [
-        [
-          "rolling_last10_stl",
-          0.08135855197906494
-        ],
-        [
-          "season_avg_stl",
-          0.06818127632141113
-        ],
-        [
-          "ewm_minutes",
-          0.03627406433224678
-        ],
-        [
-          "ewm_ast",
-          0.036270622164011
-        ],
-        [
-          "rolling_last10_ast",
-          0.03412139043211937
-        ],
-        [
-          "rolling_last10_minutes",
-          0.022922227159142494
+          0.06861264258623123
         ],
         [
           "pred_minutes",
-          0.02199549227952957
+          0.019896456971764565
         ],
         [
-          "season_avg_ast",
-          0.01976580172777176
+          "ewm_usage_rate",
+          0.006921498570591211
+        ],
+        [
+          "vs_opp_rolling3_pts",
+          0.0055404482409358025
         ]
       ],
-      "n_training_rows": 26031
+      "n_training_rows": 100887
     },
-    "blk": {
-      "cv_mae": 0.6258886180127641,
-      "cv_mae_std": 0.016656761573357465,
-      "cv_rmse": 0.8404843886381717,
-      "cv_r2": 0.22438890616042903,
+    "reb": {
+      "cv_mae": 1.9842440128326415,
+      "cv_mae_std": 0.02465760979869066,
+      "cv_rmse": 2.5839762005865685,
+      "cv_r2": 0.43207778930664065,
       "top_features": [
         [
-          "rolling_last5_blk",
-          0.11805437505245209
+          "ewm_reb",
+          0.2807609736919403
         ],
         [
-          "rolling_last10_blk",
-          0.09386995434761047
+          "rolling_last10_reb",
+          0.2613667845726013
         ],
         [
-          "season_avg_blk",
-          0.08500358462333679
+          "venue_last10_reb",
+          0.08862696588039398
+        ],
+        [
+          "season_avg_reb",
+          0.07059140503406525
+        ],
+        [
+          "rolling_last5_reb",
+          0.057274822145700455
+        ],
+        [
+          "vs_opp_rolling3_reb",
+          0.01042168028652668
+        ],
+        [
+          "rolling_last3_fantasy_score",
+          0.00794271007180214
         ],
         [
           "position_enc",
-          0.050351664423942566
-        ],
-        [
-          "rolling_last3_blk",
-          0.03351579234004021
-        ],
-        [
-          "opp_pts_allowed_pos",
-          0.026405492797493935
-        ],
-        [
-          "home_court_factor",
-          0.019781386479735374
-        ],
-        [
-          "rolling_last3_ft_pct",
-          0.014742382802069187
+          0.007220956031233072
         ]
       ],
-      "n_training_rows": 26031
+      "n_training_rows": 100887
     },
-    "minutes": {
-      "cv_mae": 4.178876476226286,
-      "cv_mae_std": 0.04976635357523432,
-      "cv_rmse": 5.5035081969712945,
-      "cv_r2": 0.5467636663589148,
+    "ast": {
+      "cv_mae": 1.4525858879089355,
+      "cv_mae_std": 0.017740081351058246,
+      "cv_rmse": 1.9339004002158013,
+      "cv_r2": 0.49246783256530763,
       "top_features": [
         [
-          "rolling_last10_minutes",
-          0.36251768469810486
+          "ewm_ast",
+          0.3459167778491974
         ],
         [
-          "ewm_minutes",
-          0.20342864096164703
+          "rolling_last10_ast",
+          0.16740202903747559
         ],
         [
-          "rolling_last5_minutes",
-          0.07034274935722351
+          "season_avg_ast",
+          0.12285074591636658
         ],
         [
-          "season_avg_minutes",
-          0.059691913425922394
+          "venue_last10_ast",
+          0.08469434827566147
         ],
         [
-          "rolling_last3_minutes",
-          0.026949316263198853
+          "vs_opp_rolling3_ast",
+          0.01797209307551384
         ],
         [
-          "ewm_pts",
-          0.019539030268788338
+          "usage_x_minutes",
+          0.009597960859537125
         ],
         [
           "rolling_last5_pts",
-          0.011268651112914085
+          0.0074744089506566525
+        ],
+        [
+          "pred_minutes",
+          0.0073364777490496635
+        ]
+      ],
+      "n_training_rows": 100887
+    },
+    "stl": {
+      "cv_mae": 0.7601154208183288,
+      "cv_mae_std": 0.011235549858945329,
+      "cv_rmse": 0.9666463845762445,
+      "cv_r2": 0.07542998790740967,
+      "top_features": [
+        [
+          "season_avg_stl",
+          0.1068730428814888
+        ],
+        [
+          "rolling_last5_stl",
+          0.06860483437776566
+        ],
+        [
+          "rolling_last10_stl",
+          0.0504043884575367
+        ],
+        [
+          "pred_minutes",
+          0.041066259145736694
+        ],
+        [
+          "ewm_ast",
+          0.02988651767373085
+        ],
+        [
+          "ewm_minutes",
+          0.02699529565870762
+        ],
+        [
+          "rolling_last5_minutes",
+          0.022359872236847878
+        ],
+        [
+          "rolling_last3_minutes",
+          0.022094659507274628
+        ]
+      ],
+      "n_training_rows": 100887
+    },
+    "blk": {
+      "cv_mae": 0.5743608832359314,
+      "cv_mae_std": 0.012034380507898984,
+      "cv_rmse": 0.7743368336381525,
+      "cv_r2": 0.20608766078948976,
+      "top_features": [
+        [
+          "season_avg_blk",
+          0.14337681233882904
+        ],
+        [
+          "rolling_last10_blk",
+          0.11683321744203568
+        ],
+        [
+          "rolling_last5_blk",
+          0.10194684565067291
+        ],
+        [
+          "position_enc",
+          0.04696619138121605
+        ],
+        [
+          "rolling_last3_blk",
+          0.044437989592552185
+        ],
+        [
+          "ewm_reb",
+          0.0197315514087677
+        ],
+        [
+          "venue_last10_reb",
+          0.01768319495022297
+        ],
+        [
+          "opp_pts_allowed_pos",
+          0.016790488734841347
+        ]
+      ],
+      "n_training_rows": 100887
+    },
+    "minutes": {
+      "cv_mae": 4.624714660644531,
+      "cv_mae_std": 0.06833695281879644,
+      "cv_rmse": 5.9710489647448,
+      "cv_r2": 0.5106703996658325,
+      "top_features": [
+        [
+          "rolling_last5_minutes",
+          0.29214560985565186
+        ],
+        [
+          "ewm_minutes",
+          0.27671146392822266
+        ],
+        [
+          "rolling_last3_minutes",
+          0.13019464910030365
+        ],
+        [
+          "season_avg_minutes",
+          0.03496236354112625
+        ],
+        [
+          "rolling_last10_minutes",
+          0.024887198582291603
         ],
         [
           "venue_last10_minutes",
-          0.01093535590916872
+          0.024245109409093857
+        ],
+        [
+          "ewm_pts",
+          0.013982245698571205
+        ],
+        [
+          "rolling_last3_pts",
+          0.01024792343378067
         ]
       ],
-      "n_training_rows": 26031
+      "n_training_rows": 100887
+    },
+    "fg3": {
+      "cv_mae": 0.9757772326469422,
+      "cv_mae_std": 0.013487679826631,
+      "cv_rmse": 1.3264149122503863,
+      "cv_r2": 0.2890785813331604,
+      "top_features": [
+        [
+          "rolling_last5_fg3a",
+          0.20642411708831787
+        ],
+        [
+          "rolling_last10_fg3a",
+          0.17363880574703217
+        ],
+        [
+          "rolling_last10_fg3",
+          0.09302843362092972
+        ],
+        [
+          "rolling_last5_fg3",
+          0.07013282924890518
+        ],
+        [
+          "rolling_last3_fg3a",
+          0.047732844948768616
+        ],
+        [
+          "rolling_last3_fg3",
+          0.017447344958782196
+        ],
+        [
+          "rolling_last3_fg3_pct",
+          0.013680904172360897
+        ],
+        [
+          "season_avg_minutes",
+          0.01142859272658825
+        ]
+      ],
+      "n_training_rows": 100887
     }
   }
 }

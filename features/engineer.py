@@ -43,7 +43,8 @@ log = logging.getLogger(__name__)
 
 WINDOWS    = [3, 5, 10]
 ROLL_STATS = ["pts", "reb", "ast", "stl", "blk", "minutes",
-              "usage_rate", "fg_pct", "fg3_pct", "ft_pct", "tov", "fantasy_score"]
+              "usage_rate", "fg_pct", "fg3", "fg3a", "fg3_pct", "ft_pct",
+              "tov", "fantasy_score"]
 TARGETS    = ["pts", "reb", "ast", "stl", "blk", "minutes", "fantasy_score"]
 
 
@@ -62,6 +63,16 @@ def rolling_std(df, col, window, group="player_id"):
     return (
         df.groupby(group)[col]
         .transform(lambda x: x.shift(1).rolling(window, min_periods=2).std())
+    )
+
+
+def ewm_mean(df, col, halflife=3, group="player_id"):
+    """Recency-weighted (exponentially-weighted) mean. shift(1) = no leakage.
+    Recent games are weighted more heavily than a flat rolling window, which
+    tends to track hot/cold streaks better."""
+    return (
+        df.groupby(group)[col]
+        .transform(lambda x: x.shift(1).ewm(halflife=halflife, min_periods=1).mean())
     )
 
 
@@ -141,6 +152,44 @@ def add_season_averages(df):
             .transform(lambda x: x.shift(1).expanding(min_periods=1).mean())
         )
 
+    return df
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+# Feature group 3b: Recency-weighted (EWMA) form
+# ─────────────────────────────────────────────────────────────────────────────
+
+EWM_STATS = ["pts", "reb", "ast", "minutes", "usage_rate"]
+
+def add_ewm_features(df):
+    """Exponentially-weighted recent form (halflife = 3 games). Complements the
+    flat rolling windows by emphasising the most recent games."""
+    log.info("  Building EWMA (recency-weighted) features...")
+    df = df.sort_values(["player_id", "game_date"]).reset_index(drop=True)
+    for stat in EWM_STATS:
+        if stat in df.columns:
+            df[f"ewm_{stat}"] = ewm_mean(df, stat, halflife=3)
+    return df
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+# Feature group 3c: Home/away form split
+# ─────────────────────────────────────────────────────────────────────────────
+
+def add_venue_split_features(df):
+    """Rolling last-10 form computed *within* the player's home vs away games.
+    Some players are meaningfully better at home; a single blended rolling
+    average hides that."""
+    log.info("  Building home/away form-split features...")
+    if "home_game" not in df.columns:
+        return df
+    df = df.sort_values(["player_id", "game_date"]).reset_index(drop=True)
+    for stat in ["pts", "reb", "ast", "minutes"]:
+        if stat in df.columns:
+            df[f"venue_last10_{stat}"] = (
+                df.groupby(["player_id", "home_game"])[stat]
+                .transform(lambda x: x.shift(1).rolling(10, min_periods=1).mean())
+            )
     return df
 
 
@@ -251,6 +300,40 @@ def add_opponent_history_features(df):
         )
 
     return df.sort_values(["player_id", "game_date"]).reset_index(drop=True)
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+# Feature group 7b: Matchup / interaction features
+# ─────────────────────────────────────────────────────────────────────────────
+
+def add_interaction_features(df):
+    """Give the opponent/context columns something the trees can actually use.
+
+    - opp_pace / pace_sum : the opponent's own pace (looked up from that team's
+      team_pace) and the combined game pace — a proxy for how many total
+      possessions (and therefore counting-stat opportunities) the game offers.
+    - usage_x_minutes      : usage rate scales counting stats, but only in
+      proportion to minutes played. Their product is the real opportunity
+      signal.
+    """
+    log.info("  Building matchup / interaction features...")
+
+    if all(c in df.columns for c in
+           ["team_abbrev", "opponent_abbrev", "season", "team_pace"]):
+        pace_lookup = df.groupby(["team_abbrev", "season"])["team_pace"].mean()
+        df["opp_pace"] = (
+            df.set_index(["opponent_abbrev", "season"]).index
+            .map(pace_lookup).astype(float)
+        )
+        df["opp_pace"] = df["opp_pace"].fillna(df["team_pace"])
+        df["pace_sum"] = df["team_pace"] + df["opp_pace"]
+
+    if "season_avg_usage_rate" in df.columns and "rolling_last5_minutes" in df.columns:
+        df["usage_x_minutes"] = (
+            df["season_avg_usage_rate"] * df["rolling_last5_minutes"]
+        )
+
+    return df
 
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -367,9 +450,13 @@ def add_positional_defense_features(df: pd.DataFrame) -> pd.DataFrame:
     df["opp_pts_allowed_pos"]  = df.apply(_lookup_pts, axis=1)
     df["opp_pos_defense_rank"] = df.apply(_lookup_rank, axis=1)
 
-    # Fill NaN with season-position median
+    # Fill NaN with season-position median, then a global-median backstop so no
+    # row is left at a nonsense value (0.0 previously killed this feature's signal).
     df["opp_pts_allowed_pos"]  = df.groupby(["season", "position"])["opp_pts_allowed_pos"].transform(
         lambda x: x.fillna(x.median())
+    )
+    df["opp_pts_allowed_pos"]  = df["opp_pts_allowed_pos"].fillna(
+        df["opp_pts_allowed_pos"].median()
     )
     df["opp_pos_defense_rank"] = df["opp_pos_defense_rank"].fillna(15.0)
 
@@ -471,6 +558,8 @@ def select_features(df):
         if f"rolling_last{w}_{stat}" in df.columns
     ]
     season_avg_cols  = [c for c in df.columns if c.startswith("season_avg_")]
+    ewm_cols         = [c for c in df.columns if c.startswith("ewm_")]
+    venue_cols       = [c for c in df.columns if c.startswith("venue_last10_")]
     trend_cols       = [c for c in df.columns if c.startswith("trend_")]
     efficiency_cols  = [c for c in df.columns if c in [
         "rolling_last3_ts_pct", "rolling_last5_ts_pct",
@@ -479,6 +568,7 @@ def select_features(df):
     context_cols     = [c for c in df.columns if c in [
         "rest_days_capped", "back_to_back", "home_game",
         "team_pace", "opp_def_rating", "opp_def_rank",
+        "opp_pace", "pace_sum", "usage_x_minutes",
         "games_played_season", "position_enc",
         "days_into_season", "games_in_last_7_days", "home_court_factor",
         "opp_pts_allowed_pos", "opp_pos_defense_rank",
@@ -487,8 +577,8 @@ def select_features(df):
     ]]
     opp_history_cols = [c for c in df.columns if c.startswith("vs_opp_rolling")]
 
-    feature_names = (rolling_cols + season_avg_cols + trend_cols
-                     + efficiency_cols + context_cols + opp_history_cols)
+    feature_names = (rolling_cols + season_avg_cols + ewm_cols + venue_cols
+                     + trend_cols + efficiency_cols + context_cols + opp_history_cols)
 
     # Deduplicate preserving order
     seen = set()
@@ -497,6 +587,8 @@ def select_features(df):
     log.info(f"  Total features: {len(feature_names)}")
     log.info(f"    Rolling avgs    : {len(rolling_cols)}")
     log.info(f"    Season avgs     : {len(season_avg_cols)}")
+    log.info(f"    EWMA form       : {len(ewm_cols)}")
+    log.info(f"    Venue split     : {len(venue_cols)}")
     log.info(f"    Trend           : {len(trend_cols)}")
     log.info(f"    Efficiency      : {len(efficiency_cols)}")
     log.info(f"    Context         : {len(context_cols)}")
@@ -542,10 +634,13 @@ def build_features():
     df = add_usage_rate(df)
     df = add_rolling_features(df)
     df = add_season_averages(df)
+    df = add_ewm_features(df)
+    df = add_venue_split_features(df)
     df = add_trend_features(df)
     df = add_efficiency_features(df)
     df = add_context_features(df)
     df = add_opponent_history_features(df)
+    df = add_interaction_features(df)
     df = add_schedule_features(df)
     df = add_positional_defense_features(df)
     df = add_starter_features(df)
