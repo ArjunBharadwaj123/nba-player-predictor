@@ -59,7 +59,7 @@ log = logging.getLogger(__name__)
 
 PROCESSED  = ROOT / "data" / "processed"
 MODELS_DIR = ROOT / "models" / "saved"
-TARGETS    = ["pts", "reb", "ast", "stl", "blk", "minutes"]
+TARGETS    = ["pts", "reb", "ast", "stl", "blk", "minutes", "fg3"]
 
 POSITION_MAP = {"PG": 1, "SG": 2, "SF": 3, "PF": 4, "C": 5}
 
@@ -189,7 +189,7 @@ def _build_rolling_from_live(fresh_df: pd.DataFrame, team_pace: float) -> pd.Ser
     df = df.sort_values("game_date").reset_index(drop=True)
 
     ROLL_STATS = ["pts", "reb", "ast", "stl", "blk", "minutes",
-                  "fg_pct", "fg3_pct", "ft_pct", "tov"]
+                  "fg_pct", "fg3", "fg3a", "fg3_pct", "ft_pct", "tov"]
 
     for stat in ROLL_STATS:
         if stat not in df.columns:
@@ -505,7 +505,7 @@ def probability(
     Blends empirical hit rate from recent games with normal distribution
     probability for robustness with small samples.
     """
-    VALID_STATS = {"pts", "reb", "ast", "stl", "blk", "minutes"}
+    VALID_STATS = {"pts", "reb", "ast", "stl", "blk", "minutes", "fg3"}
     if stat not in VALID_STATS:
         raise HTTPException(status_code=422,
                             detail="stat must be one of: " + ", ".join(VALID_STATS))
