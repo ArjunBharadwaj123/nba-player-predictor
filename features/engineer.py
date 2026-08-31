@@ -252,20 +252,26 @@ def add_context_features(df):
     if "rest_days" in df.columns:
         df["rest_days_capped"] = df["rest_days"].clip(0, 7)
 
-    # Opponent defensive rank — rank unique teams per season (not per row)
-    if all(c in df.columns for c in ["opp_def_rating", "season", "opponent_abbrev"]):
-        team_ratings = (
-            df.groupby(["opponent_abbrev", "season"])["opp_def_rating"]
-            .first()
-            .reset_index()
+    # Opponent defensive rank — AS-OF-DATE cross-sectional rank.
+    # opp_def_rating is now a per-game as-of-date value, so we rank opponents
+    # against each other *on that game's date* (all games sharing a date see a
+    # consistent ranking) rather than ranking one season-final aggregate. This
+    # keeps the rank leakage-free and in step with the rolling rating.
+    if all(c in df.columns for c in ["opp_def_rating", "game_date", "opponent_abbrev"]):
+        # Rank distinct opponents on each date (not player-rows, which would make
+        # the scale depend on how many players played that night). ~1-30 teams.
+        ranks = (
+            df[["game_date", "opponent_abbrev", "opp_def_rating"]]
+            .drop_duplicates(["game_date", "opponent_abbrev"])
+            .copy()
         )
-        team_ratings["opp_def_rank"] = (
-            team_ratings.groupby("season")["opp_def_rating"]
+        ranks["opp_def_rank"] = (
+            ranks.groupby("game_date")["opp_def_rating"]
             .rank(method="average", ascending=True)
         )
-        rank_lookup = team_ratings.set_index(["opponent_abbrev", "season"])["opp_def_rank"]
+        rank_lookup = ranks.set_index(["game_date", "opponent_abbrev"])["opp_def_rank"]
         df["opp_def_rank"] = (
-            df.set_index(["opponent_abbrev", "season"]).index.map(rank_lookup).values
+            df.set_index(["game_date", "opponent_abbrev"]).index.map(rank_lookup).values
         )
 
     # Position encoding: PG=1, SG=2, SF=3, PF=4, C=5
@@ -318,14 +324,22 @@ def add_interaction_features(df):
     """
     log.info("  Building matchup / interaction features...")
 
-    if all(c in df.columns for c in
-           ["team_abbrev", "opponent_abbrev", "season", "team_pace"]):
+    # opp_pace is now supplied as an AS-OF-DATE column by build_dataset (from
+    # nba_api_client.build_asof_team_ratings). Only fall back to a season-average
+    # derivation if it's missing, so we never silently reintroduce the season-
+    # aggregate leakage this column used to carry.
+    if "opp_pace" not in df.columns and all(
+        c in df.columns for c in ["team_abbrev", "opponent_abbrev", "season", "team_pace"]
+    ):
+        log.warning("  opp_pace absent — falling back to season-average pace")
         pace_lookup = df.groupby(["team_abbrev", "season"])["team_pace"].mean()
         df["opp_pace"] = (
             df.set_index(["opponent_abbrev", "season"]).index
             .map(pace_lookup).astype(float)
         )
         df["opp_pace"] = df["opp_pace"].fillna(df["team_pace"])
+
+    if "team_pace" in df.columns and "opp_pace" in df.columns:
         df["pace_sum"] = df["team_pace"] + df["opp_pace"]
 
     if "season_avg_usage_rate" in df.columns and "rolling_last5_minutes" in df.columns:
@@ -371,12 +385,29 @@ def add_schedule_features(df):
     else:
         df["games_in_last_7_days"] = 0
 
-    # Home court factor per team (actual home win rate from training data)
-    if all(c in df.columns for c in ["team_abbrev", "result", "home_game"]):
-        home_games = df[df["home_game"] == 1].copy()
-        home_games["won"] = home_games["result"].astype(str).str.startswith("W").astype(int)
-        home_wr = home_games.groupby("team_abbrev")["won"].mean().rename("home_court_factor")
-        df["home_court_factor"] = df["team_abbrev"].map(home_wr).fillna(0.575).round(3)
+    # Home court factor — AS-OF-DATE home win rate per team.
+    # LEAKAGE FIX: previously this was each team's full-season home win rate
+    # (computed from every home game, including the current row's own result and
+    # future games). Now it's the team's expanding home win rate over PRIOR home
+    # games only (shift(1)), reset per season and carried forward to away games,
+    # so a row never sees its own or future outcomes.
+    if all(c in df.columns for c in
+           ["team_abbrev", "result", "home_game", "season", "game_date"]):
+        tmp = df[["team_abbrev", "season", "game_date", "result", "home_game"]].copy()
+        tmp = tmp.sort_values(["team_abbrev", "season", "game_date"])
+        won = tmp["result"].astype(str).str.startswith("W").astype(float)
+        # Only home games contribute; away rows are NaN and get filled forward.
+        home_won = won.where(tmp["home_game"] == 1)
+        keys = [tmp["team_abbrev"], tmp["season"]]
+        asof = home_won.groupby(keys).transform(
+            lambda s: s.shift(1).expanding(min_periods=1).mean()
+        )
+        # Carry the last known home win rate forward onto away-game rows too.
+        asof = asof.groupby(keys).ffill()
+        tmp["home_court_factor"] = asof
+        df["home_court_factor"] = (
+            tmp["home_court_factor"].reindex(df.index).fillna(0.575).round(3)
+        )
     else:
         df["home_court_factor"] = 0.575
 

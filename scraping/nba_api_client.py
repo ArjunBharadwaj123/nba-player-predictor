@@ -221,6 +221,13 @@ def fetch_schedule(season: int) -> pd.DataFrame:
         "GAME_DATE"         : "game_date",
         "MATCHUP"           : "matchup",
         "WL"                : "result",
+        # Box-score components retained so we can derive as-of-date team ratings
+        # (points scored/allowed and possessions) — see build_asof_team_ratings.
+        "PTS"               : "pts",
+        "FGA"               : "fga",
+        "FTA"               : "fta",
+        "TOV"               : "tov",
+        "OREB"              : "orb",
     }
     df = df.rename(columns=rename)
 
@@ -257,10 +264,11 @@ def fetch_schedule(season: int) -> pd.DataFrame:
     df["season"] = season
     df = df.drop(columns=["prev_game_date"], errors="ignore")
 
-    # Keep only useful columns
+    # Keep only useful columns (incl. box-score components for as-of-date ratings)
     keep = ["game_id", "game_date", "season", "team_id", "team_abbrev",
             "team_name", "opponent_abbrev", "home_game", "result",
-            "rest_days", "back_to_back"]
+            "rest_days", "back_to_back",
+            "pts", "fga", "fta", "tov", "orb"]
     df = df[[c for c in keep if c in df.columns]]
 
     b2b_count = df["back_to_back"].sum()
@@ -294,64 +302,106 @@ def fetch_all_schedules(seasons: list = TRAINING_SEASONS + [CURRENT_SEASON]) -> 
 # Part 3: Opponent defensive rating lookup
 # ─────────────────────────────────────────────────────────────────────────────
 
+def build_asof_team_ratings(schedules: pd.DataFrame, window: int = 10) -> pd.DataFrame:
+    """Compute each team's **as-of-date** offensive/defensive rating and pace.
+
+    LEAKAGE FIX: previously team pace/def_rating came from a single full-season
+    aggregate (LeagueDashTeamStats) and were joined to every game regardless of
+    date — a November game saw the opponent's end-of-season rating. Here each
+    game's team rating is a trailing mean of that team's PRIOR games only
+    (rolling window, shift(1)), so it reflects what was actually known pre-game
+    and matches what next_game.py serves live.
+
+    Ratings (possession-normalised, per 100 possessions):
+        possessions ≈ FGA + 0.44*FTA - OREB + TOV
+        off_rating  = 100 * points_scored  / possessions
+        def_rating  = 100 * points_allowed / possessions   (points_allowed = opp PTS)
+        pace        = possessions per game (trailing mean)
+
+    Returns the schedule with per-row columns: team_off_rating, team_def_rating,
+    team_pace (all as-of-date, NaN-filled with an expanding then league mean for
+    the first few games of a team's season).
+    """
+    log.info("Computing as-of-date team ratings (window=%d games)...", window)
+    df = schedules.copy()
+
+    # Opponent points for each team-game via self-join on game_id.
+    opp_pts = (
+        df[["game_id", "team_abbrev", "pts"]]
+        .rename(columns={"team_abbrev": "opponent_abbrev", "pts": "opp_pts_game"})
+    )
+    df = df.merge(opp_pts, on=["game_id", "opponent_abbrev"], how="left")
+
+    for c in ["pts", "fga", "fta", "tov", "orb", "opp_pts_game"]:
+        df[c] = pd.to_numeric(df[c], errors="coerce")
+
+    poss = (df["fga"] + 0.44 * df["fta"] - df["orb"] + df["tov"]).clip(lower=1)
+    df["_off_game"]  = 100 * df["pts"] / poss
+    df["_def_game"]  = 100 * df["opp_pts_game"] / poss
+    df["_pace_game"] = poss
+
+    df = df.sort_values(["team_abbrev", "game_date"]).reset_index(drop=True)
+
+    # Trailing mean of PRIOR games only (shift(1)); reset per team-season so a
+    # new season doesn't borrow from the previous one.
+    grp = df.groupby(["team_abbrev", "season"])
+    for game_col, out_col in [("_off_game", "team_off_rating"),
+                              ("_def_game", "team_def_rating"),
+                              ("_pace_game", "team_pace")]:
+        rolled = grp[game_col].transform(
+            lambda x: x.shift(1).rolling(window, min_periods=3).mean()
+        )
+        # Early-season fallback: shifted expanding mean, then league season mean.
+        expanding = grp[game_col].transform(
+            lambda x: x.shift(1).expanding(min_periods=1).mean()
+        )
+        league = df.groupby("season")[game_col].transform("mean")
+        df[out_col] = rolled.fillna(expanding).fillna(league)
+
+    df = df.drop(columns=["_off_game", "_def_game", "_pace_game",
+                          "opp_pts_game"], errors="ignore")
+    return df
+
+
 def build_opponent_def_ratings(
-    team_stats: pd.DataFrame,
+    team_stats: pd.DataFrame,      # kept for signature compatibility (unused)
     schedules: pd.DataFrame,
 ) -> pd.DataFrame:
     """
-    Join opponent defensive ratings onto the schedule.
+    Enrich the schedule with AS-OF-DATE team + opponent context, then save
+    schedule_with_context.csv.
 
-    After this function, each game row has both:
-        team_pace        : the playing team's pace
-        opp_def_rating   : the opponent's defensive rating
-        opp_pace         : the opponent's pace (affects total possessions)
+    Output columns consumed downstream (same names as before, now leakage-free):
+        team_pace        : the playing team's as-of-date pace
+        opp_def_rating   : the opponent's as-of-date defensive rating
+        opp_pace         : the opponent's as-of-date pace
 
-    This is the table we'll join onto the player game logs in Step 8
-    (dataset construction). Every player game gets these two context columns:
-    how good was the opponent's defense, and how fast was the game?
-
-    Args:
-        team_stats  : output of fetch_all_team_stats()
-        schedules   : output of fetch_all_schedules()
-
-    Returns:
-        Schedule DataFrame enriched with opponent defensive context.
+    `team_stats` (the old full-season aggregate) is no longer used for these — it
+    is accepted only so existing callers keep working.
     """
-    log.info("Building opponent defensive rating lookup...")
+    log.info("Building as-of-date opponent context...")
 
-    # Build a lookup: (team_abbrev, season) -> defensive stats
-    def_lookup = team_stats.set_index(["team_abbrev", "season"])[
-        ["team_pace", "team_def_rating", "team_off_rating"]
-    ].rename(columns={
-        "team_pace"       : "opp_pace",
-        "team_def_rating" : "opp_def_rating",
-        "team_off_rating" : "opp_off_rating",
-    })
+    rated = build_asof_team_ratings(schedules)
 
-    # Join opponent stats onto the schedule using opponent_abbrev + season
-    enriched = schedules.join(
-        def_lookup,
-        on=["opponent_abbrev", "season"],
-        how="left",
+    # Opponent's as-of-date ratings via self-join on game_id.
+    opp = (
+        rated[["game_id", "team_abbrev", "team_def_rating",
+               "team_off_rating", "team_pace"]]
+        .rename(columns={
+            "team_abbrev"      : "opponent_abbrev",
+            "team_def_rating"  : "opp_def_rating",
+            "team_off_rating"  : "opp_off_rating",
+            "team_pace"        : "opp_pace",
+        })
     )
-
-    # Also join the playing team's own pace
-    team_pace_lookup = team_stats.set_index(["team_abbrev", "season"])[["team_pace"]]
-    enriched = enriched.join(
-        team_pace_lookup,
-        on=["team_abbrev", "season"],
-        how="left",
-    )
+    enriched = rated.merge(opp, on=["game_id", "opponent_abbrev"], how="left")
 
     missing = enriched["opp_def_rating"].isna().sum()
     if missing > 0:
-        log.warning(
-            f"  {missing} rows missing opp_def_rating "
-            f"(likely expansion/relocation team name mismatches)"
-        )
+        log.warning(f"  {missing} rows missing opp_def_rating after as-of-date join")
 
     log.info(f"  Enriched schedule: {len(enriched)} rows")
-    log.info(f"  Opp def rating range: "
+    log.info(f"  As-of-date opp_def_rating range: "
              f"{enriched['opp_def_rating'].min():.1f} – "
              f"{enriched['opp_def_rating'].max():.1f}")
 

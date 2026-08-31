@@ -69,11 +69,11 @@ home_game
 back_to_back
 team_pace
 opp_def_rating
+opp_pace
 games_played_season
 rest_days_capped
 opp_def_rank
 position_enc
-opp_pace
 pace_sum
 usage_x_minutes
 days_into_season
