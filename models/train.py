@@ -108,6 +108,31 @@ PARAMS = {
 }
 
 
+def _load_tuned_params():
+    """Override PARAMS with any Optuna-tuned configs (models/optuna_tune.py).
+
+    Only stats present in tuned_params.json are replaced; the rest keep their
+    hand-tuned defaults. This lets the tuner improve stats incrementally without
+    touching the ones it couldn't beat.
+    """
+    path = MODELS_DIR / "tuned_params.json"
+    if not path.exists():
+        return
+    try:
+        tuned = json.loads(path.read_text())
+    except Exception as exc:
+        log.warning("Could not read tuned_params.json (%s) — using defaults", exc)
+        return
+    for stat, p in tuned.items():
+        if stat in PARAMS and isinstance(p, dict):
+            PARAMS[stat] = p
+    if tuned:
+        log.info("Loaded Optuna-tuned params for: %s", ", ".join(tuned))
+
+
+_load_tuned_params()
+
+
 def recency_weights(dates, ref_date=None):
     """Exponential-decay sample weights by game age.
 
