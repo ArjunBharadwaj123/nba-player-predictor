@@ -74,6 +74,9 @@ games_played_season
 rest_days_capped
 opp_def_rank
 position_enc
+teammates_out_count
+star_teammate_out
+team_minutes_vacated
 pace_sum
 usage_x_minutes
 days_into_season

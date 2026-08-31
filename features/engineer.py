@@ -309,6 +309,97 @@ def add_opponent_history_features(df):
 
 
 # ─────────────────────────────────────────────────────────────────────────────
+# Feature group 7a: Teammate availability / usage redistribution
+# ─────────────────────────────────────────────────────────────────────────────
+
+def add_teammate_features(df):
+    """When a rotation teammate sits, the remaining players absorb their minutes,
+    touches and usage — the single biggest real-world swing in box-score output.
+
+    We infer inactives directly from the game logs (no external injury feed): a
+    team's rotation for a season is the set of players with a real role (>=10
+    games, >=20 mpg); for each team-game the rotation members who have NO row are
+    treated as out. These signals are known pre-game (injury reports drop before
+    tip-off), so using the current game's availability is not leakage. Player
+    'weight' is season average minutes — a stable role descriptor.
+
+    Features (identical for every player in a given team-game):
+        teammates_out_count  : # of rotation teammates inactive
+        star_teammate_out    : 1 if an inactive teammate averages >= 28 mpg
+        team_minutes_vacated : summed season mpg of the inactive teammates
+    """
+    log.info("  Building teammate-availability features...")
+    need = ["player_id", "team_abbrev", "season", "game_date", "minutes"]
+    if not all(c in df.columns for c in need):
+        df["teammates_out_count"]  = 0
+        df["star_teammate_out"]    = 0
+        df["team_minutes_vacated"] = 0.0
+        return df
+
+    STAR_MPG = 28.0
+    played = df[df["minutes"] >= 1]
+
+    # Rotation membership per (team, season, player): role weight + the window of
+    # their tenure with that team (first..last appearance). A player only counts
+    # as "out" for games INSIDE that window — this excludes players who were
+    # traded away, hadn't arrived yet, or were done for the season (their missed
+    # games aren't injuries, they just weren't on the roster then).
+    role = (
+        played.groupby(["team_abbrev", "season", "player_id"])["minutes"]
+        .agg(games="size", mpg="mean").reset_index()
+    )
+    tenure = (
+        played.groupby(["team_abbrev", "season", "player_id"])["game_date"]
+        .agg(first="min", last="max").reset_index()
+    )
+    role = role.merge(tenure, on=["team_abbrev", "season", "player_id"])
+    rotation = role[(role["games"] >= 10) & (role["mpg"] >= 20)]
+
+    # (team, season) -> list of (player_id, mpg, first, last)
+    rot_by_team = {}
+    for t, s, p, m, f, l in zip(
+        rotation["team_abbrev"], rotation["season"], rotation["player_id"],
+        rotation["mpg"], rotation["first"], rotation["last"]
+    ):
+        rot_by_team.setdefault((t, s), []).append((p, m, f, l))
+
+    # Who actually appeared in each team-game.
+    present = (
+        played.groupby(["team_abbrev", "season", "game_date"])["player_id"]
+        .apply(set).reset_index(name="present")
+    )
+
+    def _row(r):
+        members = rot_by_team.get((r.team_abbrev, r.season), [])
+        cnt, star, vac = 0, 0, 0.0
+        for p, m, first, last in members:
+            # Out only if the game is within the player's tenure and they missed it.
+            if first < r.game_date < last and p not in r.present:
+                cnt += 1
+                vac += m
+                if m >= STAR_MPG:
+                    star = 1
+        return cnt, star, vac
+
+    vals = present.apply(_row, axis=1, result_type="expand")
+    present["teammates_out_count"]  = vals[0].astype(int)
+    present["star_teammate_out"]    = vals[1].astype(int)
+    present["team_minutes_vacated"] = vals[2].astype(float)
+
+    out = df.merge(
+        present[["team_abbrev", "season", "game_date",
+                 "teammates_out_count", "star_teammate_out", "team_minutes_vacated"]],
+        on=["team_abbrev", "season", "game_date"], how="left",
+    )
+    for c in ["teammates_out_count", "star_teammate_out", "team_minutes_vacated"]:
+        out[c] = out[c].fillna(0)
+    log.info("    %.1f%% of games have a rotation player out (mean %.1f out)",
+             (out["teammates_out_count"] > 0).mean() * 100,
+             out["teammates_out_count"].mean())
+    return out
+
+
+# ─────────────────────────────────────────────────────────────────────────────
 # Feature group 7b: Matchup / interaction features
 # ─────────────────────────────────────────────────────────────────────────────
 
@@ -605,6 +696,7 @@ def select_features(df):
         "opp_pts_allowed_pos", "opp_pos_defense_rank",
         "is_likely_starter", "start_rate_last10",
         "season_phase", "is_late_season",
+        "teammates_out_count", "star_teammate_out", "team_minutes_vacated",
     ]]
     opp_history_cols = [c for c in df.columns if c.startswith("vs_opp_rolling")]
 
@@ -671,6 +763,7 @@ def build_features():
     df = add_efficiency_features(df)
     df = add_context_features(df)
     df = add_opponent_history_features(df)
+    df = add_teammate_features(df)
     df = add_interaction_features(df)
     df = add_schedule_features(df)
     df = add_positional_defense_features(df)
