@@ -9,7 +9,7 @@ Steps (each is best-effort and logged; a failure in a network step skips
 retraining rather than corrupting the dataset):
 
     1. Refresh the roster            (scraping/roster.py)
-    2. Scrape current-season logs    (bbref_scraper.scrape_current_season)
+    2. Scrape current-season logs    (nba_stats_collector — fast bulk nba_api)
     3. Merge new games -> all_gamelogs.csv   (dedup by player_id + game_date)
     4. Refresh team pace/defense/schedule    (nba_api_client --mode all)
     5. Rebuild dataset + features    (build_dataset.py, engineer.py)
@@ -80,10 +80,25 @@ def refresh_roster() -> list[dict]:
 
 
 def scrape_current(roster: list[dict]) -> pd.DataFrame:
-    """Scrape current-season game logs for the roster players."""
-    from bbref_scraper import scrape_current_season, PLAYERS
-    players = roster or PLAYERS
-    return scrape_current_season(players=players)
+    """Pull current-season game logs via the fast nba_api bulk collector.
+
+    One LeagueGameLog call returns every player's games for the season, so this
+    is seconds rather than the tens of minutes the per-player BBRef scraper took.
+    We apply only a light in-season filter (>=15 mpg, no games minimum) so that
+    rotation players still count early in the season before they've hit 20 games;
+    the merge then folds any newly-played games into all_gamelogs.csv.
+
+    `roster` is unused here (the bulk endpoint already returns all players) but is
+    kept in the signature for pipeline symmetry.
+    """
+    from nba_stats_collector import (
+        fetch_season_raw, normalise_season, load_position_map,
+        filter_rotation, CURRENT_SEASON,
+    )
+    pos_map = load_position_map()
+    raw = fetch_season_raw(CURRENT_SEASON, force_refresh=True)
+    norm = normalise_season(raw, CURRENT_SEASON, pos_map)
+    return filter_rotation(norm, min_games=1, min_mpg=15.0)
 
 
 def merge_new_games(fresh: pd.DataFrame) -> int:
@@ -94,6 +109,14 @@ def merge_new_games(fresh: pd.DataFrame) -> int:
         return 0
 
     base = pd.read_csv(ALL_GAMELOGS)
+
+    # Normalise the dedup keys to a common dtype — player_id can be read back as
+    # int64 from the CSV but is a string in freshly-collected rows, which would
+    # otherwise defeat the dedup.
+    for frame in (base, fresh):
+        frame["player_id"] = frame["player_id"].astype(str)
+        frame["game_date"] = frame["game_date"].astype(str)
+
     before = len(base.drop_duplicates(subset=KEYS))
 
     combined = (
