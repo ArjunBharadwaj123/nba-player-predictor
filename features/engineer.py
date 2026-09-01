@@ -774,9 +774,36 @@ def build_features():
 
     df.to_csv(PROCESSED / "features.csv", index=False)
     (PROCESSED / "feature_names.txt").write_text("\n".join(feature_names))
+    write_serving_features(df)
 
     log.info(f"Saved features.csv and feature_names.txt")
     return df, feature_names
+
+
+# Games kept per player in the slim serving file — enough for the API to build a
+# prediction row (latest engineered game) plus recent-form / hit-rate endpoints.
+SERVING_GAMES_PER_PLAYER = 25
+
+
+def write_serving_features(df):
+    """Write a slim features_serving.csv: the last N games per player.
+
+    The full features.csv is the ~100k-row training matrix (100+ MB) — too large
+    for git and far more than serving needs. The API only ever reads a player's
+    most recent games (latest row for /predict, recent games for /probability and
+    /recent), so we commit just the tail per player. Full matrix stays local /
+    gitignored; this slim file is what the deployed API loads.
+    """
+    slim = (
+        df.sort_values("game_date")
+        .groupby("player_id", group_keys=False)
+        .tail(SERVING_GAMES_PER_PLAYER)
+        .reset_index(drop=True)
+    )
+    out = PROCESSED / "features_serving.csv"
+    slim.to_csv(out, index=False)
+    log.info("Saved %s (%d rows, %d players)",
+             out.name, len(slim), slim["player_id"].nunique())
 
 
 if __name__ == "__main__":

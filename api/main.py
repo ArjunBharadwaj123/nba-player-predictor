@@ -115,9 +115,12 @@ async def startup():
 def _get_df() -> pd.DataFrame:
     global _features_df
     if _features_df is None:
-        _features_df = pd.read_csv(
-            PROCESSED / "features.csv", parse_dates=["game_date"]
-        )
+        # Prefer the slim serving file (last N games per player, committed for the
+        # deploy); fall back to the full training matrix locally if present.
+        serving = PROCESSED / "features_serving.csv"
+        full    = PROCESSED / "features.csv"
+        path    = serving if serving.exists() else full
+        _features_df = pd.read_csv(path, parse_dates=["game_date"])
         # Ensure usage_rate exists
         if "usage_rate" not in _features_df.columns and "usage_proxy" in _features_df.columns:
             _features_df["usage_rate"] = _features_df["usage_proxy"]
