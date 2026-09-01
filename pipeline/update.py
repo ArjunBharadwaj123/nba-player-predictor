@@ -34,6 +34,7 @@ Scheduling (pick one; the script itself is schedule-agnostic):
 import argparse
 import json
 import logging
+import os
 import subprocess
 import sys
 from pathlib import Path
@@ -170,6 +171,14 @@ def main():
 
         if not args.no_team_refresh:
             _run("scraping/nba_api_client.py", "--mode", "all")
+
+        # Accumulate Vegas odds (best-effort; needs ODDS_API_KEY). No historical
+        # odds on the free tier, so this builds history forward — a future
+        # retrain then picks up the nullable Vegas features automatically.
+        if os.environ.get("ODDS_API_KEY"):
+            _run("scraping/odds.py")
+        else:
+            log.info("ODDS_API_KEY not set — skipping odds refresh.")
 
     if args.dry_run:
         log.info("Dry run — skipping rebuild/retrain. New games this run: %d", added)

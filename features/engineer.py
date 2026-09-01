@@ -400,6 +400,41 @@ def add_teammate_features(df):
 
 
 # ─────────────────────────────────────────────────────────────────────────────
+# Feature group 7c: Vegas odds (nullable — self-activates as history accumulates)
+# ─────────────────────────────────────────────────────────────────────────────
+
+VEGAS_COLS = ["implied_team_total", "game_total", "team_spread", "is_favorite"]
+
+
+def add_vegas_features(df):
+    """Join Vegas implied team totals / spreads from data/raw/odds_history.csv.
+
+    The free odds tier has no history, so scraping/odds.py can only accumulate
+    lines going forward. Rows with no matching odds stay NaN — harmless to
+    XGBoost, and the moment enough history exists a retrain starts using these
+    automatically (no code change needed). implied_team_total is typically the
+    strongest single external predictor of counting-stat output.
+    """
+    log.info("  Building Vegas odds features...")
+    odds_path = PROCESSED.parent / "raw" / "odds_history.csv"
+    if not odds_path.exists():
+        for c in VEGAS_COLS:
+            df[c] = np.nan
+        log.info("    no odds_history.csv yet — Vegas features left NaN")
+        return df
+
+    odds = pd.read_csv(odds_path)
+    odds["game_date"] = pd.to_datetime(odds["game_date"], errors="coerce")
+    keep = ["game_date", "team_abbrev"] + [c for c in VEGAS_COLS if c in odds.columns]
+    odds = odds[keep].drop_duplicates(["game_date", "team_abbrev"])
+
+    df = df.merge(odds, on=["game_date", "team_abbrev"], how="left")
+    matched = df["implied_team_total"].notna().sum() if "implied_team_total" in df else 0
+    log.info("    matched odds for %d / %d rows", matched, len(df))
+    return df
+
+
+# ─────────────────────────────────────────────────────────────────────────────
 # Feature group 7b: Matchup / interaction features
 # ─────────────────────────────────────────────────────────────────────────────
 
@@ -697,6 +732,7 @@ def select_features(df):
         "is_likely_starter", "start_rate_last10",
         "season_phase", "is_late_season",
         "teammates_out_count", "star_teammate_out", "team_minutes_vacated",
+        "implied_team_total", "game_total", "team_spread", "is_favorite",
     ]]
     opp_history_cols = [c for c in df.columns if c.startswith("vs_opp_rolling")]
 
@@ -764,6 +800,7 @@ def build_features():
     df = add_context_features(df)
     df = add_opponent_history_features(df)
     df = add_teammate_features(df)
+    df = add_vegas_features(df)
     df = add_interaction_features(df)
     df = add_schedule_features(df)
     df = add_positional_defense_features(df)

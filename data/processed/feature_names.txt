@@ -77,6 +77,10 @@ position_enc
 teammates_out_count
 star_teammate_out
 team_minutes_vacated
+implied_team_total
+game_total
+team_spread
+is_favorite
 pace_sum
 usage_x_minutes
 days_into_season
