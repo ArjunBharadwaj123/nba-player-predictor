@@ -38,6 +38,12 @@ from pathlib import Path
 import pandas as pd
 import requests
 
+try:                       # load ODDS_API_KEY from a local .env if present
+    from dotenv import load_dotenv
+    load_dotenv()
+except Exception:
+    pass
+
 from nba_api.stats.static import teams as nba_teams_static
 
 ROOT = Path(__file__).parent.parent

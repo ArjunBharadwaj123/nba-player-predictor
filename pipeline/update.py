@@ -41,6 +41,12 @@ from pathlib import Path
 
 import pandas as pd
 
+try:                       # so ODDS_API_KEY (and friends) load from a local .env
+    from dotenv import load_dotenv
+    load_dotenv()
+except Exception:
+    pass
+
 ROOT = Path(__file__).parent.parent
 sys.path.insert(0, str(ROOT / "scraping"))
 sys.path.insert(0, str(ROOT))
