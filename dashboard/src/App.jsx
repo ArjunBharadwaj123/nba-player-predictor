@@ -1,9 +1,13 @@
 import { useState, useCallback, useRef, useEffect } from "react";
 
-// Backend base URL. In production set VITE_API_URL in Vercel's env vars to the
-// deployed API (e.g. https://nba-player-predictor-api.onrender.com).
-// Falls back to the local dev server when unset.
-const API = import.meta.env.VITE_API_URL || "http://localhost:8000";
+// Backend base URL. Set VITE_API_URL (Vercel env var) to override. When unset,
+// a production build points at the deployed API so the hosted app works without
+// extra config, while local dev falls back to the local server.
+const API =
+  import.meta.env.VITE_API_URL ||
+  (import.meta.env.PROD
+    ? "https://nba-player-predictor-api.onrender.com"
+    : "http://localhost:8000");
 
 const STAT_LABELS = { pts:"Points", reb:"Rebounds", ast:"Assists", stl:"Steals", blk:"Blocks", minutes:"Minutes" };
 const STAT_COLORS = { pts:"#185FA5", reb:"#0F6E56", ast:"#534AB7", stl:"#993C1D", blk:"#854F0B", minutes:"#5F5E5A" };
