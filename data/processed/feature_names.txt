@@ -6,6 +6,8 @@ rolling_last3_blk
 rolling_last3_minutes
 rolling_last3_usage_rate
 rolling_last3_fg_pct
+rolling_last3_fg3
+rolling_last3_fg3a
 rolling_last3_fg3_pct
 rolling_last3_ft_pct
 rolling_last3_tov
@@ -18,6 +20,8 @@ rolling_last5_blk
 rolling_last5_minutes
 rolling_last5_usage_rate
 rolling_last5_fg_pct
+rolling_last5_fg3
+rolling_last5_fg3a
 rolling_last5_fg3_pct
 rolling_last5_ft_pct
 rolling_last5_tov
@@ -30,6 +34,8 @@ rolling_last10_blk
 rolling_last10_minutes
 rolling_last10_usage_rate
 rolling_last10_fg_pct
+rolling_last10_fg3
+rolling_last10_fg3a
 rolling_last10_fg3_pct
 rolling_last10_ft_pct
 rolling_last10_tov
@@ -63,11 +69,18 @@ home_game
 back_to_back
 team_pace
 opp_def_rating
+opp_pace
 games_played_season
 rest_days_capped
 opp_def_rank
 position_enc
-opp_pace
+teammates_out_count
+star_teammate_out
+team_minutes_vacated
+implied_team_total
+game_total
+team_spread
+is_favorite
 pace_sum
 usage_x_minutes
 days_into_season

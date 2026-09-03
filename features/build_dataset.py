@@ -127,10 +127,12 @@ def merge_datasets(gamelogs: pd.DataFrame,
     """
     log.info("Merging game logs with schedule context...")
 
-    # The schedule context columns we want to pull in
+    # The schedule context columns we want to pull in.
+    # team_pace / opp_def_rating / opp_pace are now AS-OF-DATE values
+    # (see nba_api_client.build_asof_team_ratings) — no longer season constants.
     context_cols = [
         "team_abbrev", "opponent_abbrev", "game_date",
-        "rest_days", "back_to_back", "team_pace", "opp_def_rating",
+        "rest_days", "back_to_back", "team_pace", "opp_def_rating", "opp_pace",
     ]
     schedule_slim = schedule[context_cols].drop_duplicates(
         subset=["team_abbrev", "opponent_abbrev", "game_date"]

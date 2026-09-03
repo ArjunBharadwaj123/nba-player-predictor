@@ -1,0 +1,885 @@
+15:14:25  INFO  Loading feature matrix...
+15:14:25  INFO    26,031 rows, 84 features
+15:14:48  INFO  Loading feature matrix...
+15:14:49  INFO    26,031 rows, 84 features
+15:15:07  INFO  Loading feature matrix...
+15:15:07  INFO    26,031 rows, 84 features
+15:15:23  INFO  Loading feature matrix...
+15:15:23  INFO    26,031 rows, 84 features
+15:15:40  INFO  Loading feature matrix...
+15:15:41  INFO    26,031 rows, 84 features
+15:15:54  INFO  Loading feature matrix...
+15:15:55  INFO    26,031 rows, 84 features
+15:16:09  INFO  Loading feature matrix...
+15:16:09  INFO    26,031 rows, 84 features
+15:16:24  INFO  Loading feature matrix...
+15:16:24  INFO    26,031 rows, 84 features
+15:16:37  INFO  Loading feature matrix...
+15:16:38  INFO    26,031 rows, 84 features
+15:17:02  INFO  Loading feature matrix...
+15:17:02  INFO    26,031 rows, 84 features
+15:17:20  INFO  Loading feature matrix...
+15:17:21  INFO    26,031 rows, 84 features
+15:17:37  INFO  Loading feature matrix...
+15:17:37  INFO    26,031 rows, 84 features
+15:17:56  INFO  Loading feature matrix...
+15:17:56  INFO    26,031 rows, 84 features
+
+Calibrating 6 model(s) × 8 hyperparameter(s) = 48 sweeps → reports/tuning/<stat>/
+
+[1/48] 
+Sweeping PTS · max_depth  (holding other params at train.py defaults)
+         value      MAE     RMSE       R2
+  ---------------------------------------
+             2    5.426    6.996    0.510
+             3    5.428    6.997    0.509
+             4    5.438    7.006    0.508
+             5    5.450    7.022    0.506
+             6    5.467    7.037    0.504
+             7    5.483    7.052    0.502
+             8    5.510    7.085    0.497
+
+  Best MAE at max_depth=2 (MAE 5.426, R2 0.510)   | current train.py value: max_depth=3
+
+  Chart saved -> reports/tuning/pts/pts_max_depth.png
+
+[2/48] 
+Sweeping PTS · learning_rate  (holding other params at train.py defaults)
+         value      MAE     RMSE       R2
+  ---------------------------------------
+          0.01    5.424    6.992    0.510
+          0.02    5.427    6.996    0.510
+          0.04    5.428    6.997    0.509
+          0.08    5.429    7.000    0.509
+          0.12    5.431    7.001    0.509
+           0.2    5.436    7.009    0.508
+
+  Best MAE at learning_rate=0.01 (MAE 5.424, R2 0.510)   | current train.py value: learning_rate=0.04
+
+  Chart saved -> reports/tuning/pts/pts_learning_rate.png
+
+[3/48] 
+Sweeping PTS · n_estimators  (holding other params at train.py defaults)
+         value      MAE     RMSE       R2
+  ---------------------------------------
+           200    5.428    6.997    0.509
+           300    5.428    6.997    0.509
+           400    5.428    6.997    0.509
+           600    5.428    6.997    0.509
+           800    5.428    6.997    0.509
+          1000    5.428    6.997    0.509
+
+  Best MAE at n_estimators=200 (MAE 5.428, R2 0.509)   | current train.py value: n_estimators=600
+
+  Chart saved -> reports/tuning/pts/pts_n_estimators.png
+
+[4/48] 
+Sweeping PTS · min_child_weight  (holding other params at train.py defaults)
+         value      MAE     RMSE       R2
+  ---------------------------------------
+             1    5.428    6.997    0.509
+             2    5.426    6.997    0.510
+             4    5.428    6.997    0.509
+             6    5.427    6.997    0.510
+             8    5.426    6.995    0.510
+            10    5.425    6.994    0.510
+            15    5.429    6.998    0.509
+
+  Best MAE at min_child_weight=10 (MAE 5.425, R2 0.510)   | current train.py value: min_child_weight=4
+
+  Chart saved -> reports/tuning/pts/pts_min_child_weight.png
+
+[5/48] 
+Sweeping PTS · subsample  (holding other params at train.py defaults)
+         value      MAE     RMSE       R2
+  ---------------------------------------
+           0.5    5.424    6.990    0.511
+           0.6    5.424    6.992    0.510
+           0.7    5.425    6.992    0.510
+           0.8    5.428    6.997    0.509
+           0.9    5.425    6.996    0.510
+           1.0    5.430    6.999    0.509
+
+  Best MAE at subsample=0.6 (MAE 5.424, R2 0.510)   | current train.py value: subsample=0.8
+
+  Chart saved -> reports/tuning/pts/pts_subsample.png
+
+[6/48] 
+Sweeping PTS · colsample_bytree  (holding other params at train.py defaults)
+         value      MAE     RMSE       R2
+  ---------------------------------------
+           0.5    5.425    6.995    0.510
+           0.6    5.428    6.996    0.510
+           0.7    5.427    6.996    0.510
+           0.8    5.428    6.995    0.510
+           0.9    5.429    6.996    0.510
+           1.0    5.430    6.999    0.509
+
+  Best MAE at colsample_bytree=0.5 (MAE 5.425, R2 0.510)   | current train.py value: colsample_bytree=0.75
+
+  Chart saved -> reports/tuning/pts/pts_colsample_bytree.png
+
+[7/48] 
+Sweeping PTS · reg_alpha  (holding other params at train.py defaults)
+         value      MAE     RMSE       R2
+  ---------------------------------------
+           0.0    5.429    6.998    0.509
+           0.1    5.428    6.997    0.509
+           0.5    5.428    6.996    0.510
+           1.0    5.427    6.996    0.510
+           2.0    5.427    6.997    0.510
+
+  Best MAE at reg_alpha=2.0 (MAE 5.427, R2 0.510)   | current train.py value: reg_alpha=0.1
+
+  Chart saved -> reports/tuning/pts/pts_reg_alpha.png
+
+[8/48] 
+Sweeping PTS · reg_lambda  (holding other params at train.py defaults)
+         value      MAE     RMSE       R2
+  ---------------------------------------
+           0.5    5.428    6.996    0.510
+           1.0    5.426    6.994    0.510
+           1.5    5.428    6.997    0.509
+           3.0    5.426    6.996    0.510
+           5.0    5.428    6.996    0.510
+
+  Best MAE at reg_lambda=1.0 (MAE 5.426, R2 0.510)   | current train.py value: reg_lambda=1.5
+
+  Chart saved -> reports/tuning/pts/pts_reg_lambda.png
+
+  ── PTS best-by-param summary ──
+    param               best MAE @      MAE   best R² @
+    max_depth                    2    5.426           2
+    learning_rate             0.01    5.424        0.01
+    n_estimators               200    5.428         200
+    min_child_weight            10    5.425          10
+    subsample                  0.6    5.424         0.5
+    colsample_bytree           0.5    5.425         0.5
+    reg_alpha                  2.0    5.427         0.5
+    reg_lambda                 1.0    5.426         1.0
+
+[9/48] 
+Sweeping REB · max_depth  (holding other params at train.py defaults)
+         value      MAE     RMSE       R2
+  ---------------------------------------
+             2    2.153    2.794    0.491
+             3    2.153    2.794    0.491
+             4    2.154    2.795    0.490
+             5    2.158    2.801    0.488
+             6    2.165    2.808    0.486
+             7    2.175    2.822    0.481
+             8    2.184    2.831    0.477
+
+  Best MAE at max_depth=2 (MAE 2.153, R2 0.491)   | current train.py value: max_depth=3
+
+  Chart saved -> reports/tuning/reb/reb_max_depth.png
+
+[10/48] 
+Sweeping REB · learning_rate  (holding other params at train.py defaults)
+         value      MAE     RMSE       R2
+  ---------------------------------------
+          0.01    2.153    2.793    0.491
+          0.02    2.153    2.793    0.491
+          0.04    2.153    2.794    0.491
+          0.08    2.155    2.795    0.490
+          0.12    2.156    2.797    0.490
+           0.2    2.159    2.802    0.488
+
+  Best MAE at learning_rate=0.01 (MAE 2.153, R2 0.491)   | current train.py value: learning_rate=0.04
+
+  Chart saved -> reports/tuning/reb/reb_learning_rate.png
+
+[11/48] 
+Sweeping REB · n_estimators  (holding other params at train.py defaults)
+         value      MAE     RMSE       R2
+  ---------------------------------------
+           200    2.153    2.794    0.491
+           300    2.153    2.794    0.491
+           400    2.153    2.794    0.491
+           600    2.153    2.794    0.491
+           800    2.153    2.794    0.491
+          1000    2.153    2.794    0.491
+
+  Best MAE at n_estimators=300 (MAE 2.153, R2 0.491)   | current train.py value: n_estimators=600
+
+  Chart saved -> reports/tuning/reb/reb_n_estimators.png
+
+[12/48] 
+Sweeping REB · min_child_weight  (holding other params at train.py defaults)
+         value      MAE     RMSE       R2
+  ---------------------------------------
+             1    2.153    2.794    0.491
+             2    2.153    2.794    0.491
+             4    2.153    2.794    0.491
+             6    2.153    2.794    0.491
+             8    2.152    2.794    0.491
+            10    2.153    2.794    0.491
+            15    2.153    2.794    0.491
+
+  Best MAE at min_child_weight=8 (MAE 2.152, R2 0.491)   | current train.py value: min_child_weight=4
+
+  Chart saved -> reports/tuning/reb/reb_min_child_weight.png
+
+[13/48] 
+Sweeping REB · subsample  (holding other params at train.py defaults)
+         value      MAE     RMSE       R2
+  ---------------------------------------
+           0.5    2.153    2.795    0.490
+           0.6    2.155    2.796    0.490
+           0.7    2.152    2.792    0.491
+           0.8    2.153    2.794    0.491
+           0.9    2.153    2.795    0.491
+           1.0    2.155    2.796    0.490
+
+  Best MAE at subsample=0.7 (MAE 2.152, R2 0.491)   | current train.py value: subsample=0.8
+
+  Chart saved -> reports/tuning/reb/reb_subsample.png
+
+[14/48]15:18:11  INFO  Loading feature matrix...
+15:18:11  INFO    26,031 rows, 84 features
+15:18:26  INFO  Loading feature matrix...
+15:18:26  INFO    26,031 rows, 84 features
+15:18:39  INFO  Loading feature matrix...
+15:18:39  INFO    26,031 rows, 84 features
+15:18:52  INFO  Loading feature matrix...
+15:18:52  INFO    26,031 rows, 84 features
+15:19:15  INFO  Loading feature matrix...
+15:19:15  INFO    26,031 rows, 84 features
+15:19:32  INFO  Loading feature matrix...
+15:19:33  INFO    26,031 rows, 84 features
+15:19:48  INFO  Loading feature matrix...
+15:19:48  INFO    26,031 rows, 84 features
+15:20:06  INFO  Loading feature matrix...
+15:20:06  INFO    26,031 rows, 84 features
+15:20:21  INFO  Loading feature matrix...
+15:20:22  INFO    26,031 rows, 84 features
+15:20:36  INFO  Loading feature matrix...
+15:20:37  INFO    26,031 rows, 84 features
+15:20:49  INFO  Loading feature matrix...
+15:20:50  INFO    26,031 rows, 84 features
+15:21:02  INFO  Loading feature matrix...
+15:21:03  INFO    26,031 rows, 84 features
+15:21:22  INFO  Loading feature matrix...
+15:21:23  INFO    26,031 rows, 84 features
+ 
+Sweeping REB · colsample_bytree  (holding other params at train.py defaults)
+         value      MAE     RMSE       R2
+  ---------------------------------------
+           0.5    2.151    2.793    0.491
+           0.6    2.152    2.793    0.491
+           0.7    2.153    2.794    0.491
+           0.8    2.154    2.795    0.490
+           0.9    2.153    2.794    0.491
+           1.0    2.153    2.794    0.491
+
+  Best MAE at colsample_bytree=0.5 (MAE 2.151, R2 0.491)   | current train.py value: colsample_bytree=0.75
+
+  Chart saved -> reports/tuning/reb/reb_colsample_bytree.png
+
+[15/48] 
+Sweeping REB · reg_alpha  (holding other params at train.py defaults)
+         value      MAE     RMSE       R2
+  ---------------------------------------
+           0.0    2.152    2.793    0.491
+           0.1    2.153    2.794    0.491
+           0.5    2.153    2.794    0.491
+           1.0    2.152    2.794    0.491
+           2.0    2.153    2.794    0.491
+
+  Best MAE at reg_alpha=0.0 (MAE 2.152, R2 0.491)   | current train.py value: reg_alpha=0.1
+
+  Chart saved -> reports/tuning/reb/reb_reg_alpha.png
+
+[16/48] 
+Sweeping REB · reg_lambda  (holding other params at train.py defaults)
+         value      MAE     RMSE       R2
+  ---------------------------------------
+           0.5    2.153    2.794    0.491
+           1.0    2.152    2.793    0.491
+           1.5    2.153    2.794    0.491
+           3.0    2.153    2.794    0.491
+           5.0    2.153    2.794    0.491
+
+  Best MAE at reg_lambda=1.0 (MAE 2.152, R2 0.491)   | current train.py value: reg_lambda=1.5
+
+  Chart saved -> reports/tuning/reb/reb_reg_lambda.png
+
+  ── REB best-by-param summary ──
+    param               best MAE @      MAE   best R² @
+    max_depth                    2    2.153           2
+    learning_rate             0.01    2.153        0.02
+    n_estimators               300    2.153         300
+    min_child_weight             8    2.152           8
+    subsample                  0.7    2.152         0.7
+    colsample_bytree           0.5    2.151         0.6
+    reg_alpha                  0.0    2.152         0.0
+    reg_lambda                 1.0    2.152         1.0
+
+[17/48] 
+Sweeping AST · max_depth  (holding other params at train.py defaults)
+         value      MAE     RMSE       R2
+  ---------------------------------------
+             2    1.663    2.185    0.522
+             3    1.662    2.184    0.523
+             4    1.667    2.188    0.521
+             5    1.670    2.190    0.520
+             6    1.674    2.197    0.517
+             7    1.679    2.203    0.514
+             8    1.687    2.211    0.511
+
+  Best MAE at max_depth=3 (MAE 1.662, R2 0.523)   | current train.py value: max_depth=3
+
+  Chart saved -> reports/tuning/ast/ast_max_depth.png
+
+[18/48] 
+Sweeping AST · learning_rate  (holding other params at train.py defaults)
+         value      MAE     RMSE       R2
+  ---------------------------------------
+          0.01    1.663    2.185    0.522
+          0.02    1.663    2.185    0.522
+          0.04    1.662    2.184    0.523
+          0.08    1.666    2.186    0.522
+          0.12    1.667    2.189    0.520
+           0.2    1.670    2.193    0.519
+
+  Best MAE at learning_rate=0.04 (MAE 1.662, R2 0.523)   | current train.py value: learning_rate=0.04
+
+  Chart saved -> reports/tuning/ast/ast_learning_rate.png
+
+[19/48] 
+Sweeping AST · n_estimators  (holding other params at train.py defaults)
+         value      MAE     RMSE       R2
+  ---------------------------------------
+           200    1.662    2.184    0.523
+           300    1.662    2.184    0.523
+           400    1.662    2.184    0.523
+           600    1.662    2.184    0.523
+           800    1.662    2.184    0.523
+          1000    1.662    2.184    0.523
+
+  Best MAE at n_estimators=200 (MAE 1.662, R2 0.523)   | current train.py value: n_estimators=600
+
+  Chart saved -> reports/tuning/ast/ast_n_estimators.png
+
+[20/48] 
+Sweeping AST · min_child_weight  (holding other params at train.py defaults)
+         value      MAE     RMSE       R2
+  ---------------------------------------
+             1    1.662    2.184    0.522
+             2    1.663    2.185    0.522
+             4    1.662    2.184    0.523
+             6    1.662    2.185    0.522
+             8    1.662    2.184    0.523
+            10    1.663    2.185    0.522
+            15    1.662    2.184    0.522
+
+  Best MAE at min_child_weight=15 (MAE 1.662, R2 0.522)   | current train.py value: min_child_weight=4
+
+  Chart saved -> reports/tuning/ast/ast_min_child_weight.png
+
+[21/48] 
+Sweeping AST · subsample  (holding other params at train.py defaults)
+         value      MAE     RMSE       R2
+  ---------------------------------------
+           0.5    1.663    2.184    0.523
+           0.6    1.663    2.184    0.523
+           0.7    1.663    2.184    0.522
+           0.8    1.662    2.184    0.523
+           0.9    1.663    2.186    0.522
+           1.0    1.663    2.185    0.522
+
+  Best MAE at subsample=0.8 (MAE 1.662, R2 0.523)   | current train.py value: subsample=0.8
+
+  Chart saved -> reports/tuning/ast/ast_subsample.png
+
+[22/48] 
+Sweeping AST · colsample_bytree  (holding other params at train.py defaults)
+         value      MAE     RMSE       R2
+  ---------------------------------------
+           0.5    1.662    2.185    0.522
+           0.6    1.661    2.184    0.523
+           0.7    1.662    2.184    0.522
+           0.8    1.662    2.184    0.523
+           0.9    1.662    2.184    0.522
+           1.0    1.663    2.185    0.522
+
+  Best MAE at colsample_bytree=0.6 (MAE 1.661, R2 0.523)   | current train.py value: colsample_bytree=0.75
+
+  Chart saved -> reports/tuning/ast/ast_colsample_bytree.png
+
+[23/48] 
+Sweeping AST · reg_alpha  (holding other params at train.py defaults)
+         value      MAE     RMSE       R2
+  ---------------------------------------
+           0.0    1.661    2.184    0.523
+           0.1    1.662    2.184    0.523
+           0.5    1.662    2.183    0.523
+           1.0    1.662    2.184    0.522
+           2.0    1.663    2.184    0.523
+
+  Best MAE at reg_alpha=0.0 (MAE 1.661, R2 0.523)   | current train.py value: reg_alpha=0.1
+
+  Chart saved -> reports/tuning/ast/ast_reg_alpha.png
+
+[24/48] 
+Sweeping AST · reg_lambda  (holding other params at train.py defaults)
+         value      MAE     RMSE       R2
+  ---------------------------------------
+           0.5    1.663    2.184    0.522
+           1.0    1.662    2.184    0.523
+           1.5    1.662    2.184    0.523
+           3.0    1.662    2.185    0.522
+           5.0    1.663    2.185    0.522
+
+  Best MAE at reg_lambda=1.5 (MAE 1.662, R2 0.523)   | current train.py value: reg_lambda=1.5
+
+  Chart saved -> reports/tuning/ast/ast_reg_lambda.png
+
+  ── AST best-by-param summary ──
+    param               best MAE @      MAE   best R² @
+    max_depth                    3    1.662           3
+    learning_rate             0.04    1.662        0.04
+    n_estimators               200    1.662         200
+    min_child_weight            15    1.662           8
+    subsample                  0.8    1.662         0.5
+    colsample_bytree           0.6    1.661         0.6
+    reg_alpha                  0.0    1.661         0.5
+    reg_lambda                 1.5    1.662         1.0
+
+[25/48] 
+Sweeping STL · max_depth  (holding other params at train.py defaults)
+         value      MAE     RMSE       R2
+  ---------------------------------------
+             2    0.784    1.002    0.078
+             3    0.784    1.002    0.078
+             4    0.784    1.002    0.077
+             5    0.784    1.003    0.075
+             6    0.785    1.004    0.074
+             7    0.786    1.005    0.072
+             8    0.786    1.007    0.069
+
+  Best MAE at max_depth=2 (MAE 0.784, R2 0.078)   | current train.py value: max_depth=3
+
+  Chart saved -> reports/tuning/stl/stl_max_depth.png
+
+[26/48] 
+Sweeping STL · learning_rate  (holding other params at train.py defaults)
+         value      MAE     RMSE       R2
+  ---------------------------------------
+          0.01    0.784    1.002    0.078
+          0.02    0.784    1.002    0.078
+15:21:36  INFO  Loading feature matrix...
+15:21:36  INFO    26,031 rows, 84 features
+15:21:51  INFO  Loading feature matrix...
+15:21:51  INFO    26,031 rows, 84 features
+15:22:09  INFO  Loading feature matrix...
+15:22:09  INFO    26,031 rows, 84 features
+15:22:24  INFO  Loading feature matrix...
+15:22:24  INFO    26,031 rows, 84 features
+15:22:39  INFO  Loading feature matrix...
+15:22:39  INFO    26,031 rows, 84 features
+15:22:51  INFO  Loading feature matrix...
+15:22:52  INFO    26,031 rows, 84 features
+15:23:04  INFO  Loading feature matrix...
+15:23:04  INFO    26,031 rows, 84 features
+15:23:27  INFO  Loading feature matrix...
+15:23:27  INFO    26,031 rows, 84 features
+15:23:41  INFO  Loading feature matrix...
+15:23:41  INFO    26,031 rows, 84 features
+15:23:58  INFO  Loading feature matrix...
+15:23:58  INFO    26,031 rows, 84 features
+15:24:16  INFO  Loading feature matrix...
+15:24:17  INFO    26,031 rows, 84 features
+15:24:33  INFO  Loading feature matrix...
+15:24:33  INFO    26,031 rows, 84 features
+15:24:49  INFO  Loading feature matrix...
+15:24:49  INFO    26,031 rows, 84 features
+          0.04    0.784    1.002    0.078
+          0.08    0.784    1.002    0.078
+          0.12    0.785    1.003    0.076
+           0.2    0.786    1.003    0.075
+
+  Best MAE at learning_rate=0.02 (MAE 0.784, R2 0.078)   | current train.py value: learning_rate=0.03
+
+  Chart saved -> reports/tuning/stl/stl_learning_rate.png
+
+[27/48] 
+Sweeping STL · n_estimators  (holding other params at train.py defaults)
+         value      MAE     RMSE       R2
+  ---------------------------------------
+           200    0.784    1.002    0.078
+           300    0.784    1.002    0.078
+           400    0.784    1.002    0.078
+           600    0.784    1.002    0.078
+           800    0.784    1.002    0.078
+          1000    0.784    1.002    0.078
+
+  Best MAE at n_estimators=300 (MAE 0.784, R2 0.078)   | current train.py value: n_estimators=400
+
+  Chart saved -> reports/tuning/stl/stl_n_estimators.png
+
+[28/48] 
+Sweeping STL · min_child_weight  (holding other params at train.py defaults)
+         value      MAE     RMSE       R2
+  ---------------------------------------
+             1    0.784    1.002    0.078
+             2    0.784    1.002    0.078
+             4    0.784    1.002    0.078
+             6    0.784    1.002    0.078
+             8    0.784    1.002    0.078
+            10    0.784    1.002    0.078
+            15    0.784    1.002    0.078
+
+  Best MAE at min_child_weight=1 (MAE 0.784, R2 0.078)   | current train.py value: min_child_weight=10
+
+  Chart saved -> reports/tuning/stl/stl_min_child_weight.png
+
+[29/48] 
+Sweeping STL · subsample  (holding other params at train.py defaults)
+         value      MAE     RMSE       R2
+  ---------------------------------------
+           0.5    0.784    1.002    0.077
+           0.6    0.784    1.002    0.078
+           0.7    0.784    1.002    0.078
+           0.8    0.784    1.002    0.078
+           0.9    0.783    1.002    0.077
+           1.0    0.784    1.002    0.078
+
+  Best MAE at subsample=0.9 (MAE 0.783, R2 0.077)   | current train.py value: subsample=0.7
+
+  Chart saved -> reports/tuning/stl/stl_subsample.png
+
+[30/48] 
+Sweeping STL · colsample_bytree  (holding other params at train.py defaults)
+         value      MAE     RMSE       R2
+  ---------------------------------------
+           0.5    0.784    1.002    0.078
+           0.6    0.784    1.002    0.078
+           0.7    0.784    1.002    0.078
+           0.8    0.784    1.002    0.078
+           0.9    0.784    1.002    0.078
+           1.0    0.784    1.002    0.078
+
+  Best MAE at colsample_bytree=0.5 (MAE 0.784, R2 0.078)   | current train.py value: colsample_bytree=0.6
+
+  Chart saved -> reports/tuning/stl/stl_colsample_bytree.png
+
+[31/48] 
+Sweeping STL · reg_alpha  (holding other params at train.py defaults)
+         value      MAE     RMSE       R2
+  ---------------------------------------
+           0.0    0.784    1.002    0.078
+           0.1    0.784    1.002    0.078
+           0.5    0.784    1.002    0.078
+           1.0    0.784    1.002    0.078
+           2.0    0.784    1.002    0.078
+
+  Best MAE at reg_alpha=2.0 (MAE 0.784, R2 0.078)   | current train.py value: reg_alpha=1.0
+
+  Chart saved -> reports/tuning/stl/stl_reg_alpha.png
+
+[32/48] 
+Sweeping STL · reg_lambda  (holding other params at train.py defaults)
+         value      MAE     RMSE       R2
+  ---------------------------------------
+           0.5    0.784    1.002    0.078
+           1.0    0.784    1.002    0.078
+           1.5    0.784    1.002    0.078
+           3.0    0.784    1.002    0.078
+           5.0    0.784    1.002    0.078
+
+  Best MAE at reg_lambda=5.0 (MAE 0.784, R2 0.078)   | current train.py value: reg_lambda=3.0
+
+  Chart saved -> reports/tuning/stl/stl_reg_lambda.png
+
+  ── STL best-by-param summary ──
+    param               best MAE @      MAE   best R² @
+    max_depth                    2    0.784           3
+    learning_rate             0.02    0.784        0.08
+    n_estimators               300    0.784         300
+    min_child_weight             1    0.784           6
+    subsample                  0.9    0.783         0.7
+    colsample_bytree           0.5    0.784         1.0
+    reg_alpha                  2.0    0.784         2.0
+    reg_lambda                 5.0    0.784         5.0
+
+[33/48] 
+Sweeping BLK · max_depth  (holding other params at train.py defaults)
+         value      MAE     RMSE       R2
+  ---------------------------------------
+             2    0.626    0.839    0.227
+             3    0.626    0.840    0.225
+             4    0.627    0.842    0.222
+             5    0.629    0.843    0.220
+             6    0.629    0.844    0.217
+             7    0.629    0.846    0.215
+             8    0.631    0.847    0.213
+
+  Best MAE at max_depth=2 (MAE 0.626, R2 0.227)   | current train.py value: max_depth=3
+
+  Chart saved -> reports/tuning/blk/blk_max_depth.png
+
+[34/48] 
+Sweeping BLK · learning_rate  (holding other params at train.py defaults)
+         value      MAE     RMSE       R2
+  ---------------------------------------
+          0.01    0.627    0.841    0.224
+          0.02    0.626    0.840    0.225
+          0.04    0.626    0.841    0.224
+          0.08    0.628    0.841    0.223
+          0.12    0.627    0.841    0.223
+           0.2    0.627    0.842    0.221
+
+  Best MAE at learning_rate=0.02 (MAE 0.626, R2 0.225)   | current train.py value: learning_rate=0.03
+
+  Chart saved -> reports/tuning/blk/blk_learning_rate.png
+
+[35/48] 
+Sweeping BLK · n_estimators  (holding other params at train.py defaults)
+         value      MAE     RMSE       R2
+  ---------------------------------------
+           200    0.627    0.840    0.224
+           300    0.626    0.840    0.225
+           400    0.626    0.840    0.225
+           600    0.626    0.840    0.225
+           800    0.626    0.840    0.225
+          1000    0.626    0.840    0.225
+
+  Best MAE at n_estimators=300 (MAE 0.626, R2 0.225)   | current train.py value: n_estimators=400
+
+  Chart saved -> reports/tuning/blk/blk_n_estimators.png
+
+[36/48] 
+Sweeping BLK · min_child_weight  (holding other params at train.py defaults)
+         value      MAE     RMSE       R2
+  ---------------------------------------
+             1    0.627    0.841    0.224
+             2    0.627    0.841    0.224
+             4    0.627    0.841    0.224
+             6    0.627    0.841    0.224
+             8    0.627    0.840    0.224
+            10    0.626    0.840    0.225
+            15    0.626    0.840    0.225
+
+  Best MAE at min_child_weight=15 (MAE 0.626, R2 0.225)   | current train.py value: min_child_weight=10
+
+  Chart saved -> reports/tuning/blk/blk_min_child_weight.png
+
+[37/48] 
+Sweeping BLK · subsample  (holding other params at train.py defaults)
+         value      MAE     RMSE       R2
+  ---------------------------------------
+           0.5    0.626    0.840    0.226
+           0.6    0.626    0.841    0.224
+           0.7    0.626    0.840    0.225
+           0.8    0.627    0.842    0.222
+           0.9    0.626    0.841    0.224
+           1.0    0.627    0.841    0.223
+
+  Best MAE at subsample=0.5 (MAE 0.626, R2 0.226)   | current train.py value: subsample=0.7
+
+  Chart saved -> reports/tuning/blk/blk_subsample.png
+
+[38/48] 
+Sweeping BLK · colsample_bytree  (holding other params at train.py defaults)
+         value      MAE     RMSE       R2
+  ---------------------------------------
+           0.5    0.626    0.840    0.226
+           0.6    0.626    0.840    0.225
+           0.7    0.627    0.840    0.225
+           0.8    0.627    0.841    0.224
+           0.9    0.627    0.841    0.224
+           1.0    0.627    0.841    0.224
+
+  Best MAE at colsample_bytree=0.5 (MAE 0.626, R2 0.226)   | current train.py value: colsample_bytree=0.6
+
+  Chart saved -> reports/tuning/blk/blk_colsample_bytree.png
+
+[39/48] 
+Sweeping BLK · reg_alpha  (holding other params at train.py defaults)
+         value      MAE     RMSE       R2
+  ---------------------------------------
+           0.0    0.627    0.841    0.224
+           0.1    0.627    0.841    0.224
+           0.5    0.627    0.840    0.225
+           1.0    0.626    0.840    0.225
+           2.0    0.627    0.841    0.22415:25:02  INFO  Loading feature matrix...
+15:25:03  INFO    26,031 rows, 84 features
+15:25:16  INFO  Loading feature matrix...
+15:25:16  INFO    26,031 rows, 84 features
+15:25:47  INFO  Loading feature matrix...
+15:25:47  INFO    26,031 rows, 84 features
+15:26:06  INFO  Loading feature matrix...
+15:26:06  INFO    26,031 rows, 84 features
+15:26:27  INFO  Loading feature matrix...
+15:26:27  INFO    26,031 rows, 84 features
+15:26:52  INFO  Loading feature matrix...
+15:26:52  INFO    26,031 rows, 84 features
+15:27:13  INFO  Loading feature matrix...
+15:27:13  INFO    26,031 rows, 84 features
+15:28:28  INFO  Loading feature matrix...
+15:28:29  INFO    26,031 rows, 84 features
+15:28:46  INFO  Loading feature matrix...
+15:28:46  INFO    26,031 rows, 84 features
+
+
+  Best MAE at reg_alpha=1.0 (MAE 0.626, R2 0.225)   | current train.py value: reg_alpha=1.0
+
+  Chart saved -> reports/tuning/blk/blk_reg_alpha.png
+
+[40/48] 
+Sweeping BLK · reg_lambda  (holding other params at train.py defaults)
+         value      MAE     RMSE       R2
+  ---------------------------------------
+           0.5    0.627    0.841    0.224
+           1.0    0.626    0.840    0.225
+           1.5    0.627    0.841    0.224
+           3.0    0.626    0.840    0.225
+           5.0    0.626    0.841    0.224
+
+  Best MAE at reg_lambda=1.0 (MAE 0.626, R2 0.225)   | current train.py value: reg_lambda=3.0
+
+  Chart saved -> reports/tuning/blk/blk_reg_lambda.png
+
+  ── BLK best-by-param summary ──
+    param               best MAE @      MAE   best R² @
+    max_depth                    2    0.626           2
+    learning_rate             0.02    0.626        0.02
+    n_estimators               300    0.626         300
+    min_child_weight            15    0.626          15
+    subsample                  0.5    0.626         0.5
+    colsample_bytree           0.5    0.626         0.5
+    reg_alpha                  1.0    0.626         1.0
+    reg_lambda                 1.0    0.626         1.0
+
+[41/48] 
+Sweeping MINUTES · max_depth  (holding other params at train.py defaults)
+         value      MAE     RMSE       R2
+  ---------------------------------------
+             2    4.180    5.504    0.547
+             3    4.179    5.504    0.547
+             4    4.192    5.516    0.545
+             5    4.205    5.529    0.543
+             6    4.227    5.549    0.539
+             7    4.241    5.563    0.537
+             8    4.257    5.576    0.535
+
+  Best MAE at max_depth=3 (MAE 4.179, R2 0.547)   | current train.py value: max_depth=3
+
+  Chart saved -> reports/tuning/minutes/minutes_max_depth.png
+
+[42/48] 
+Sweeping MINUTES · learning_rate  (holding other params at train.py defaults)
+         value      MAE     RMSE       R2
+  ---------------------------------------
+          0.01    4.186    5.506    0.546
+          0.02    4.179    5.503    0.547
+          0.04    4.180    5.504    0.547
+          0.08    4.181    5.506    0.546
+          0.12    4.189    5.514    0.545
+           0.2    4.199    5.524    0.543
+
+  Best MAE at learning_rate=0.02 (MAE 4.179, R2 0.547)   | current train.py value: learning_rate=0.03
+
+  Chart saved -> reports/tuning/minutes/minutes_learning_rate.png
+
+[43/48] 
+Sweeping MINUTES · n_estimators  (holding other params at train.py defaults)
+         value      MAE     RMSE       R2
+  ---------------------------------------
+           200    4.180    5.505    0.546
+           300    4.179    5.504    0.547
+           400    4.179    5.504    0.547
+           600    4.179    5.504    0.547
+           800    4.179    5.504    0.547
+          1000    4.179    5.504    0.547
+
+  Best MAE at n_estimators=400 (MAE 4.179, R2 0.547)   | current train.py value: n_estimators=500
+
+  Chart saved -> reports/tuning/minutes/minutes_n_estimators.png
+
+[44/48] 
+Sweeping MINUTES · min_child_weight  (holding other params at train.py defaults)
+         value      MAE     RMSE       R2
+  ---------------------------------------
+             1    4.180    5.503    0.547
+             2    4.180    5.502    0.547
+             4    4.178    5.502    0.547
+             6    4.179    5.502    0.547
+             8    4.179    5.504    0.547
+            10    4.180    5.505    0.547
+            15    4.177    5.503    0.547
+
+  Best MAE at min_child_weight=15 (MAE 4.177, R2 0.547)   | current train.py value: min_child_weight=8
+
+  Chart saved -> reports/tuning/minutes/minutes_min_child_weight.png
+
+[45/48] 
+Sweeping MINUTES · subsample  (holding other params at train.py defaults)
+         value      MAE     RMSE       R2
+  ---------------------------------------
+           0.5    4.175    5.501    0.547
+           0.6    4.178    5.503    0.547
+           0.7    4.179    5.503    0.547
+           0.8    4.179    5.501    0.547
+           0.9    4.182    5.505    0.547
+           1.0    4.184    5.508    0.546
+
+  Best MAE at subsample=0.5 (MAE 4.175, R2 0.547)   | current train.py value: subsample=0.75
+
+  Chart saved -> reports/tuning/minutes/minutes_subsample.png
+
+[46/48] 
+Sweeping MINUTES · colsample_bytree  (holding other params at train.py defaults)
+         value      MAE     RMSE       R2
+  ---------------------------------------
+           0.5    4.181    5.506    0.546
+           0.6    4.180    5.505    0.546
+           0.7    4.179    5.504    0.547
+           0.8    4.179    5.504    0.547
+           0.9    4.179    5.501    0.547
+           1.0    4.179    5.502    0.547
+
+  Best MAE at colsample_bytree=1.0 (MAE 4.179, R2 0.547)   | current train.py value: colsample_bytree=0.7
+
+  Chart saved -> reports/tuning/minutes/minutes_colsample_bytree.png
+
+[47/48] 
+Sweeping MINUTES · reg_alpha  (holding other params at train.py defaults)
+         value      MAE     RMSE       R2
+  ---------------------------------------
+           0.0    4.180    5.504    0.547
+           0.1    4.180    5.504    0.547
+           0.5    4.179    5.504    0.547
+           1.0    4.178    5.503    0.547
+           2.0    4.180    5.504    0.547
+
+  Best MAE at reg_alpha=1.0 (MAE 4.178, R2 0.547)   | current train.py value: reg_alpha=0.5
+
+  Chart saved -> reports/tuning/minutes/minutes_reg_alpha.png
+
+[48/48] 
+Sweeping MINUTES · reg_lambda  (holding other params at train.py defaults)
+         value      MAE     RMSE       R2
+  ---------------------------------------
+           0.5    4.180    5.504    0.547
+           1.0    4.178    5.502    0.547
+           1.5    4.179    5.504    0.547
+           3.0    4.178    5.503    0.547
+           5.0    4.177    5.503    0.547
+
+  Best MAE at reg_lambda=5.0 (MAE 4.177, R2 0.547)   | current train.py value: reg_lambda=2.0
+
+  Chart saved -> reports/tuning/minutes/minutes_reg_lambda.png
+
+  ── MINUTES best-by-param summary ──
+    param               best MAE @      MAE   best R² @
+    max_depth                    3    4.179           3
+    learning_rate             0.02    4.179        0.02
+    n_estimators               400    4.179         400
+    min_child_weight            15    4.177           2
+    subsample                  0.5    4.175         0.8
+    colsample_bytree           1.0    4.179         0.9
+    reg_alpha                  1.0    4.178         1.0
+    reg_lambda                 5.0    4.177         1.0
+

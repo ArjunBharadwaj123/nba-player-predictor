@@ -43,7 +43,8 @@ log = logging.getLogger(__name__)
 
 WINDOWS    = [3, 5, 10]
 ROLL_STATS = ["pts", "reb", "ast", "stl", "blk", "minutes",
-              "usage_rate", "fg_pct", "fg3_pct", "ft_pct", "tov", "fantasy_score"]
+              "usage_rate", "fg_pct", "fg3", "fg3a", "fg3_pct", "ft_pct",
+              "tov", "fantasy_score"]
 TARGETS    = ["pts", "reb", "ast", "stl", "blk", "minutes", "fantasy_score"]
 
 
@@ -62,6 +63,16 @@ def rolling_std(df, col, window, group="player_id"):
     return (
         df.groupby(group)[col]
         .transform(lambda x: x.shift(1).rolling(window, min_periods=2).std())
+    )
+
+
+def ewm_mean(df, col, halflife=3, group="player_id"):
+    """Recency-weighted (exponentially-weighted) mean. shift(1) = no leakage.
+    Recent games are weighted more heavily than a flat rolling window, which
+    tends to track hot/cold streaks better."""
+    return (
+        df.groupby(group)[col]
+        .transform(lambda x: x.shift(1).ewm(halflife=halflife, min_periods=1).mean())
     )
 
 
@@ -145,6 +156,44 @@ def add_season_averages(df):
 
 
 # ─────────────────────────────────────────────────────────────────────────────
+# Feature group 3b: Recency-weighted (EWMA) form
+# ─────────────────────────────────────────────────────────────────────────────
+
+EWM_STATS = ["pts", "reb", "ast", "minutes", "usage_rate"]
+
+def add_ewm_features(df):
+    """Exponentially-weighted recent form (halflife = 3 games). Complements the
+    flat rolling windows by emphasising the most recent games."""
+    log.info("  Building EWMA (recency-weighted) features...")
+    df = df.sort_values(["player_id", "game_date"]).reset_index(drop=True)
+    for stat in EWM_STATS:
+        if stat in df.columns:
+            df[f"ewm_{stat}"] = ewm_mean(df, stat, halflife=3)
+    return df
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+# Feature group 3c: Home/away form split
+# ─────────────────────────────────────────────────────────────────────────────
+
+def add_venue_split_features(df):
+    """Rolling last-10 form computed *within* the player's home vs away games.
+    Some players are meaningfully better at home; a single blended rolling
+    average hides that."""
+    log.info("  Building home/away form-split features...")
+    if "home_game" not in df.columns:
+        return df
+    df = df.sort_values(["player_id", "game_date"]).reset_index(drop=True)
+    for stat in ["pts", "reb", "ast", "minutes"]:
+        if stat in df.columns:
+            df[f"venue_last10_{stat}"] = (
+                df.groupby(["player_id", "home_game"])[stat]
+                .transform(lambda x: x.shift(1).rolling(10, min_periods=1).mean())
+            )
+    return df
+
+
+# ─────────────────────────────────────────────────────────────────────────────
 # Feature group 4: Trend features
 # ─────────────────────────────────────────────────────────────────────────────
 
@@ -203,20 +252,26 @@ def add_context_features(df):
     if "rest_days" in df.columns:
         df["rest_days_capped"] = df["rest_days"].clip(0, 7)
 
-    # Opponent defensive rank — rank unique teams per season (not per row)
-    if all(c in df.columns for c in ["opp_def_rating", "season", "opponent_abbrev"]):
-        team_ratings = (
-            df.groupby(["opponent_abbrev", "season"])["opp_def_rating"]
-            .first()
-            .reset_index()
+    # Opponent defensive rank — AS-OF-DATE cross-sectional rank.
+    # opp_def_rating is now a per-game as-of-date value, so we rank opponents
+    # against each other *on that game's date* (all games sharing a date see a
+    # consistent ranking) rather than ranking one season-final aggregate. This
+    # keeps the rank leakage-free and in step with the rolling rating.
+    if all(c in df.columns for c in ["opp_def_rating", "game_date", "opponent_abbrev"]):
+        # Rank distinct opponents on each date (not player-rows, which would make
+        # the scale depend on how many players played that night). ~1-30 teams.
+        ranks = (
+            df[["game_date", "opponent_abbrev", "opp_def_rating"]]
+            .drop_duplicates(["game_date", "opponent_abbrev"])
+            .copy()
         )
-        team_ratings["opp_def_rank"] = (
-            team_ratings.groupby("season")["opp_def_rating"]
+        ranks["opp_def_rank"] = (
+            ranks.groupby("game_date")["opp_def_rating"]
             .rank(method="average", ascending=True)
         )
-        rank_lookup = team_ratings.set_index(["opponent_abbrev", "season"])["opp_def_rank"]
+        rank_lookup = ranks.set_index(["game_date", "opponent_abbrev"])["opp_def_rank"]
         df["opp_def_rank"] = (
-            df.set_index(["opponent_abbrev", "season"]).index.map(rank_lookup).values
+            df.set_index(["game_date", "opponent_abbrev"]).index.map(rank_lookup).values
         )
 
     # Position encoding: PG=1, SG=2, SF=3, PF=4, C=5
@@ -254,6 +309,174 @@ def add_opponent_history_features(df):
 
 
 # ─────────────────────────────────────────────────────────────────────────────
+# Feature group 7a: Teammate availability / usage redistribution
+# ─────────────────────────────────────────────────────────────────────────────
+
+def add_teammate_features(df):
+    """When a rotation teammate sits, the remaining players absorb their minutes,
+    touches and usage — the single biggest real-world swing in box-score output.
+
+    We infer inactives directly from the game logs (no external injury feed): a
+    team's rotation for a season is the set of players with a real role (>=10
+    games, >=20 mpg); for each team-game the rotation members who have NO row are
+    treated as out. These signals are known pre-game (injury reports drop before
+    tip-off), so using the current game's availability is not leakage. Player
+    'weight' is season average minutes — a stable role descriptor.
+
+    Features (identical for every player in a given team-game):
+        teammates_out_count  : # of rotation teammates inactive
+        star_teammate_out    : 1 if an inactive teammate averages >= 28 mpg
+        team_minutes_vacated : summed season mpg of the inactive teammates
+    """
+    log.info("  Building teammate-availability features...")
+    need = ["player_id", "team_abbrev", "season", "game_date", "minutes"]
+    if not all(c in df.columns for c in need):
+        df["teammates_out_count"]  = 0
+        df["star_teammate_out"]    = 0
+        df["team_minutes_vacated"] = 0.0
+        return df
+
+    STAR_MPG = 28.0
+    played = df[df["minutes"] >= 1]
+
+    # Rotation membership per (team, season, player): role weight + the window of
+    # their tenure with that team (first..last appearance). A player only counts
+    # as "out" for games INSIDE that window — this excludes players who were
+    # traded away, hadn't arrived yet, or were done for the season (their missed
+    # games aren't injuries, they just weren't on the roster then).
+    role = (
+        played.groupby(["team_abbrev", "season", "player_id"])["minutes"]
+        .agg(games="size", mpg="mean").reset_index()
+    )
+    tenure = (
+        played.groupby(["team_abbrev", "season", "player_id"])["game_date"]
+        .agg(first="min", last="max").reset_index()
+    )
+    role = role.merge(tenure, on=["team_abbrev", "season", "player_id"])
+    rotation = role[(role["games"] >= 10) & (role["mpg"] >= 20)]
+
+    # (team, season) -> list of (player_id, mpg, first, last)
+    rot_by_team = {}
+    for t, s, p, m, f, l in zip(
+        rotation["team_abbrev"], rotation["season"], rotation["player_id"],
+        rotation["mpg"], rotation["first"], rotation["last"]
+    ):
+        rot_by_team.setdefault((t, s), []).append((p, m, f, l))
+
+    # Who actually appeared in each team-game.
+    present = (
+        played.groupby(["team_abbrev", "season", "game_date"])["player_id"]
+        .apply(set).reset_index(name="present")
+    )
+
+    def _row(r):
+        members = rot_by_team.get((r.team_abbrev, r.season), [])
+        cnt, star, vac = 0, 0, 0.0
+        for p, m, first, last in members:
+            # Out only if the game is within the player's tenure and they missed it.
+            if first < r.game_date < last and p not in r.present:
+                cnt += 1
+                vac += m
+                if m >= STAR_MPG:
+                    star = 1
+        return cnt, star, vac
+
+    vals = present.apply(_row, axis=1, result_type="expand")
+    present["teammates_out_count"]  = vals[0].astype(int)
+    present["star_teammate_out"]    = vals[1].astype(int)
+    present["team_minutes_vacated"] = vals[2].astype(float)
+
+    out = df.merge(
+        present[["team_abbrev", "season", "game_date",
+                 "teammates_out_count", "star_teammate_out", "team_minutes_vacated"]],
+        on=["team_abbrev", "season", "game_date"], how="left",
+    )
+    for c in ["teammates_out_count", "star_teammate_out", "team_minutes_vacated"]:
+        out[c] = out[c].fillna(0)
+    log.info("    %.1f%% of games have a rotation player out (mean %.1f out)",
+             (out["teammates_out_count"] > 0).mean() * 100,
+             out["teammates_out_count"].mean())
+    return out
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+# Feature group 7c: Vegas odds (nullable — self-activates as history accumulates)
+# ─────────────────────────────────────────────────────────────────────────────
+
+VEGAS_COLS = ["implied_team_total", "game_total", "team_spread", "is_favorite"]
+
+
+def add_vegas_features(df):
+    """Join Vegas implied team totals / spreads from data/raw/odds_history.csv.
+
+    The free odds tier has no history, so scraping/odds.py can only accumulate
+    lines going forward. Rows with no matching odds stay NaN — harmless to
+    XGBoost, and the moment enough history exists a retrain starts using these
+    automatically (no code change needed). implied_team_total is typically the
+    strongest single external predictor of counting-stat output.
+    """
+    log.info("  Building Vegas odds features...")
+    odds_path = PROCESSED.parent / "raw" / "odds_history.csv"
+    if not odds_path.exists():
+        for c in VEGAS_COLS:
+            df[c] = np.nan
+        log.info("    no odds_history.csv yet — Vegas features left NaN")
+        return df
+
+    odds = pd.read_csv(odds_path)
+    odds["game_date"] = pd.to_datetime(odds["game_date"], errors="coerce")
+    keep = ["game_date", "team_abbrev"] + [c for c in VEGAS_COLS if c in odds.columns]
+    odds = odds[keep].drop_duplicates(["game_date", "team_abbrev"])
+
+    df = df.merge(odds, on=["game_date", "team_abbrev"], how="left")
+    matched = df["implied_team_total"].notna().sum() if "implied_team_total" in df else 0
+    log.info("    matched odds for %d / %d rows", matched, len(df))
+    return df
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+# Feature group 7b: Matchup / interaction features
+# ─────────────────────────────────────────────────────────────────────────────
+
+def add_interaction_features(df):
+    """Give the opponent/context columns something the trees can actually use.
+
+    - opp_pace / pace_sum : the opponent's own pace (looked up from that team's
+      team_pace) and the combined game pace — a proxy for how many total
+      possessions (and therefore counting-stat opportunities) the game offers.
+    - usage_x_minutes      : usage rate scales counting stats, but only in
+      proportion to minutes played. Their product is the real opportunity
+      signal.
+    """
+    log.info("  Building matchup / interaction features...")
+
+    # opp_pace is now supplied as an AS-OF-DATE column by build_dataset (from
+    # nba_api_client.build_asof_team_ratings). Only fall back to a season-average
+    # derivation if it's missing, so we never silently reintroduce the season-
+    # aggregate leakage this column used to carry.
+    if "opp_pace" not in df.columns and all(
+        c in df.columns for c in ["team_abbrev", "opponent_abbrev", "season", "team_pace"]
+    ):
+        log.warning("  opp_pace absent — falling back to season-average pace")
+        pace_lookup = df.groupby(["team_abbrev", "season"])["team_pace"].mean()
+        df["opp_pace"] = (
+            df.set_index(["opponent_abbrev", "season"]).index
+            .map(pace_lookup).astype(float)
+        )
+        df["opp_pace"] = df["opp_pace"].fillna(df["team_pace"])
+
+    if "team_pace" in df.columns and "opp_pace" in df.columns:
+        df["pace_sum"] = df["team_pace"] + df["opp_pace"]
+
+    if "season_avg_usage_rate" in df.columns and "rolling_last5_minutes" in df.columns:
+        df["usage_x_minutes"] = (
+            df["season_avg_usage_rate"] * df["rolling_last5_minutes"]
+        )
+
+    return df
+
+
+# ─────────────────────────────────────────────────────────────────────────────
 # Feature group 8: Schedule fatigue and season timing
 # ─────────────────────────────────────────────────────────────────────────────
 
@@ -288,12 +511,29 @@ def add_schedule_features(df):
     else:
         df["games_in_last_7_days"] = 0
 
-    # Home court factor per team (actual home win rate from training data)
-    if all(c in df.columns for c in ["team_abbrev", "result", "home_game"]):
-        home_games = df[df["home_game"] == 1].copy()
-        home_games["won"] = home_games["result"].astype(str).str.startswith("W").astype(int)
-        home_wr = home_games.groupby("team_abbrev")["won"].mean().rename("home_court_factor")
-        df["home_court_factor"] = df["team_abbrev"].map(home_wr).fillna(0.575).round(3)
+    # Home court factor — AS-OF-DATE home win rate per team.
+    # LEAKAGE FIX: previously this was each team's full-season home win rate
+    # (computed from every home game, including the current row's own result and
+    # future games). Now it's the team's expanding home win rate over PRIOR home
+    # games only (shift(1)), reset per season and carried forward to away games,
+    # so a row never sees its own or future outcomes.
+    if all(c in df.columns for c in
+           ["team_abbrev", "result", "home_game", "season", "game_date"]):
+        tmp = df[["team_abbrev", "season", "game_date", "result", "home_game"]].copy()
+        tmp = tmp.sort_values(["team_abbrev", "season", "game_date"])
+        won = tmp["result"].astype(str).str.startswith("W").astype(float)
+        # Only home games contribute; away rows are NaN and get filled forward.
+        home_won = won.where(tmp["home_game"] == 1)
+        keys = [tmp["team_abbrev"], tmp["season"]]
+        asof = home_won.groupby(keys).transform(
+            lambda s: s.shift(1).expanding(min_periods=1).mean()
+        )
+        # Carry the last known home win rate forward onto away-game rows too.
+        asof = asof.groupby(keys).ffill()
+        tmp["home_court_factor"] = asof
+        df["home_court_factor"] = (
+            tmp["home_court_factor"].reindex(df.index).fillna(0.575).round(3)
+        )
     else:
         df["home_court_factor"] = 0.575
 
@@ -367,9 +607,13 @@ def add_positional_defense_features(df: pd.DataFrame) -> pd.DataFrame:
     df["opp_pts_allowed_pos"]  = df.apply(_lookup_pts, axis=1)
     df["opp_pos_defense_rank"] = df.apply(_lookup_rank, axis=1)
 
-    # Fill NaN with season-position median
+    # Fill NaN with season-position median, then a global-median backstop so no
+    # row is left at a nonsense value (0.0 previously killed this feature's signal).
     df["opp_pts_allowed_pos"]  = df.groupby(["season", "position"])["opp_pts_allowed_pos"].transform(
         lambda x: x.fillna(x.median())
+    )
+    df["opp_pts_allowed_pos"]  = df["opp_pts_allowed_pos"].fillna(
+        df["opp_pts_allowed_pos"].median()
     )
     df["opp_pos_defense_rank"] = df["opp_pos_defense_rank"].fillna(15.0)
 
@@ -471,6 +715,8 @@ def select_features(df):
         if f"rolling_last{w}_{stat}" in df.columns
     ]
     season_avg_cols  = [c for c in df.columns if c.startswith("season_avg_")]
+    ewm_cols         = [c for c in df.columns if c.startswith("ewm_")]
+    venue_cols       = [c for c in df.columns if c.startswith("venue_last10_")]
     trend_cols       = [c for c in df.columns if c.startswith("trend_")]
     efficiency_cols  = [c for c in df.columns if c in [
         "rolling_last3_ts_pct", "rolling_last5_ts_pct",
@@ -479,16 +725,19 @@ def select_features(df):
     context_cols     = [c for c in df.columns if c in [
         "rest_days_capped", "back_to_back", "home_game",
         "team_pace", "opp_def_rating", "opp_def_rank",
+        "opp_pace", "pace_sum", "usage_x_minutes",
         "games_played_season", "position_enc",
         "days_into_season", "games_in_last_7_days", "home_court_factor",
         "opp_pts_allowed_pos", "opp_pos_defense_rank",
         "is_likely_starter", "start_rate_last10",
         "season_phase", "is_late_season",
+        "teammates_out_count", "star_teammate_out", "team_minutes_vacated",
+        "implied_team_total", "game_total", "team_spread", "is_favorite",
     ]]
     opp_history_cols = [c for c in df.columns if c.startswith("vs_opp_rolling")]
 
-    feature_names = (rolling_cols + season_avg_cols + trend_cols
-                     + efficiency_cols + context_cols + opp_history_cols)
+    feature_names = (rolling_cols + season_avg_cols + ewm_cols + venue_cols
+                     + trend_cols + efficiency_cols + context_cols + opp_history_cols)
 
     # Deduplicate preserving order
     seen = set()
@@ -497,6 +746,8 @@ def select_features(df):
     log.info(f"  Total features: {len(feature_names)}")
     log.info(f"    Rolling avgs    : {len(rolling_cols)}")
     log.info(f"    Season avgs     : {len(season_avg_cols)}")
+    log.info(f"    EWMA form       : {len(ewm_cols)}")
+    log.info(f"    Venue split     : {len(venue_cols)}")
     log.info(f"    Trend           : {len(trend_cols)}")
     log.info(f"    Efficiency      : {len(efficiency_cols)}")
     log.info(f"    Context         : {len(context_cols)}")
@@ -542,10 +793,15 @@ def build_features():
     df = add_usage_rate(df)
     df = add_rolling_features(df)
     df = add_season_averages(df)
+    df = add_ewm_features(df)
+    df = add_venue_split_features(df)
     df = add_trend_features(df)
     df = add_efficiency_features(df)
     df = add_context_features(df)
     df = add_opponent_history_features(df)
+    df = add_teammate_features(df)
+    df = add_vegas_features(df)
+    df = add_interaction_features(df)
     df = add_schedule_features(df)
     df = add_positional_defense_features(df)
     df = add_starter_features(df)
@@ -555,9 +811,36 @@ def build_features():
 
     df.to_csv(PROCESSED / "features.csv", index=False)
     (PROCESSED / "feature_names.txt").write_text("\n".join(feature_names))
+    write_serving_features(df)
 
     log.info(f"Saved features.csv and feature_names.txt")
     return df, feature_names
+
+
+# Games kept per player in the slim serving file — enough for the API to build a
+# prediction row (latest engineered game) plus recent-form / hit-rate endpoints.
+SERVING_GAMES_PER_PLAYER = 25
+
+
+def write_serving_features(df):
+    """Write a slim features_serving.csv: the last N games per player.
+
+    The full features.csv is the ~100k-row training matrix (100+ MB) — too large
+    for git and far more than serving needs. The API only ever reads a player's
+    most recent games (latest row for /predict, recent games for /probability and
+    /recent), so we commit just the tail per player. Full matrix stays local /
+    gitignored; this slim file is what the deployed API loads.
+    """
+    slim = (
+        df.sort_values("game_date")
+        .groupby("player_id", group_keys=False)
+        .tail(SERVING_GAMES_PER_PLAYER)
+        .reset_index(drop=True)
+    )
+    out = PROCESSED / "features_serving.csv"
+    slim.to_csv(out, index=False)
+    log.info("Saved %s (%d rows, %d players)",
+             out.name, len(slim), slim["player_id"].nunique())
 
 
 if __name__ == "__main__":

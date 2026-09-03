@@ -43,7 +43,7 @@ logging.basicConfig(
 )
 log = logging.getLogger(__name__)
 
-TARGETS = ["pts", "reb", "ast", "stl", "blk", "minutes"]
+TARGETS = ["pts", "reb", "ast", "stl", "blk", "minutes", "fg3"]
 
 # Fantasy score weights
 FANTASY_WEIGHTS = {

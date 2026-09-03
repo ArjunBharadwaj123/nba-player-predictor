@@ -59,7 +59,7 @@ log = logging.getLogger(__name__)
 
 PROCESSED  = ROOT / "data" / "processed"
 MODELS_DIR = ROOT / "models" / "saved"
-TARGETS    = ["pts", "reb", "ast", "stl", "blk", "minutes"]
+TARGETS    = ["pts", "reb", "ast", "stl", "blk", "minutes", "fg3"]
 
 POSITION_MAP = {"PG": 1, "SG": 2, "SF": 3, "PF": 4, "C": 5}
 
@@ -115,9 +115,12 @@ async def startup():
 def _get_df() -> pd.DataFrame:
     global _features_df
     if _features_df is None:
-        _features_df = pd.read_csv(
-            PROCESSED / "features.csv", parse_dates=["game_date"]
-        )
+        # Prefer the slim serving file (last N games per player, committed for the
+        # deploy); fall back to the full training matrix locally if present.
+        serving = PROCESSED / "features_serving.csv"
+        full    = PROCESSED / "features.csv"
+        path    = serving if serving.exists() else full
+        _features_df = pd.read_csv(path, parse_dates=["game_date"])
         # Ensure usage_rate exists
         if "usage_rate" not in _features_df.columns and "usage_proxy" in _features_df.columns:
             _features_df["usage_rate"] = _features_df["usage_proxy"]
@@ -189,7 +192,7 @@ def _build_rolling_from_live(fresh_df: pd.DataFrame, team_pace: float) -> pd.Ser
     df = df.sort_values("game_date").reset_index(drop=True)
 
     ROLL_STATS = ["pts", "reb", "ast", "stl", "blk", "minutes",
-                  "fg_pct", "fg3_pct", "ft_pct", "tov"]
+                  "fg_pct", "fg3", "fg3a", "fg3_pct", "ft_pct", "tov"]
 
     for stat in ROLL_STATS:
         if stat not in df.columns:
@@ -505,7 +508,7 @@ def probability(
     Blends empirical hit rate from recent games with normal distribution
     probability for robustness with small samples.
     """
-    VALID_STATS = {"pts", "reb", "ast", "stl", "blk", "minutes"}
+    VALID_STATS = {"pts", "reb", "ast", "stl", "blk", "minutes", "fg3"}
     if stat not in VALID_STATS:
         raise HTTPException(status_code=422,
                             detail="stat must be one of: " + ", ".join(VALID_STATS))
