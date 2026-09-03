@@ -1,0 +1,288 @@
+{
+  "position": "QB",
+  "n_rows": 1960,
+  "targets": {
+    "attempts": {
+      "n_rows": 1960,
+      "objective": "count:poisson",
+      "residual_std": 8.163900664088091,
+      "y_mean": 27.587244897959184,
+      "top_features": [
+        [
+          "is_starter",
+          0.08096718043088913
+        ],
+        [
+          "depth_rank",
+          0.06120266020298004
+        ],
+        [
+          "passing_air_yards_prev",
+          0.027257293462753296
+        ],
+        [
+          "attempts_prev",
+          0.016742005944252014
+        ],
+        [
+          "offense_pct_prev",
+          0.015469001606106758
+        ],
+        [
+          "completions_roll8",
+          0.014085645787417889
+        ],
+        [
+          "implied_team_total",
+          0.01200649980455637
+        ],
+        [
+          "games_played_season",
+          0.011986504308879375
+        ]
+      ]
+    },
+    "completions": {
+      "n_rows": 1960,
+      "objective": "count:poisson",
+      "residual_std": 5.532595266989385,
+      "y_mean": 17.84234693877551,
+      "top_features": [
+        [
+          "is_starter",
+          0.09411057829856873
+        ],
+        [
+          "depth_rank",
+          0.0692291259765625
+        ],
+        [
+          "passing_air_yards_prev",
+          0.023120379075407982
+        ],
+        [
+          "attempts_prev",
+          0.021633761003613472
+        ],
+        [
+          "completions_roll3",
+          0.018412362784147263
+        ],
+        [
+          "fantasy_points_ewma",
+          0.015358611941337585
+        ],
+        [
+          "passing_first_downs_prev",
+          0.013191859237849712
+        ],
+        [
+          "passing_yards_roll8",
+          0.012501347810029984
+        ]
+      ]
+    },
+    "passing_yards": {
+      "n_rows": 1960,
+      "objective": "reg:squarederror",
+      "residual_std": 69.97919729463362,
+      "y_mean": 194.715306122449,
+      "top_features": [
+        [
+          "depth_rank",
+          0.1191982552409172
+        ],
+        [
+          "is_starter",
+          0.08719097077846527
+        ],
+        [
+          "fantasy_points_component_roll5",
+          0.028590740635991096
+        ],
+        [
+          "passing_first_downs_prev",
+          0.02087266370654106
+        ],
+        [
+          "attempts_prev",
+          0.02064153552055359
+        ],
+        [
+          "passing_yards_roll8",
+          0.020163513720035553
+        ],
+        [
+          "passing_first_downs_ewma",
+          0.015268494375050068
+        ],
+        [
+          "passing_first_downs_roll8",
+          0.014102816581726074
+        ]
+      ]
+    },
+    "passing_tds": {
+      "n_rows": 1960,
+      "objective": "count:poisson",
+      "residual_std": 0.8789599807923606,
+      "y_mean": 1.1714285714285715,
+      "top_features": [
+        [
+          "is_starter",
+          0.04806705564260483
+        ],
+        [
+          "passing_yards_roll8",
+          0.039040353149175644
+        ],
+        [
+          "depth_rank",
+          0.03457660228013992
+        ],
+        [
+          "passing_tds_season_avg",
+          0.019961891695857048
+        ],
+        [
+          "fantasy_points_ppr_ewma",
+          0.01863008737564087
+        ],
+        [
+          "passing_yards_ewma",
+          0.01641305536031723
+        ],
+        [
+          "fantasy_points_ewma",
+          0.013846738263964653
+        ],
+        [
+          "fantasy_points_season_avg",
+          0.013445893302559853
+        ]
+      ]
+    },
+    "passing_interceptions": {
+      "n_rows": 1960,
+      "objective": "count:poisson",
+      "residual_std": 0.7303560965955617,
+      "y_mean": 0.6265306122448979,
+      "top_features": [
+        [
+          "is_starter",
+          0.013490353710949421
+        ],
+        [
+          "depth_rank",
+          0.012933038175106049
+        ],
+        [
+          "passing_cpoe_roll8",
+          0.010486156679689884
+        ],
+        [
+          "wopr_roll8",
+          0.009793904609978199
+        ],
+        [
+          "carries_season_avg",
+          0.009189324453473091
+        ],
+        [
+          "wopr_roll5_std",
+          0.009180869907140732
+        ],
+        [
+          "rushing_tds_roll3",
+          0.00893970113247633
+        ],
+        [
+          "passing_tds_roll5",
+          0.008901743218302727
+        ]
+      ]
+    },
+    "rushing_yards": {
+      "n_rows": 1960,
+      "objective": "reg:squarederror",
+      "residual_std": 14.03347773246162,
+      "y_mean": 15.656632653061225,
+      "top_features": [
+        [
+          "carries_season_avg",
+          0.06470935046672821
+        ],
+        [
+          "carries_roll5",
+          0.03569376841187477
+        ],
+        [
+          "rushing_yards_season_avg",
+          0.03398788720369339
+        ],
+        [
+          "rushing_first_downs_season_avg",
+          0.017020951956510544
+        ],
+        [
+          "rushing_yards_roll5",
+          0.014650402590632439
+        ],
+        [
+          "rushing_yards_ewma",
+          0.014103418216109276
+        ],
+        [
+          "offense_pct_roll3",
+          0.01085540372878313
+        ],
+        [
+          "fantasy_points_season_avg",
+          0.010100332088768482
+        ]
+      ]
+    },
+    "rushing_tds": {
+      "n_rows": 1960,
+      "objective": "count:poisson",
+      "residual_std": 0.35207572564412337,
+      "y_mean": 0.16071428571428573,
+      "top_features": [
+        [
+          "rushing_first_downs_roll5",
+          0.04695538431406021
+        ],
+        [
+          "rushing_yards_season_avg",
+          0.03428338095545769
+        ],
+        [
+          "rushing_first_downs_ewma",
+          0.030753986909985542
+        ],
+        [
+          "rushing_first_downs_roll8",
+          0.02594332955777645
+        ],
+        [
+          "carries_roll5",
+          0.019916579127311707
+        ],
+        [
+          "carries_season_avg",
+          0.013898014090955257
+        ],
+        [
+          "fantasy_points_ppr_prev",
+          0.013027597218751907
+        ],
+        [
+          "rushing_epa_season_avg",
+          0.012599773705005646
+        ]
+      ]
+    }
+  },
+  "train_date_min": "2022-09-08",
+  "train_date_max": "2025-01-05"
+}

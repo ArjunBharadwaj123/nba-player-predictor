@@ -1,8 +1,63 @@
-# 🏀 NBA Player Predictor
+# 🏀🏈 Multi-Sport Player Predictor (NBA + NFL)
 
-A machine learning-powered application that predicts an NBA player's next game performance using advanced statistical modeling and real-world data pipelines.
+A machine learning-powered application that predicts a player's next-game
+performance using advanced statistical modeling and real-world data pipelines.
+It now covers **two sports** as separate pages behind one app and one API:
 
-Built for fantasy basketball players, sports bettors, and data enthusiasts, this tool provides **stat predictions, confidence ranges, and probability insights** for upcoming games.
+- **`/nba`** — the original NBA predictor (unchanged).
+- **`/nfl`** — a full NFL predictor (QB/RB/WR/TE/K) built on **nflverse**
+  (`nflreadpy`): position-specific projections, prediction intervals, PPR /
+  Half-PPR / No-PPR fantasy points, football-language SHAP explanations, and
+  over/under probabilities.
+- **`/`** — redirects to `/nba`. A compact NBA/NFL switcher is on every page.
+
+Built for fantasy players, sports bettors, and data enthusiasts, this tool
+provides **stat predictions, confidence ranges, and probability insights** for
+upcoming games. See `docs/TECHNICAL_OVERVIEW.md` (Part 2) for the full NFL
+design.
+
+---
+
+## 🏈 NFL quick start
+
+```bash
+# 1. Install (adds nflreadpy / polars / pyarrow on top of the NBA deps)
+pip install -r requirements.txt
+
+# 2. Build data + train + evaluate.
+#    Development mode (fewer seasons, fast, clearly labelled "dev"):
+NFL_DEV_MODE=1 python -m nfl.pipeline.update
+#    Full production run (2018 → latest; configurable, heavier):
+python -m nfl.pipeline.update --seasons 2018,2019,2020,2021,2022,2023,2024
+
+# 3. Serve (NBA at the root, NFL under /nfl — same app)
+uvicorn api.main:app --reload
+
+# 4. Frontend
+cd dashboard && npm install && npm run dev   # visit /nfl
+```
+
+Useful NFL commands:
+
+```bash
+python -m nfl.scraping.collect            # download + cache seasons
+python -m nfl.features.build_dataset      # inspect the canonical dataset
+python -m nfl.models.train                # train per (position,target)
+python -m nfl.models.evaluate             # chronological walk-forward report
+python -m nfl.models.tune --position QB   # small chronological grid search
+python -m nfl.pipeline.update --dry-run   # detect new games, write nothing
+```
+
+Tests:
+
+```bash
+pytest                       # Python: scoring, positions, leakage, API, NBA compat
+cd dashboard && npm run lint && npm run build && npm test   # frontend + scoring persistence
+```
+
+The NFL system works **without** `ODDS_API_KEY` (odds are omitted and marked
+missing, never faked). Dev-mode artifacts are labelled `"dev"` and surfaced as a
+UI warning — never presented as production accuracy.
 
 ---
 
@@ -201,10 +256,25 @@ npm run dev
 ├── reports
 │   └── tuning                    # hyperparameter sweep charts
 ├── requirements.txt
-└── scraping
-    ├── bbref_scraper.py          # game logs + roster auto-collection
-    ├── nba_api_client.py         # team pace / defense / schedule
-    └── next_game.py              # live next-game context + injuries
+├── scraping
+│   ├── bbref_scraper.py          # game logs + roster auto-collection
+│   ├── nba_api_client.py         # team pace / defense / schedule
+│   └── next_game.py              # live next-game context + injuries
+└── nfl                           # NFL predictor (isolated from NBA)
+    ├── config.py                 # seasons, positions, targets, normalization
+    ├── scoring.py                # PPR/kicker scoring + fantasy simulation
+    ├── serving.py                # serve-time feature-row builder
+    ├── scraping/                 # collect.py (nflreadpy+cache), odds, next-game
+    ├── features/                 # build_dataset.py, engineer.py, feature_config.py
+    ├── models/                   # train.py, evaluate.py, tune.py, saved/<POS>/
+    ├── explainability/           # explainer.py (football-language SHAP)
+    ├── pipeline/                 # update.py (idempotent, atomic)
+    └── data/                     # raw/ cache/ (gitignored) + processed serving
+
+api/nfl.py                        # NFL FastAPI router, mounted under /nfl
+dashboard/src/pages/{NbaPage,NflPage}.jsx   # per-sport pages (React Router)
+dashboard/src/components/, lib/    # shared UI, api, nflConfig, fantasy, hooks
+tests/                            # pytest: scoring, positions, leakage, API, NBA compat
 ```
 
 ---

@@ -1,0 +1,1042 @@
+{
+  "holdout_frac": 0.2,
+  "positions": {
+    "QB": {
+      "position": "QB",
+      "train_date_range": [
+        "2022-09-08",
+        "2024-10-27"
+      ],
+      "holdout_date_range": [
+        "2024-10-27",
+        "2025-01-05"
+      ],
+      "targets": {
+        "attempts": {
+          "mae": 7.911,
+          "rmse": 10.136,
+          "r2": 0.405,
+          "baseline_mae": 8.774,
+          "improvement_over_baseline": 0.098,
+          "beats_baseline": true,
+          "interval_coverage_p15_p85": 0.51,
+          "n_train": 1568,
+          "n_eval": 392,
+          "top_features": [
+            [
+              "is_starter",
+              0.0878
+            ],
+            [
+              "depth_rank",
+              0.0613
+            ],
+            [
+              "offense_pct_prev",
+              0.0247
+            ],
+            [
+              "completions_roll3",
+              0.0225
+            ],
+            [
+              "passing_air_yards_prev",
+              0.0201
+            ],
+            [
+              "attempts_prev",
+              0.0183
+            ]
+          ]
+        },
+        "completions": {
+          "mae": 5.412,
+          "rmse": 6.81,
+          "r2": 0.422,
+          "baseline_mae": 5.8,
+          "improvement_over_baseline": 0.067,
+          "beats_baseline": true,
+          "interval_coverage_p15_p85": 0.508,
+          "n_train": 1568,
+          "n_eval": 392,
+          "top_features": [
+            [
+              "is_starter",
+              0.0965
+            ],
+            [
+              "depth_rank",
+              0.068
+            ],
+            [
+              "completions_prev",
+              0.0282
+            ],
+            [
+              "attempts_prev",
+              0.0195
+            ],
+            [
+              "completions_roll3",
+              0.019
+            ],
+            [
+              "passing_first_downs_season_avg",
+              0.0184
+            ]
+          ]
+        },
+        "passing_yards": {
+          "mae": 65.499,
+          "rmse": 82.157,
+          "r2": 0.375,
+          "baseline_mae": 71.698,
+          "improvement_over_baseline": 0.086,
+          "beats_baseline": true,
+          "interval_coverage_p15_p85": 0.533,
+          "n_train": 1568,
+          "n_eval": 392,
+          "top_features": [
+            [
+              "depth_rank",
+              0.1071
+            ],
+            [
+              "is_starter",
+              0.0668
+            ],
+            [
+              "completions_ewma",
+              0.0297
+            ],
+            [
+              "passing_first_downs_prev",
+              0.0291
+            ],
+            [
+              "passing_first_downs_season_avg",
+              0.0202
+            ],
+            [
+              "attempts_prev",
+              0.019
+            ]
+          ]
+        },
+        "passing_tds": {
+          "mae": 0.882,
+          "rmse": 1.101,
+          "r2": 0.169,
+          "baseline_mae": 0.901,
+          "improvement_over_baseline": 0.021,
+          "beats_baseline": true,
+          "interval_coverage_p15_p85": 0.495,
+          "n_train": 1568,
+          "n_eval": 392,
+          "top_features": [
+            [
+              "passing_yards_roll8",
+              0.0395
+            ],
+            [
+              "is_starter",
+              0.038
+            ],
+            [
+              "fantasy_points_ppr_roll8",
+              0.0256
+            ],
+            [
+              "depth_rank",
+              0.0204
+            ],
+            [
+              "fantasy_points_roll8",
+              0.0198
+            ],
+            [
+              "fantasy_points_component_roll8",
+              0.0193
+            ]
+          ]
+        },
+        "passing_interceptions": {
+          "mae": 0.689,
+          "rmse": 0.838,
+          "r2": -0.011,
+          "baseline_mae": 0.669,
+          "improvement_over_baseline": -0.03,
+          "beats_baseline": false,
+          "interval_coverage_p15_p85": 0.515,
+          "n_train": 1568,
+          "n_eval": 392,
+          "top_features": [
+            [
+              "is_starter",
+              0.0127
+            ],
+            [
+              "receiving_yards_roll5_std",
+              0.0111
+            ],
+            [
+              "rushing_first_downs_roll8",
+              0.0109
+            ],
+            [
+              "completions_prev",
+              0.0101
+            ],
+            [
+              "receiving_yards_roll5",
+              0.01
+            ],
+            [
+              "rushing_yards_season_avg",
+              0.0098
+            ]
+          ]
+        },
+        "rushing_yards": {
+          "mae": 12.35,
+          "rmse": 17.098,
+          "r2": 0.303,
+          "baseline_mae": 12.871,
+          "improvement_over_baseline": 0.04,
+          "beats_baseline": true,
+          "interval_coverage_p15_p85": 0.582,
+          "n_train": 1568,
+          "n_eval": 392,
+          "top_features": [
+            [
+              "carries_season_avg",
+              0.0586
+            ],
+            [
+              "carries_roll5",
+              0.0536
+            ],
+            [
+              "rushing_yards_season_avg",
+              0.0318
+            ],
+            [
+              "rushing_yards_roll5",
+              0.0183
+            ],
+            [
+              "fantasy_points_ppr_roll3",
+              0.0152
+            ],
+            [
+              "fantasy_points_ppr_roll5",
+              0.0131
+            ]
+          ]
+        },
+        "rushing_tds": {
+          "mae": 0.254,
+          "rmse": 0.422,
+          "r2": 0.137,
+          "baseline_mae": 0.241,
+          "improvement_over_baseline": -0.053,
+          "beats_baseline": false,
+          "interval_coverage_p15_p85": 0.597,
+          "n_train": 1568,
+          "n_eval": 392,
+          "top_features": [
+            [
+              "rushing_yards_season_avg",
+              0.0345
+            ],
+            [
+              "rushing_first_downs_season_avg",
+              0.0281
+            ],
+            [
+              "carries_season_avg",
+              0.0227
+            ],
+            [
+              "carries_roll8",
+              0.0226
+            ],
+            [
+              "carries_roll5",
+              0.0179
+            ],
+            [
+              "carries_ewma",
+              0.0162
+            ]
+          ]
+        }
+      }
+    },
+    "RB": {
+      "position": "RB",
+      "train_date_range": [
+        "2022-09-08",
+        "2024-10-21"
+      ],
+      "holdout_date_range": [
+        "2024-10-21",
+        "2025-01-05"
+      ],
+      "targets": {
+        "carries": {
+          "mae": 3.3,
+          "rmse": 4.434,
+          "r2": 0.63,
+          "baseline_mae": 3.362,
+          "improvement_over_baseline": 0.018,
+          "beats_baseline": true,
+          "interval_coverage_p15_p85": 0.597,
+          "n_train": 3895,
+          "n_eval": 973,
+          "top_features": [
+            [
+              "rushing_yards_roll5",
+              0.1576
+            ],
+            [
+              "carries_ewma",
+              0.092
+            ],
+            [
+              "rushing_yards_ewma",
+              0.0879
+            ],
+            [
+              "carries_roll5",
+              0.0488
+            ],
+            [
+              "carries_roll3",
+              0.0354
+            ],
+            [
+              "rushing_yards_roll3",
+              0.0214
+            ]
+          ]
+        },
+        "rushing_yards": {
+          "mae": 18.745,
+          "rmse": 26.925,
+          "r2": 0.477,
+          "baseline_mae": 18.788,
+          "improvement_over_baseline": 0.002,
+          "beats_baseline": true,
+          "interval_coverage_p15_p85": 0.617,
+          "n_train": 3895,
+          "n_eval": 973,
+          "top_features": [
+            [
+              "rushing_yards_roll5",
+              0.1218
+            ],
+            [
+              "rushing_yards_ewma",
+              0.0828
+            ],
+            [
+              "fantasy_points_ewma",
+              0.0348
+            ],
+            [
+              "rushing_yards_roll3",
+              0.0319
+            ],
+            [
+              "carries_roll3",
+              0.027
+            ],
+            [
+              "carries_ewma",
+              0.0234
+            ]
+          ]
+        },
+        "rushing_tds": {
+          "mae": 0.304,
+          "rmse": 0.472,
+          "r2": 0.18,
+          "baseline_mae": 0.303,
+          "improvement_over_baseline": -0.003,
+          "beats_baseline": false,
+          "interval_coverage_p15_p85": 0.553,
+          "n_train": 3895,
+          "n_eval": 973,
+          "top_features": [
+            [
+              "carries_roll3",
+              0.0643
+            ],
+            [
+              "carries_roll5",
+              0.0416
+            ],
+            [
+              "carries_ewma",
+              0.0332
+            ],
+            [
+              "fantasy_points_ppr_ewma",
+              0.025
+            ],
+            [
+              "rushing_yards_roll8",
+              0.0193
+            ],
+            [
+              "rushing_yards_roll5",
+              0.0192
+            ]
+          ]
+        },
+        "targets": {
+          "mae": 1.211,
+          "rmse": 1.647,
+          "r2": 0.345,
+          "baseline_mae": 1.222,
+          "improvement_over_baseline": 0.009,
+          "beats_baseline": true,
+          "interval_coverage_p15_p85": 0.559,
+          "n_train": 3895,
+          "n_eval": 973,
+          "top_features": [
+            [
+              "targets_roll5",
+              0.1056
+            ],
+            [
+              "fantasy_points_ppr_ewma",
+              0.0685
+            ],
+            [
+              "targets_ewma",
+              0.0617
+            ],
+            [
+              "receptions_ewma",
+              0.0579
+            ],
+            [
+              "targets_roll8",
+              0.0441
+            ],
+            [
+              "receiving_yards_ewma",
+              0.0257
+            ]
+          ]
+        },
+        "receptions": {
+          "mae": 1.029,
+          "rmse": 1.39,
+          "r2": 0.333,
+          "baseline_mae": 1.036,
+          "improvement_over_baseline": 0.007,
+          "beats_baseline": true,
+          "interval_coverage_p15_p85": 0.549,
+          "n_train": 3895,
+          "n_eval": 973,
+          "top_features": [
+            [
+              "targets_roll5",
+              0.0914
+            ],
+            [
+              "targets_ewma",
+              0.0664
+            ],
+            [
+              "fantasy_points_ppr_ewma",
+              0.0438
+            ],
+            [
+              "receptions_ewma",
+              0.031
+            ],
+            [
+              "fantasy_points_component_ewma",
+              0.0302
+            ],
+            [
+              "targets_roll8",
+              0.0285
+            ]
+          ]
+        },
+        "receiving_yards": {
+          "mae": 9.659,
+          "rmse": 13.944,
+          "r2": 0.232,
+          "baseline_mae": 9.904,
+          "improvement_over_baseline": 0.025,
+          "beats_baseline": true,
+          "interval_coverage_p15_p85": 0.601,
+          "n_train": 3895,
+          "n_eval": 973,
+          "top_features": [
+            [
+              "targets_ewma",
+              0.0616
+            ],
+            [
+              "receiving_yards_ewma",
+              0.0449
+            ],
+            [
+              "receiving_yards_season_avg",
+              0.0252
+            ],
+            [
+              "fantasy_points_ppr_roll5",
+              0.0198
+            ],
+            [
+              "receptions_roll5",
+              0.019
+            ],
+            [
+              "receptions_roll3",
+              0.0161
+            ]
+          ]
+        },
+        "receiving_tds": {
+          "mae": 0.096,
+          "rmse": 0.226,
+          "r2": 0.028,
+          "baseline_mae": 0.098,
+          "improvement_over_baseline": 0.023,
+          "beats_baseline": true,
+          "interval_coverage_p15_p85": 0.699,
+          "n_train": 3895,
+          "n_eval": 973,
+          "top_features": [
+            [
+              "targets_ewma",
+              0.028
+            ],
+            [
+              "receptions_roll5",
+              0.0265
+            ],
+            [
+              "targets_roll5",
+              0.0254
+            ],
+            [
+              "fantasy_points_ppr_roll8",
+              0.0225
+            ],
+            [
+              "target_share_roll5",
+              0.022
+            ],
+            [
+              "targets_roll3",
+              0.0185
+            ]
+          ]
+        }
+      }
+    },
+    "WR": {
+      "position": "WR",
+      "train_date_range": [
+        "2022-09-08",
+        "2024-10-27"
+      ],
+      "holdout_date_range": [
+        "2024-10-27",
+        "2025-01-05"
+      ],
+      "targets": {
+        "targets": {
+          "mae": 1.803,
+          "rmse": 2.454,
+          "r2": 0.547,
+          "baseline_mae": 1.881,
+          "improvement_over_baseline": 0.042,
+          "beats_baseline": true,
+          "interval_coverage_p15_p85": 0.624,
+          "n_train": 5844,
+          "n_eval": 1460,
+          "top_features": [
+            [
+              "targets_ewma",
+              0.1509
+            ],
+            [
+              "receptions_ewma",
+              0.0892
+            ],
+            [
+              "receptions_roll8",
+              0.0422
+            ],
+            [
+              "target_share_ewma",
+              0.0346
+            ],
+            [
+              "receiving_first_downs_roll8",
+              0.0283
+            ],
+            [
+              "targets_season_avg",
+              0.0238
+            ]
+          ]
+        },
+        "receptions": {
+          "mae": 1.366,
+          "rmse": 1.859,
+          "r2": 0.492,
+          "baseline_mae": 1.4,
+          "improvement_over_baseline": 0.024,
+          "beats_baseline": true,
+          "interval_coverage_p15_p85": 0.628,
+          "n_train": 5844,
+          "n_eval": 1460,
+          "top_features": [
+            [
+              "receptions_ewma",
+              0.086
+            ],
+            [
+              "targets_ewma",
+              0.0845
+            ],
+            [
+              "receptions_roll8",
+              0.058
+            ],
+            [
+              "receiving_first_downs_roll8",
+              0.0398
+            ],
+            [
+              "receiving_first_downs_ewma",
+              0.0378
+            ],
+            [
+              "receptions_season_avg",
+              0.0337
+            ]
+          ]
+        },
+        "receiving_yards": {
+          "mae": 21.281,
+          "rmse": 29.359,
+          "r2": 0.373,
+          "baseline_mae": 21.496,
+          "improvement_over_baseline": 0.01,
+          "beats_baseline": true,
+          "interval_coverage_p15_p85": 0.616,
+          "n_train": 5844,
+          "n_eval": 1460,
+          "top_features": [
+            [
+              "fantasy_points_ppr_season_avg",
+              0.0885
+            ],
+            [
+              "fantasy_points_component_season_avg",
+              0.0884
+            ],
+            [
+              "targets_season_avg",
+              0.0841
+            ],
+            [
+              "receiving_yards_ewma",
+              0.0456
+            ],
+            [
+              "receiving_yards_season_avg",
+              0.0323
+            ],
+            [
+              "wopr_ewma",
+              0.026
+            ]
+          ]
+        },
+        "receiving_tds": {
+          "mae": 0.318,
+          "rmse": 0.481,
+          "r2": 0.077,
+          "baseline_mae": 0.315,
+          "improvement_over_baseline": -0.012,
+          "beats_baseline": false,
+          "interval_coverage_p15_p85": 0.65,
+          "n_train": 5844,
+          "n_eval": 1460,
+          "top_features": [
+            [
+              "receiving_yards_season_avg",
+              0.0411
+            ],
+            [
+              "fantasy_points_ppr_ewma",
+              0.0374
+            ],
+            [
+              "fantasy_points_ppr_season_avg",
+              0.034
+            ],
+            [
+              "receiving_yards_roll8",
+              0.0314
+            ],
+            [
+              "fantasy_points_ewma",
+              0.0263
+            ],
+            [
+              "receiving_first_downs_season_avg",
+              0.0257
+            ]
+          ]
+        },
+        "rushing_yards": {
+          "mae": 1.695,
+          "rmse": 3.404,
+          "r2": 0.066,
+          "baseline_mae": 1.447,
+          "improvement_over_baseline": -0.172,
+          "beats_baseline": false,
+          "interval_coverage_p15_p85": 0.788,
+          "n_train": 5844,
+          "n_eval": 1460,
+          "top_features": [
+            [
+              "fantasy_points_component_season_avg",
+              0.0285
+            ],
+            [
+              "receiving_first_downs_roll3",
+              0.0232
+            ],
+            [
+              "receiving_first_downs_ewma",
+              0.0209
+            ],
+            [
+              "rushing_yards_roll5_std",
+              0.0197
+            ],
+            [
+              "carries_ewma",
+              0.0181
+            ],
+            [
+              "air_yards_share_prev",
+              0.0176
+            ]
+          ]
+        }
+      }
+    },
+    "TE": {
+      "position": "TE",
+      "train_date_range": [
+        "2022-09-08",
+        "2024-10-27"
+      ],
+      "holdout_date_range": [
+        "2024-10-27",
+        "2025-01-05"
+      ],
+      "targets": {
+        "targets": {
+          "mae": 1.601,
+          "rmse": 2.241,
+          "r2": 0.462,
+          "baseline_mae": 1.6,
+          "improvement_over_baseline": -0.0,
+          "beats_baseline": false,
+          "interval_coverage_p15_p85": 0.563,
+          "n_train": 2895,
+          "n_eval": 723,
+          "top_features": [
+            [
+              "targets_ewma",
+              0.1205
+            ],
+            [
+              "target_share_ewma",
+              0.1172
+            ],
+            [
+              "targets_roll5",
+              0.0415
+            ],
+            [
+              "receptions_ewma",
+              0.0234
+            ],
+            [
+              "target_share_roll8",
+              0.0207
+            ],
+            [
+              "wopr_ewma",
+              0.0193
+            ]
+          ]
+        },
+        "receptions": {
+          "mae": 1.313,
+          "rmse": 1.85,
+          "r2": 0.381,
+          "baseline_mae": 1.344,
+          "improvement_over_baseline": 0.024,
+          "beats_baseline": true,
+          "interval_coverage_p15_p85": 0.568,
+          "n_train": 2895,
+          "n_eval": 723,
+          "top_features": [
+            [
+              "target_share_ewma",
+              0.1588
+            ],
+            [
+              "targets_ewma",
+              0.065
+            ],
+            [
+              "target_share_roll8",
+              0.046
+            ],
+            [
+              "targets_roll5",
+              0.0265
+            ],
+            [
+              "target_share_roll5",
+              0.017
+            ],
+            [
+              "receptions_ewma",
+              0.0158
+            ]
+          ]
+        },
+        "receiving_yards": {
+          "mae": 15.375,
+          "rmse": 20.517,
+          "r2": 0.377,
+          "baseline_mae": 15.412,
+          "improvement_over_baseline": 0.002,
+          "beats_baseline": true,
+          "interval_coverage_p15_p85": 0.586,
+          "n_train": 2895,
+          "n_eval": 723,
+          "top_features": [
+            [
+              "target_share_ewma",
+              0.1148
+            ],
+            [
+              "targets_ewma",
+              0.0597
+            ],
+            [
+              "fantasy_points_component_season_avg",
+              0.0524
+            ],
+            [
+              "target_share_roll5",
+              0.0517
+            ],
+            [
+              "receiving_yards_season_avg",
+              0.0208
+            ],
+            [
+              "fantasy_points_ppr_season_avg",
+              0.0143
+            ]
+          ]
+        },
+        "receiving_tds": {
+          "mae": 0.26,
+          "rmse": 0.394,
+          "r2": 0.044,
+          "baseline_mae": 0.243,
+          "improvement_over_baseline": -0.07,
+          "beats_baseline": false,
+          "interval_coverage_p15_p85": 0.675,
+          "n_train": 2895,
+          "n_eval": 723,
+          "top_features": [
+            [
+              "targets_roll8",
+              0.0633
+            ],
+            [
+              "target_share_ewma",
+              0.0232
+            ],
+            [
+              "offense_pct_season_avg",
+              0.0211
+            ],
+            [
+              "target_share_season_avg",
+              0.0192
+            ],
+            [
+              "target_share_roll8",
+              0.0183
+            ],
+            [
+              "offense_pct_roll8",
+              0.0176
+            ]
+          ]
+        }
+      }
+    },
+    "K": {
+      "position": "K",
+      "train_date_range": [
+        "2022-09-08",
+        "2024-10-27"
+      ],
+      "holdout_date_range": [
+        "2024-10-27",
+        "2025-01-05"
+      ],
+      "targets": {
+        "field_goals_made": {
+          "mae": 0.983,
+          "rmse": 1.213,
+          "r2": -0.009,
+          "baseline_mae": 0.976,
+          "improvement_over_baseline": -0.007,
+          "beats_baseline": false,
+          "interval_coverage_p15_p85": 0.632,
+          "n_train": 1305,
+          "n_eval": 326,
+          "top_features": [
+            [
+              "is_indoor",
+              0.036
+            ],
+            [
+              "fg_made_season_avg",
+              0.0248
+            ],
+            [
+              "wind",
+              0.0243
+            ],
+            [
+              "fg_att_roll3",
+              0.0232
+            ],
+            [
+              "fg_made_prev",
+              0.023
+            ],
+            [
+              "years_experience",
+              0.023
+            ]
+          ]
+        },
+        "extra_points_made": {
+          "mae": 1.114,
+          "rmse": 1.416,
+          "r2": 0.129,
+          "baseline_mae": 1.192,
+          "improvement_over_baseline": 0.065,
+          "beats_baseline": true,
+          "interval_coverage_p15_p85": 0.595,
+          "n_train": 1305,
+          "n_eval": 326,
+          "top_features": [
+            [
+              "spread_line_team",
+              0.0574
+            ],
+            [
+              "implied_team_total",
+              0.0567
+            ],
+            [
+              "missing_depth",
+              0.0313
+            ],
+            [
+              "game_total",
+              0.029
+            ],
+            [
+              "pat_att_ewma",
+              0.0231
+            ],
+            [
+              "pat_made_roll5",
+              0.0221
+            ]
+          ]
+        },
+        "kicking_points": {
+          "mae": 3.475,
+          "rmse": 4.4,
+          "r2": 0.011,
+          "baseline_mae": 3.884,
+          "improvement_over_baseline": 0.105,
+          "beats_baseline": true,
+          "interval_coverage_p15_p85": 0.62,
+          "n_train": 1305,
+          "n_eval": 326,
+          "top_features": [
+            [
+              "fg_made_prev",
+              0.0314
+            ],
+            [
+              "fg_made_ewma",
+              0.0287
+            ],
+            [
+              "pat_att_ewma",
+              0.0241
+            ],
+            [
+              "is_grass",
+              0.0234
+            ],
+            [
+              "spread_line_team",
+              0.0233
+            ],
+            [
+              "kicking_points_season_avg",
+              0.0232
+            ]
+          ]
+        }
+      }
+    }
+  },
+  "failed_baselines": [
+    "QB/passing_interceptions",
+    "QB/rushing_tds",
+    "RB/rushing_tds",
+    "WR/receiving_tds",
+    "WR/rushing_yards",
+    "TE/targets",
+    "TE/receiving_tds",
+    "K/field_goals_made"
+  ]
+}

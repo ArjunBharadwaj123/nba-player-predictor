@@ -54,6 +54,15 @@ body {
   margin: 0;
 }
 
+/* Multi-sport results layouts collapse cleanly to one column on mobile. */
+@media (max-width: 720px) {
+  .nfl-results-grid,
+  .nba-results-grid,
+  .prob-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
 #root {
   width: 1126px;
   max-width: 100%;

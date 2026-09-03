@@ -1,0 +1,128 @@
+{
+  "position": "K",
+  "n_rows": 1631,
+  "targets": {
+    "field_goals_made": {
+      "n_rows": 1631,
+      "objective": "count:poisson",
+      "residual_std": 1.2179423536154683,
+      "y_mean": 1.6848559166155732,
+      "top_features": [
+        [
+          "fg_att_roll5",
+          0.028128236532211304
+        ],
+        [
+          "pat_att_season_avg",
+          0.026010261848568916
+        ],
+        [
+          "kicking_points_ewma",
+          0.025149893015623093
+        ],
+        [
+          "week",
+          0.025065230205655098
+        ],
+        [
+          "home_away",
+          0.024631952866911888
+        ],
+        [
+          "fg_made_roll5",
+          0.02443552389740944
+        ],
+        [
+          "bye_week_return",
+          0.024368176236748695
+        ],
+        [
+          "pat_made_roll5_std",
+          0.024262409657239914
+        ]
+      ]
+    },
+    "extra_points_made": {
+      "n_rows": 1631,
+      "objective": "count:poisson",
+      "residual_std": 1.1636334785921987,
+      "y_mean": 2.103617412630288,
+      "top_features": [
+        [
+          "implied_team_total",
+          0.05013415217399597
+        ],
+        [
+          "spread_line_team",
+          0.03666136786341667
+        ],
+        [
+          "offense_pct_roll5",
+          0.030181800946593285
+        ],
+        [
+          "offense_pct_roll5_std",
+          0.02838478609919548
+        ],
+        [
+          "missing_depth",
+          0.02465728484094143
+        ],
+        [
+          "pat_made_ewma",
+          0.023853519931435585
+        ],
+        [
+          "offense_pct_ewma",
+          0.023151183500885963
+        ],
+        [
+          "pat_att_roll5",
+          0.02253369428217411
+        ]
+      ]
+    },
+    "kicking_points": {
+      "n_rows": 1631,
+      "objective": "reg:squarederror",
+      "residual_std": 4.203292017156304,
+      "y_mean": 8.206621704475781,
+      "top_features": [
+        [
+          "fg_made_prev",
+          0.028102418407797813
+        ],
+        [
+          "pat_att_season_avg",
+          0.028037717565894127
+        ],
+        [
+          "spread_line_team",
+          0.026845088228583336
+        ],
+        [
+          "is_indoor",
+          0.025974784046411514
+        ],
+        [
+          "temp",
+          0.023257263004779816
+        ],
+        [
+          "season",
+          0.023181073367595673
+        ],
+        [
+          "pat_made_ewma",
+          0.022650066763162613
+        ],
+        [
+          "kicking_points_trend",
+          0.02195866033434868
+        ]
+      ]
+    }
+  },
+  "train_date_min": "2022-09-08",
+  "train_date_max": "2025-01-05"
+}

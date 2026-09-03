@@ -11,6 +11,13 @@ beautifulsoup4>=4.12
 lxml>=4.9
 nba_api>=1.4
 
+# NFL serving: read the compact parquet serving artifacts + resolve the next
+# game's live schedule. Training-only tooling (optuna/jupyter/matplotlib) stays
+# out of this file to keep the deployed image small.
+pyarrow>=15.0
+polars>=1.0
+nflreadpy>=0.1.5
+
 # ML
 scikit-learn>=1.3
 xgboost>=2.0

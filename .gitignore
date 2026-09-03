@@ -24,6 +24,33 @@ models/saved/*
 !models/saved/*.pkl
 !models/saved/*.json
 
+# ── NFL ───────────────────────────────────────────────────────────────────────
+# Never commit the large raw / cached nflverse downloads (per-season parquet,
+# play-by-play, etc.). These are rebuilt by `python -m nfl.pipeline.update`.
+nfl/data/raw/*
+nfl/data/cache/*
+nfl/data/processed/*
+!nfl/data/raw/.gitkeep
+!nfl/data/cache/.gitkeep
+!nfl/data/processed/.gitkeep
+# ...but DO commit the compact serving artifacts the deployed API reads.
+!nfl/data/processed/features_serving.parquet
+!nfl/data/processed/players.json
+!nfl/data/processed/opp_defense.json
+!nfl/data/processed/freshness.json
+# The full training feature matrix stays ignored (large, training-only).
+nfl/data/processed/features.parquet
+
+# NFL model artifacts: ignore stray files, but keep the per-position pkl/json the
+# API lazy-loads. Subdirectories must be re-included BEFORE the files inside them
+# (git won't descend into an excluded directory).
+nfl/models/saved/**
+!nfl/models/saved/**/
+!nfl/models/saved/.gitkeep
+!nfl/models/saved/*.json
+!nfl/models/saved/**/*.pkl
+!nfl/models/saved/**/*.json
+
 # Node
 node_modules/
 dashboard/node_modules/

@@ -269,3 +269,167 @@ Actions `schedule:` workflow / the Claude Code `/schedule` skill.
   swing — when a star sits, everyone else's usage jumps), and live predictions
   depend on scraper/API availability. The infrastructure (backtest, tuning,
   continuous retraining) is built so these can be added and *measured*.
+
+---
+
+# Part 2 — NFL Predictor (multi-sport extension)
+
+The application is now a **multi-sport platform**. The NBA predictor above is
+unchanged; an isolated `nfl/` package adds an NFL predictor served under `/nfl`
+and rendered on a dedicated `/nfl` page. NBA and NFL code never import each
+other.
+
+## 1. What the NFL predictor does
+
+Given an NFL player (QB / RB / WR / TE / K) and their next game, it predicts the
+**position-specific** stat line, p15–p85 **prediction intervals**, a
+**fantasy-point** projection under **PPR / Half-PPR / No-PPR**, football-language
+**SHAP explanations**, **warnings** (injury / role / sample size / freshness),
+and an **over/under probability** for any stat (including fantasy points).
+
+## 2. Data source — nflverse via `nflreadpy`
+
+`nflreadpy` returns **polars** dataframes; we keep polars through a local
+per-season parquet cache (`nfl/data/cache/`) and convert to **pandas** only at
+the feature-pipeline boundary. Datasets used:
+
+| Dataset | Role | Required? |
+|---------|------|-----------|
+| `load_player_stats()` | weekly passing/rushing/receiving/kicking + EPA, target/air-yard share, fantasy points | **required** |
+| `load_players()` | canonical `gsis_id`, names, position, headshot, experience, `pfr_id` | **required** |
+| `load_schedules()` | opponent, home/away, rest, spread, total, roof, surface, temp, wind | **required** |
+| `load_injuries()` | weekly report / practice designation | optional |
+| `load_snap_counts()` | snap share (`offense_pct`, joined via `pfr_id`) | optional |
+| `load_depth_charts()` | starter / backup depth | optional |
+| `load_rosters_weekly()` | team-by-week, experience, headshot | optional |
+| `load_nextgen_stats()` | advanced QB/rush/rec features | optional |
+| `load_pbp()` | EPA / success / red-zone aggregates | optional, **off by default** |
+
+**Why pbp is off by default:** the opponent-defense aggregates we need
+(fantasy/yards allowed to a position) are derivable from weekly `player_stats`,
+so we avoid the multi-GB play-by-play download for the core pipeline while
+keeping it available (`include_pbp=True`) for advanced features.
+
+**Schema validation** (`nfl/scraping/collect.py`): required columns raise a
+clear `SchemaError` (logging the missing columns); optional datasets that fail
+are skipped and recorded in `DataBundle.availability` so the pipeline never
+silently produces malformed data. Raw/cache/pbp are gitignored — only compact
+serving data + model artifacts are committed.
+
+Actual `player_stats` schema (2023) is 150 columns; every canonical target maps
+to a real column — see `COLUMN_ALIASES` in `nfl/config.py`. Notable mappings:
+`field_goals_made → fg_made`, `extra_points_made → pat_made`,
+`fumbles_lost → fumbles_lost_total`; `kicking_points` is **derived** from the
+distance buckets (`fg_made_0_19 … fg_made_60_`) + PATs.
+
+## 3. Positions & targets
+
+Supported: **QB, RB, WR, TE, K**. Position is taken from the canonical nflverse
+`position` (fallback `position_group`) and passed through an explicit
+`POSITION_NORMALIZATION` map — we never infer a position from statistics.
+Unsupported roles (P, LS, OL, IDP, DST) return a clear message. Targets are the
+canonical `POSITION_TARGETS`; a **separate model is trained per (position,
+target)** pair, pooled across all players at that position (NFL players have too
+few games for player-specific models).
+
+## 4. Leakage-safe features (`nfl/features/engineer.py`)
+
+Rows are sorted by (season, week) and **`.shift(1)` is applied before every**
+rolling / expanding / EWMA / opponent / matchup aggregate. For each volume/
+production stat we build: previous value, rolling mean over 3/5/8, rolling std,
+season-to-date mean, EWMA, and a recent trend. Plus game context (home/away,
+rest, bye-week return, spread, total, implied team total, surface, indoor, temp,
+wind, experience, injury designation, depth/starter, snap share) and
+opponent-defense features (**fantasy points and yards allowed to the player's
+position**, built by aggregating weekly production *by opponent* and shifting).
+A strict **allowlist** (`feature_columns`) admits only engineered-suffix and
+explicit context columns, so no raw same-week stat can leak into the model.
+Missing optional data never fails the build — it sets a `missing_*` indicator
+and uses documented neutral imputation (a real 0 is never treated as missing).
+
+## 5. Fantasy scoring (`nfl/scoring.py`)
+
+Fantasy points are **derived from predicted component stats** — we never train
+fantasy models. `RECEPTION_MULTIPLIERS = {ppr:1.0, half_ppr:0.5, no_ppr:0.0}`.
+Kicker scoring is a separate, documented function with distance tiers (3/4/5 per
+FG tier, 1 per XP) and a simplified flat fallback when distance buckets are
+unavailable; **kicker points don't change across PPR formats.** The
+**fantasy-point interval** is not the naive per-bound score — it comes from a
+**correlated Monte-Carlo simulation** (`simulate_fantasy_points`): draws
+correlated component stat lines from each target's mean + p15/p85 spread,
+enforces physical constraints (non-negative; completions ≤ attempts; receptions
+≤ targets), scores each line, and reads percentiles + over/under probability off
+the simulated distribution. Changing the PPR format re-scores the **same** draws
+— it never reruns the XGBoost models (`/nfl/score` endpoint + a client-side
+mirror in `dashboard/src/lib/fantasy.js`).
+
+## 6. Training & evaluation
+
+`nfl/models/train.py` trains, per (position, target): an XGBoost point model
+(**Poisson** for non-negative counts, **squared-error** for yardage), plus
+**p15 / p85 quantile** models, with recency sample weighting and a chronological
+early-stopping split. `nfl/models/evaluate.py` runs a **walk-forward** holdout
+(latest 20% of weeks) — never a random split — and reports MAE, RMSE, R²,
+baseline MAE (a shifted rolling average), improvement, interval coverage, row
+counts, date ranges, and top features, flagging any target that **fails to beat
+its baseline**. `nfl/models/tune.py` does a small chronological grid search
+(`tuned_params.json`).
+
+Volume/yardage targets beat their baseline (e.g. passing_yards, kicking_points,
+attempts); rare-event counts (TDs, INTs) barely differ from a rolling average
+and are **explicitly flagged** — that's expected for game-level NFL prediction.
+
+## 7. Serving (`api/nfl.py`, `nfl/serving.py`, `nfl/explainability/explainer.py`)
+
+The NFL router mounts under `/nfl` inside the same FastAPI app; NBA endpoints
+stay at the root (backward-compatible). Models load **lazily by position** with
+a **bounded LRU cache** — the deployed API never loads every model at startup.
+A prediction: resolves the player by canonical id → validates/normalizes
+position → builds a leakage-safe serving row (latest form + upcoming-game
+context + opponent-defense lookup) → predicts only that position's targets →
+p15/p85 → SHAP reasons in football language → warnings → simulated fantasy
+points. Responses are strict Pydantic and **JSON-safe** (no NaN/Inf/NumPy/pandas
+objects). Endpoints: `/nfl/health`, `/nfl/players`, `/nfl/next-game/{id}`,
+`/nfl/predict`, `/nfl/probability`, `/nfl/score`, `/nfl/players/{id}/recent`.
+
+## 8. Update pipeline (`python -m nfl.pipeline.update`)
+
+Idempotent: collect (cached) → build canonical dataset (dedup by `gsis_id` +
+`game_id`) → engineer leakage-safe features → detect new completed games →
+retrain only if data changed → re-run evaluation → build compact serving
+artifacts → record freshness metadata. Processed artifacts are written to a temp
+path, validated, and swapped in atomically so a network/optional-data failure
+never overwrites good data. Flags: `--seasons`, `--skip-download`,
+`--skip-train`, `--dry-run`, `--position`.
+
+## 9. Frontend
+
+`dashboard/src` is refactored into `pages/` (NbaPage, NflPage), shared
+`components/` (Card, StatBar, ProbGauge, PlayerSearch, SportNav), `lib/`
+(api, nflConfig, fantasy, useLocalStorage), and React Router routes: `/` → `/nba`,
+`/nba`, `/nfl`. The NFL page is **position-driven** (a config object keyed by
+position controls stat keys, labels, order, colors, bar maxima, units,
+probability options, decimals), so a QB shows passing cards and a WR never does.
+The **PPR selector** defaults to PPR, persists in `localStorage` (isolated from
+NBA), and recomputes fantasy instantly without rerunning models. NBA keeps its
+blue accent; NFL uses a restrained field-green. Vercel rewrites all paths to
+`index.html` so `/nba` and `/nfl` deep-link and refresh correctly.
+
+## 10. NFL design trade-offs & limitations
+
+- **Pooled position models, not per-player** — NFL players lack the game volume
+  for reliable individual models; pooling across a position over several seasons
+  is the right bias/variance trade.
+- **Derived fantasy, correlated simulation** — the honest way to build a fantasy
+  interval from correlated component predictions.
+- **Interval calibration in dev mode** — with only 3 seasons the p15–p85 bands
+  run ~55–65% empirical coverage (below the 70% target); the full 2018→latest
+  range widens/ calibrates them. This is measured, not hidden.
+- **Rare-event ceiling** — TD/INT counts are near-random week to week; models
+  correctly stay near the mean and are flagged when they don't beat baseline.
+- **Development mode** — dev artifacts (fewer seasons) are labelled `"dev"` in
+  freshness/metadata and surfaced as a UI warning; full-training commands are in
+  the README. Never presented as production accuracy.
+- **Future** — Sportradar for timely injuries/inactives/live data; Next Gen
+  Stats features; pbp-derived opponent EPA/success splits; conformal interval
+  calibration.

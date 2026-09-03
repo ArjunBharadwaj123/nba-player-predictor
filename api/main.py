@@ -87,6 +87,17 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+# ── NFL router (multi-sport) ──────────────────────────────────────────────────
+# Mounted under /nfl. Isolated from the NBA endpoints above, which stay at the
+# root for backward compatibility with the deployed NBA frontend. Guarded so a
+# missing NFL package/artifacts never breaks the NBA API.
+try:
+    from api.nfl import router as nfl_router
+    app.include_router(nfl_router)
+    log.info("NFL router mounted at /nfl")
+except Exception as _nfl_exc:  # pragma: no cover - defensive
+    logging.warning("NFL router unavailable: %s", _nfl_exc)
+
 _models: dict        = {}
 _quantile_models: dict = {}
 _feature_names: list = []
