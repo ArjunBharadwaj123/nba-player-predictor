@@ -331,7 +331,15 @@ def build_feature_row(req: PredictRequest, df: pd.DataFrame) -> pd.DataFrame:
         row["opp_pts_allowed_pos"]  = 22.0
         row["opp_pos_defense_rank"] = 15.0
 
-    return row.to_frame().T
+    frame = row.to_frame().T
+    # `row` came from df.iloc[-1], a mixed-dtype (string + float) Series, so it
+    # collapses to dtype 'object' and every column in this 1-row frame is object.
+    # XGBoost rejects object columns, so coerce the model's feature columns back
+    # to numeric (string columns like name/opponent/position are left alone).
+    for col in _feature_names:
+        if col in frame.columns:
+            frame[col] = pd.to_numeric(frame[col], errors="coerce")
+    return frame
 
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -339,7 +347,7 @@ def build_feature_row(req: PredictRequest, df: pd.DataFrame) -> pd.DataFrame:
 # ─────────────────────────────────────────────────────────────────────────────
 
 MIN_STD = {"pts": 4.0, "reb": 2.0, "ast": 1.5,
-           "stl": 0.5, "blk": 0.4, "minutes": 3.0}
+           "stl": 0.5, "blk": 0.4, "minutes": 3.0, "fg3": 1.0}
 
 def compute_ranges(player_name: str, predictions: dict,
                    df: pd.DataFrame, window: int = 15) -> dict:
@@ -350,11 +358,12 @@ def compute_ranges(player_name: str, predictions: dict,
     ranges = {}
     for stat in TARGETS:
         pred = float(predictions.get(stat, 0))
+        floor = MIN_STD.get(stat, 1.0)   # tolerate targets not in MIN_STD (e.g. fg3)
         if stat in player_rows.columns and len(player_rows) >= 3:
             std = float(player_rows[stat].dropna().std())
         else:
-            std = MIN_STD[stat]
-        std = max(std, MIN_STD[stat])
+            std = floor
+        std = max(std, floor)
         ranges[stat] = (round(max(0.0, pred - std), 1), round(pred + std, 1))
     return ranges
 
