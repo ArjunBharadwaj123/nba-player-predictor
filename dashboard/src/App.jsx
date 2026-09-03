@@ -303,6 +303,7 @@ export default function App() {
   const [context, setContext]   = useState(null);
   const [ctxLoad, setCtxLoad]   = useState(false);
   const [ctxError, setCtxError] = useState(null);
+  const [noGame, setNoGame]     = useState(null);
   const [result, setResult]     = useState(null);
   const [predLoad, setPredLoad] = useState(false);
   const [predError, setPredErr] = useState(null);
@@ -328,6 +329,7 @@ export default function App() {
     setResult(null);
     setProbResult(null);
     setCtxError(null);
+    setNoGame(null);
     setPredErr(null);
   };
 
@@ -335,6 +337,7 @@ export default function App() {
     if (!p) return;
     setCtxLoad(true);
     setCtxError(null);
+    setNoGame(null);
     setContext(null);
     setResult(null);
     setProbResult(null);
@@ -342,6 +345,15 @@ export default function App() {
       const resp = await fetch(
         `${API}/next-game/${encodeURIComponent(p.name)}?player_id=${p.id}&position=${p.pos}`
       );
+      // 404 from /next-game = no upcoming game for this player (off-season, or
+      // they don't play again for a while). Show a friendly prompt, not an error.
+      if (resp.status === 404) {
+        setNoGame(
+          `${p.name} doesn't have a game coming up anytime soon — there's no upcoming game scheduled right now. ` +
+          `Check back closer to game day (the NBA season runs from late October through April).`
+        );
+        return;
+      }
       if (!resp.ok) throw new Error((await resp.json()).detail || "Failed");
       setContext(await resp.json());
     } catch (e) {
@@ -458,6 +470,20 @@ export default function App() {
         {ctxError && (
           <div style={{ marginTop: 12, padding: "10px 14px", borderRadius: "var(--border-radius-md)", background: "#FCEBEB", color: "#791F1F", fontSize: 13 }}>
             {ctxError}
+          </div>
+        )}
+
+        {noGame && (
+          <div style={{
+            marginTop: 12, padding: "14px 16px",
+            borderRadius: "var(--border-radius-md)",
+            background: "var(--color-background-secondary)",
+            border: "1px solid var(--color-border-secondary)",
+            color: "var(--color-text-primary)", fontSize: 13, lineHeight: 1.5,
+            display: "flex", gap: 10, alignItems: "flex-start",
+          }}>
+            <span style={{ fontSize: 18, lineHeight: 1 }}>📅</span>
+            <span>{noGame}</span>
           </div>
         )}
 
