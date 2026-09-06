@@ -201,7 +201,7 @@ the most recent 15% — never on the future) via `models/evaluate.py`:
   bands are calibrated, not cosmetic.
 
 Metrics: MAE (Mean Absolute Error), RMSE (Root Mean Squared Error), R² Score, and
-interval coverage. Re-generate anytime with `python models/evaluate.py`.
+interval coverage. Re-generate anytime with `python nba/models/evaluate.py`.
 
 ---
 
@@ -226,56 +226,53 @@ npm run dev
 ---
 
 ## 📁 Project Structure
+
+The two sports are **symmetric, self-contained packages** — `nba/` and `nfl/`
+mirror each other, and neither imports the other. `api/` mounts both; the
+frontend has one page per sport.
+
 ```
 ├── README.md
-├── api
-│   ├── __init__.py
-│   └── main.py                  # FastAPI prediction server
-├── config.py
+├── api                          # FastAPI app (one server, both sports)
+│   ├── main.py                  #   NBA endpoints at root  +  mounts NFL router
+│   └── nfl.py                   #   NFL router, mounted under /nfl
+│
+├── nba                          # 🏀  NBA predictor (all NBA backend code)
+│   ├── config.py                #   targets, fantasy weights, paths
+│   ├── scraping/                #   bbref_scraper, nba_api_client, next_game, odds
+│   ├── features/                #   build_dataset.py, engineer.py, feature_config.py
+│   ├── models/                  #   train.py, tune.py, evaluate.py, saved/*.pkl
+│   ├── explainability/          #   shap_explainer.py (predictions + SHAP + quantiles)
+│   ├── pipeline/                #   update.py (in-season re-scrape + retrain)
+│   ├── reports/                 #   hyperparameter sweep charts
+│   └── data/                    #   raw/ (gitignored) + processed serving CSVs
+│
+├── nfl                          # 🏈  NFL predictor (all NFL backend code)
+│   ├── config.py                #   seasons, positions, targets, normalization
+│   ├── scoring.py               #   PPR/kicker scoring + fantasy simulation
+│   ├── serving.py               #   serve-time feature-row builder
+│   ├── scraping/                #   collect.py (nflreadpy+cache), odds, next-game
+│   ├── features/                #   build_dataset.py, engineer.py, feature_config.py
+│   ├── models/                  #   train.py, evaluate.py, tune.py, saved/<POS>/
+│   ├── explainability/          #   explainer.py (football-language SHAP)
+│   ├── pipeline/                #   update.py (idempotent, atomic)
+│   └── data/                    #   raw/ cache/ (gitignored) + processed serving
+│
 ├── dashboard                    # React (Vite) frontend
-│   ├── index.html
-│   ├── package.json
 │   └── src
-├── data
-│   ├── processed                # training_dataset, features, roster.json
-│   └── raw                      # scraped game logs, team stats, schedules
-├── docs
-│   └── TECHNICAL_OVERVIEW.md     # full technical breakdown
-├── explainability
-│   └── shap_explainer.py         # predictions + SHAP reasoning + quantile bands
-├── features
-│   ├── build_dataset.py
-│   └── engineer.py               # feature engineering
-├── models
-│   ├── train.py                  # trains point + quantile models
-│   ├── tune.py                   # hyperparameter sweep + MAE/R² graphs
-│   ├── evaluate.py               # chronological-holdout backtest
-│   └── saved                     # *.pkl models + training_metadata.json
-├── pipeline
-│   └── update.py                 # in-season re-scrape + retrain
-├── reports
-│   └── tuning                    # hyperparameter sweep charts
-├── requirements.txt
-├── scraping
-│   ├── bbref_scraper.py          # game logs + roster auto-collection
-│   ├── nba_api_client.py         # team pace / defense / schedule
-│   └── next_game.py              # live next-game context + injuries
-└── nfl                           # NFL predictor (isolated from NBA)
-    ├── config.py                 # seasons, positions, targets, normalization
-    ├── scoring.py                # PPR/kicker scoring + fantasy simulation
-    ├── serving.py                # serve-time feature-row builder
-    ├── scraping/                 # collect.py (nflreadpy+cache), odds, next-game
-    ├── features/                 # build_dataset.py, engineer.py, feature_config.py
-    ├── models/                   # train.py, evaluate.py, tune.py, saved/<POS>/
-    ├── explainability/           # explainer.py (football-language SHAP)
-    ├── pipeline/                 # update.py (idempotent, atomic)
-    └── data/                     # raw/ cache/ (gitignored) + processed serving
-
-api/nfl.py                        # NFL FastAPI router, mounted under /nfl
-dashboard/src/pages/{NbaPage,NflPage}.jsx   # per-sport pages (React Router)
-dashboard/src/components/, lib/    # shared UI, api, nflConfig, fantasy, hooks
-tests/                            # pytest: scoring, positions, leakage, API, NBA compat
+│       ├── pages/               #   NbaPage.jsx 🏀  ·  NflPage.jsx 🏈
+│       ├── components/          #   shared UI (Card, StatBar, PlayerSearch, SportNav)
+│       └── lib/                 #   api, nflConfig, fantasy, useLocalStorage hook
+│
+├── tests                        # pytest: scoring, positions, leakage, API, NBA compat
+└── docs
+    └── TECHNICAL_OVERVIEW.md     # full technical breakdown (Part 1 NBA, Part 2 NFL)
 ```
+
+**Which code is which?** Anything under `nba/` (and `NbaPage.jsx`) is the NBA
+predictor; anything under `nfl/`, `api/nfl.py`, and `NflPage.jsx` is the NFL
+predictor. Files under `dashboard/src/components` and `dashboard/src/lib` are
+shared by both pages.
 
 ---
 

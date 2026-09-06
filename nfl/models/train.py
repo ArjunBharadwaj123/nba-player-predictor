@@ -81,10 +81,19 @@ def _params_for(target: str, position: str | None = None) -> dict:
 def recency_weights(dates: pd.Series) -> np.ndarray | None:
     if RECENCY_HALFLIFE_DAYS is None:
         return None
-    dates = pd.to_datetime(dates).reset_index(drop=True)
+    dates = pd.to_datetime(dates, errors="coerce").reset_index(drop=True)
     ref = dates.max()
-    age = (ref - dates).dt.days.clip(lower=0).to_numpy()
-    return np.power(0.5, age / RECENCY_HALFLIFE_DAYS)
+    if pd.isna(ref):                       # no usable dates -> equal weights
+        return np.ones(len(dates))
+    age = (ref - dates).dt.days
+    # Rows with an unknown date (NaT) are treated as oldest (max age) rather than
+    # producing a NaN weight, which XGBoost rejects ("Weights must be positive").
+    max_age = age.max()
+    age = age.fillna(max_age if pd.notna(max_age) else 0).clip(lower=0).to_numpy()
+    w = np.power(0.5, age / RECENCY_HALFLIFE_DAYS)
+    # Guarantee strictly-positive, finite weights.
+    w = np.nan_to_num(w, nan=1e-6, posinf=1.0, neginf=1e-6)
+    return np.clip(w, 1e-6, 1.0)
 
 
 def _fit_point(X, y, params, weights=None):

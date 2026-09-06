@@ -15,7 +15,7 @@ def client():
 def _nba_ready():
     from pathlib import Path
     root = Path(__file__).parent.parent
-    return (root / "models" / "saved" / "pts_model.pkl").exists()
+    return (root / "nba" / "models" / "saved" / "pts_model.pkl").exists()
 
 
 nba = pytest.mark.skipif(not _nba_ready(), reason="NBA model artifacts missing")

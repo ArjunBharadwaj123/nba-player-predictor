@@ -31,6 +31,27 @@ FG_BUCKET_0_39  = ["fg_made_0_19", "fg_made_20_29", "fg_made_30_39"]
 FG_BUCKET_40_49 = ["fg_made_40_49"]
 FG_BUCKET_50P   = ["fg_made_50_59", "fg_made_60_"]
 
+# Team-relocation / abbreviation standardization. nflverse `player_stats` uses
+# the CURRENT franchise code (e.g. LV) while historical `schedules` use the
+# era-accurate code (e.g. OAK). Left un-aligned, the schedule merge misses for
+# those seasons and every game-context field (date, spread, total, weather) is
+# lost. We map both sides to the current code before merging.
+TEAM_STANDARDIZE = {
+    "OAK": "LV",   # Raiders -> Las Vegas (2020)
+    "SD":  "LAC",  # Chargers -> Los Angeles (2017)
+    "STL": "LA",   # Rams -> Los Angeles (2016)
+    "LAR": "LA",   # some feeds use LAR for the Rams
+    "JAC": "JAX",  # Jacksonville abbreviation variant
+    "WSH": "WAS",  # Washington abbreviation variant
+}
+
+
+def _standardize_teams(df: pd.DataFrame, cols: list[str]) -> pd.DataFrame:
+    for c in cols:
+        if c in df.columns:
+            df[c] = df[c].replace(TEAM_STANDARDIZE)
+    return df
+
 
 def _num(df: pd.DataFrame, col: str) -> pd.Series:
     if col in df.columns:
@@ -148,6 +169,11 @@ def build_dataset(bundle: DataBundle) -> pd.DataFrame:
     ps = to_pandas(bundle.player_stats)
     players = to_pandas(bundle.players)
     schedules = to_pandas(bundle.schedules)
+
+    # Align team codes across sources so relocated franchises merge correctly
+    # (e.g. player_stats "LV" vs 2018 schedule "OAK").
+    ps = _standardize_teams(ps, ["team", "opponent_team"])
+    schedules = _standardize_teams(schedules, ["home_team", "away_team"])
 
     log.info("Building dataset from %d player-week rows", len(ps))
 

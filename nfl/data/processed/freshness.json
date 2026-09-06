@@ -1,16 +1,20 @@
 {
-  "updated_at": "2026-09-03T20:39:17+00:00",
+  "updated_at": "2026-09-06T20:07:53+00:00",
   "seasons": [
+    2018,
+    2019,
+    2020,
+    2021,
     2022,
     2023,
     2024
   ],
-  "mode": "dev",
+  "mode": "production",
   "signature": {
-    "n_rows": 19381,
+    "n_rows": 44161,
     "max_season": 2024,
     "max_week_in_max_season": 18,
-    "n_players": 941
+    "n_players": 1474
   },
   "optional_datasets": {
     "injuries": true,
@@ -20,5 +24,5 @@
     "nextgen_stats": false
   },
   "n_features": 281,
-  "n_serving_players": 941
+  "n_serving_players": 1474
 }

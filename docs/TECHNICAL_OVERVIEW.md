@@ -41,26 +41,27 @@ flowchart TD
 **Reproduce each stage** (commands are the source of truth):
 
 ```bash
+# NBA backend code now lives under nba/ (mirrors the nfl/ package).
 # 1. Collect data (network; cached HTML makes re-runs fast)
-python scraping/roster.py                 # build data/processed/roster.json
-python scraping/bbref_scraper.py --mode train
-python scraping/nba_api_client.py --mode all
+python nba/scraping/roster.py             # build nba/data/processed/roster.json
+python nba/scraping/bbref_scraper.py --mode train
+python nba/scraping/nba_api_client.py --mode all
 
 # 2. Merge + engineer
-python features/build_dataset.py          # -> data/processed/training_dataset.csv
-python features/engineer.py               # -> features.csv + feature_names.txt
+python nba/features/build_dataset.py      # -> nba/data/processed/training_dataset.csv
+python nba/features/engineer.py           # -> features.csv + feature_names.txt
 
 # 3. Tune, train, evaluate
-python models/tune.py --stat pts --param max_depth   # sweep graphs (optional)
-python models/train.py                    # -> models/saved/*.pkl
-python models/evaluate.py --stack-minutes # -> eval_report.json (backtest)
+python nba/models/tune.py --stat pts --param max_depth   # sweep graphs (optional)
+python nba/models/train.py                # -> nba/models/saved/*.pkl
+python nba/models/evaluate.py --stack-minutes # -> eval_report.json (backtest)
 
 # 4. Serve
 uvicorn api.main:app --reload             # http://localhost:8000
 cd dashboard && npm install && npm run dev # http://localhost:5173
 
 # 5. Keep it current (in-season)
-python pipeline/update.py                 # re-scrape + retrain if new games exist
+python nba/pipeline/update.py             # re-scrape + retrain if new games exist
 ```
 
 ---
