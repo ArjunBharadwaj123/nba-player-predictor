@@ -35,7 +35,7 @@ except ImportError:
     _SCIPY = False
 
 try:
-    from scraping.next_game import get_next_game_context
+    from nba.scraping.next_game import get_next_game_context
     _NEXT_GAME_OK = True
 except Exception as _e:
     logging.warning("next_game module unavailable: %s", _e)
@@ -43,7 +43,7 @@ except Exception as _e:
     def get_next_game_context(*a, **kw):
         return None
 
-from explainability.shap_explainer import (
+from nba.explainability.shap_explainer import (
     explain_prediction,
     load_feature_names,
     load_models,
@@ -57,8 +57,8 @@ logging.basicConfig(
 )
 log = logging.getLogger(__name__)
 
-PROCESSED  = ROOT / "data" / "processed"
-MODELS_DIR = ROOT / "models" / "saved"
+PROCESSED  = ROOT / "nba" / "data" / "processed"
+MODELS_DIR = ROOT / "nba" / "models" / "saved"
 TARGETS    = ["pts", "reb", "ast", "stl", "blk", "minutes", "fg3"]
 
 POSITION_MAP = {"PG": 1, "SG": 2, "SF": 3, "PF": 4, "C": 5}
@@ -86,6 +86,17 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+# ── NFL router (multi-sport) ──────────────────────────────────────────────────
+# Mounted under /nfl. Isolated from the NBA endpoints above, which stay at the
+# root for backward compatibility with the deployed NBA frontend. Guarded so a
+# missing NFL package/artifacts never breaks the NBA API.
+try:
+    from api.nfl import router as nfl_router
+    app.include_router(nfl_router)
+    log.info("NFL router mounted at /nfl")
+except Exception as _nfl_exc:  # pragma: no cover - defensive
+    logging.warning("NFL router unavailable: %s", _nfl_exc)
 
 _models: dict        = {}
 _quantile_models: dict = {}
@@ -304,7 +315,7 @@ def build_feature_row(req: PredictRequest, df: pd.DataFrame) -> pd.DataFrame:
     row["is_late_season"] = int(games_so_far >= 56)
 
     # Positional defense — load from processed file if available
-    pos_file = ROOT / "data" / "processed" / "opp_pos_defense.csv"
+    pos_file = ROOT / "nba" / "data" / "processed" / "opp_pos_defense.csv"
     if pos_file.exists():
         try:
             pos_df = pd.read_csv(pos_file)
@@ -434,7 +445,7 @@ def next_game(player_name: str, player_id: str, position: str = "SF"):
 
     # Re-scrape current season so rolling averages are live
     try:
-        from scraping.bbref_scraper import scrape_one, CURRENT_SEASON
+        from nba.scraping.bbref_scraper import scrape_one, CURRENT_SEASON
         fresh = scrape_one(
             {"id": player_id, "name": player_name, "pos": position},
             CURRENT_SEASON, force_refresh=True,

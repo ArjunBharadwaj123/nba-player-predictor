@@ -1,5 +1,7 @@
-# Render Blueprint for the NBA Player Predictor FastAPI backend.
-# Deploy: push to GitHub, then in Render → New → Blueprint, pick this repo.
+# Render Blueprint for the multi-sport (NBA + NFL) Player Predictor backend.
+# One FastAPI app (api.main:app) serves the NBA endpoints at the root and mounts
+# the NFL router under /nfl. NFL models load lazily by position, so startup stays
+# light. Deploy: push to GitHub, then Render → New → Blueprint, pick this repo.
 # Docs: https://render.com/docs/blueprint-spec
 services:
   - type: web
@@ -13,3 +15,6 @@ services:
     envVars:
       - key: PYTHON_VERSION
         value: "3.12"
+      # Optional: shared Odds API key for NBA + NFL live lines (works without it).
+      - key: ODDS_API_KEY
+        sync: false

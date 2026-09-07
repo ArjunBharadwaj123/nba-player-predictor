@@ -5,24 +5,51 @@ __pycache__/
 *.pyd
 .env
 
-# Data
-data/raw/
-data/processed/*
+# NBA data (now under nba/)
+nba/data/raw/
+nba/data/processed/*
 # ...but keep the processed files the deployed API reads at runtime.
 # The full features.csv is the ~100k-row training matrix (>100 MB, exceeds
 # GitHub's file limit) and stays ignored; the API loads the slim
 # features_serving.csv (last N games per player) instead. training_dataset.csv
 # is also ignored — it's only used for model training.
-!data/processed/features_serving.csv
-!data/processed/feature_names.txt
-!data/processed/opp_pos_defense.csv
-!data/processed/roster.json
+!nba/data/processed/features_serving.csv
+!nba/data/processed/feature_names.txt
+!nba/data/processed/opp_pos_defense.csv
+!nba/data/processed/roster.json
 
-# Models
-models/saved/*
+# NBA models (now under nba/)
+nba/models/saved/*
 # ...but keep the trained model artifacts the deployed API loads at startup
-!models/saved/*.pkl
-!models/saved/*.json
+!nba/models/saved/*.pkl
+!nba/models/saved/*.json
+
+# ── NFL ───────────────────────────────────────────────────────────────────────
+# Never commit the large raw / cached nflverse downloads (per-season parquet,
+# play-by-play, etc.). These are rebuilt by `python -m nfl.pipeline.update`.
+nfl/data/raw/*
+nfl/data/cache/*
+nfl/data/processed/*
+!nfl/data/raw/.gitkeep
+!nfl/data/cache/.gitkeep
+!nfl/data/processed/.gitkeep
+# ...but DO commit the compact serving artifacts the deployed API reads.
+!nfl/data/processed/features_serving.parquet
+!nfl/data/processed/players.json
+!nfl/data/processed/opp_defense.json
+!nfl/data/processed/freshness.json
+# The full training feature matrix stays ignored (large, training-only).
+nfl/data/processed/features.parquet
+
+# NFL model artifacts: ignore stray files, but keep the per-position pkl/json the
+# API lazy-loads. Subdirectories must be re-included BEFORE the files inside them
+# (git won't descend into an excluded directory).
+nfl/models/saved/**
+!nfl/models/saved/**/
+!nfl/models/saved/.gitkeep
+!nfl/models/saved/*.json
+!nfl/models/saved/**/*.pkl
+!nfl/models/saved/**/*.json
 
 # Node
 node_modules/

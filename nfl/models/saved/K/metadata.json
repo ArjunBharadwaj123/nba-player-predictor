@@ -1,0 +1,128 @@
+{
+  "position": "K",
+  "n_rows": 3704,
+  "targets": {
+    "field_goals_made": {
+      "n_rows": 3704,
+      "objective": "count:poisson",
+      "residual_std": 1.173518817532627,
+      "y_mean": 1.6279697624190064,
+      "top_features": [
+        [
+          "fg_made_prev",
+          0.03081641159951687
+        ],
+        [
+          "bye_week_return",
+          0.024723388254642487
+        ],
+        [
+          "div_game",
+          0.02303568460047245
+        ],
+        [
+          "pat_att_roll5",
+          0.01969544030725956
+        ],
+        [
+          "is_starter",
+          0.019510507583618164
+        ],
+        [
+          "fg_att_roll5",
+          0.019438186660408974
+        ],
+        [
+          "pat_made_roll8",
+          0.018895717337727547
+        ],
+        [
+          "kicking_points_roll3",
+          0.01845288835465908
+        ]
+      ]
+    },
+    "extra_points_made": {
+      "n_rows": 3704,
+      "objective": "count:poisson",
+      "residual_std": 1.3058573225249226,
+      "y_mean": 2.196814254859611,
+      "top_features": [
+        [
+          "implied_team_total",
+          0.05151508003473282
+        ],
+        [
+          "spread_line_team",
+          0.03756142035126686
+        ],
+        [
+          "game_total",
+          0.023493468761444092
+        ],
+        [
+          "pat_att_roll8",
+          0.02033078856766224
+        ],
+        [
+          "passing_interceptions_season_avg",
+          0.018085090443491936
+        ],
+        [
+          "opp_pass_yards_allowed",
+          0.01764356903731823
+        ],
+        [
+          "missing_injury",
+          0.017504017800092697
+        ],
+        [
+          "air_yards_share_season_avg",
+          0.017241893336176872
+        ]
+      ]
+    },
+    "kicking_points": {
+      "n_rows": 3704,
+      "objective": "reg:squarederror",
+      "residual_std": 4.266910115637501,
+      "y_mean": 8.013498920086393,
+      "top_features": [
+        [
+          "spread_line_team",
+          0.03220454603433609
+        ],
+        [
+          "passing_yards_ewma",
+          0.023001963272690773
+        ],
+        [
+          "wind",
+          0.022503314539790154
+        ],
+        [
+          "pat_att_roll5",
+          0.020672669634222984
+        ],
+        [
+          "pat_att_roll3",
+          0.020458480343222618
+        ],
+        [
+          "game_total",
+          0.020205209031701088
+        ],
+        [
+          "kicking_points_roll3",
+          0.02020510844886303
+        ],
+        [
+          "depth_rank",
+          0.020009277388453484
+        ]
+      ]
+    }
+  },
+  "train_date_min": "2018-09-06",
+  "train_date_max": "2025-01-05"
+}
