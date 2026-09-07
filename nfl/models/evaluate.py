@@ -36,6 +36,24 @@ log = logging.getLogger(__name__)
 # no-model projection). Falls back to season average, then previous value.
 BASELINE_SUFFIXES = ["_roll5", "_season_avg", "_prev"]
 
+# Nominal central coverage for the p15-p85 band.
+TARGET_COVERAGE = QUANTILE_HIGH - QUANTILE_LOW   # 0.70
+
+
+def _calibrate_factor(yt, pred, lo, hi, target_cov=TARGET_COVERAGE):
+    """Smallest symmetric widening factor k (>=1) making empirical coverage reach
+    target_cov, searching k in [1.0, 3.0]. Returns (k, calibrated_coverage)."""
+    for k in np.linspace(1.0, 3.0, 41):
+        lo_k = np.clip(pred - k * (pred - lo), 0, None)
+        hi_k = pred + k * (hi - pred)
+        cov = float(np.mean((yt >= lo_k) & (yt <= hi_k)))
+        if cov >= target_cov:
+            return round(float(k), 3), cov
+    # Never reached target even at k=3 — return the widest tried.
+    lo_k = np.clip(pred - 3.0 * (pred - lo), 0, None)
+    hi_k = pred + 3.0 * (hi - pred)
+    return 3.0, float(np.mean((yt >= lo_k) & (yt <= hi_k)))
+
 
 def _baseline_series(sub: pd.DataFrame, target: str) -> pd.Series:
     for suf in BASELINE_SUFFIXES:
@@ -67,6 +85,7 @@ def evaluate_position(df: pd.DataFrame, feats: list[str], position: str,
     Xte = test[feats].astype(float)
 
     results = {}
+    calibration = {}
     for target in POSITION_TARGETS[position]:
         if target not in sub.columns:
             continue
@@ -99,6 +118,12 @@ def evaluate_position(df: pd.DataFrame, feats: list[str], position: str,
         lo = np.clip(q15.predict(Xte[m_te]), 0, None)
         hi = q85.predict(Xte[m_te])
         coverage = float(np.mean((yt >= lo) & (yt <= hi)))
+        # Split-conformal-style calibration: find the smallest widening factor k
+        # (interval stretched symmetrically around the point) that reaches the
+        # nominal p15-p85 coverage on this chronological holdout. Applied at
+        # serve time to the full-data quantile models (no point-model retrain).
+        k, cov_cal = _calibrate_factor(yt, pred, lo, hi)
+        calibration[target] = k
 
         importances = sorted(zip(feats, point.feature_importances_),
                              key=lambda t: t[1], reverse=True)
@@ -110,17 +135,20 @@ def evaluate_position(df: pd.DataFrame, feats: list[str], position: str,
             "improvement_over_baseline": round(float(improvement), 3),
             "beats_baseline": bool(mae < base_mae),
             "interval_coverage_p15_p85": round(coverage, 3),
+            "interval_coverage_calibrated": round(cov_cal, 3),
+            "calibration_factor": k,
             "n_train": int(m_tr.sum()),
             "n_eval": int(m_te.sum()),
             "top_features": [[str(f), round(float(i), 4)] for f, i in importances[:6]],
         }
         flag = "" if mae < base_mae else "  <-- FAILS BASELINE"
-        log.info("  %s/%-22s MAE %.2f (base %.2f, %+.0f%%) cov %.0f%%%s",
+        log.info("  %s/%-22s MAE %.2f (base %.2f, %+.0f%%) cov %.0f%%->%.0f%% (k=%.2f)%s",
                  position, target, mae, base_mae, improvement * 100,
-                 coverage * 100, flag)
+                 coverage * 100, cov_cal * 100, k, flag)
 
     return {
         "position": position,
+        "calibration": calibration,
         "train_date_range": [str(train["gameday"].min())[:10],
                              str(train["gameday"].max())[:10]],
         "holdout_date_range": [str(test["gameday"].min())[:10],
@@ -132,17 +160,22 @@ def evaluate_position(df: pd.DataFrame, feats: list[str], position: str,
 def evaluate_all(holdout_frac: float = 0.2) -> dict:
     df, feats = load_features()
     report = {"holdout_frac": holdout_frac, "positions": {}, "failed_baselines": []}
+    calibration = {}
     for pos in SUPPORTED_POSITIONS:
         res = evaluate_position(df, feats, pos, holdout_frac)
         if not res:
             continue
         report["positions"][pos] = res
+        calibration[pos] = res.get("calibration", {})
         for target, m in res["targets"].items():
             if not m["beats_baseline"]:
                 report["failed_baselines"].append(f"{pos}/{target}")
 
     with open(MODELS_SAVED / "eval_report.json", "w") as f:
         json.dump(report, f, indent=2)
+    # Serve-time interval calibration factors, applied by the explainer.
+    with open(MODELS_SAVED / "calibration.json", "w") as f:
+        json.dump(calibration, f, indent=2)
     if report["failed_baselines"]:
         log.info("Targets failing baseline: %s", report["failed_baselines"])
     else:

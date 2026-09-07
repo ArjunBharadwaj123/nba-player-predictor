@@ -139,6 +139,19 @@ def load_feature_names() -> list[str]:
     return json.loads(path.read_text())
 
 
+@lru_cache(maxsize=1)
+def load_calibration() -> dict:
+    """Per-(position,target) interval widening factors from evaluate.py. Absent
+    file -> no widening (factor 1.0 everywhere)."""
+    path = MODELS_SAVED / "calibration.json"
+    if path.exists():
+        try:
+            return json.loads(path.read_text())
+        except Exception:
+            return {}
+    return {}
+
+
 @lru_cache(maxsize=6)                     # bounded: at most 6 positions cached
 def load_position_bundle(position: str) -> dict:
     """Load and cache all models + metadata for one position. Bounded LRU keeps
@@ -214,6 +227,7 @@ def predict_player(
     position = position.upper()
     bundle = load_position_bundle(position)
     feats = load_feature_names()
+    calib = load_calibration().get(position, {})
     X = feature_row.reindex(columns=feats).astype(float)
     X = X.fillna(0.0)
 
@@ -227,6 +241,11 @@ def predict_player(
             hi = float(bundle["q85"][target].predict(X)[0])
             hi = max(hi, lo + 0.1)
             lo, hi = min(lo, pred), max(hi, pred)
+            # Widen by the holdout-calibrated factor to hit nominal ~70% coverage.
+            k = float(calib.get(target, 1.0))
+            if k > 1.0:
+                lo = _clip(target, pred - k * (pred - lo))
+                hi = pred + k * (hi - pred)
             intervals[target] = (round(lo, 2), round(hi, 2))
         reasons_by_target[target] = _shap_reasons(model, X, feats)
 

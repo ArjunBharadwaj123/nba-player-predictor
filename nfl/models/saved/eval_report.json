@@ -3,6 +3,15 @@
   "positions": {
     "QB": {
       "position": "QB",
+      "calibration": {
+        "attempts": 1.25,
+        "completions": 1.3,
+        "passing_yards": 1.3,
+        "passing_tds": 1.15,
+        "passing_interceptions": 1.1,
+        "rushing_yards": 1.4,
+        "rushing_tds": 1.05
+      },
       "train_date_range": [
         "2018-09-06",
         "2023-12-03"
@@ -20,6 +29,8 @@
           "improvement_over_baseline": 0.126,
           "beats_baseline": true,
           "interval_coverage_p15_p85": 0.568,
+          "interval_coverage_calibrated": 0.708,
+          "calibration_factor": 1.25,
           "n_train": 3543,
           "n_eval": 885,
           "top_features": [
@@ -57,6 +68,8 @@
           "improvement_over_baseline": 0.099,
           "beats_baseline": true,
           "interval_coverage_p15_p85": 0.554,
+          "interval_coverage_calibrated": 0.703,
+          "calibration_factor": 1.3,
           "n_train": 3543,
           "n_eval": 885,
           "top_features": [
@@ -94,6 +107,8 @@
           "improvement_over_baseline": 0.098,
           "beats_baseline": true,
           "interval_coverage_p15_p85": 0.538,
+          "interval_coverage_calibrated": 0.704,
+          "calibration_factor": 1.3,
           "n_train": 3543,
           "n_eval": 885,
           "top_features": [
@@ -131,6 +146,8 @@
           "improvement_over_baseline": 0.031,
           "beats_baseline": true,
           "interval_coverage_p15_p85": 0.492,
+          "interval_coverage_calibrated": 0.723,
+          "calibration_factor": 1.15,
           "n_train": 3543,
           "n_eval": 885,
           "top_features": [
@@ -168,6 +185,8 @@
           "improvement_over_baseline": 0.006,
           "beats_baseline": true,
           "interval_coverage_p15_p85": 0.496,
+          "interval_coverage_calibrated": 0.733,
+          "calibration_factor": 1.1,
           "n_train": 3543,
           "n_eval": 885,
           "top_features": [
@@ -205,6 +224,8 @@
           "improvement_over_baseline": 0.025,
           "beats_baseline": true,
           "interval_coverage_p15_p85": 0.549,
+          "interval_coverage_calibrated": 0.703,
+          "calibration_factor": 1.4,
           "n_train": 3543,
           "n_eval": 885,
           "top_features": [
@@ -242,6 +263,8 @@
           "improvement_over_baseline": -0.07,
           "beats_baseline": false,
           "interval_coverage_p15_p85": 0.583,
+          "interval_coverage_calibrated": 0.756,
+          "calibration_factor": 1.05,
           "n_train": 3543,
           "n_eval": 885,
           "top_features": [
@@ -275,6 +298,15 @@
     },
     "RB": {
       "position": "RB",
+      "calibration": {
+        "carries": 1.1,
+        "rushing_yards": 1.1,
+        "rushing_tds": 1.0,
+        "targets": 1.05,
+        "receptions": 1.05,
+        "receiving_yards": 1.05,
+        "receiving_tds": 1.0
+      },
       "train_date_range": [
         "2018-09-06",
         "2023-11-19"
@@ -292,6 +324,8 @@
           "improvement_over_baseline": 0.054,
           "beats_baseline": true,
           "interval_coverage_p15_p85": 0.631,
+          "interval_coverage_calibrated": 0.741,
+          "calibration_factor": 1.1,
           "n_train": 8984,
           "n_eval": 2245,
           "top_features": [
@@ -329,6 +363,8 @@
           "improvement_over_baseline": 0.03,
           "beats_baseline": true,
           "interval_coverage_p15_p85": 0.597,
+          "interval_coverage_calibrated": 0.721,
+          "calibration_factor": 1.1,
           "n_train": 8984,
           "n_eval": 2245,
           "top_features": [
@@ -366,6 +402,8 @@
           "improvement_over_baseline": -0.059,
           "beats_baseline": false,
           "interval_coverage_p15_p85": 0.754,
+          "interval_coverage_calibrated": 0.759,
+          "calibration_factor": 1.0,
           "n_train": 8984,
           "n_eval": 2245,
           "top_features": [
@@ -403,6 +441,8 @@
           "improvement_over_baseline": 0.025,
           "beats_baseline": true,
           "interval_coverage_p15_p85": 0.55,
+          "interval_coverage_calibrated": 0.714,
+          "calibration_factor": 1.05,
           "n_train": 8984,
           "n_eval": 2245,
           "top_features": [
@@ -440,6 +480,8 @@
           "improvement_over_baseline": 0.019,
           "beats_baseline": true,
           "interval_coverage_p15_p85": 0.57,
+          "interval_coverage_calibrated": 0.755,
+          "calibration_factor": 1.05,
           "n_train": 8984,
           "n_eval": 2245,
           "top_features": [
@@ -477,6 +519,8 @@
           "improvement_over_baseline": 0.009,
           "beats_baseline": true,
           "interval_coverage_p15_p85": 0.594,
+          "interval_coverage_calibrated": 0.784,
+          "calibration_factor": 1.05,
           "n_train": 8984,
           "n_eval": 2245,
           "top_features": [
@@ -514,6 +558,8 @@
           "improvement_over_baseline": -0.004,
           "beats_baseline": false,
           "interval_coverage_p15_p85": 0.703,
+          "interval_coverage_calibrated": 0.764,
+          "calibration_factor": 1.0,
           "n_train": 8984,
           "n_eval": 2245,
           "top_features": [
@@ -547,6 +593,13 @@
     },
     "WR": {
       "position": "WR",
+      "calibration": {
+        "targets": 1.1,
+        "receptions": 1.05,
+        "receiving_yards": 1.05,
+        "receiving_tds": 1.0,
+        "rushing_yards": 1.0
+      },
       "train_date_range": [
         "2018-09-06",
         "2023-11-26"
@@ -564,6 +617,8 @@
           "improvement_over_baseline": 0.044,
           "beats_baseline": true,
           "interval_coverage_p15_p85": 0.62,
+          "interval_coverage_calibrated": 0.704,
+          "calibration_factor": 1.1,
           "n_train": 13260,
           "n_eval": 3314,
           "top_features": [
@@ -601,6 +656,8 @@
           "improvement_over_baseline": 0.048,
           "beats_baseline": true,
           "interval_coverage_p15_p85": 0.625,
+          "interval_coverage_calibrated": 0.72,
+          "calibration_factor": 1.05,
           "n_train": 13260,
           "n_eval": 3314,
           "top_features": [
@@ -638,6 +695,8 @@
           "improvement_over_baseline": 0.051,
           "beats_baseline": true,
           "interval_coverage_p15_p85": 0.645,
+          "interval_coverage_calibrated": 0.76,
+          "calibration_factor": 1.05,
           "n_train": 13260,
           "n_eval": 3314,
           "top_features": [
@@ -675,6 +734,8 @@
           "improvement_over_baseline": -0.01,
           "beats_baseline": false,
           "interval_coverage_p15_p85": 0.763,
+          "interval_coverage_calibrated": 0.764,
+          "calibration_factor": 1.0,
           "n_train": 13260,
           "n_eval": 3314,
           "top_features": [
@@ -712,6 +773,8 @@
           "improvement_over_baseline": -0.107,
           "beats_baseline": false,
           "interval_coverage_p15_p85": 0.824,
+          "interval_coverage_calibrated": 0.826,
+          "calibration_factor": 1.0,
           "n_train": 13260,
           "n_eval": 3314,
           "top_features": [
@@ -745,6 +808,12 @@
     },
     "TE": {
       "position": "TE",
+      "calibration": {
+        "targets": 1.2,
+        "receptions": 1.15,
+        "receiving_yards": 1.05,
+        "receiving_tds": 1.0
+      },
       "train_date_range": [
         "2018-09-06",
         "2023-11-26"
@@ -762,6 +831,8 @@
           "improvement_over_baseline": 0.033,
           "beats_baseline": true,
           "interval_coverage_p15_p85": 0.604,
+          "interval_coverage_calibrated": 0.719,
+          "calibration_factor": 1.2,
           "n_train": 6581,
           "n_eval": 1645,
           "top_features": [
@@ -799,6 +870,8 @@
           "improvement_over_baseline": 0.051,
           "beats_baseline": true,
           "interval_coverage_p15_p85": 0.573,
+          "interval_coverage_calibrated": 0.737,
+          "calibration_factor": 1.15,
           "n_train": 6581,
           "n_eval": 1645,
           "top_features": [
@@ -836,6 +909,8 @@
           "improvement_over_baseline": 0.038,
           "beats_baseline": true,
           "interval_coverage_p15_p85": 0.579,
+          "interval_coverage_calibrated": 0.708,
+          "calibration_factor": 1.05,
           "n_train": 6581,
           "n_eval": 1645,
           "top_features": [
@@ -873,6 +948,8 @@
           "improvement_over_baseline": -0.063,
           "beats_baseline": false,
           "interval_coverage_p15_p85": 0.61,
+          "interval_coverage_calibrated": 0.749,
+          "calibration_factor": 1.0,
           "n_train": 6581,
           "n_eval": 1645,
           "top_features": [
@@ -906,6 +983,11 @@
     },
     "K": {
       "position": "K",
+      "calibration": {
+        "field_goals_made": 1.55,
+        "extra_points_made": 1.3,
+        "kicking_points": 1.4
+      },
       "train_date_range": [
         "2018-09-06",
         "2023-11-26"
@@ -923,6 +1005,8 @@
           "improvement_over_baseline": 0.008,
           "beats_baseline": true,
           "interval_coverage_p15_p85": 0.558,
+          "interval_coverage_calibrated": 0.714,
+          "calibration_factor": 1.55,
           "n_train": 2964,
           "n_eval": 740,
           "top_features": [
@@ -960,6 +1044,8 @@
           "improvement_over_baseline": 0.077,
           "beats_baseline": true,
           "interval_coverage_p15_p85": 0.595,
+          "interval_coverage_calibrated": 0.707,
+          "calibration_factor": 1.3,
           "n_train": 2964,
           "n_eval": 740,
           "top_features": [
@@ -997,6 +1083,8 @@
           "improvement_over_baseline": 0.104,
           "beats_baseline": true,
           "interval_coverage_p15_p85": 0.555,
+          "interval_coverage_calibrated": 0.715,
+          "calibration_factor": 1.4,
           "n_train": 2964,
           "n_eval": 740,
           "top_features": [

@@ -423,14 +423,19 @@ blue accent; NFL uses a restrained field-green. Vercel rewrites all paths to
   is the right bias/variance trade.
 - **Derived fantasy, correlated simulation** — the honest way to build a fantasy
   interval from correlated component predictions.
-- **Interval calibration in dev mode** — with only 3 seasons the p15–p85 bands
-  run ~55–65% empirical coverage (below the 70% target); the full 2018→latest
-  range widens/ calibrates them. This is measured, not hidden.
+- **Interval calibration** — the raw p15–p85 quantile bands under-cover
+  (~55–65% empirical). `evaluate.py` computes a split-conformal-style widening
+  factor per `(position, target)` on the chronological holdout (the smallest
+  symmetric stretch that reaches the nominal 70%), stores it in
+  `calibration.json`, and the explainer applies it at serve time — so served
+  intervals are calibrated to ~70% without retraining the point models. Factors
+  are bounded to [1.0, 3.0] and recorded alongside raw vs. calibrated coverage
+  in the eval report.
 - **Rare-event ceiling** — TD/INT counts are near-random week to week; models
   correctly stay near the mean and are flagged when they don't beat baseline.
 - **Development mode** — dev artifacts (fewer seasons) are labelled `"dev"` in
   freshness/metadata and surfaced as a UI warning; full-training commands are in
   the README. Never presented as production accuracy.
 - **Future** — Sportradar for timely injuries/inactives/live data; Next Gen
-  Stats features; pbp-derived opponent EPA/success splits; conformal interval
-  calibration.
+  Stats features; pbp-derived opponent EPA/success splits; player-prop odds
+  ingestion.
