@@ -169,10 +169,27 @@ def build_upcoming_row(player_id: str, position: str, context: dict) -> pd.DataF
                 if v is not None:
                     row[k] = v
 
+    # Current depth / starter status. The serving base row carries the player's
+    # LAST-trained depth (often stale — e.g. a new team, or missing for a clear
+    # starter); override it with the current depth chart resolved at pipeline time
+    # (stored on the player index). Fall back to recent snap share when the depth
+    # chart doesn't list the player, so obvious starters still read correctly.
+    player = find_player(player_id)
+    if player is not None:
+        d_rank = player.get("depth_rank")
+        d_start = player.get("is_starter")
+        if d_rank is not None:
+            row["depth_rank"] = float(d_rank)
+        if d_start is not None:
+            row["is_starter"] = int(d_start)
+        elif d_rank is None:
+            snap = base.get("offense_pct_roll3")
+            if snap is not None and not pd.isna(snap) and float(snap) >= 0.55:
+                row["is_starter"] = 1
+
     # Own-team offensive environment for the player's CURRENT team. When the
     # player changed teams, this injects the NEW team's offensive profile so the
     # projection reflects the new situation (supporting cast / pace / scoring).
-    player = find_player(player_id)
     cur_team = context.get("team") or (player or {}).get("team")
     if cur_team:
         env = load_team_environment().get(cur_team)

@@ -268,7 +268,12 @@ def load_current_rosters(season: int):
 
     Used to determine which players are CURRENTLY rostered (active) and on which
     team — this changes weekly, so it is intentionally not cached. Returns the
-    latest week's row per player. None on failure (caller falls back)."""
+    latest week's row per player. None on failure (caller falls back).
+
+    NOTE: ``load_rosters_weekly`` only covers seasons 2002–2025, so it fails for
+    the upcoming season. Current team + active status are now resolved from
+    ``load_current_players`` (``latest_team``) instead; this remains only as a
+    secondary signal."""
     try:
         rw = nfl.load_rosters_weekly(seasons=[season])
     except Exception as exc:
@@ -281,6 +286,54 @@ def load_current_rosters(season: int):
         df = (df.sort_values("week")
                 .drop_duplicates("gsis_id", keep="last"))
     return df
+
+
+def load_current_players():
+    """Live (uncached) fetch of the canonical players table, returned as pandas.
+
+    ``load_players`` carries ``latest_team`` — the player's CURRENT team, updated
+    continuously by nflverse and correct even in the offseason — plus ``status``,
+    ``last_season`` and ``birth_date``. This is the authoritative source for a
+    player's current team and whether they are still active (retirees keep an old
+    ``last_season``). Intentionally not cached (it changes as players sign/move).
+    Returns a slim pandas frame, or None on failure (caller falls back)."""
+    try:
+        pl_df = nfl.load_players()
+    except Exception as exc:
+        log.warning("Current players fetch failed: %s", exc)
+        return None
+    if pl_df is None or pl_df.is_empty():
+        return None
+    df = pl_df.to_pandas()
+    keep = [c for c in ("gsis_id", "display_name", "position", "latest_team",
+                        "status", "last_season", "birth_date") if c in df.columns]
+    return df[keep].drop_duplicates("gsis_id")
+
+
+def load_current_depth(season: int):
+    """Live (uncached) fetch of the current-season depth charts, returned as pandas.
+
+    The upcoming-season depth chart uses a newer schema — ``team``, ``gsis_id``,
+    ``pos_abb``, ``pos_slot``, ``pos_rank`` and a ``dt`` snapshot date (there is
+    NO ``week``/``depth_team`` column). ``pos_rank == 1`` marks a starter. A player
+    can appear under multiple teams (e.g. after a trade), so callers disambiguate
+    by the player's current team. Falls back to ``season-1`` if the season fetch
+    is empty. Returns a slim pandas frame, or None on failure."""
+    for s in (season, season - 1):
+        try:
+            dc = nfl.load_depth_charts(seasons=[s])
+        except Exception as exc:
+            log.warning("Current depth-chart fetch failed (%s): %s", s, exc)
+            continue
+        if dc is None or dc.is_empty():
+            continue
+        df = dc.to_pandas()
+        if "gsis_id" not in df.columns or "pos_rank" not in df.columns:
+            continue
+        keep = [c for c in ("gsis_id", "team", "pos_abb", "pos_rank", "dt")
+                if c in df.columns]
+        return df[keep].dropna(subset=["gsis_id"])
+    return None
 
 
 if __name__ == "__main__":

@@ -473,10 +473,26 @@ posture as the NBA page). When a game is found, its real matchup context
 (opponent, spread, total, weather, rest) is used instead of neutral values.
 
 ## 4. Retirement, decline, and new-situation projection
-- **Active filter:** the serving player index (`players.json`) is intersected
-  with the **current-season weekly roster**, so retired / not-currently-rostered
-  players drop off and each player's **current team** is resolved from the live
-  roster (fixing stale post-trade teams). `team_changed`/`prev_team` are recorded.
+- **Active filter & current team:** the serving player index (`players.json`) is
+  built from the canonical **`players` table** (`nflverse.load_players`). Each
+  player's **current team** is `latest_team` — authoritative, updated continuously,
+  and correct even in the offseason, so a trade (e.g. A.J. Brown → NE) is reflected
+  immediately. A player is kept as **active** when `last_season` reaches the current
+  season, unioned with anyone on the current depth chart (a roster-lag safety net);
+  retirees (an old `last_season`, e.g. Tom Brady) drop off. `status` alone is *not*
+  used to gate activity — retirees keep `status=ACT`. `team_changed`/`prev_team` are
+  recorded (current `latest_team` vs the last trained team).
+  (Weekly rosters are unusable for this — `load_rosters_weekly` covers only
+  2002–2025, so it silently fell back to the prior season and left movers on their
+  old team.)
+- **Current depth / starter status:** starter rank comes from the current-season
+  **depth chart** (`load_depth_charts`, new schema: `pos_rank == 1` ⇒ starter, no
+  `week`/`depth_team` column). A player can be listed under several teams after a
+  trade, so rows are disambiguated by the player's current team and the most-recent
+  snapshot (`dt`). `depth_rank`/`is_starter` are stored in `players.json` and
+  override the (often stale) base-row values at serve time, with a **recent-snap-
+  share fallback** (`offense_pct_roll3 ≥ 0.55`) for clear starters the chart misses.
+  This fixes cases like Mahomes reading "not a clear starter".
 - **New-team environment:** leakage-safe own-team offensive-environment features
   (pass rate, plays/game, offensive EPA, TDs/game, implied total; season-to-date,
   shifted) are served from the player's **current** team (`team_environment.json`),
@@ -485,8 +501,7 @@ posture as the NBA page). When a game is found, its real matchup context
   rolling form capture decline.
 - **Uncertainty:** team-changers get a warning and a ×1.25 wider interval.
 - Limits: no free coordinator/O-line/teammate feeds, so this is team-level +
-  aging, not teammate-specific; and until the new season's rosters publish, the
-  current team falls back to last season's.
+  aging, not teammate-specific.
 
 ## 5. Combined Top-10 (`analytics/top_predictions.py`)
 For every player **with an upcoming game**, one pick per player is scored by

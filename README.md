@@ -70,6 +70,12 @@ UI warning — never presented as production accuracy.
   drop off; a player's current team — and its offensive environment — drive the
   projection, so movers are modeled in their new situation). A player with **no
   upcoming game gets no projection.**
+- **Current teams & depth charts.** Each player's current team comes from
+  `nflverse` `players.latest_team` (authoritative and correct in the offseason, so
+  a trade like A.J. Brown → NE is reflected immediately), and starter status comes
+  from the current-season **depth chart** (disambiguated by the current team, with
+  a recent-snap-share fallback). Both are computed in the pipeline and stored in
+  the committed `players.json`, so the deployed API needs no live fetch per request.
 - **Weekly auto-retrain.** `.github/workflows/retrain.yml` runs Tuesdays (noon
   EST), refreshes + retrains both sports, rebuilds the Top-10, and commits the
   artifacts to `main` (→ Render + Vercel redeploy). Regenerate the Top-10

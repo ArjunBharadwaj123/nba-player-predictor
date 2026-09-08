@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-07T13:12:10+00:00",
+  "updated_at": "2026-09-08T19:02:51+00:00",
   "seasons": [
     2018,
     2019,
@@ -25,5 +25,5 @@
     "nextgen_stats": false
   },
   "n_features": 287,
-  "n_serving_players": 671
+  "n_serving_players": 703
 }

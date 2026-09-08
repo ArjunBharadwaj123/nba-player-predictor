@@ -81,10 +81,13 @@ def build_serving(fe: pd.DataFrame) -> tuple[pd.DataFrame, list[dict]]:
 
     latest = fe.groupby("gsis_id", group_keys=False).tail(1)
 
-    # Current-season rosters decide who is ACTIVE (excludes retirees / not-
-    # currently-rostered) and resolve each player's CURRENT team (fixes stale
-    # post-trade teams). Falls back to player status when the live fetch fails.
-    current_team, active_ids = _current_roster_map()
+    # The canonical players table decides who is ACTIVE (excludes retirees) and
+    # resolves each player's CURRENT team via ``latest_team`` (fixes stale post-
+    # trade teams; correct even in the offseason). The current depth chart gives
+    # each player's starter rank on their current team. Both fall back gracefully
+    # when the live fetch fails.
+    current_team, active_ids = _current_player_map()
+    depth_map = _current_depth_map(current_team)
 
     players = []
     for _, r in latest.iterrows():
@@ -92,11 +95,12 @@ def build_serving(fe: pd.DataFrame) -> tuple[pd.DataFrame, list[dict]]:
         trained_team = str(r.get("team") or "")
         if active_ids is not None:
             if pid not in active_ids:
-                continue                       # not on a current roster -> hide
+                continue                       # not currently rostered -> hide
             cur_team = current_team.get(pid, trained_team)
         else:
-            cur_team = trained_team            # no roster data -> keep trained team
+            cur_team = trained_team            # no player data -> keep trained team
         hs = r.get("headshot_url")
+        d = depth_map.get(pid, {})
         players.append({
             "id": pid,
             "name": str(r.get("player_name") or r.get("display_name") or ""),
@@ -104,46 +108,100 @@ def build_serving(fe: pd.DataFrame) -> tuple[pd.DataFrame, list[dict]]:
             "team": cur_team,
             "prev_team": trained_team,
             "team_changed": bool(cur_team and trained_team and cur_team != trained_team),
+            "depth_rank": d.get("depth_rank"),
+            "is_starter": d.get("is_starter"),
             "headshot_url": None if pd.isna(hs) else str(hs),
             "last_season": int(r["season"]),
             "last_week": int(r["week"]),
         })
     players = [p for p in players if p["name"]]
     players.sort(key=lambda p: p["name"])
-    log.info("Serving player index: %d active players (%s)", len(players),
-             "roster-filtered" if active_ids is not None else "unfiltered fallback")
+    log.info("Serving player index: %d active players (%s); depth for %d",
+             len(players),
+             "player-filtered" if active_ids is not None else "unfiltered fallback",
+             sum(1 for p in players if p["is_starter"] is not None))
     return serving, players
 
 
-def _current_roster_map():
-    """(current_team_by_id, active_id_set) from the live current-season roster.
+_ACTIVE_STATUSES = {"ACT", "ACTIVE", "RES", "DEV"}
+
+
+def _current_player_map():
+    """(current_team_by_id, active_id_set) from the live canonical players table.
+
+    Current team is ``latest_team`` (authoritative, offseason-robust). A player is
+    ACTIVE if their ``last_season`` reaches the current season OR they appear in the
+    current depth-chart snapshot (catches players whose ``last_season`` nflverse has
+    not yet bumped). ``status`` alone is NOT used to gate activity — retirees keep
+    ``status=ACT`` with an old ``last_season``.
 
     Returns (dict, set) or ({}, None) when unavailable — None signals callers to
     skip active-filtering and keep trained teams."""
     from nfl.config import current_nfl_season
-    from nfl.scraping.collect import load_current_rosters
-    season = current_nfl_season()
-    rw = load_current_rosters(season)
-    if rw is None or rw.empty or "gsis_id" not in rw.columns:
-        # Try the prior season (offseason before week 1 rosters post).
-        rw = load_current_rosters(season - 1)
-    if rw is None or rw.empty or "gsis_id" not in rw.columns:
+    from nfl.features.build_dataset import TEAM_STANDARDIZE
+    from nfl.scraping.collect import load_current_players, load_current_depth
+
+    pl = load_current_players()
+    if pl is None or pl.empty or "gsis_id" not in pl.columns:
         return {}, None
-    # Keep only genuinely active/rostered statuses when the column is present.
-    if "status" in rw.columns:
-        active = rw[rw["status"].astype("string").str.upper().isin(
-            ["ACT", "ACTIVE", "RES", "DEV", ""]) | rw["status"].isna()]
-        rw = active if not active.empty else rw
-    team_col = "team" if "team" in rw.columns else (
-        "club_code" if "club_code" in rw.columns else None)
+    season = current_nfl_season()
+
     current_team = {}
-    if team_col:
-        from nfl.features.build_dataset import TEAM_STANDARDIZE
-        for _, r in rw.iterrows():
-            t = str(r.get(team_col) or "")
-            current_team[str(r["gsis_id"])] = TEAM_STANDARDIZE.get(t, t)
-    active_ids = set(rw["gsis_id"].astype(str))
+    if "latest_team" in pl.columns:
+        for _, r in pl.iterrows():
+            t = str(r.get("latest_team") or "")
+            if t and t.lower() != "nan":
+                current_team[str(r["gsis_id"])] = TEAM_STANDARDIZE.get(t, t)
+
+    last_season = pd.to_numeric(pl.get("last_season"), errors="coerce")
+    active_ids = set(pl.loc[last_season >= season, "gsis_id"].astype(str))
+    # Union in anyone currently on a depth chart (roster-lag safety net).
+    dc = load_current_depth(season)
+    if dc is not None and not dc.empty and "gsis_id" in dc.columns:
+        active_ids |= set(dc["gsis_id"].astype(str))
+    if not active_ids:
+        return current_team, None            # nothing usable -> don't over-filter
     return current_team, active_ids
+
+
+def _current_depth_map(current_team: dict) -> dict:
+    """{gsis_id: {"depth_rank": int, "is_starter": 0/1}} from the current depth chart.
+
+    A player can be listed under several teams (e.g. an old and a new team after a
+    trade), so we keep only the rows for the player's CURRENT team (``latest_team``)
+    and read the most recent snapshot (``dt``). ``pos_rank == 1`` -> starter. Empty
+    dict when the depth chart is unavailable."""
+    from nfl.config import current_nfl_season
+    from nfl.features.build_dataset import TEAM_STANDARDIZE
+    from nfl.scraping.collect import load_current_depth
+
+    dc = load_current_depth(current_nfl_season())
+    if dc is None or dc.empty or "gsis_id" not in dc.columns:
+        return {}
+    dc = dc.copy()
+    dc["gsis_id"] = dc["gsis_id"].astype(str)
+    dc["pos_rank"] = pd.to_numeric(dc.get("pos_rank"), errors="coerce")
+    if "team" in dc.columns:
+        dc["team"] = dc["team"].astype("string").map(
+            lambda t: TEAM_STANDARDIZE.get(t, t) if t is not None else t)
+    # Keep only rows matching the player's current team when we know it.
+    if "team" in dc.columns and current_team:
+        dc["_cur"] = dc["gsis_id"].map(current_team)
+        matched = dc[dc["_cur"].notna() & (dc["team"] == dc["_cur"])]
+        dc = matched if not matched.empty else dc
+    # Most recent snapshot per player, then its best (lowest) pos_rank.
+    if "dt" in dc.columns:
+        dc["dt"] = pd.to_datetime(dc["dt"], errors="coerce")
+        dc = dc.sort_values("dt")
+    dc = dc.dropna(subset=["pos_rank"])
+    out: dict = {}
+    for pid, grp in dc.groupby("gsis_id"):
+        if "dt" in grp.columns and grp["dt"].notna().any():
+            last_dt = grp["dt"].max()
+            grp = grp[grp["dt"] == last_dt]
+        rank = int(grp["pos_rank"].min())
+        out[str(pid)] = {"depth_rank": rank, "is_starter": int(rank == 1)}
+    return out
 
 
 def build_team_environment(fe: pd.DataFrame) -> dict:
