@@ -18,3 +18,7 @@ services:
       # Optional: shared Odds API key for NBA + NFL live lines (works without it).
       - key: ODDS_API_KEY
         sync: false
+      # Admin dashboard password (protects /admin/*). Set the real value in the
+      # Render dashboard — never committed.
+      - key: ADMIN_PASSWORD
+        sync: false

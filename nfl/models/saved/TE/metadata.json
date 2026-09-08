@@ -1,168 +1,168 @@
 {
   "position": "TE",
-  "n_rows": 8226,
+  "n_rows": 9513,
   "targets": {
     "targets": {
-      "n_rows": 8226,
+      "n_rows": 9513,
       "objective": "count:poisson",
-      "residual_std": 1.935031754085489,
-      "y_mean": 3.12715779236567,
+      "residual_std": 1.9174822878472302,
+      "y_mean": 3.121202564911174,
       "top_features": [
         [
-          "targets_ewma",
-          0.15040384232997894
+          "target_share_ewma",
+          0.1858774721622467
         ],
         [
-          "target_share_ewma",
-          0.08200126886367798
+          "targets_ewma",
+          0.06751532107591629
         ],
         [
           "receptions_ewma",
-          0.04562772810459137
+          0.05135656148195267
         ],
         [
           "wopr_ewma",
-          0.03533334657549858
+          0.038711294531822205
+        ],
+        [
+          "target_share_roll8",
+          0.03593496233224869
+        ],
+        [
+          "targets_roll8",
+          0.01930316351354122
+        ],
+        [
+          "receptions_roll5",
+          0.013760866597294807
         ],
         [
           "targets_roll5",
-          0.02929776906967163
-        ],
-        [
-          "fantasy_points_component_ewma",
-          0.018277041614055634
-        ],
-        [
-          "receptions_roll8",
-          0.017775602638721466
-        ],
-        [
-          "receiving_yards_ewma",
-          0.015997687354683876
+          0.013412893749773502
         ]
       ]
     },
     "receptions": {
-      "n_rows": 8226,
+      "n_rows": 9513,
       "objective": "count:poisson",
-      "residual_std": 1.5487483030778568,
-      "y_mean": 2.1665451008995866,
+      "residual_std": 1.5481775083878966,
+      "y_mean": 2.174813413224009,
       "top_features": [
         [
           "target_share_ewma",
-          0.14167188107967377
+          0.15332086384296417
         ],
         [
           "targets_ewma",
-          0.08381249755620956
-        ],
-        [
-          "targets_roll5",
-          0.0522192120552063
-        ],
-        [
-          "receptions_roll8",
-          0.03217916563153267
+          0.061007093638181686
         ],
         [
           "receptions_ewma",
-          0.023463016375899315
-        ],
-        [
-          "target_share_roll8",
-          0.021517585963010788
-        ],
-        [
-          "wopr_ewma",
-          0.020338518545031548
+          0.039783015847206116
         ],
         [
           "targets_roll8",
-          0.01933015137910843
+          0.027668077498674393
+        ],
+        [
+          "target_share_roll5",
+          0.024761496111750603
+        ],
+        [
+          "targets_roll5",
+          0.023519696667790413
+        ],
+        [
+          "receptions_roll5",
+          0.021319812163710594
+        ],
+        [
+          "target_share_roll8",
+          0.018367115408182144
         ]
       ]
     },
     "receiving_yards": {
-      "n_rows": 8226,
+      "n_rows": 9513,
       "objective": "reg:squarederror",
-      "residual_std": 19.83247779942037,
-      "y_mean": 22.99890590809628,
+      "residual_std": 20.330279414633022,
+      "y_mean": 22.943550930305896,
       "top_features": [
         [
           "target_share_ewma",
-          0.13620901107788086
-        ],
-        [
-          "target_share_roll5",
-          0.05217461660504341
-        ],
-        [
-          "targets_ewma",
-          0.040814340114593506
+          0.10812043398618698
         ],
         [
           "wopr_ewma",
-          0.03217494860291481
+          0.05650654435157776
         ],
         [
-          "receiving_yards_ewma",
-          0.026745988056063652
+          "receptions_ewma",
+          0.05186136066913605
         ],
         [
-          "receiving_epa_season_avg",
-          0.02268822118639946
+          "receiving_yards_roll5",
+          0.04639257490634918
         ],
         [
-          "receptions_roll8",
-          0.022500813007354736
+          "fantasy_points_ppr_ewma",
+          0.025126224383711815
+        ],
+        [
+          "wopr_roll5",
+          0.022090783342719078
         ],
         [
           "receiving_yards_roll8",
-          0.015052531845867634
+          0.020785361528396606
+        ],
+        [
+          "target_share_season_avg",
+          0.01779363304376602
         ]
       ]
     },
     "receiving_tds": {
-      "n_rows": 8226,
+      "n_rows": 9513,
       "objective": "count:poisson",
-      "residual_std": 0.3918654007516309,
-      "y_mean": 0.1673960612691466,
+      "residual_std": 0.39644948245735623,
+      "y_mean": 0.16892673184063914,
       "top_features": [
         [
+          "receiving_yards_roll5",
+          0.05419525131583214
+        ],
+        [
+          "receiving_first_downs_roll5",
+          0.036031849682331085
+        ],
+        [
           "wopr_roll5",
-          0.041045691817998886
+          0.033661022782325745
         ],
         [
           "target_share_ewma",
-          0.03112783469259739
+          0.03238675743341446
         ],
         [
           "targets_ewma",
-          0.030493736267089844
+          0.023478401824831963
         ],
         [
-          "target_share_roll5",
-          0.018719730898737907
+          "implied_team_total",
+          0.011327344924211502
         ],
         [
-          "target_share_roll8",
-          0.017579523846507072
+          "carries_ewma",
+          0.010865192860364914
         ],
         [
-          "receiving_air_yards_season_avg",
-          0.017150061205029488
-        ],
-        [
-          "receiving_air_yards_roll5",
-          0.016075408086180687
-        ],
-        [
-          "receiving_yards_ewma",
-          0.014364589937031269
+          "offense_pct_roll3",
+          0.010289723984897137
         ]
       ]
     }
   },
   "train_date_min": "2018-09-06",
-  "train_date_max": "2025-01-05"
+  "train_date_max": "2026-01-04"
 }

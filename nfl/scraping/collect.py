@@ -263,6 +263,26 @@ def to_pandas(df: pl.DataFrame | None):
     return df.to_pandas()
 
 
+def load_current_rosters(season: int):
+    """Live (uncached) fetch of a season's weekly rosters, returned as pandas.
+
+    Used to determine which players are CURRENTLY rostered (active) and on which
+    team — this changes weekly, so it is intentionally not cached. Returns the
+    latest week's row per player. None on failure (caller falls back)."""
+    try:
+        rw = nfl.load_rosters_weekly(seasons=[season])
+    except Exception as exc:
+        log.warning("Current-season roster fetch failed (%s): %s", season, exc)
+        return None
+    if rw is None or rw.is_empty():
+        return None
+    df = rw.to_pandas()
+    if "week" in df.columns:
+        df = (df.sort_values("week")
+                .drop_duplicates("gsis_id", keep="last"))
+    return df
+
+
 if __name__ == "__main__":
     logging.basicConfig(level=logging.INFO,
                         format="%(asctime)s  %(levelname)s  %(message)s",

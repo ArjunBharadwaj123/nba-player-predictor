@@ -18,22 +18,58 @@ from datetime import date, datetime
 
 import pandas as pd
 
-from nfl.config import default_seasons, LATEST_SEASON
+from nfl.config import current_nfl_season
+from nfl.features.build_dataset import TEAM_STANDARDIZE
 from nfl.serving import find_player, load_opp_defense, injury_from_row, latest_player_row
 
 log = logging.getLogger(__name__)
 
 
-def _load_schedule_frame(seasons: list[int]) -> pd.DataFrame | None:
-    """Load schedules for the given seasons via the cached collector path."""
-    try:
-        import nflreadpy as nfl
-        from nfl.scraping.collect import _load_cached_per_season
-        sched = _load_cached_per_season("schedules", seasons, nfl.load_schedules)
-        return None if sched is None else sched.to_pandas()
-    except Exception as exc:
-        log.warning("Schedule load failed: %s", exc)
+def _load_schedule_frame(season: int, live: bool) -> pd.DataFrame | None:
+    """Load one season's schedule. The CURRENT season is fetched live (fixtures
+    and lines update weekly); completed seasons come from the local cache.
+
+    Resilient: a successful live fetch is cached, and a failed live fetch falls
+    back to that cache — so a transient nflverse timeout never blocks next-game
+    resolution once the schedule has been seen at least once.
+    """
+    from nfl.config import DATA_CACHE
+    cache = DATA_CACHE / f"schedules_{season}.parquet"
+    df = None
+    if live:
+        try:
+            import nflreadpy as nfl
+            sched = nfl.load_schedules(seasons=[season])
+            if sched is not None and not sched.is_empty():
+                try:
+                    sched.write_parquet(cache)          # cache-on-success
+                except Exception:
+                    pass
+                df = sched.to_pandas()
+        except Exception as exc:
+            log.warning("Live schedule fetch failed for %s: %s", season, exc)
+        if df is None and cache.exists():               # fall back to cache
+            try:
+                import polars as pl
+                df = pl.read_parquet(cache).to_pandas()
+                log.info("Using cached schedule for %s after live fetch failed.", season)
+            except Exception:
+                df = None
+    else:
+        try:
+            import nflreadpy as nfl
+            from nfl.scraping.collect import _load_cached_per_season
+            sched = _load_cached_per_season("schedules", [season], nfl.load_schedules)
+            df = None if sched is None else sched.to_pandas()
+        except Exception as exc:
+            log.warning("Schedule load failed for %s: %s", season, exc)
+            df = None
+    if df is None:
         return None
+    for c in ("home_team", "away_team"):                 # align relocated codes
+        if c in df.columns:
+            df[c] = df[c].replace(TEAM_STANDARDIZE)
+    return df
 
 
 def get_next_game_context(player_id: str,
@@ -46,10 +82,20 @@ def get_next_game_context(player_id: str,
         return None
     today = today or date.today()
 
-    # Look at the latest configured season plus the one after (season rolls over).
-    seasons = sorted(set(default_seasons() + [LATEST_SEASON, LATEST_SEASON + 1]))
-    sched = _load_schedule_frame(seasons)
-    if sched is None or sched.empty:
+    # The current NFL season (by date) is fetched LIVE so this week's fixtures/
+    # lines are current; the prior season comes from cache as a fallback.
+    cur = current_nfl_season(today)
+    frames = []
+    live = _load_schedule_frame(cur, live=True)
+    if live is not None:
+        frames.append(live)
+    prev = _load_schedule_frame(cur - 1, live=False)
+    if prev is not None:
+        frames.append(prev)
+    if not frames:
+        return None
+    sched = pd.concat(frames, ignore_index=True)
+    if sched.empty:
         return None
 
     sched = sched.copy()

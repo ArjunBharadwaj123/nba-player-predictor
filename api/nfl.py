@@ -166,8 +166,33 @@ def predict(req: PredictRequest):
     if latest_player_row(req.player_id) is None:
         raise HTTPException(404, f"No serving data for {player['name']}.")
 
+    # Build the matchup context. Prefer explicit request context; otherwise
+    # resolve the player's UPCOMING game. No game and no explicit opponent →
+    # do not predict (a player with no scheduled game gets no projection).
+    ctx = {k: v for k, v in req.context.model_dump().items() if v is not None}
+    game = None
+    if not ctx.get("opponent_team"):
+        from nfl.scraping.current_context import get_next_game_context
+        game = get_next_game_context(req.player_id)
+        if game is None:
+            raise HTTPException(
+                404,
+                f"No upcoming game found for {player['name']} — no projection "
+                f"is made without a scheduled game.")
+        # Populate context from the resolved game (real matchup, not neutral).
+        for key in ("opponent_team", "home_away", "days_rest", "spread_line_team",
+                    "game_total", "implied_team_total", "is_indoor", "is_grass",
+                    "temp", "wind", "div_game", "injury_designation"):
+            if game.get(key) is not None:
+                ctx[key] = game[key]
+    # Always tag the player's current team so the new-team environment is used.
+    ctx["team"] = player.get("team")
+
+    # Team-changers carry more new-situation uncertainty → widen intervals.
+    widen = 1.25 if player.get("team_changed") else 1.0
+
     try:
-        X = build_upcoming_row(req.player_id, position, req.context.model_dump())
+        X = build_upcoming_row(req.player_id, position, ctx)
     except KeyError:
         raise HTTPException(404, f"No serving data for {player['name']}.")
     except Exception as exc:
@@ -175,13 +200,18 @@ def predict(req: PredictRequest):
 
     try:
         result = predict_player(position, X, req.scoring_format,
-                                req.fantasy_threshold)
+                                req.fantasy_threshold, interval_widen=widen)
     except FileNotFoundError:
         raise HTTPException(503, f"Models for {position} not available.")
     except Exception as exc:
         raise HTTPException(500, f"Prediction failed: {exc}")
 
     warnings = _build_warnings(req.player_id, position, result, req.context)
+    if player.get("team_changed"):
+        warnings.insert(0, (
+            f"Changed teams ({player.get('prev_team')}→{player.get('team')}) — "
+            f"projection blends prior individual form with the new team's "
+            f"environment; elevated uncertainty."))
     fresh = load_freshness()
     payload = {
         "player": {"id": player["id"], "name": player["name"],
@@ -194,6 +224,8 @@ def predict(req: PredictRequest):
         "fantasy_points": result["fantasy"],
         "reasons": result["reasons"],
         "warnings": warnings,
+        "team_changed": bool(player.get("team_changed")),
+        "game": game,
         "targets": POSITION_TARGETS[position],
         "model_version": f"{fresh.get('mode', 'unknown')}-{'-'.join(map(str, fresh.get('seasons', [])))}",
         "data_freshness": {"updated_at": fresh.get("updated_at"),
@@ -327,9 +359,6 @@ def _build_warnings(player_id, position, result, context) -> list[str]:
                                                          and math.isnan(snap)):
             if float(snap) < 0.4:
                 warnings.append("Low recent snap share — role uncertainty.")
-    if context.opponent_team is None:
-        warnings.append("No upcoming-game context supplied — using neutral "
-                        "matchup values. Provide opponent for a sharper read.")
     fresh = load_freshness()
     if fresh.get("mode") == "dev":
         warnings.append("Development model (reduced seasons) — not final "

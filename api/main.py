@@ -98,6 +98,14 @@ try:
 except Exception as _nfl_exc:  # pragma: no cover - defensive
     logging.warning("NFL router unavailable: %s", _nfl_exc)
 
+# ── Admin dashboard router (password-protected) ───────────────────────────────
+try:
+    from api.admin import router as admin_router
+    app.include_router(admin_router)
+    log.info("Admin router mounted at /admin")
+except Exception as _admin_exc:  # pragma: no cover - defensive
+    logging.warning("Admin router unavailable: %s", _admin_exc)
+
 _models: dict        = {}
 _quantile_models: dict = {}
 _feature_names: list = []

@@ -1,0 +1,226 @@
+{
+  "PIT": {
+    "team_pass_rate": 0.5693,
+    "team_plays_per_game": 55.375,
+    "team_off_epa": 1.8852,
+    "team_tds_per_game": 2.4375,
+    "team_implied_total_avg": 22.0312
+  },
+  "SF": {
+    "team_pass_rate": 0.5442,
+    "team_plays_per_game": 63.5,
+    "team_off_epa": 6.4775,
+    "team_tds_per_game": 3.0,
+    "team_implied_total_avg": 23.6094
+  },
+  "ATL": {
+    "team_pass_rate": 0.5315,
+    "team_plays_per_game": 60.3125,
+    "team_off_epa": 0.0509,
+    "team_tds_per_game": 2.1875,
+    "team_implied_total_avg": 21.9688
+  },
+  "SEA": {
+    "team_pass_rate": 0.4929,
+    "team_plays_per_game": 57.6875,
+    "team_off_epa": 1.8285,
+    "team_tds_per_game": 2.6875,
+    "team_implied_total_avg": 24.0625
+  },
+  "PHI": {
+    "team_pass_rate": 0.5057,
+    "team_plays_per_game": 57.1875,
+    "team_off_epa": 1.8387,
+    "team_tds_per_game": 2.5625,
+    "team_implied_total_avg": 24.1562
+  },
+  "BAL": {
+    "team_pass_rate": 0.4615,
+    "team_plays_per_game": 55.25,
+    "team_off_epa": 2.4915,
+    "team_tds_per_game": 2.6875,
+    "team_implied_total_avg": 25.2969
+  },
+  "IND": {
+    "team_pass_rate": 0.5563,
+    "team_plays_per_game": 57.8125,
+    "team_off_epa": 4.8272,
+    "team_tds_per_game": 3.0625,
+    "team_implied_total_avg": 24.0469
+  },
+  "TB": {
+    "team_pass_rate": 0.5543,
+    "team_plays_per_game": 60.375,
+    "team_off_epa": -0.7114,
+    "team_tds_per_game": 2.375,
+    "team_implied_total_avg": 23.4219
+  },
+  "WAS": {
+    "team_pass_rate": 0.5004,
+    "team_plays_per_game": 55.625,
+    "team_off_epa": 0.161,
+    "team_tds_per_game": 2.25,
+    "team_implied_total_avg": 22.1875
+  },
+  "MIA": {
+    "team_pass_rate": 0.5344,
+    "team_plays_per_game": 53.8125,
+    "team_off_epa": 0.6956,
+    "team_tds_per_game": 2.25,
+    "team_implied_total_avg": 21.375
+  },
+  "BUF": {
+    "team_pass_rate": 0.4812,
+    "team_plays_per_game": 60.625,
+    "team_off_epa": 7.3157,
+    "team_tds_per_game": 3.375,
+    "team_implied_total_avg": 27.0625
+  },
+  "MIN": {
+    "team_pass_rate": 0.5394,
+    "team_plays_per_game": 52.0,
+    "team_off_epa": -6.9575,
+    "team_tds_per_game": 2.0,
+    "team_implied_total_avg": 20.875
+  },
+  "CIN": {
+    "team_pass_rate": 0.6273,
+    "team_plays_per_game": 59.8125,
+    "team_off_epa": 1.1813,
+    "team_tds_per_game": 2.75,
+    "team_implied_total_avg": 22.7812
+  },
+  "ARI": {
+    "team_pass_rate": 0.6343,
+    "team_plays_per_game": 60.5,
+    "team_off_epa": -1.1665,
+    "team_tds_per_game": 2.25,
+    "team_implied_total_avg": 21.6719
+  },
+  "NYJ": {
+    "team_pass_rate": 0.5161,
+    "team_plays_per_game": 56.5,
+    "team_off_epa": -7.6645,
+    "team_tds_per_game": 1.5625,
+    "team_implied_total_avg": 18.1875
+  },
+  "HOU": {
+    "team_pass_rate": 0.5533,
+    "team_plays_per_game": 62.0625,
+    "team_off_epa": -0.792,
+    "team_tds_per_game": 1.9375,
+    "team_implied_total_avg": 21.375
+  },
+  "DAL": {
+    "team_pass_rate": 0.5806,
+    "team_plays_per_game": 64.6875,
+    "team_off_epa": 7.0336,
+    "team_tds_per_game": 2.9375,
+    "team_implied_total_avg": 25.0156
+  },
+  "LA": {
+    "team_pass_rate": 0.5652,
+    "team_plays_per_game": 62.0,
+    "team_off_epa": 8.1459,
+    "team_tds_per_game": 3.6875,
+    "team_implied_total_avg": 26.0
+  },
+  "CAR": {
+    "team_pass_rate": 0.5152,
+    "team_plays_per_game": 57.9375,
+    "team_off_epa": -2.877,
+    "team_tds_per_game": 1.9375,
+    "team_implied_total_avg": 19.7344
+  },
+  "KC": {
+    "team_pass_rate": 0.5808,
+    "team_plays_per_game": 60.0,
+    "team_off_epa": 3.8989,
+    "team_tds_per_game": 2.375,
+    "team_implied_total_avg": 24.5312
+  },
+  "GB": {
+    "team_pass_rate": 0.513,
+    "team_plays_per_game": 58.4375,
+    "team_off_epa": 7.479,
+    "team_tds_per_game": 2.75,
+    "team_implied_total_avg": 24.75
+  },
+  "DET": {
+    "team_pass_rate": 0.5647,
+    "team_plays_per_game": 59.625,
+    "team_off_epa": 4.5149,
+    "team_tds_per_game": 3.4375,
+    "team_implied_total_avg": 27.1094
+  },
+  "NYG": {
+    "team_pass_rate": 0.5053,
+    "team_plays_per_game": 60.6875,
+    "team_off_epa": 0.6172,
+    "team_tds_per_game": 2.5,
+    "team_implied_total_avg": 19.5312
+  },
+  "TEN": {
+    "team_pass_rate": 0.6035,
+    "team_plays_per_game": 56.0,
+    "team_off_epa": -8.7352,
+    "team_tds_per_game": 1.4375,
+    "team_implied_total_avg": 16.9531
+  },
+  "JAX": {
+    "team_pass_rate": 0.5334,
+    "team_plays_per_game": 62.1875,
+    "team_off_epa": 1.4201,
+    "team_tds_per_game": 2.9375,
+    "team_implied_total_avg": 22.7344
+  },
+  "LAC": {
+    "team_pass_rate": 0.543,
+    "team_plays_per_game": 60.625,
+    "team_off_epa": -0.0944,
+    "team_tds_per_game": 2.25,
+    "team_implied_total_avg": 23.6719
+  },
+  "LV": {
+    "team_pass_rate": 0.5921,
+    "team_plays_per_game": 51.625,
+    "team_off_epa": -10.9068,
+    "team_tds_per_game": 1.5625,
+    "team_implied_total_avg": 18.6875
+  },
+  "DEN": {
+    "team_pass_rate": 0.5795,
+    "team_plays_per_game": 63.4375,
+    "team_off_epa": 3.742,
+    "team_tds_per_game": 2.6875,
+    "team_implied_total_avg": 23.7188
+  },
+  "NE": {
+    "team_pass_rate": 0.506,
+    "team_plays_per_game": 58.75,
+    "team_off_epa": 8.5068,
+    "team_tds_per_game": 3.0,
+    "team_implied_total_avg": 24.3125
+  },
+  "CHI": {
+    "team_pass_rate": 0.5295,
+    "team_plays_per_game": 64.25,
+    "team_off_epa": 5.119,
+    "team_tds_per_game": 2.8125,
+    "team_implied_total_avg": 22.6719
+  },
+  "NO": {
+    "team_pass_rate": 0.573,
+    "team_plays_per_game": 60.3125,
+    "team_off_epa": -4.5207,
+    "team_tds_per_game": 1.625,
+    "team_implied_total_avg": 19.1406
+  },
+  "CLE": {
+    "team_pass_rate": 0.5672,
+    "team_plays_per_game": 58.25,
+    "team_off_epa": -11.1247,
+    "team_tds_per_game": 1.625,
+    "team_implied_total_avg": 16.8906
+  }
+}

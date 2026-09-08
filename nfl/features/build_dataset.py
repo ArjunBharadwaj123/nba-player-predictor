@@ -267,6 +267,8 @@ def build_dataset(bundle: DataBundle) -> pd.DataFrame:
                          "years_of_experience"]].copy()
         if "headshot" in players.columns:
             pmeta["headshot"] = players["headshot"]
+        if "birth_date" in players.columns:
+            pmeta["birth_date"] = players["birth_date"]
         pmeta = pmeta.drop_duplicates("gsis_id")
         df = df.merge(pmeta, on="gsis_id", how="left", suffixes=("", "_meta"))
         df["years_experience"] = df["years_experience"].fillna(

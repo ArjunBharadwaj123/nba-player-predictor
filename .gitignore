@@ -37,9 +37,14 @@ nfl/data/processed/*
 !nfl/data/processed/features_serving.parquet
 !nfl/data/processed/players.json
 !nfl/data/processed/opp_defense.json
+!nfl/data/processed/team_environment.json
 !nfl/data/processed/freshness.json
 # The full training feature matrix stays ignored (large, training-only).
 nfl/data/processed/features.parquet
+
+# Combined analytics artifact (committed so the deployed admin API can serve it).
+!data/
+!data/top_predictions.json
 
 # NFL model artifacts: ignore stray files, but keep the per-position pkl/json the
 # API lazy-loads. Subdirectories must be re-included BEFORE the files inside them

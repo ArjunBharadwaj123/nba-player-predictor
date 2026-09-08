@@ -1,128 +1,128 @@
 {
   "position": "K",
-  "n_rows": 3704,
+  "n_rows": 4247,
   "targets": {
     "field_goals_made": {
-      "n_rows": 3704,
+      "n_rows": 4247,
       "objective": "count:poisson",
-      "residual_std": 1.173518817532627,
-      "y_mean": 1.6279697624190064,
+      "residual_std": 1.1565811360061915,
+      "y_mean": 1.6390393218742643,
       "top_features": [
         [
-          "fg_made_prev",
-          0.03081641159951687
+          "missing_depth",
+          0.026322420686483383
         ],
         [
-          "bye_week_return",
-          0.024723388254642487
+          "completions_ewma",
+          0.0210806243121624
         ],
         [
           "div_game",
-          0.02303568460047245
+          0.020635193213820457
         ],
         [
-          "pat_att_roll5",
-          0.01969544030725956
+          "attempts_season_avg",
+          0.01842261105775833
         ],
         [
-          "is_starter",
-          0.019510507583618164
+          "passing_epa_ewma",
+          0.018147937953472137
         ],
         [
-          "fg_att_roll5",
-          0.019438186660408974
+          "bye_week_return",
+          0.017897561192512512
         ],
         [
-          "pat_made_roll8",
-          0.018895717337727547
+          "pat_made_ewma",
+          0.016054149717092514
         ],
         [
-          "kicking_points_roll3",
-          0.01845288835465908
+          "injury_designation_enc",
+          0.015975600108504295
         ]
       ]
     },
     "extra_points_made": {
-      "n_rows": 3704,
+      "n_rows": 4247,
       "objective": "count:poisson",
-      "residual_std": 1.3058573225249226,
-      "y_mean": 2.196814254859611,
+      "residual_std": 1.3066725978448674,
+      "y_mean": 2.200847657169767,
       "top_features": [
         [
           "implied_team_total",
-          0.05151508003473282
+          0.06534357368946075
         ],
         [
           "spread_line_team",
-          0.03756142035126686
+          0.03510979190468788
         ],
         [
-          "game_total",
-          0.023493468761444092
+          "attempts_ewma",
+          0.01862056367099285
         ],
         [
-          "pat_att_roll8",
-          0.02033078856766224
+          "team_off_epa",
+          0.01861697994172573
         ],
         [
-          "passing_interceptions_season_avg",
-          0.018085090443491936
+          "team_implied_total_avg",
+          0.018205901607871056
         ],
         [
-          "opp_pass_yards_allowed",
-          0.01764356903731823
+          "pat_att_roll5",
+          0.017927339300513268
         ],
         [
-          "missing_injury",
-          0.017504017800092697
+          "pat_made_ewma",
+          0.017911134287714958
         ],
         [
-          "air_yards_share_season_avg",
-          0.017241893336176872
+          "team_tds_per_game",
+          0.01790301688015461
         ]
       ]
     },
     "kicking_points": {
-      "n_rows": 3704,
+      "n_rows": 4247,
       "objective": "reg:squarederror",
-      "residual_std": 4.266910115637501,
-      "y_mean": 8.013498920086393,
+      "residual_std": 4.191879289499443,
+      "y_mean": 8.079821050153049,
       "top_features": [
         [
-          "spread_line_team",
-          0.03220454603433609
+          "passing_epa_ewma",
+          0.026538725942373276
         ],
         [
-          "passing_yards_ewma",
-          0.023001963272690773
+          "missing_weather",
+          0.024900982156395912
+        ],
+        [
+          "spread_line_team",
+          0.024028070271015167
+        ],
+        [
+          "fg_att_roll3",
+          0.021968107670545578
+        ],
+        [
+          "implied_team_total",
+          0.01939590647816658
+        ],
+        [
+          "temp",
+          0.01927724853157997
         ],
         [
           "wind",
-          0.022503314539790154
+          0.01880876161158085
         ],
         [
-          "pat_att_roll5",
-          0.020672669634222984
-        ],
-        [
-          "pat_att_roll3",
-          0.020458480343222618
-        ],
-        [
-          "game_total",
-          0.020205209031701088
-        ],
-        [
-          "kicking_points_roll3",
-          0.02020510844886303
-        ],
-        [
-          "depth_rank",
-          0.020009277388453484
+          "bye_week_return",
+          0.018425315618515015
         ]
       ]
     }
   },
   "train_date_min": "2018-09-06",
-  "train_date_max": "2025-01-05"
+  "train_date_max": "2026-01-04"
 }

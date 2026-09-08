@@ -59,6 +59,22 @@ The NFL system works **without** `ODDS_API_KEY` (odds are omitted and marked
 missing, never faked). Dev-mode artifacts are labelled `"dev"` and surfaced as a
 UI warning — never presented as production accuracy.
 
+### 🔒 Admin dashboard & in-season updates
+
+- **`/admin`** — a password-protected dashboard (NBA vs NFL train/test metrics +
+  a combined confidence-weighted **Top-10**). Set the password server-side:
+  `ADMIN_PASSWORD` env var on the API host (never commit it). The page prompts
+  for it; the API checks it via the `X-Admin-Password` header.
+- **Stays current in-season.** NFL models train on **2018–2025**, weighting the
+  current season more, and only support **currently-rostered** players (retirees
+  drop off; a player's current team — and its offensive environment — drive the
+  projection, so movers are modeled in their new situation). A player with **no
+  upcoming game gets no projection.**
+- **Weekly auto-retrain.** `.github/workflows/retrain.yml` runs Tuesdays (noon
+  EST), refreshes + retrains both sports, rebuilds the Top-10, and commits the
+  artifacts to `main` (→ Render + Vercel redeploy). Regenerate the Top-10
+  manually with `python -m analytics.top_predictions`.
+
 ---
 
 ## 🚀 Features

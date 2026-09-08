@@ -80,7 +80,7 @@ def evaluate_position(df: pd.DataFrame, feats: list[str], position: str,
 
     test_mask = _holdout_mask(sub, holdout_frac)
     train, test = sub[~test_mask], sub[test_mask]
-    weights = recency_weights(train["gameday"])
+    weights = recency_weights(train["gameday"], train.get("season"))
     Xtr = train[feats].astype(float)
     Xte = test[feats].astype(float)
 

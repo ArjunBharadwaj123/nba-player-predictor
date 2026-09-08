@@ -251,7 +251,7 @@ export default function NflPage() {
             {ctxError && <div style={{ marginTop: 10 }}><ErrorBox onRetry={() => fetchContext(player)}>{ctxError}</ErrorBox></div>}
             {noGame && (
               <div style={{ marginTop: 10 }}>
-                <EmptyState icon="🏈">{noGame} You can still run a neutral-matchup projection below.</EmptyState>
+                <EmptyState icon="🏈">{noGame} No projection is made without a scheduled game.</EmptyState>
               </div>
             )}
 
@@ -263,11 +263,15 @@ export default function NflPage() {
               <InjuryDepth context={context} />
             )}
 
-            {/* 10. Run prediction */}
-            <button onClick={predict} disabled={predLoad} style={{ ...primaryBtn, marginTop: 12, background: predLoad ? "var(--color-background-secondary, #202128)" : NFL_GREEN }}>
-              {predLoad ? "Running projection…" : `Project ${player.name} →`}
-            </button>
-            {predError && <div style={{ marginTop: 8 }}><ErrorBox onRetry={predict}>{predError}</ErrorBox></div>}
+            {/* 10. Run prediction — enabled only once an upcoming game is found */}
+            {context && (
+              <>
+                <button onClick={predict} disabled={predLoad} style={{ ...primaryBtn, marginTop: 12, background: predLoad ? "var(--color-background-secondary, #202128)" : NFL_GREEN }}>
+                  {predLoad ? "Running projection…" : `Project ${player.name} →`}
+                </button>
+                {predError && <div style={{ marginTop: 8 }}><ErrorBox onRetry={predict}>{predError}</ErrorBox></div>}
+              </>
+            )}
           </div>
         )}
       </Card>

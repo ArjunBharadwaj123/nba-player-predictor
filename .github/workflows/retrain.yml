@@ -1,0 +1,66 @@
+name: Weekly retrain (NBA + NFL)
+
+# Retrains both sports as new games finish and commits the refreshed artifacts
+# to main, which triggers the Render (API) and Vercel (frontend) redeploys.
+#
+# Schedule: Tuesdays 17:00 UTC = 12:00 PM EST (1:00 PM EDT). GitHub cron is UTC
+# and does not observe DST, so during the EDT part of the season this runs at
+# 1 PM Eastern. Also runnable on demand via the "Run workflow" button.
+on:
+  schedule:
+    - cron: "0 17 * * 2"
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+concurrency:
+  group: weekly-retrain
+  cancel-in-progress: false
+
+jobs:
+  retrain:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Refresh + retrain NFL (nflverse)
+        continue-on-error: true
+        env:
+          ODDS_API_KEY: ${{ secrets.ODDS_API_KEY }}
+        run: python -m nfl.pipeline.update
+
+      - name: Refresh + retrain NBA
+        # NBA scraping (basketball-reference / nba_api) can be rate-limited in CI;
+        # a failure here must not block the NFL update or the commit.
+        continue-on-error: true
+        env:
+          ODDS_API_KEY: ${{ secrets.ODDS_API_KEY }}
+        run: python nba/pipeline/update.py
+
+      - name: Rebuild combined Top-10 predictions
+        continue-on-error: true
+        run: python -m analytics.top_predictions
+
+      - name: Commit refreshed artifacts
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add nfl/models/saved nfl/data/processed \
+                  nba/models/saved nba/data/processed \
+                  data/top_predictions.json 2>/dev/null || true
+          if git diff --cached --quiet; then
+            echo "No artifact changes — nothing to commit."
+          else
+            git commit -m "chore(data): weekly retrain refresh [skip ci]"
+            git push origin HEAD:main
+          fi
