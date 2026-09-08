@@ -217,12 +217,18 @@ def predict_player(
     feature_row: pd.DataFrame,
     scoring_format: str = "ppr",
     fantasy_threshold: float | None = None,
+    interval_widen: float = 1.0,
+    explain: bool = True,
+    simulate: bool = True,
 ) -> dict:
     """Full prediction bundle for one player-game feature row.
 
     Returns predictions per target, p15/p85 intervals, SHAP reasons per target,
     a merged football-language reasoning list, and the simulated fantasy-point
     projection/interval (kickers use kicker scoring, format-independent).
+
+    ``interval_widen`` (>1) stretches every interval symmetrically around the
+    point — used for team-changers, whose new-situation outcome is more uncertain.
     """
     position = position.upper()
     bundle = load_position_bundle(position)
@@ -241,13 +247,14 @@ def predict_player(
             hi = float(bundle["q85"][target].predict(X)[0])
             hi = max(hi, lo + 0.1)
             lo, hi = min(lo, pred), max(hi, pred)
-            # Widen by the holdout-calibrated factor to hit nominal ~70% coverage.
-            k = float(calib.get(target, 1.0))
+            # Widen by the holdout-calibrated factor (nominal ~70% coverage),
+            # times any extra widen (e.g. team-changers' new-situation risk).
+            k = float(calib.get(target, 1.0)) * max(1.0, float(interval_widen))
             if k > 1.0:
                 lo = _clip(target, pred - k * (pred - lo))
                 hi = pred + k * (hi - pred)
             intervals[target] = (round(lo, 2), round(hi, 2))
-        reasons_by_target[target] = _shap_reasons(model, X, feats)
+        reasons_by_target[target] = _shap_reasons(model, X, feats) if explain else []
 
     # Enforce cross-stat physical constraints on point predictions.
     if "attempts" in predictions and "completions" in predictions:
@@ -267,9 +274,9 @@ def predict_player(
             merged.append(r)
     merged.sort(key=lambda r: abs(r["impact"]), reverse=True)
 
-    # Fantasy points via correlated simulation (never re-runs component models).
-    sim = scoring.simulate_fantasy_points(
-        predictions, intervals, position, scoring_format)
+    # Fantasy points. The correlated simulation gives the interval + over/under
+    # (never re-runs component models); ``simulate=False`` skips it for cheap
+    # batch scoring where only the point estimate is needed.
     fantasy = {
         "scoring_format": scoring.resolve_scoring_format(scoring_format),
         "reception_multiplier": scoring.reception_multiplier(scoring_format),
@@ -277,15 +284,19 @@ def predict_player(
             scoring.resolve_scoring_format(scoring_format)] + " Fantasy Points",
         "point_estimate": round(scoring.fantasy_points(
             predictions, position, scoring_format), 2),
-        "simulated_mean": round(sim["mean"], 2),
-        "interval": (round(sim["low"], 2), round(sim["high"], 2)),
     }
-    if fantasy_threshold is not None:
-        fantasy["over_probability"] = round(
-            scoring.over_under_probability(sim["samples"], fantasy_threshold, "over"), 3)
-        fantasy["under_probability"] = round(
-            scoring.over_under_probability(sim["samples"], fantasy_threshold, "under"), 3)
-        fantasy["threshold"] = fantasy_threshold
+    sim = None
+    if simulate:
+        sim = scoring.simulate_fantasy_points(
+            predictions, intervals, position, scoring_format)
+        fantasy["simulated_mean"] = round(sim["mean"], 2)
+        fantasy["interval"] = (round(sim["low"], 2), round(sim["high"], 2))
+        if fantasy_threshold is not None:
+            fantasy["over_probability"] = round(
+                scoring.over_under_probability(sim["samples"], fantasy_threshold, "over"), 3)
+            fantasy["under_probability"] = round(
+                scoring.over_under_probability(sim["samples"], fantasy_threshold, "under"), 3)
+            fantasy["threshold"] = fantasy_threshold
 
     return {
         "position": position,
@@ -294,5 +305,5 @@ def predict_player(
         "reasons": merged[:6],
         "reasons_by_target": reasons_by_target,
         "fantasy": fantasy,
-        "_sim_samples": sim["samples"],   # internal; not serialized by API
+        "_sim_samples": sim["samples"] if sim is not None else None,  # internal
     }

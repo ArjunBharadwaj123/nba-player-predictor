@@ -34,8 +34,8 @@ from xgboost import XGBRegressor
 
 from nfl.config import (
     POSITION_TARGETS, SUPPORTED_POSITIONS, COUNT_TARGETS, NONNEGATIVE_TARGETS,
-    QUANTILE_LOW, QUANTILE_HIGH, RECENCY_HALFLIFE_DAYS, MODELS_SAVED,
-    DATA_PROCESSED, default_seasons, is_dev_mode,
+    QUANTILE_LOW, QUANTILE_HIGH, RECENCY_HALFLIFE_DAYS, CURRENT_SEASON_WEIGHT,
+    MODELS_SAVED, DATA_PROCESSED, default_seasons, is_dev_mode,
 )
 from nfl.features.engineer import feature_columns
 
@@ -78,22 +78,33 @@ def _params_for(target: str, position: str | None = None) -> dict:
     return p
 
 
-def recency_weights(dates: pd.Series) -> np.ndarray | None:
+def recency_weights(dates: pd.Series,
+                    seasons: pd.Series | None = None) -> np.ndarray | None:
+    """Recency sample weights: exponential time-decay by game age, with an extra
+    multiplier on rows from the most recent season so the current season counts
+    more as it unfolds."""
     if RECENCY_HALFLIFE_DAYS is None:
         return None
     dates = pd.to_datetime(dates, errors="coerce").reset_index(drop=True)
     ref = dates.max()
     if pd.isna(ref):                       # no usable dates -> equal weights
-        return np.ones(len(dates))
-    age = (ref - dates).dt.days
-    # Rows with an unknown date (NaT) are treated as oldest (max age) rather than
-    # producing a NaN weight, which XGBoost rejects ("Weights must be positive").
-    max_age = age.max()
-    age = age.fillna(max_age if pd.notna(max_age) else 0).clip(lower=0).to_numpy()
-    w = np.power(0.5, age / RECENCY_HALFLIFE_DAYS)
+        w = np.ones(len(dates))
+    else:
+        age = (ref - dates).dt.days
+        # Rows with an unknown date (NaT) are treated as oldest (max age) rather
+        # than producing a NaN weight, which XGBoost rejects.
+        max_age = age.max()
+        age = age.fillna(max_age if pd.notna(max_age) else 0).clip(lower=0).to_numpy()
+        w = np.power(0.5, age / RECENCY_HALFLIFE_DAYS)
+    # Boost the most recent season (current season weighted more heavily).
+    if seasons is not None and CURRENT_SEASON_WEIGHT and CURRENT_SEASON_WEIGHT != 1.0:
+        s = pd.to_numeric(pd.Series(seasons).reset_index(drop=True), errors="coerce")
+        latest = s.max()
+        if pd.notna(latest):
+            w = w * np.where(s.to_numpy() == latest, CURRENT_SEASON_WEIGHT, 1.0)
     # Guarantee strictly-positive, finite weights.
-    w = np.nan_to_num(w, nan=1e-6, posinf=1.0, neginf=1e-6)
-    return np.clip(w, 1e-6, 1.0)
+    w = np.nan_to_num(w, nan=1e-6, posinf=CURRENT_SEASON_WEIGHT or 1.0, neginf=1e-6)
+    return np.clip(w, 1e-6, None)
 
 
 def _fit_point(X, y, params, weights=None):
@@ -134,7 +145,7 @@ def train_position(df: pd.DataFrame, feats: list[str], position: str) -> dict:
         log.warning("No rows for %s — skipping", position)
         return {}
 
-    weights = recency_weights(sub["gameday"])
+    weights = recency_weights(sub["gameday"], sub.get("season"))
     out_dir = MODELS_SAVED / position
     out_dir.mkdir(parents=True, exist_ok=True)
 

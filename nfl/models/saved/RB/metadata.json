@@ -1,288 +1,288 @@
 {
   "position": "RB",
-  "n_rows": 11229,
+  "n_rows": 12875,
   "targets": {
     "carries": {
-      "n_rows": 11229,
+      "n_rows": 12875,
       "objective": "count:poisson",
-      "residual_std": 4.195858166437984,
-      "y_mean": 7.177843084869534,
+      "residual_std": 4.294579181700804,
+      "y_mean": 7.183067961165048,
       "top_features": [
         [
           "rushing_yards_ewma",
-          0.16042020916938782
+          0.1618208885192871
         ],
         [
           "carries_ewma",
-          0.13560731709003448
-        ],
-        [
-          "rushing_yards_roll5",
-          0.04135081171989441
-        ],
-        [
-          "carries_roll3",
-          0.03713652491569519
+          0.12035761028528214
         ],
         [
           "rushing_first_downs_ewma",
-          0.023814253509044647
+          0.055671390146017075
         ],
         [
           "carries_roll5",
-          0.017759958282113075
+          0.0515144057571888
         ],
         [
-          "rushing_yards_roll3",
-          0.016978617757558823
+          "carries_roll3",
+          0.03043791465461254
         ],
         [
-          "carries_season_avg",
-          0.013297969475388527
+          "carries_prev",
+          0.0178587157279253
+        ],
+        [
+          "rushing_yards_roll5",
+          0.01112483348697424
+        ],
+        [
+          "carries_roll8",
+          0.010926698334515095
         ]
       ]
     },
     "rushing_yards": {
-      "n_rows": 11229,
+      "n_rows": 12875,
       "objective": "reg:squarederror",
-      "residual_std": 25.511463255217695,
-      "y_mean": 30.9091637723751,
+      "residual_std": 25.60488413354045,
+      "y_mean": 30.966368932038836,
       "top_features": [
         [
           "rushing_yards_ewma",
-          0.11499530076980591
+          0.12111268937587738
         ],
         [
           "fantasy_points_ewma",
-          0.08528702706098557
+          0.08774071931838989
         ],
         [
           "carries_ewma",
-          0.06935783475637436
-        ],
-        [
-          "rushing_yards_roll5",
-          0.05684545636177063
-        ],
-        [
-          "carries_roll5",
-          0.031709615141153336
-        ],
-        [
-          "rushing_first_downs_ewma",
-          0.014150135219097137
+          0.05010150372982025
         ],
         [
           "carries_roll3",
-          0.013183814473450184
+          0.04047186300158501
         ],
         [
-          "is_starter",
-          0.011182096786797047
+          "fantasy_points_component_ewma",
+          0.028319228440523148
+        ],
+        [
+          "rushing_yards_roll5",
+          0.019579622894525528
+        ],
+        [
+          "rushing_yards_roll8",
+          0.013588238507509232
+        ],
+        [
+          "fantasy_points_ppr_ewma",
+          0.012550978921353817
         ]
       ]
     },
     "rushing_tds": {
-      "n_rows": 11229,
+      "n_rows": 12875,
       "objective": "count:poisson",
-      "residual_std": 0.45709370836246427,
-      "y_mean": 0.22637812806126992,
+      "residual_std": 0.46335390624176587,
+      "y_mean": 0.2272621359223301,
       "top_features": [
         [
-          "carries_ewma",
-          0.06671632826328278
-        ],
-        [
-          "fantasy_points_ewma",
-          0.05644725263118744
-        ],
-        [
           "carries_roll3",
-          0.044370803982019424
+          0.0847744271159172
         ],
         [
           "rushing_yards_ewma",
-          0.04187355935573578
+          0.06186334416270256
         ],
         [
-          "carries_roll5",
-          0.039544690400362015
-        ],
-        [
-          "rushing_first_downs_ewma",
-          0.022566206753253937
-        ],
-        [
-          "rushing_first_downs_roll5",
-          0.01644301600754261
+          "carries_ewma",
+          0.04947749897837639
         ],
         [
           "rushing_yards_roll5",
-          0.016092820093035698
+          0.03638838976621628
+        ],
+        [
+          "carries_roll5",
+          0.03528306633234024
+        ],
+        [
+          "fantasy_points_ewma",
+          0.020872944965958595
+        ],
+        [
+          "carries_prev",
+          0.020856257528066635
+        ],
+        [
+          "rushing_first_downs_ewma",
+          0.016578033566474915
         ]
       ]
     },
     "targets": {
-      "n_rows": 11229,
+      "n_rows": 12875,
       "objective": "count:poisson",
-      "residual_std": 1.7253970749038756,
-      "y_mean": 2.0996526850120225,
+      "residual_std": 1.7432705005166345,
+      "y_mean": 2.0625242718446604,
       "top_features": [
         [
-          "targets_ewma",
-          0.1268463432788849
-        ],
-        [
           "receptions_ewma",
-          0.09670495241880417
+          0.12492915987968445
         ],
         [
-          "target_share_ewma",
-          0.04935995489358902
+          "targets_ewma",
+          0.10169897228479385
         ],
         [
-          "target_share_roll8",
-          0.026800522580742836
+          "targets_roll5",
+          0.048357248306274414
         ],
         [
           "targets_roll8",
-          0.020429929718375206
+          0.025074172765016556
         ],
         [
-          "wopr_ewma",
-          0.016300901770591736
+          "target_share_roll8",
+          0.017957454547286034
+        ],
+        [
+          "fantasy_points_component_ewma",
+          0.014327021315693855
         ],
         [
           "receiving_yards_ewma",
-          0.013599731959402561
+          0.014179499819874763
         ],
         [
           "offense_pct_prev",
-          0.012392890639603138
+          0.013608328066766262
         ]
       ]
     },
     "receptions": {
-      "n_rows": 11229,
+      "n_rows": 12875,
       "objective": "count:poisson",
-      "residual_std": 1.461512278729149,
-      "y_mean": 1.6194674503517676,
+      "residual_std": 1.4746958139222195,
+      "y_mean": 1.5930873786407767,
       "top_features": [
         [
-          "targets_ewma",
-          0.09443730860948563
-        ],
-        [
           "receptions_ewma",
-          0.08552750200033188
+          0.12099380046129227
         ],
         [
-          "target_share_roll5",
-          0.03365800157189369
+          "targets_ewma",
+          0.0905243456363678
         ],
         [
           "target_share_ewma",
-          0.024725938215851784
-        ],
-        [
-          "target_share_roll8",
-          0.02055789716541767
-        ],
-        [
-          "targets_roll5",
-          0.015479402616620064
+          0.03668704256415367
         ],
         [
           "offense_pct_prev",
-          0.014897550456225872
+          0.018568914383649826
         ],
         [
-          "receptions_roll8",
-          0.014757451601326466
+          "targets_roll5",
+          0.018496572971343994
+        ],
+        [
+          "target_share_roll8",
+          0.015725672245025635
+        ],
+        [
+          "receiving_yards_ewma",
+          0.015024758875370026
+        ],
+        [
+          "targets_season_avg",
+          0.012563182041049004
         ]
       ]
     },
     "receiving_yards": {
-      "n_rows": 11229,
+      "n_rows": 12875,
       "objective": "reg:squarederror",
-      "residual_std": 14.57853164786951,
-      "y_mean": 12.264849942114168,
+      "residual_std": 14.810058379628527,
+      "y_mean": 12.041553398058252,
       "top_features": [
         [
           "targets_ewma",
-          0.06404900550842285
-        ],
-        [
-          "receiving_yards_ewma",
-          0.04805101826786995
-        ],
-        [
-          "receiving_yards_season_avg",
-          0.029889443889260292
+          0.08436927944421768
         ],
         [
           "receptions_ewma",
-          0.02824515663087368
+          0.05491478741168976
         ],
         [
           "target_share_ewma",
-          0.028042733669281006
+          0.04696686565876007
+        ],
+        [
+          "receiving_yards_ewma",
+          0.044992078095674515
+        ],
+        [
+          "wopr_season_avg",
+          0.02029465325176716
+        ],
+        [
+          "receiving_first_downs_season_avg",
+          0.017614932730793953
+        ],
+        [
+          "receiving_yards_season_avg",
+          0.016980672255158424
         ],
         [
           "offense_pct_prev",
-          0.013423238880932331
-        ],
-        [
-          "fantasy_points_ppr_prev",
-          0.012428909540176392
-        ],
-        [
-          "targets_roll8",
-          0.011977838352322578
+          0.013576545752584934
         ]
       ]
     },
     "receiving_tds": {
-      "n_rows": 11229,
+      "n_rows": 12875,
       "objective": "count:poisson",
-      "residual_std": 0.24526520175856545,
-      "y_mean": 0.06367441446255231,
+      "residual_std": 0.24769026892455884,
+      "y_mean": 0.06368932038834951,
       "top_features": [
         [
-          "targets_ewma",
-          0.04671876132488251
-        ],
-        [
           "targets_roll5",
-          0.033358894288539886
+          0.03744248300790787
         ],
         [
-          "targets_roll3",
-          0.02541649527847767
+          "targets_roll8",
+          0.034169141203165054
         ],
         [
           "receptions_roll5",
-          0.01996031403541565
+          0.033013127744197845
         ],
         [
-          "fantasy_points_ppr_roll8",
-          0.01899186335504055
+          "targets_ewma",
+          0.030597159639000893
         ],
         [
           "receptions_ewma",
-          0.01772834174335003
+          0.02624931000173092
         ],
         [
-          "receiving_first_downs_roll8",
-          0.012727777473628521
+          "targets_roll3",
+          0.022027842700481415
         ],
         [
-          "offense_pct_ewma",
-          0.012709144502878189
+          "receiving_yards_roll8",
+          0.020366862416267395
+        ],
+        [
+          "receiving_yards_ewma",
+          0.018855463713407516
         ]
       ]
     }
   },
   "train_date_min": "2018-09-06",
-  "train_date_max": "2025-01-05"
+  "train_date_max": "2026-01-04"
 }

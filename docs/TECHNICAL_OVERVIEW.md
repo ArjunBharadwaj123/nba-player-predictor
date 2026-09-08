@@ -439,3 +439,67 @@ blue accent; NFL uses a restrained field-green. Vercel rewrites all paths to
 - **Future** — Sportradar for timely injuries/inactives/live data; Next Gen
   Stats features; pbp-derived opponent EPA/success splits; player-prop odds
   ingestion.
+
+---
+
+# Part 3 — In-season freshness, new-situation modeling, and the admin dashboard
+
+Additions layered on the multi-sport platform (Part 2) so it stays current
+through the season and exposes a private performance view.
+
+## 1. Training window + current-season recency boost
+Models train on **2018–2025** (`LATEST_SEASON = 2025`). On top of the existing
+exponential time-decay, rows from the **most recent season** get an extra
+multiplier (`CURRENT_SEASON_WEIGHT`, default 2.0, env `NFL_CURRENT_SEASON_WEIGHT`)
+so the current season counts more as it unfolds (`nfl/models/train.py`
+`recency_weights(dates, seasons)`).
+
+## 2. In-season auto-retraining (GitHub Actions)
+`.github/workflows/retrain.yml` runs Tuesdays 17:00 UTC (noon EST) and on demand.
+It refreshes + retrains **NFL** (`python -m nfl.pipeline.update`) and **NBA**
+(`python nba/pipeline/update.py`) — each `continue-on-error` so one failing
+doesn't block the other (NBA scraping can be rate-limited in CI) — rebuilds the
+combined Top-10, and commits any changed artifacts to `main`, which triggers the
+Render + Vercel redeploys. The NFL pipeline only retrains when new completed
+games changed the data signature (idempotent).
+
+## 3. Upcoming-week detection + no-game gating
+`nfl/scraping/current_context.py` computes the current NFL season from the date
+(`current_nfl_season`) and fetches that season's schedule **live** (cached on
+success, with cache fallback on a transient failure), so it finds this week's
+game. `POST /nfl/predict` now **resolves the upcoming game and refuses to predict
+without one** (404) — a player with no scheduled game gets no projection (same
+posture as the NBA page). When a game is found, its real matchup context
+(opponent, spread, total, weather, rest) is used instead of neutral values.
+
+## 4. Retirement, decline, and new-situation projection
+- **Active filter:** the serving player index (`players.json`) is intersected
+  with the **current-season weekly roster**, so retired / not-currently-rostered
+  players drop off and each player's **current team** is resolved from the live
+  roster (fixing stale post-trade teams). `team_changed`/`prev_team` are recorded.
+- **New-team environment:** leakage-safe own-team offensive-environment features
+  (pass rate, plays/game, offensive EPA, TDs/game, implied total; season-to-date,
+  shifted) are served from the player's **current** team (`team_environment.json`),
+  so a mover (e.g. Geno Smith → new team) is projected in the new offense.
+- **Aging/decline:** an `age` feature (from birth date) plus the recency-biased
+  rolling form capture decline.
+- **Uncertainty:** team-changers get a warning and a ×1.25 wider interval.
+- Limits: no free coordinator/O-line/teammate feeds, so this is team-level +
+  aging, not teammate-specific; and until the new season's rosters publish, the
+  current team falls back to last season's.
+
+## 5. Combined Top-10 (`analytics/top_predictions.py`)
+For every player **with an upcoming game**, one pick per player is scored by
+`reliability(R²) × |standardized_edge|`, where `standardized_edge =
+(projection − recent baseline) / interval_half_width`, gated to genuine
+contributors (min projected fantasy points). Picks across both sports are ranked;
+the top 10 are written to `data/top_predictions.json` (regenerated weekly). This
+is a **model-confidence** ranking, not a market comparison — free player-prop
+odds aren't available; `ODDS_API_KEY`/Sportradar remain the future upgrade path.
+
+## 6. Admin dashboard (`api/admin.py`, `dashboard/src/pages/AdminPage.jsx`)
+A password-gated `/admin` route (shared password in the `ADMIN_PASSWORD` env var,
+sent in the `X-Admin-Password` header, compared constant-time; 503 when unset,
+401 on mismatch). It shows NBA and NFL train/test tables (per-target MAE/RMSE/R²/
+coverage, baseline improvement, failed baselines, training mode/seasons/rows) and
+the combined Top-10. Not linked from the public nav.

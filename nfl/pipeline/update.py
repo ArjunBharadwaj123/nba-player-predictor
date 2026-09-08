@@ -52,6 +52,7 @@ SERVING_PARQUET  = DATA_PROCESSED / "features_serving.parquet"
 PLAYERS_JSON     = DATA_PROCESSED / "players.json"
 FRESHNESS_JSON   = DATA_PROCESSED / "freshness.json"
 OPP_DEFENSE_JSON = DATA_PROCESSED / "opp_defense.json"
+TEAM_ENV_JSON    = DATA_PROCESSED / "team_environment.json"
 
 SERVING_GAMES_PER_PLAYER = 10   # recent games kept per player for serving
 
@@ -79,21 +80,86 @@ def build_serving(fe: pd.DataFrame) -> tuple[pd.DataFrame, list[dict]]:
                  .reset_index(drop=True))
 
     latest = fe.groupby("gsis_id", group_keys=False).tail(1)
+
+    # Current-season rosters decide who is ACTIVE (excludes retirees / not-
+    # currently-rostered) and resolve each player's CURRENT team (fixes stale
+    # post-trade teams). Falls back to player status when the live fetch fails.
+    current_team, active_ids = _current_roster_map()
+
     players = []
     for _, r in latest.iterrows():
+        pid = str(r["gsis_id"])
+        trained_team = str(r.get("team") or "")
+        if active_ids is not None:
+            if pid not in active_ids:
+                continue                       # not on a current roster -> hide
+            cur_team = current_team.get(pid, trained_team)
+        else:
+            cur_team = trained_team            # no roster data -> keep trained team
         hs = r.get("headshot_url")
         players.append({
-            "id": str(r["gsis_id"]),
+            "id": pid,
             "name": str(r.get("player_name") or r.get("display_name") or ""),
             "position": str(r["position"]),
-            "team": str(r.get("team") or ""),
+            "team": cur_team,
+            "prev_team": trained_team,
+            "team_changed": bool(cur_team and trained_team and cur_team != trained_team),
             "headshot_url": None if pd.isna(hs) else str(hs),
             "last_season": int(r["season"]),
             "last_week": int(r["week"]),
         })
     players = [p for p in players if p["name"]]
     players.sort(key=lambda p: p["name"])
+    log.info("Serving player index: %d active players (%s)", len(players),
+             "roster-filtered" if active_ids is not None else "unfiltered fallback")
     return serving, players
+
+
+def _current_roster_map():
+    """(current_team_by_id, active_id_set) from the live current-season roster.
+
+    Returns (dict, set) or ({}, None) when unavailable — None signals callers to
+    skip active-filtering and keep trained teams."""
+    from nfl.config import current_nfl_season
+    from nfl.scraping.collect import load_current_rosters
+    season = current_nfl_season()
+    rw = load_current_rosters(season)
+    if rw is None or rw.empty or "gsis_id" not in rw.columns:
+        # Try the prior season (offseason before week 1 rosters post).
+        rw = load_current_rosters(season - 1)
+    if rw is None or rw.empty or "gsis_id" not in rw.columns:
+        return {}, None
+    # Keep only genuinely active/rostered statuses when the column is present.
+    if "status" in rw.columns:
+        active = rw[rw["status"].astype("string").str.upper().isin(
+            ["ACT", "ACTIVE", "RES", "DEV", ""]) | rw["status"].isna()]
+        rw = active if not active.empty else rw
+    team_col = "team" if "team" in rw.columns else (
+        "club_code" if "club_code" in rw.columns else None)
+    current_team = {}
+    if team_col:
+        from nfl.features.build_dataset import TEAM_STANDARDIZE
+        for _, r in rw.iterrows():
+            t = str(r.get(team_col) or "")
+            current_team[str(r["gsis_id"])] = TEAM_STANDARDIZE.get(t, t)
+    active_ids = set(rw["gsis_id"].astype(str))
+    return current_team, active_ids
+
+
+def build_team_environment(fe: pd.DataFrame) -> dict:
+    """Latest own-team offensive-environment profile per team (season-to-date,
+    shifted). Injected at serve time from the player's CURRENT team so a mover is
+    projected in the new offense."""
+    from nfl.features.engineer import TEAM_ENV_FEATURES
+    latest = (fe.sort_values(["season", "week"])
+                .groupby("team", group_keys=False).tail(1))
+    table: dict = {}
+    for _, r in latest.iterrows():
+        table[str(r["team"])] = {
+            c: (None if pd.isna(r.get(c)) else round(float(r[c]), 4))
+            for c in TEAM_ENV_FEATURES if c in fe.columns
+        }
+    return table
 
 
 def build_opp_defense(fe: pd.DataFrame) -> dict:
@@ -161,6 +227,7 @@ def run(seasons=None, skip_download=False, skip_train=False, dry_run=False,
 
     serving, players = build_serving(fe)
     opp_defense = build_opp_defense(fe)
+    team_environment = build_team_environment(fe)
 
     freshness = {
         "updated_at": datetime.now(timezone.utc).isoformat(timespec="seconds"),
@@ -183,6 +250,7 @@ def run(seasons=None, skip_download=False, skip_train=False, dry_run=False,
     _atomic_write_parquet(serving, SERVING_PARQUET)
     _atomic_write_json(players, PLAYERS_JSON)
     _atomic_write_json(opp_defense, OPP_DEFENSE_JSON)
+    _atomic_write_json(team_environment, TEAM_ENV_JSON)
     _atomic_write_json(freshness, FRESHNESS_JSON)
     log.info("Wrote features (%d), serving (%d), players (%d)",
              len(fe), len(serving), len(players))

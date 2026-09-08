@@ -32,7 +32,7 @@ for _p in (DATA_RAW, DATA_CACHE, DATA_PROCESSED, MODELS_SAVED):
 # "latest" is resolved at runtime from the schedule, but we keep an upper bound
 # here so a bad env var can't ask for the future.
 PROD_START_SEASON = 2018
-LATEST_SEASON     = 2024          # bump as new seasons complete / are cached
+LATEST_SEASON     = 2025          # bump as new seasons complete / are cached
 
 # Development mode trains on fewer seasons so the full workflow runs quickly and
 # within container memory. Artifacts built this way are clearly labelled
@@ -52,6 +52,15 @@ def _env_seasons() -> list[int] | None:
 
 def is_dev_mode() -> bool:
     return os.environ.get("NFL_DEV_MODE", "0") == "1"
+
+
+def current_nfl_season(today=None) -> int:
+    """The NFL season year for a given date. A season is labelled by the year it
+    starts (Sept). Months Aug-Dec belong to that year's season; Jan-Jul belong to
+    the prior year's season (playoffs run into January)."""
+    from datetime import date
+    d = today or date.today()
+    return d.year if d.month >= 8 else d.year - 1
 
 
 def default_seasons() -> list[int]:
@@ -215,6 +224,11 @@ QUANTILE_HIGH = 0.85
 
 # Recency weighting half-life (days) for training rows. Newer games count more.
 RECENCY_HALFLIFE_DAYS = 540
+
+# Extra multiplier applied to rows from the most recent season in the training
+# data (on top of the time-decay), so the current season is weighted more
+# heavily as it unfolds. Configurable via env.
+CURRENT_SEASON_WEIGHT = float(os.environ.get("NFL_CURRENT_SEASON_WEIGHT", "2.0"))
 
 # Regular-season only for training.
 REGULAR_SEASON_TYPE = "REG"

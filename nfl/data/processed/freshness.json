@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-06T20:07:53+00:00",
+  "updated_at": "2026-09-07T13:12:10+00:00",
   "seasons": [
     2018,
     2019,
@@ -7,14 +7,15 @@
     2021,
     2022,
     2023,
-    2024
+    2024,
+    2025
   ],
   "mode": "production",
   "signature": {
-    "n_rows": 44161,
-    "max_season": 2024,
+    "n_rows": 50812,
+    "max_season": 2025,
     "max_week_in_max_season": 18,
-    "n_players": 1474
+    "n_players": 1604
   },
   "optional_datasets": {
     "injuries": true,
@@ -23,6 +24,6 @@
     "rosters_weekly": true,
     "nextgen_stats": false
   },
-  "n_features": 281,
-  "n_serving_players": 1474
+  "n_features": 287,
+  "n_serving_players": 671
 }

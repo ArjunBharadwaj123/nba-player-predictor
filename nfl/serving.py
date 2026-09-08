@@ -28,6 +28,7 @@ log = logging.getLogger(__name__)
 SERVING_PARQUET  = DATA_PROCESSED / "features_serving.parquet"
 PLAYERS_JSON     = DATA_PROCESSED / "players.json"
 OPP_DEFENSE_JSON = DATA_PROCESSED / "opp_defense.json"
+TEAM_ENV_JSON    = DATA_PROCESSED / "team_environment.json"
 FRESHNESS_JSON   = DATA_PROCESSED / "freshness.json"
 
 
@@ -47,6 +48,11 @@ def load_players() -> list[dict]:
 @lru_cache(maxsize=1)
 def load_opp_defense() -> dict:
     return json.loads(OPP_DEFENSE_JSON.read_text()) if OPP_DEFENSE_JSON.exists() else {}
+
+
+@lru_cache(maxsize=1)
+def load_team_environment() -> dict:
+    return json.loads(TEAM_ENV_JSON.read_text()) if TEAM_ENV_JSON.exists() else {}
 
 
 @lru_cache(maxsize=1)
@@ -160,6 +166,18 @@ def build_upcoming_row(player_id: str, position: str, context: dict) -> pd.DataF
         table = load_opp_defense().get(position, {}).get(opp)
         if table:
             for k, v in table.items():
+                if v is not None:
+                    row[k] = v
+
+    # Own-team offensive environment for the player's CURRENT team. When the
+    # player changed teams, this injects the NEW team's offensive profile so the
+    # projection reflects the new situation (supporting cast / pace / scoring).
+    player = find_player(player_id)
+    cur_team = context.get("team") or (player or {}).get("team")
+    if cur_team:
+        env = load_team_environment().get(cur_team)
+        if env:
+            for k, v in env.items():
                 if v is not None:
                     row[k] = v
 

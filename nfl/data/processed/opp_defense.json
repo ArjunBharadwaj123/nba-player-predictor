@@ -1,376 +1,6 @@
 {
-  "QB": {
-    "MIA": {
-      "opp_fantasy_allowed_pos": 12.863,
-      "opp_pass_yards_allowed": 222.188,
-      "opp_rush_yards_allowed": 11.0,
-      "opp_rec_yards_allowed_pos": 0.0,
-      "opp_pass_tds_allowed": 1.125,
-      "opp_rush_tds_allowed": 0.0
-    },
-    "JAX": {
-      "opp_fantasy_allowed_pos": 20.286,
-      "opp_pass_yards_allowed": 269.812,
-      "opp_rush_yards_allowed": 26.188,
-      "opp_rec_yards_allowed_pos": 0.0,
-      "opp_pass_tds_allowed": 1.75,
-      "opp_rush_tds_allowed": 0.125
-    },
-    "CIN": {
-      "opp_fantasy_allowed_pos": 19.108,
-      "opp_pass_yards_allowed": 241.75,
-      "opp_rush_yards_allowed": 31.875,
-      "opp_rec_yards_allowed_pos": 0.0,
-      "opp_pass_tds_allowed": 1.812,
-      "opp_rush_tds_allowed": 0.25
-    },
-    "LA": {
-      "opp_fantasy_allowed_pos": 16.851,
-      "opp_pass_yards_allowed": 242.375,
-      "opp_rush_yards_allowed": 21.562,
-      "opp_rec_yards_allowed_pos": 0.0,
-      "opp_pass_tds_allowed": 1.562,
-      "opp_rush_tds_allowed": 0.188
-    },
-    "SEA": {
-      "opp_fantasy_allowed_pos": 15.866,
-      "opp_pass_yards_allowed": 224.312,
-      "opp_rush_yards_allowed": 15.375,
-      "opp_rec_yards_allowed_pos": 0.438,
-      "opp_pass_tds_allowed": 1.438,
-      "opp_rush_tds_allowed": 0.125
-    },
-    "MIN": {
-      "opp_fantasy_allowed_pos": 14.413,
-      "opp_pass_yards_allowed": 263.438,
-      "opp_rush_yards_allowed": 10.0,
-      "opp_rec_yards_allowed_pos": 0.0,
-      "opp_pass_tds_allowed": 1.438,
-      "opp_rush_tds_allowed": 0.062
-    },
-    "ARI": {
-      "opp_fantasy_allowed_pos": 15.922,
-      "opp_pass_yards_allowed": 225.25,
-      "opp_rush_yards_allowed": 17.875,
-      "opp_rec_yards_allowed_pos": 0.0,
-      "opp_pass_tds_allowed": 1.125,
-      "opp_rush_tds_allowed": 0.312
-    },
-    "NE": {
-      "opp_fantasy_allowed_pos": 16.419,
-      "opp_pass_yards_allowed": 226.25,
-      "opp_rush_yards_allowed": 13.688,
-      "opp_rec_yards_allowed_pos": 0.0,
-      "opp_pass_tds_allowed": 1.625,
-      "opp_rush_tds_allowed": 0.062
-    },
-    "CLE": {
-      "opp_fantasy_allowed_pos": 17.195,
-      "opp_pass_yards_allowed": 227.688,
-      "opp_rush_yards_allowed": 23.375,
-      "opp_rec_yards_allowed_pos": 0.0,
-      "opp_pass_tds_allowed": 1.5,
-      "opp_rush_tds_allowed": 0.062
-    },
-    "NO": {
-      "opp_fantasy_allowed_pos": 15.348,
-      "opp_pass_yards_allowed": 254.625,
-      "opp_rush_yards_allowed": 22.875,
-      "opp_rec_yards_allowed_pos": 0.0,
-      "opp_pass_tds_allowed": 1.062,
-      "opp_rush_tds_allowed": 0.062
-    },
-    "DET": {
-      "opp_fantasy_allowed_pos": 17.995,
-      "opp_pass_yards_allowed": 264.875,
-      "opp_rush_yards_allowed": 27.75,
-      "opp_rec_yards_allowed_pos": 0.0,
-      "opp_pass_tds_allowed": 1.125,
-      "opp_rush_tds_allowed": 0.375
-    },
-    "PHI": {
-      "opp_fantasy_allowed_pos": 14.508,
-      "opp_pass_yards_allowed": 195.5,
-      "opp_rush_yards_allowed": 21.875,
-      "opp_rec_yards_allowed_pos": 0.0,
-      "opp_pass_tds_allowed": 1.312,
-      "opp_rush_tds_allowed": 0.188
-    },
-    "NYJ": {
-      "opp_fantasy_allowed_pos": 16.459,
-      "opp_pass_yards_allowed": 210.062,
-      "opp_rush_yards_allowed": 19.312,
-      "opp_rec_yards_allowed_pos": 0.0,
-      "opp_pass_tds_allowed": 1.062,
-      "opp_rush_tds_allowed": 0.5
-    },
-    "LV": {
-      "opp_fantasy_allowed_pos": 17.114,
-      "opp_pass_yards_allowed": 227.688,
-      "opp_rush_yards_allowed": 15.062,
-      "opp_rec_yards_allowed_pos": 0.0,
-      "opp_pass_tds_allowed": 1.688,
-      "opp_rush_tds_allowed": 0.188
-    },
-    "PIT": {
-      "opp_fantasy_allowed_pos": 14.623,
-      "opp_pass_yards_allowed": 242.125,
-      "opp_rush_yards_allowed": 14.375,
-      "opp_rec_yards_allowed_pos": 0.0,
-      "opp_pass_tds_allowed": 1.375,
-      "opp_rush_tds_allowed": 0.125
-    },
-    "IND": {
-      "opp_fantasy_allowed_pos": 17.269,
-      "opp_pass_yards_allowed": 243.438,
-      "opp_rush_yards_allowed": 19.062,
-      "opp_rec_yards_allowed_pos": 0.0,
-      "opp_pass_tds_allowed": 1.625,
-      "opp_rush_tds_allowed": 0.25
-    },
-    "WAS": {
-      "opp_fantasy_allowed_pos": 15.53,
-      "opp_pass_yards_allowed": 201.688,
-      "opp_rush_yards_allowed": 19.625,
-      "opp_rec_yards_allowed_pos": 0.0,
-      "opp_pass_tds_allowed": 1.5,
-      "opp_rush_tds_allowed": 0.125
-    },
-    "DEN": {
-      "opp_fantasy_allowed_pos": 16.194,
-      "opp_pass_yards_allowed": 248.75,
-      "opp_rush_yards_allowed": 18.125,
-      "opp_rec_yards_allowed_pos": -0.062,
-      "opp_pass_tds_allowed": 1.375,
-      "opp_rush_tds_allowed": 0.188
-    },
-    "CHI": {
-      "opp_fantasy_allowed_pos": 13.604,
-      "opp_pass_yards_allowed": 234.625,
-      "opp_rush_yards_allowed": 13.438,
-      "opp_rec_yards_allowed_pos": 0.0,
-      "opp_pass_tds_allowed": 1.062,
-      "opp_rush_tds_allowed": 0.062
-    },
-    "NYG": {
-      "opp_fantasy_allowed_pos": 16.887,
-      "opp_pass_yards_allowed": 225.0,
-      "opp_rush_yards_allowed": 25.125,
-      "opp_rec_yards_allowed_pos": 0.0,
-      "opp_pass_tds_allowed": 1.312,
-      "opp_rush_tds_allowed": 0.25
-    },
-    "LAC": {
-      "opp_fantasy_allowed_pos": 15.829,
-      "opp_pass_yards_allowed": 220.875,
-      "opp_rush_yards_allowed": 23.688,
-      "opp_rec_yards_allowed_pos": 0.0,
-      "opp_pass_tds_allowed": 1.375,
-      "opp_rush_tds_allowed": 0.188
-    },
-    "SF": {
-      "opp_fantasy_allowed_pos": 15.204,
-      "opp_pass_yards_allowed": 202.125,
-      "opp_rush_yards_allowed": 15.75,
-      "opp_rec_yards_allowed_pos": 0.438,
-      "opp_pass_tds_allowed": 1.312,
-      "opp_rush_tds_allowed": 0.25
-    },
-    "BAL": {
-      "opp_fantasy_allowed_pos": 18.407,
-      "opp_pass_yards_allowed": 267.688,
-      "opp_rush_yards_allowed": 14.25,
-      "opp_rec_yards_allowed_pos": 0.25,
-      "opp_pass_tds_allowed": 1.562,
-      "opp_rush_tds_allowed": 0.188
-    },
-    "ATL": {
-      "opp_fantasy_allowed_pos": 18.684,
-      "opp_pass_yards_allowed": 231.0,
-      "opp_rush_yards_allowed": 29.438,
-      "opp_rec_yards_allowed_pos": 0.0,
-      "opp_pass_tds_allowed": 1.938,
-      "opp_rush_tds_allowed": 0.062
-    },
-    "HOU": {
-      "opp_fantasy_allowed_pos": 16.898,
-      "opp_pass_yards_allowed": 219.0,
-      "opp_rush_yards_allowed": 24.188,
-      "opp_rec_yards_allowed_pos": -0.312,
-      "opp_pass_tds_allowed": 1.875,
-      "opp_rush_tds_allowed": 0.188
-    },
-    "TEN": {
-      "opp_fantasy_allowed_pos": 16.863,
-      "opp_pass_yards_allowed": 189.688,
-      "opp_rush_yards_allowed": 26.5,
-      "opp_rec_yards_allowed_pos": 0.0,
-      "opp_pass_tds_allowed": 1.562,
-      "opp_rush_tds_allowed": 0.375
-    },
-    "TB": {
-      "opp_fantasy_allowed_pos": 20.161,
-      "opp_pass_yards_allowed": 262.938,
-      "opp_rush_yards_allowed": 21.438,
-      "opp_rec_yards_allowed_pos": 0.0,
-      "opp_pass_tds_allowed": 1.625,
-      "opp_rush_tds_allowed": 0.375
-    },
-    "KC": {
-      "opp_fantasy_allowed_pos": 15.873,
-      "opp_pass_yards_allowed": 228.062,
-      "opp_rush_yards_allowed": 23.75,
-      "opp_rec_yards_allowed_pos": 0.0,
-      "opp_pass_tds_allowed": 1.25,
-      "opp_rush_tds_allowed": 0.25
-    },
-    "BUF": {
-      "opp_fantasy_allowed_pos": 15.316,
-      "opp_pass_yards_allowed": 241.188,
-      "opp_rush_yards_allowed": 15.438,
-      "opp_rec_yards_allowed_pos": 0.0,
-      "opp_pass_tds_allowed": 1.688,
-      "opp_rush_tds_allowed": 0.062
-    },
-    "DAL": {
-      "opp_fantasy_allowed_pos": 20.178,
-      "opp_pass_yards_allowed": 240.375,
-      "opp_rush_yards_allowed": 29.375,
-      "opp_rec_yards_allowed_pos": 0.0,
-      "opp_pass_tds_allowed": 1.625,
-      "opp_rush_tds_allowed": 0.562
-    },
-    "CAR": {
-      "opp_fantasy_allowed_pos": 20.056,
-      "opp_pass_yards_allowed": 231.25,
-      "opp_rush_yards_allowed": 24.312,
-      "opp_rec_yards_allowed_pos": 0.0,
-      "opp_pass_tds_allowed": 2.062,
-      "opp_rush_tds_allowed": 0.25
-    },
-    "GB": {
-      "opp_fantasy_allowed_pos": 14.14,
-      "opp_pass_yards_allowed": 238.188,
-      "opp_rush_yards_allowed": 16.125,
-      "opp_rec_yards_allowed_pos": 0.0,
-      "opp_pass_tds_allowed": 1.375,
-      "opp_rush_tds_allowed": 0.062
-    }
-  },
   "K": {
-    "PHI": {
-      "opp_fantasy_allowed_pos": 0.0,
-      "opp_pass_yards_allowed": 0.0,
-      "opp_rush_yards_allowed": 0.0,
-      "opp_rec_yards_allowed_pos": 0.0,
-      "opp_pass_tds_allowed": 0.0,
-      "opp_rush_tds_allowed": 0.0
-    },
-    "CLE": {
-      "opp_fantasy_allowed_pos": 0.0,
-      "opp_pass_yards_allowed": 0.0,
-      "opp_rush_yards_allowed": 0.0,
-      "opp_rec_yards_allowed_pos": 0.0,
-      "opp_pass_tds_allowed": 0.0,
-      "opp_rush_tds_allowed": 0.0
-    },
-    "CHI": {
-      "opp_fantasy_allowed_pos": 0.0,
-      "opp_pass_yards_allowed": 0.0,
-      "opp_rush_yards_allowed": 0.0,
-      "opp_rec_yards_allowed_pos": 0.0,
-      "opp_pass_tds_allowed": 0.0,
-      "opp_rush_tds_allowed": 0.0
-    },
-    "BAL": {
-      "opp_fantasy_allowed_pos": 0.0,
-      "opp_pass_yards_allowed": 0.0,
-      "opp_rush_yards_allowed": 0.0,
-      "opp_rec_yards_allowed_pos": 0.0,
-      "opp_pass_tds_allowed": 0.0,
-      "opp_rush_tds_allowed": 0.0
-    },
-    "CIN": {
-      "opp_fantasy_allowed_pos": 0.0,
-      "opp_pass_yards_allowed": 0.0,
-      "opp_rush_yards_allowed": 0.0,
-      "opp_rec_yards_allowed_pos": 0.0,
-      "opp_pass_tds_allowed": 0.0,
-      "opp_rush_tds_allowed": 0.0
-    },
-    "GB": {
-      "opp_fantasy_allowed_pos": 0.0,
-      "opp_pass_yards_allowed": 0.0,
-      "opp_rush_yards_allowed": 0.0,
-      "opp_rec_yards_allowed_pos": 0.0,
-      "opp_pass_tds_allowed": 0.0,
-      "opp_rush_tds_allowed": 0.0
-    },
-    "LA": {
-      "opp_fantasy_allowed_pos": 0.0,
-      "opp_pass_yards_allowed": 0.0,
-      "opp_rush_yards_allowed": 0.0,
-      "opp_rec_yards_allowed_pos": 0.0,
-      "opp_pass_tds_allowed": 0.0,
-      "opp_rush_tds_allowed": 0.0
-    },
-    "KC": {
-      "opp_fantasy_allowed_pos": 0.0,
-      "opp_pass_yards_allowed": 0.0,
-      "opp_rush_yards_allowed": 0.0,
-      "opp_rec_yards_allowed_pos": 0.0,
-      "opp_pass_tds_allowed": 0.0,
-      "opp_rush_tds_allowed": 0.0
-    },
-    "TEN": {
-      "opp_fantasy_allowed_pos": 0.0,
-      "opp_pass_yards_allowed": 0.0,
-      "opp_rush_yards_allowed": 0.0,
-      "opp_rec_yards_allowed_pos": 0.0,
-      "opp_pass_tds_allowed": 0.0,
-      "opp_rush_tds_allowed": 0.0
-    },
-    "DEN": {
-      "opp_fantasy_allowed_pos": 0.0,
-      "opp_pass_yards_allowed": 0.0,
-      "opp_rush_yards_allowed": 0.0,
-      "opp_rec_yards_allowed_pos": 0.0,
-      "opp_pass_tds_allowed": 0.0,
-      "opp_rush_tds_allowed": 0.0
-    },
-    "NYG": {
-      "opp_fantasy_allowed_pos": 0.0,
-      "opp_pass_yards_allowed": 0.0,
-      "opp_rush_yards_allowed": 0.0,
-      "opp_rec_yards_allowed_pos": 0.0,
-      "opp_pass_tds_allowed": 0.0,
-      "opp_rush_tds_allowed": 0.0
-    },
-    "DAL": {
-      "opp_fantasy_allowed_pos": 0.0,
-      "opp_pass_yards_allowed": 0.0,
-      "opp_rush_yards_allowed": 0.0,
-      "opp_rec_yards_allowed_pos": 0.0,
-      "opp_pass_tds_allowed": 0.0,
-      "opp_rush_tds_allowed": 0.0
-    },
-    "LAC": {
-      "opp_fantasy_allowed_pos": 0.0,
-      "opp_pass_yards_allowed": 0.0,
-      "opp_rush_yards_allowed": 0.0,
-      "opp_rec_yards_allowed_pos": 0.0,
-      "opp_pass_tds_allowed": 0.0,
-      "opp_rush_tds_allowed": 0.0
-    },
-    "ATL": {
-      "opp_fantasy_allowed_pos": 0.0,
-      "opp_pass_yards_allowed": 0.0,
-      "opp_rush_yards_allowed": 0.0,
-      "opp_rec_yards_allowed_pos": 0.0,
-      "opp_pass_tds_allowed": 0.0,
-      "opp_rush_tds_allowed": 0.0
-    },
-    "MIA": {
+    "BUF": {
       "opp_fantasy_allowed_pos": 0.0,
       "opp_pass_yards_allowed": 0.0,
       "opp_rush_yards_allowed": 0.0,
@@ -386,7 +16,15 @@
       "opp_pass_tds_allowed": 0.0,
       "opp_rush_tds_allowed": 0.0
     },
-    "HOU": {
+    "MIN": {
+      "opp_fantasy_allowed_pos": 0.038,
+      "opp_pass_yards_allowed": 0.0,
+      "opp_rush_yards_allowed": 0.375,
+      "opp_rec_yards_allowed_pos": 0.0,
+      "opp_pass_tds_allowed": 0.0,
+      "opp_rush_tds_allowed": 0.0
+    },
+    "BAL": {
       "opp_fantasy_allowed_pos": 0.0,
       "opp_pass_yards_allowed": 0.0,
       "opp_rush_yards_allowed": 0.0,
@@ -394,7 +32,7 @@
       "opp_pass_tds_allowed": 0.0,
       "opp_rush_tds_allowed": 0.0
     },
-    "BUF": {
+    "DET": {
       "opp_fantasy_allowed_pos": 0.0,
       "opp_pass_yards_allowed": 0.0,
       "opp_rush_yards_allowed": 0.0,
@@ -402,7 +40,7 @@
       "opp_pass_tds_allowed": 0.0,
       "opp_rush_tds_allowed": 0.0
     },
-    "JAX": {
+    "SF": {
       "opp_fantasy_allowed_pos": 0.0,
       "opp_pass_yards_allowed": 0.0,
       "opp_rush_yards_allowed": 0.0,
@@ -410,7 +48,7 @@
       "opp_pass_tds_allowed": 0.0,
       "opp_rush_tds_allowed": 0.0
     },
-    "NO": {
+    "LAC": {
       "opp_fantasy_allowed_pos": 0.0,
       "opp_pass_yards_allowed": 0.0,
       "opp_rush_yards_allowed": 0.0,
@@ -418,15 +56,7 @@
       "opp_pass_tds_allowed": 0.0,
       "opp_rush_tds_allowed": 0.0
     },
-    "NE": {
-      "opp_fantasy_allowed_pos": 0.0,
-      "opp_pass_yards_allowed": 0.0,
-      "opp_rush_yards_allowed": 0.0,
-      "opp_rec_yards_allowed_pos": 0.0,
-      "opp_pass_tds_allowed": 0.0,
-      "opp_rush_tds_allowed": 0.0
-    },
-    "CAR": {
+    "IND": {
       "opp_fantasy_allowed_pos": 0.0,
       "opp_pass_yards_allowed": 0.0,
       "opp_rush_yards_allowed": 0.0,
@@ -450,7 +80,135 @@
       "opp_pass_tds_allowed": 0.0,
       "opp_rush_tds_allowed": 0.0
     },
-    "PIT": {
+    "NO": {
+      "opp_fantasy_allowed_pos": 0.0,
+      "opp_pass_yards_allowed": 0.0,
+      "opp_rush_yards_allowed": 0.0,
+      "opp_rec_yards_allowed_pos": 0.0,
+      "opp_pass_tds_allowed": 0.0,
+      "opp_rush_tds_allowed": 0.0
+    },
+    "KC": {
+      "opp_fantasy_allowed_pos": 0.0,
+      "opp_pass_yards_allowed": 0.0,
+      "opp_rush_yards_allowed": 0.0,
+      "opp_rec_yards_allowed_pos": 0.0,
+      "opp_pass_tds_allowed": 0.0,
+      "opp_rush_tds_allowed": 0.0
+    },
+    "SEA": {
+      "opp_fantasy_allowed_pos": 0.0,
+      "opp_pass_yards_allowed": 0.0,
+      "opp_rush_yards_allowed": 0.0,
+      "opp_rec_yards_allowed_pos": 0.0,
+      "opp_pass_tds_allowed": 0.0,
+      "opp_rush_tds_allowed": 0.0
+    },
+    "JAX": {
+      "opp_fantasy_allowed_pos": 0.0,
+      "opp_pass_yards_allowed": 0.0,
+      "opp_rush_yards_allowed": 0.0,
+      "opp_rec_yards_allowed_pos": 0.0,
+      "opp_pass_tds_allowed": 0.0,
+      "opp_rush_tds_allowed": 0.0
+    },
+    "CAR": {
+      "opp_fantasy_allowed_pos": 0.0,
+      "opp_pass_yards_allowed": 0.0,
+      "opp_rush_yards_allowed": 0.0,
+      "opp_rec_yards_allowed_pos": 0.0,
+      "opp_pass_tds_allowed": 0.0,
+      "opp_rush_tds_allowed": 0.0
+    },
+    "NE": {
+      "opp_fantasy_allowed_pos": 0.0,
+      "opp_pass_yards_allowed": 0.0,
+      "opp_rush_yards_allowed": 0.0,
+      "opp_rec_yards_allowed_pos": 0.0,
+      "opp_pass_tds_allowed": 0.0,
+      "opp_rush_tds_allowed": 0.0
+    },
+    "CLE": {
+      "opp_fantasy_allowed_pos": 0.0,
+      "opp_pass_yards_allowed": 0.0,
+      "opp_rush_yards_allowed": 0.0,
+      "opp_rec_yards_allowed_pos": 0.0,
+      "opp_pass_tds_allowed": 0.0,
+      "opp_rush_tds_allowed": 0.0
+    },
+    "DEN": {
+      "opp_fantasy_allowed_pos": 0.0,
+      "opp_pass_yards_allowed": 0.0,
+      "opp_rush_yards_allowed": 0.0,
+      "opp_rec_yards_allowed_pos": 0.0,
+      "opp_pass_tds_allowed": 0.0,
+      "opp_rush_tds_allowed": 0.0
+    },
+    "NYG": {
+      "opp_fantasy_allowed_pos": 0.0,
+      "opp_pass_yards_allowed": 0.0,
+      "opp_rush_yards_allowed": 0.0,
+      "opp_rec_yards_allowed_pos": 0.0,
+      "opp_pass_tds_allowed": 0.0,
+      "opp_rush_tds_allowed": 0.0
+    },
+    "CIN": {
+      "opp_fantasy_allowed_pos": 0.0,
+      "opp_pass_yards_allowed": 0.0,
+      "opp_rush_yards_allowed": 0.0,
+      "opp_rec_yards_allowed_pos": 0.0,
+      "opp_pass_tds_allowed": 0.0,
+      "opp_rush_tds_allowed": 0.0
+    },
+    "PHI": {
+      "opp_fantasy_allowed_pos": 0.0,
+      "opp_pass_yards_allowed": 0.0,
+      "opp_rush_yards_allowed": 0.0,
+      "opp_rec_yards_allowed_pos": 0.0,
+      "opp_pass_tds_allowed": 0.0,
+      "opp_rush_tds_allowed": 0.0
+    },
+    "LA": {
+      "opp_fantasy_allowed_pos": 0.0,
+      "opp_pass_yards_allowed": 0.0,
+      "opp_rush_yards_allowed": 0.0,
+      "opp_rec_yards_allowed_pos": 0.0,
+      "opp_pass_tds_allowed": 0.0,
+      "opp_rush_tds_allowed": 0.0
+    },
+    "HOU": {
+      "opp_fantasy_allowed_pos": 0.0,
+      "opp_pass_yards_allowed": 0.0,
+      "opp_rush_yards_allowed": 0.0,
+      "opp_rec_yards_allowed_pos": 0.0,
+      "opp_pass_tds_allowed": 0.0,
+      "opp_rush_tds_allowed": 0.0
+    },
+    "CHI": {
+      "opp_fantasy_allowed_pos": 0.0,
+      "opp_pass_yards_allowed": 0.0,
+      "opp_rush_yards_allowed": 0.0,
+      "opp_rec_yards_allowed_pos": 0.0,
+      "opp_pass_tds_allowed": 0.0,
+      "opp_rush_tds_allowed": 0.0
+    },
+    "ATL": {
+      "opp_fantasy_allowed_pos": 0.0,
+      "opp_pass_yards_allowed": 0.0,
+      "opp_rush_yards_allowed": 0.0,
+      "opp_rec_yards_allowed_pos": 0.0,
+      "opp_pass_tds_allowed": 0.0,
+      "opp_rush_tds_allowed": 0.0
+    },
+    "GB": {
+      "opp_fantasy_allowed_pos": 0.0,
+      "opp_pass_yards_allowed": 0.0,
+      "opp_rush_yards_allowed": 0.0,
+      "opp_rec_yards_allowed_pos": 0.0,
+      "opp_pass_tds_allowed": 0.0,
+      "opp_rush_tds_allowed": 0.0
+    },
+    "TEN": {
       "opp_fantasy_allowed_pos": 0.0,
       "opp_pass_yards_allowed": 0.0,
       "opp_rush_yards_allowed": 0.0,
@@ -466,7 +224,15 @@
       "opp_pass_tds_allowed": 0.0,
       "opp_rush_tds_allowed": 0.0
     },
-    "SF": {
+    "PIT": {
+      "opp_fantasy_allowed_pos": 0.0,
+      "opp_pass_yards_allowed": 0.0,
+      "opp_rush_yards_allowed": 0.0,
+      "opp_rec_yards_allowed_pos": 0.0,
+      "opp_pass_tds_allowed": 0.0,
+      "opp_rush_tds_allowed": 0.0
+    },
+    "MIA": {
       "opp_fantasy_allowed_pos": 0.0,
       "opp_pass_yards_allowed": 0.0,
       "opp_rush_yards_allowed": 0.0,
@@ -482,31 +248,7 @@
       "opp_pass_tds_allowed": 0.0,
       "opp_rush_tds_allowed": 0.0
     },
-    "MIN": {
-      "opp_fantasy_allowed_pos": 0.0,
-      "opp_pass_yards_allowed": 0.0,
-      "opp_rush_yards_allowed": 0.0,
-      "opp_rec_yards_allowed_pos": 0.0,
-      "opp_pass_tds_allowed": 0.0,
-      "opp_rush_tds_allowed": 0.0
-    },
-    "DET": {
-      "opp_fantasy_allowed_pos": 0.0,
-      "opp_pass_yards_allowed": 0.0,
-      "opp_rush_yards_allowed": 0.0,
-      "opp_rec_yards_allowed_pos": 0.0,
-      "opp_pass_tds_allowed": 0.0,
-      "opp_rush_tds_allowed": 0.0
-    },
-    "IND": {
-      "opp_fantasy_allowed_pos": 0.0,
-      "opp_pass_yards_allowed": 0.0,
-      "opp_rush_yards_allowed": 0.0,
-      "opp_rec_yards_allowed_pos": 0.0,
-      "opp_pass_tds_allowed": 0.0,
-      "opp_rush_tds_allowed": 0.0
-    },
-    "SEA": {
+    "DAL": {
       "opp_fantasy_allowed_pos": 0.0,
       "opp_pass_yards_allowed": 0.0,
       "opp_rush_yards_allowed": 0.0,
@@ -516,777 +258,1035 @@
     }
   },
   "TE": {
-    "LV": {
-      "opp_fantasy_allowed_pos": 15.444,
+    "BUF": {
+      "opp_fantasy_allowed_pos": 7.707,
       "opp_pass_yards_allowed": 0.0,
-      "opp_rush_yards_allowed": 0.0,
-      "opp_rec_yards_allowed_pos": 65.688,
+      "opp_rush_yards_allowed": 0.2,
+      "opp_rec_yards_allowed_pos": 32.867,
       "opp_pass_tds_allowed": 0.0,
-      "opp_rush_tds_allowed": 0.0
-    },
-    "DET": {
-      "opp_fantasy_allowed_pos": 8.988,
-      "opp_pass_yards_allowed": 0.0,
-      "opp_rush_yards_allowed": -0.125,
-      "opp_rec_yards_allowed_pos": 40.0,
-      "opp_pass_tds_allowed": 0.0,
-      "opp_rush_tds_allowed": 0.0
+      "opp_rush_tds_allowed": 0.067
     },
     "SEA": {
-      "opp_fantasy_allowed_pos": 11.213,
+      "opp_fantasy_allowed_pos": 14.975,
       "opp_pass_yards_allowed": 0.0,
-      "opp_rush_yards_allowed": 0.0,
-      "opp_rec_yards_allowed_pos": 51.5,
-      "opp_pass_tds_allowed": 0.0,
-      "opp_rush_tds_allowed": 0.0
-    },
-    "GB": {
-      "opp_fantasy_allowed_pos": 13.231,
-      "opp_pass_yards_allowed": 0.0,
-      "opp_rush_yards_allowed": 0.0,
-      "opp_rec_yards_allowed_pos": 60.438,
-      "opp_pass_tds_allowed": 0.0,
-      "opp_rush_tds_allowed": 0.0
-    },
-    "NE": {
-      "opp_fantasy_allowed_pos": 12.206,
-      "opp_pass_yards_allowed": 0.0,
-      "opp_rush_yards_allowed": -0.062,
-      "opp_rec_yards_allowed_pos": 52.125,
-      "opp_pass_tds_allowed": 0.0,
-      "opp_rush_tds_allowed": 0.0
-    },
-    "DAL": {
-      "opp_fantasy_allowed_pos": 9.375,
-      "opp_pass_yards_allowed": 0.0,
-      "opp_rush_yards_allowed": 1.125,
-      "opp_rec_yards_allowed_pos": 40.125,
-      "opp_pass_tds_allowed": 0.0,
-      "opp_rush_tds_allowed": 0.0
-    },
-    "CIN": {
-      "opp_fantasy_allowed_pos": 16.262,
-      "opp_pass_yards_allowed": 0.0,
-      "opp_rush_yards_allowed": 0.188,
-      "opp_rec_yards_allowed_pos": 64.312,
-      "opp_pass_tds_allowed": 0.0,
-      "opp_rush_tds_allowed": 0.0
-    },
-    "CAR": {
-      "opp_fantasy_allowed_pos": 15.556,
-      "opp_pass_yards_allowed": 0.0,
-      "opp_rush_yards_allowed": 3.375,
-      "opp_rec_yards_allowed_pos": 56.562,
-      "opp_pass_tds_allowed": 0.0,
-      "opp_rush_tds_allowed": 0.062
-    },
-    "JAX": {
-      "opp_fantasy_allowed_pos": 14.075,
-      "opp_pass_yards_allowed": 0.0,
-      "opp_rush_yards_allowed": 1.062,
-      "opp_rec_yards_allowed_pos": 56.562,
-      "opp_pass_tds_allowed": 0.0,
-      "opp_rush_tds_allowed": 0.0
-    },
-    "DEN": {
-      "opp_fantasy_allowed_pos": 12.331,
-      "opp_pass_yards_allowed": 0.0,
-      "opp_rush_yards_allowed": 0.0,
-      "opp_rec_yards_allowed_pos": 48.312,
-      "opp_pass_tds_allowed": 0.0,
-      "opp_rush_tds_allowed": 0.0
-    },
-    "SF": {
-      "opp_fantasy_allowed_pos": 9.706,
-      "opp_pass_yards_allowed": 0.0,
-      "opp_rush_yards_allowed": 0.0,
-      "opp_rec_yards_allowed_pos": 38.938,
-      "opp_pass_tds_allowed": 0.0,
-      "opp_rush_tds_allowed": 0.0
-    },
-    "MIA": {
-      "opp_fantasy_allowed_pos": 12.975,
-      "opp_pass_yards_allowed": 0.0,
-      "opp_rush_yards_allowed": -0.188,
-      "opp_rec_yards_allowed_pos": 56.812,
-      "opp_pass_tds_allowed": 0.0,
-      "opp_rush_tds_allowed": 0.0
-    },
-    "CLE": {
-      "opp_fantasy_allowed_pos": 13.114,
-      "opp_pass_yards_allowed": 1.125,
-      "opp_rush_yards_allowed": 9.375,
-      "opp_rec_yards_allowed_pos": 46.312,
-      "opp_pass_tds_allowed": 0.0,
-      "opp_rush_tds_allowed": 0.188
-    },
-    "PHI": {
-      "opp_fantasy_allowed_pos": 9.113,
-      "opp_pass_yards_allowed": 0.0,
-      "opp_rush_yards_allowed": 0.125,
-      "opp_rec_yards_allowed_pos": 35.375,
-      "opp_pass_tds_allowed": 0.0,
-      "opp_rush_tds_allowed": 0.0
-    },
-    "NYG": {
-      "opp_fantasy_allowed_pos": 8.581,
-      "opp_pass_yards_allowed": 0.0,
-      "opp_rush_yards_allowed": 0.0,
-      "opp_rec_yards_allowed_pos": 37.688,
-      "opp_pass_tds_allowed": 0.0,
-      "opp_rush_tds_allowed": 0.0
-    },
-    "WAS": {
-      "opp_fantasy_allowed_pos": 11.062,
-      "opp_pass_yards_allowed": 0.0,
-      "opp_rush_yards_allowed": 0.0,
-      "opp_rec_yards_allowed_pos": 40.625,
-      "opp_pass_tds_allowed": 0.0,
-      "opp_rush_tds_allowed": 0.0
-    },
-    "ARI": {
-      "opp_fantasy_allowed_pos": 9.606,
-      "opp_pass_yards_allowed": 0.0,
-      "opp_rush_yards_allowed": 0.125,
-      "opp_rec_yards_allowed_pos": 42.188,
-      "opp_pass_tds_allowed": 0.0,
-      "opp_rush_tds_allowed": 0.0
-    },
-    "NYJ": {
-      "opp_fantasy_allowed_pos": 10.325,
-      "opp_pass_yards_allowed": 0.0,
-      "opp_rush_yards_allowed": 0.0,
-      "opp_rec_yards_allowed_pos": 42.625,
-      "opp_pass_tds_allowed": 0.0,
-      "opp_rush_tds_allowed": 0.0
-    },
-    "KC": {
-      "opp_fantasy_allowed_pos": 15.375,
-      "opp_pass_yards_allowed": 0.0,
-      "opp_rush_yards_allowed": 0.125,
-      "opp_rec_yards_allowed_pos": 72.375,
-      "opp_pass_tds_allowed": 0.0,
-      "opp_rush_tds_allowed": 0.0
-    },
-    "IND": {
-      "opp_fantasy_allowed_pos": 15.144,
-      "opp_pass_yards_allowed": 0.0,
-      "opp_rush_yards_allowed": 0.0,
-      "opp_rec_yards_allowed_pos": 57.688,
-      "opp_pass_tds_allowed": 0.0,
-      "opp_rush_tds_allowed": 0.0
-    },
-    "MIN": {
-      "opp_fantasy_allowed_pos": 11.169,
-      "opp_pass_yards_allowed": 0.0,
-      "opp_rush_yards_allowed": 0.0,
-      "opp_rec_yards_allowed_pos": 51.062,
+      "opp_rush_yards_allowed": 0.062,
+      "opp_rec_yards_allowed_pos": 65.312,
       "opp_pass_tds_allowed": 0.0,
       "opp_rush_tds_allowed": 0.0
     },
     "CHI": {
-      "opp_fantasy_allowed_pos": 12.363,
+      "opp_fantasy_allowed_pos": 13.744,
       "opp_pass_yards_allowed": 0.0,
-      "opp_rush_yards_allowed": 0.125,
-      "opp_rec_yards_allowed_pos": 59.75,
+      "opp_rush_yards_allowed": 0.312,
+      "opp_rec_yards_allowed_pos": 54.625,
+      "opp_pass_tds_allowed": 0.0,
+      "opp_rush_tds_allowed": 0.0
+    },
+    "LAC": {
+      "opp_fantasy_allowed_pos": 10.637,
+      "opp_pass_yards_allowed": 0.0,
+      "opp_rush_yards_allowed": 0.0,
+      "opp_rec_yards_allowed_pos": 42.0,
+      "opp_pass_tds_allowed": 0.0,
+      "opp_rush_tds_allowed": 0.0
+    },
+    "CLE": {
+      "opp_fantasy_allowed_pos": 12.4,
+      "opp_pass_yards_allowed": 0.0,
+      "opp_rush_yards_allowed": 3.375,
+      "opp_rec_yards_allowed_pos": 52.5,
       "opp_pass_tds_allowed": 0.0,
       "opp_rush_tds_allowed": 0.062
     },
-    "LAC": {
-      "opp_fantasy_allowed_pos": 10.008,
-      "opp_pass_yards_allowed": 0.188,
-      "opp_rush_yards_allowed": 1.125,
-      "opp_rec_yards_allowed_pos": 43.875,
-      "opp_pass_tds_allowed": 0.0,
-      "opp_rush_tds_allowed": 0.0
-    },
     "ATL": {
-      "opp_fantasy_allowed_pos": 11.994,
+      "opp_fantasy_allowed_pos": 9.875,
       "opp_pass_yards_allowed": 0.0,
-      "opp_rush_yards_allowed": 2.375,
-      "opp_rec_yards_allowed_pos": 46.938,
-      "opp_pass_tds_allowed": 0.0,
-      "opp_rush_tds_allowed": 0.125
-    },
-    "TEN": {
-      "opp_fantasy_allowed_pos": 9.481,
-      "opp_pass_yards_allowed": 0.0,
-      "opp_rush_yards_allowed": 0.0,
-      "opp_rec_yards_allowed_pos": 37.938,
-      "opp_pass_tds_allowed": 0.0,
-      "opp_rush_tds_allowed": 0.0
-    },
-    "BUF": {
-      "opp_fantasy_allowed_pos": 12.131,
-      "opp_pass_yards_allowed": 0.0,
-      "opp_rush_yards_allowed": 0.0,
-      "opp_rec_yards_allowed_pos": 48.188,
+      "opp_rush_yards_allowed": 1.062,
+      "opp_rec_yards_allowed_pos": 45.188,
       "opp_pass_tds_allowed": 0.0,
       "opp_rush_tds_allowed": 0.0
     },
     "BAL": {
-      "opp_fantasy_allowed_pos": 12.438,
-      "opp_pass_yards_allowed": 0.0,
-      "opp_rush_yards_allowed": 0.062,
-      "opp_rec_yards_allowed_pos": 56.188,
-      "opp_pass_tds_allowed": 0.0,
-      "opp_rush_tds_allowed": 0.0
-    },
-    "TB": {
-      "opp_fantasy_allowed_pos": 13.656,
+      "opp_fantasy_allowed_pos": 11.006,
       "opp_pass_yards_allowed": 0.0,
       "opp_rush_yards_allowed": 0.188,
-      "opp_rec_yards_allowed_pos": 63.875,
-      "opp_pass_tds_allowed": 0.0,
-      "opp_rush_tds_allowed": 0.0
-    },
-    "PIT": {
-      "opp_fantasy_allowed_pos": 13.613,
-      "opp_pass_yards_allowed": 0.0,
-      "opp_rush_yards_allowed": 0.062,
-      "opp_rec_yards_allowed_pos": 53.562,
-      "opp_pass_tds_allowed": 0.0,
-      "opp_rush_tds_allowed": 0.0
-    },
-    "HOU": {
-      "opp_fantasy_allowed_pos": 11.088,
-      "opp_pass_yards_allowed": 0.0,
-      "opp_rush_yards_allowed": 0.0,
-      "opp_rec_yards_allowed_pos": 40.875,
+      "opp_rec_yards_allowed_pos": 46.125,
       "opp_pass_tds_allowed": 0.0,
       "opp_rush_tds_allowed": 0.0
     },
     "NO": {
-      "opp_fantasy_allowed_pos": 10.944,
+      "opp_fantasy_allowed_pos": 12.519,
+      "opp_pass_yards_allowed": 0.0,
+      "opp_rush_yards_allowed": 0.125,
+      "opp_rec_yards_allowed_pos": 50.688,
+      "opp_pass_tds_allowed": 0.0,
+      "opp_rush_tds_allowed": 0.0
+    },
+    "PIT": {
+      "opp_fantasy_allowed_pos": 17.106,
+      "opp_pass_yards_allowed": 0.0,
+      "opp_rush_yards_allowed": 0.125,
+      "opp_rec_yards_allowed_pos": 67.188,
+      "opp_pass_tds_allowed": 0.0,
+      "opp_rush_tds_allowed": 0.0
+    },
+    "DAL": {
+      "opp_fantasy_allowed_pos": 12.256,
+      "opp_pass_yards_allowed": 0.0,
+      "opp_rush_yards_allowed": 0.0,
+      "opp_rec_yards_allowed_pos": 52.562,
+      "opp_pass_tds_allowed": 0.0,
+      "opp_rush_tds_allowed": 0.0
+    },
+    "WAS": {
+      "opp_fantasy_allowed_pos": 15.688,
       "opp_pass_yards_allowed": 0.0,
       "opp_rush_yards_allowed": 0.062,
-      "opp_rec_yards_allowed_pos": 56.875,
+      "opp_rec_yards_allowed_pos": 61.812,
+      "opp_pass_tds_allowed": 0.0,
+      "opp_rush_tds_allowed": 0.062
+    },
+    "NE": {
+      "opp_fantasy_allowed_pos": 15.12,
+      "opp_pass_yards_allowed": 0.0,
+      "opp_rush_yards_allowed": 0.4,
+      "opp_rec_yards_allowed_pos": 62.133,
+      "opp_pass_tds_allowed": 0.0,
+      "opp_rush_tds_allowed": 0.067
+    },
+    "TEN": {
+      "opp_fantasy_allowed_pos": 13.338,
+      "opp_pass_yards_allowed": 0.0,
+      "opp_rush_yards_allowed": 0.0,
+      "opp_rec_yards_allowed_pos": 54.625,
       "opp_pass_tds_allowed": 0.0,
       "opp_rush_tds_allowed": 0.0
     },
     "LA": {
-      "opp_fantasy_allowed_pos": 14.213,
+      "opp_fantasy_allowed_pos": 12.025,
       "opp_pass_yards_allowed": 0.0,
-      "opp_rush_yards_allowed": 0.625,
-      "opp_rec_yards_allowed_pos": 62.75,
+      "opp_rush_yards_allowed": 2.312,
+      "opp_rec_yards_allowed_pos": 41.688,
+      "opp_pass_tds_allowed": 0.0,
+      "opp_rush_tds_allowed": 0.062
+    },
+    "CAR": {
+      "opp_fantasy_allowed_pos": 13.169,
+      "opp_pass_yards_allowed": 0.0,
+      "opp_rush_yards_allowed": 1.375,
+      "opp_rec_yards_allowed_pos": 57.812,
       "opp_pass_tds_allowed": 0.0,
       "opp_rush_tds_allowed": 0.0
+    },
+    "KC": {
+      "opp_fantasy_allowed_pos": 11.213,
+      "opp_pass_yards_allowed": 0.0,
+      "opp_rush_yards_allowed": 0.125,
+      "opp_rec_yards_allowed_pos": 47.625,
+      "opp_pass_tds_allowed": 0.0,
+      "opp_rush_tds_allowed": 0.0
+    },
+    "ARI": {
+      "opp_fantasy_allowed_pos": 15.513,
+      "opp_pass_yards_allowed": 0.0,
+      "opp_rush_yards_allowed": 0.188,
+      "opp_rec_yards_allowed_pos": 64.938,
+      "opp_pass_tds_allowed": 0.0,
+      "opp_rush_tds_allowed": 0.0
+    },
+    "MIA": {
+      "opp_fantasy_allowed_pos": 16.475,
+      "opp_pass_yards_allowed": 0.0,
+      "opp_rush_yards_allowed": 1.438,
+      "opp_rec_yards_allowed_pos": 67.062,
+      "opp_pass_tds_allowed": 0.0,
+      "opp_rush_tds_allowed": 0.062
+    },
+    "IND": {
+      "opp_fantasy_allowed_pos": 15.238,
+      "opp_pass_yards_allowed": 0.0,
+      "opp_rush_yards_allowed": 0.25,
+      "opp_rec_yards_allowed_pos": 69.0,
+      "opp_pass_tds_allowed": 0.0,
+      "opp_rush_tds_allowed": 0.0
+    },
+    "CIN": {
+      "opp_fantasy_allowed_pos": 21.944,
+      "opp_pass_yards_allowed": 0.0,
+      "opp_rush_yards_allowed": 0.188,
+      "opp_rec_yards_allowed_pos": 89.875,
+      "opp_pass_tds_allowed": 0.0,
+      "opp_rush_tds_allowed": 0.0
+    },
+    "NYG": {
+      "opp_fantasy_allowed_pos": 11.523,
+      "opp_pass_yards_allowed": 1.188,
+      "opp_rush_yards_allowed": -0.25,
+      "opp_rec_yards_allowed_pos": 47.5,
+      "opp_pass_tds_allowed": 0.0,
+      "opp_rush_tds_allowed": 0.0
+    },
+    "JAX": {
+      "opp_fantasy_allowed_pos": 15.412,
+      "opp_pass_yards_allowed": 0.0,
+      "opp_rush_yards_allowed": 0.5,
+      "opp_rec_yards_allowed_pos": 61.75,
+      "opp_pass_tds_allowed": 0.0,
+      "opp_rush_tds_allowed": 0.0
+    },
+    "SF": {
+      "opp_fantasy_allowed_pos": 15.35,
+      "opp_pass_yards_allowed": 0.0,
+      "opp_rush_yards_allowed": 0.125,
+      "opp_rec_yards_allowed_pos": 59.0,
+      "opp_pass_tds_allowed": 0.0,
+      "opp_rush_tds_allowed": 0.0
+    },
+    "LV": {
+      "opp_fantasy_allowed_pos": 10.05,
+      "opp_pass_yards_allowed": 0.0,
+      "opp_rush_yards_allowed": 0.25,
+      "opp_rec_yards_allowed_pos": 38.375,
+      "opp_pass_tds_allowed": 0.0,
+      "opp_rush_tds_allowed": 0.0
+    },
+    "PHI": {
+      "opp_fantasy_allowed_pos": 8.137,
+      "opp_pass_yards_allowed": 0.0,
+      "opp_rush_yards_allowed": 0.062,
+      "opp_rec_yards_allowed_pos": 30.688,
+      "opp_pass_tds_allowed": 0.0,
+      "opp_rush_tds_allowed": 0.0
+    },
+    "DET": {
+      "opp_fantasy_allowed_pos": 12.481,
+      "opp_pass_yards_allowed": 0.0,
+      "opp_rush_yards_allowed": 2.0,
+      "opp_rec_yards_allowed_pos": 51.562,
+      "opp_pass_tds_allowed": 0.0,
+      "opp_rush_tds_allowed": 0.0
+    },
+    "HOU": {
+      "opp_fantasy_allowed_pos": 12.244,
+      "opp_pass_yards_allowed": 0.0,
+      "opp_rush_yards_allowed": 0.125,
+      "opp_rec_yards_allowed_pos": 45.438,
+      "opp_pass_tds_allowed": 0.0,
+      "opp_rush_tds_allowed": 0.0
+    },
+    "TB": {
+      "opp_fantasy_allowed_pos": 15.9,
+      "opp_pass_yards_allowed": 0.0,
+      "opp_rush_yards_allowed": -0.125,
+      "opp_rec_yards_allowed_pos": 57.875,
+      "opp_pass_tds_allowed": 0.0,
+      "opp_rush_tds_allowed": 0.0
+    },
+    "DEN": {
+      "opp_fantasy_allowed_pos": 14.037,
+      "opp_pass_yards_allowed": 0.0,
+      "opp_rush_yards_allowed": -0.25,
+      "opp_rec_yards_allowed_pos": 61.25,
+      "opp_pass_tds_allowed": 0.0,
+      "opp_rush_tds_allowed": 0.0
+    },
+    "NYJ": {
+      "opp_fantasy_allowed_pos": 14.601,
+      "opp_pass_yards_allowed": 2.375,
+      "opp_rush_yards_allowed": 3.438,
+      "opp_rec_yards_allowed_pos": 52.875,
+      "opp_pass_tds_allowed": 0.062,
+      "opp_rush_tds_allowed": 0.0
+    },
+    "GB": {
+      "opp_fantasy_allowed_pos": 12.269,
+      "opp_pass_yards_allowed": 0.0,
+      "opp_rush_yards_allowed": 0.0,
+      "opp_rec_yards_allowed_pos": 43.938,
+      "opp_pass_tds_allowed": 0.0,
+      "opp_rush_tds_allowed": 0.0
+    },
+    "MIN": {
+      "opp_fantasy_allowed_pos": 11.15,
+      "opp_pass_yards_allowed": 0.0,
+      "opp_rush_yards_allowed": 0.125,
+      "opp_rec_yards_allowed_pos": 44.5,
+      "opp_pass_tds_allowed": 0.0,
+      "opp_rush_tds_allowed": 0.0
+    }
+  },
+  "QB": {
+    "BAL": {
+      "opp_fantasy_allowed_pos": 17.579,
+      "opp_pass_yards_allowed": 256.812,
+      "opp_rush_yards_allowed": 18.0,
+      "opp_rec_yards_allowed_pos": -0.562,
+      "opp_pass_tds_allowed": 1.375,
+      "opp_rush_tds_allowed": 0.312
+    },
+    "PHI": {
+      "opp_fantasy_allowed_pos": 14.331,
+      "opp_pass_yards_allowed": 209.062,
+      "opp_rush_yards_allowed": 22.188,
+      "opp_rec_yards_allowed_pos": 0.0,
+      "opp_pass_tds_allowed": 0.812,
+      "opp_rush_tds_allowed": 0.375
+    },
+    "NO": {
+      "opp_fantasy_allowed_pos": 14.178,
+      "opp_pass_yards_allowed": 197.25,
+      "opp_rush_yards_allowed": 17.875,
+      "opp_rec_yards_allowed_pos": 0.0,
+      "opp_pass_tds_allowed": 1.5,
+      "opp_rush_tds_allowed": 0.062
+    },
+    "ARI": {
+      "opp_fantasy_allowed_pos": 16.366,
+      "opp_pass_yards_allowed": 241.812,
+      "opp_rush_yards_allowed": 10.688,
+      "opp_rec_yards_allowed_pos": 0.0,
+      "opp_pass_tds_allowed": 1.688,
+      "opp_rush_tds_allowed": 0.125
+    },
+    "CHI": {
+      "opp_fantasy_allowed_pos": 17.94,
+      "opp_pass_yards_allowed": 233.5,
+      "opp_rush_yards_allowed": 24.75,
+      "opp_rec_yards_allowed_pos": 0.0,
+      "opp_pass_tds_allowed": 1.938,
+      "opp_rush_tds_allowed": 0.312
+    },
+    "LA": {
+      "opp_fantasy_allowed_pos": 14.886,
+      "opp_pass_yards_allowed": 232.312,
+      "opp_rush_yards_allowed": 14.688,
+      "opp_rec_yards_allowed_pos": 0.0,
+      "opp_pass_tds_allowed": 1.5,
+      "opp_rush_tds_allowed": 0.062
+    },
+    "NYJ": {
+      "opp_fantasy_allowed_pos": 19.392,
+      "opp_pass_yards_allowed": 222.0,
+      "opp_rush_yards_allowed": 20.125,
+      "opp_rec_yards_allowed_pos": 0.0,
+      "opp_pass_tds_allowed": 1.938,
+      "opp_rush_tds_allowed": 0.125
+    },
+    "PIT": {
+      "opp_fantasy_allowed_pos": 18.441,
+      "opp_pass_yards_allowed": 262.438,
+      "opp_rush_yards_allowed": 15.688,
+      "opp_rec_yards_allowed_pos": 0.0,
+      "opp_pass_tds_allowed": 1.688,
+      "opp_rush_tds_allowed": 0.312
+    },
+    "CAR": {
+      "opp_fantasy_allowed_pos": 13.854,
+      "opp_pass_yards_allowed": 215.875,
+      "opp_rush_yards_allowed": 13.438,
+      "opp_rec_yards_allowed_pos": 0.0,
+      "opp_pass_tds_allowed": 1.188,
+      "opp_rush_tds_allowed": 0.188
+    },
+    "SF": {
+      "opp_fantasy_allowed_pos": 17.624,
+      "opp_pass_yards_allowed": 244.5,
+      "opp_rush_yards_allowed": 13.438,
+      "opp_rec_yards_allowed_pos": 0.0,
+      "opp_pass_tds_allowed": 1.812,
+      "opp_rush_tds_allowed": 0.062
+    },
+    "CLE": {
+      "opp_fantasy_allowed_pos": 12.811,
+      "opp_pass_yards_allowed": 184.5,
+      "opp_rush_yards_allowed": 11.812,
+      "opp_rec_yards_allowed_pos": 0.0,
+      "opp_pass_tds_allowed": 1.312,
+      "opp_rush_tds_allowed": 0.062
+    },
+    "TEN": {
+      "opp_fantasy_allowed_pos": 18.631,
+      "opp_pass_yards_allowed": 246.875,
+      "opp_rush_yards_allowed": 20.062,
+      "opp_rec_yards_allowed_pos": 0.0,
+      "opp_pass_tds_allowed": 1.688,
+      "opp_rush_tds_allowed": 0.188
+    },
+    "DEN": {
+      "opp_fantasy_allowed_pos": 14.562,
+      "opp_pass_yards_allowed": 216.875,
+      "opp_rush_yards_allowed": 15.125,
+      "opp_rec_yards_allowed_pos": 0.0,
+      "opp_pass_tds_allowed": 1.125,
+      "opp_rush_tds_allowed": 0.188
+    },
+    "LV": {
+      "opp_fantasy_allowed_pos": 16.951,
+      "opp_pass_yards_allowed": 218.625,
+      "opp_rush_yards_allowed": 16.375,
+      "opp_rec_yards_allowed_pos": 0.688,
+      "opp_pass_tds_allowed": 1.438,
+      "opp_rush_tds_allowed": 0.375
+    },
+    "SEA": {
+      "opp_fantasy_allowed_pos": 14.174,
+      "opp_pass_yards_allowed": 218.25,
+      "opp_rush_yards_allowed": 16.938,
+      "opp_rec_yards_allowed_pos": 0.0,
+      "opp_pass_tds_allowed": 1.25,
+      "opp_rush_tds_allowed": 0.188
+    },
+    "WAS": {
+      "opp_fantasy_allowed_pos": 19.906,
+      "opp_pass_yards_allowed": 258.125,
+      "opp_rush_yards_allowed": 20.812,
+      "opp_rec_yards_allowed_pos": 0.0,
+      "opp_pass_tds_allowed": 2.0,
+      "opp_rush_tds_allowed": 0.062
+    },
+    "KC": {
+      "opp_fantasy_allowed_pos": 15.655,
+      "opp_pass_yards_allowed": 211.375,
+      "opp_rush_yards_allowed": 19.5,
+      "opp_rec_yards_allowed_pos": 0.0,
+      "opp_pass_tds_allowed": 1.125,
+      "opp_rush_tds_allowed": 0.375
+    },
+    "MIN": {
+      "opp_fantasy_allowed_pos": 11.461,
+      "opp_pass_yards_allowed": 186.688,
+      "opp_rush_yards_allowed": 14.938,
+      "opp_rec_yards_allowed_pos": 0.0,
+      "opp_pass_tds_allowed": 0.938,
+      "opp_rush_tds_allowed": 0.062
+    },
+    "TB": {
+      "opp_fantasy_allowed_pos": 19.634,
+      "opp_pass_yards_allowed": 254.125,
+      "opp_rush_yards_allowed": 21.938,
+      "opp_rec_yards_allowed_pos": -0.375,
+      "opp_pass_tds_allowed": 1.75,
+      "opp_rush_tds_allowed": 0.375
+    },
+    "IND": {
+      "opp_fantasy_allowed_pos": 16.336,
+      "opp_pass_yards_allowed": 266.062,
+      "opp_rush_yards_allowed": 11.938,
+      "opp_rec_yards_allowed_pos": 0.0,
+      "opp_pass_tds_allowed": 1.438,
+      "opp_rush_tds_allowed": 0.125
+    },
+    "NYG": {
+      "opp_fantasy_allowed_pos": 18.521,
+      "opp_pass_yards_allowed": 234.125,
+      "opp_rush_yards_allowed": 23.438,
+      "opp_rec_yards_allowed_pos": 0.0,
+      "opp_pass_tds_allowed": 1.562,
+      "opp_rush_tds_allowed": 0.312
+    },
+    "LAC": {
+      "opp_fantasy_allowed_pos": 12.456,
+      "opp_pass_yards_allowed": 197.812,
+      "opp_rush_yards_allowed": 16.688,
+      "opp_rec_yards_allowed_pos": 0.0,
+      "opp_pass_tds_allowed": 1.0,
+      "opp_rush_tds_allowed": 0.25
+    },
+    "MIA": {
+      "opp_fantasy_allowed_pos": 18.003,
+      "opp_pass_yards_allowed": 231.625,
+      "opp_rush_yards_allowed": 19.875,
+      "opp_rec_yards_allowed_pos": 0.0,
+      "opp_pass_tds_allowed": 1.75,
+      "opp_rush_tds_allowed": 0.25
+    },
+    "DET": {
+      "opp_fantasy_allowed_pos": 18.205,
+      "opp_pass_yards_allowed": 236.375,
+      "opp_rush_yards_allowed": 16.062,
+      "opp_rec_yards_allowed_pos": 2.062,
+      "opp_pass_tds_allowed": 1.75,
+      "opp_rush_tds_allowed": 0.188
+    },
+    "HOU": {
+      "opp_fantasy_allowed_pos": 11.956,
+      "opp_pass_yards_allowed": 200.0,
+      "opp_rush_yards_allowed": 19.562,
+      "opp_rec_yards_allowed_pos": -0.625,
+      "opp_pass_tds_allowed": 1.125,
+      "opp_rush_tds_allowed": 0.0
+    },
+    "NE": {
+      "opp_fantasy_allowed_pos": 14.974,
+      "opp_pass_yards_allowed": 210.75,
+      "opp_rush_yards_allowed": 16.688,
+      "opp_rec_yards_allowed_pos": 0.0,
+      "opp_pass_tds_allowed": 1.5,
+      "opp_rush_tds_allowed": 0.062
+    },
+    "BUF": {
+      "opp_fantasy_allowed_pos": 13.216,
+      "opp_pass_yards_allowed": 177.125,
+      "opp_rush_yards_allowed": 22.562,
+      "opp_rec_yards_allowed_pos": 0.0,
+      "opp_pass_tds_allowed": 1.125,
+      "opp_rush_tds_allowed": 0.25
+    },
+    "GB": {
+      "opp_fantasy_allowed_pos": 15.186,
+      "opp_pass_yards_allowed": 204.812,
+      "opp_rush_yards_allowed": 14.938,
+      "opp_rec_yards_allowed_pos": 0.0,
+      "opp_pass_tds_allowed": 1.5,
+      "opp_rush_tds_allowed": 0.125
+    },
+    "CIN": {
+      "opp_fantasy_allowed_pos": 18.881,
+      "opp_pass_yards_allowed": 253.438,
+      "opp_rush_yards_allowed": 18.562,
+      "opp_rec_yards_allowed_pos": 1.375,
+      "opp_pass_tds_allowed": 1.875,
+      "opp_rush_tds_allowed": 0.125
+    },
+    "JAX": {
+      "opp_fantasy_allowed_pos": 15.973,
+      "opp_pass_yards_allowed": 238.062,
+      "opp_rush_yards_allowed": 17.0,
+      "opp_rec_yards_allowed_pos": 0.0,
+      "opp_pass_tds_allowed": 1.562,
+      "opp_rush_tds_allowed": 0.25
+    },
+    "DAL": {
+      "opp_fantasy_allowed_pos": 23.265,
+      "opp_pass_yards_allowed": 268.188,
+      "opp_rush_yards_allowed": 22.875,
+      "opp_rec_yards_allowed_pos": 0.0,
+      "opp_pass_tds_allowed": 2.062,
+      "opp_rush_tds_allowed": 0.5
+    },
+    "ATL": {
+      "opp_fantasy_allowed_pos": 15.604,
+      "opp_pass_yards_allowed": 219.625,
+      "opp_rush_yards_allowed": 19.438,
+      "opp_rec_yards_allowed_pos": 0.0,
+      "opp_pass_tds_allowed": 1.625,
+      "opp_rush_tds_allowed": 0.125
     }
   },
   "RB": {
-    "DET": {
-      "opp_fantasy_allowed_pos": 18.719,
+    "BUF": {
+      "opp_fantasy_allowed_pos": 24.994,
       "opp_pass_yards_allowed": 0.0,
-      "opp_rush_yards_allowed": 66.062,
-      "opp_rec_yards_allowed_pos": 34.875,
+      "opp_rush_yards_allowed": 110.625,
+      "opp_rec_yards_allowed_pos": 26.188,
       "opp_pass_tds_allowed": 0.0,
-      "opp_rush_tds_allowed": 0.75
-    },
-    "PIT": {
-      "opp_fantasy_allowed_pos": 20.463,
-      "opp_pass_yards_allowed": 0.0,
-      "opp_rush_yards_allowed": 84.438,
-      "opp_rec_yards_allowed_pos": 33.938,
-      "opp_pass_tds_allowed": 0.0,
-      "opp_rush_tds_allowed": 0.75
-    },
-    "SF": {
-      "opp_fantasy_allowed_pos": 25.044,
-      "opp_pass_yards_allowed": 0.0,
-      "opp_rush_yards_allowed": 101.5,
-      "opp_rec_yards_allowed_pos": 37.688,
-      "opp_pass_tds_allowed": 0.0,
-      "opp_rush_tds_allowed": 1.0
-    },
-    "JAX": {
-      "opp_fantasy_allowed_pos": 26.681,
-      "opp_pass_yards_allowed": 0.0,
-      "opp_rush_yards_allowed": 100.125,
-      "opp_rec_yards_allowed_pos": 42.938,
-      "opp_pass_tds_allowed": 0.0,
-      "opp_rush_tds_allowed": 0.938
-    },
-    "TEN": {
-      "opp_fantasy_allowed_pos": 23.508,
-      "opp_pass_yards_allowed": 0.188,
-      "opp_rush_yards_allowed": 97.5,
-      "opp_rec_yards_allowed_pos": 23.125,
-      "opp_pass_tds_allowed": 0.062,
-      "opp_rush_tds_allowed": 0.875
-    },
-    "CIN": {
-      "opp_fantasy_allowed_pos": 22.444,
-      "opp_pass_yards_allowed": 0.0,
-      "opp_rush_yards_allowed": 91.938,
-      "opp_rec_yards_allowed_pos": 31.875,
-      "opp_pass_tds_allowed": 0.0,
-      "opp_rush_tds_allowed": 0.938
-    },
-    "ATL": {
-      "opp_fantasy_allowed_pos": 20.587,
-      "opp_pass_yards_allowed": 0.0,
-      "opp_rush_yards_allowed": 82.25,
-      "opp_rec_yards_allowed_pos": 33.625,
-      "opp_pass_tds_allowed": 0.0,
-      "opp_rush_tds_allowed": 0.312
-    },
-    "HOU": {
-      "opp_fantasy_allowed_pos": 19.419,
-      "opp_pass_yards_allowed": 0.0,
-      "opp_rush_yards_allowed": 86.938,
-      "opp_rec_yards_allowed_pos": 29.75,
-      "opp_pass_tds_allowed": 0.0,
-      "opp_rush_tds_allowed": 0.5
-    },
-    "LV": {
-      "opp_fantasy_allowed_pos": 22.1,
-      "opp_pass_yards_allowed": 0.0,
-      "opp_rush_yards_allowed": 96.625,
-      "opp_rec_yards_allowed_pos": 29.375,
-      "opp_pass_tds_allowed": 0.0,
-      "opp_rush_tds_allowed": 0.625
-    },
-    "CAR": {
-      "opp_fantasy_allowed_pos": 29.4,
-      "opp_pass_yards_allowed": 0.0,
-      "opp_rush_yards_allowed": 143.625,
-      "opp_rec_yards_allowed_pos": 36.625,
-      "opp_pass_tds_allowed": 0.0,
-      "opp_rush_tds_allowed": 1.0
-    },
-    "IND": {
-      "opp_fantasy_allowed_pos": 23.819,
-      "opp_pass_yards_allowed": 0.0,
-      "opp_rush_yards_allowed": 107.812,
-      "opp_rec_yards_allowed_pos": 34.75,
-      "opp_pass_tds_allowed": 0.0,
-      "opp_rush_tds_allowed": 0.812
-    },
-    "DAL": {
-      "opp_fantasy_allowed_pos": 24.838,
-      "opp_pass_yards_allowed": 0.0,
-      "opp_rush_yards_allowed": 99.188,
-      "opp_rec_yards_allowed_pos": 40.438,
-      "opp_pass_tds_allowed": 0.0,
-      "opp_rush_tds_allowed": 0.938
-    },
-    "TB": {
-      "opp_fantasy_allowed_pos": 20.075,
-      "opp_pass_yards_allowed": 0.0,
-      "opp_rush_yards_allowed": 74.062,
-      "opp_rec_yards_allowed_pos": 39.188,
-      "opp_pass_tds_allowed": 0.0,
-      "opp_rush_tds_allowed": 0.438
-    },
-    "WAS": {
-      "opp_fantasy_allowed_pos": 22.038,
-      "opp_pass_yards_allowed": 0.0,
-      "opp_rush_yards_allowed": 113.188,
-      "opp_rec_yards_allowed_pos": 23.438,
-      "opp_pass_tds_allowed": 0.0,
-      "opp_rush_tds_allowed": 0.938
-    },
-    "CHI": {
-      "opp_fantasy_allowed_pos": 24.8,
-      "opp_pass_yards_allowed": 0.0,
-      "opp_rush_yards_allowed": 116.312,
-      "opp_rec_yards_allowed_pos": 34.188,
-      "opp_pass_tds_allowed": 0.0,
-      "opp_rush_tds_allowed": 1.0
-    },
-    "GB": {
-      "opp_fantasy_allowed_pos": 22.756,
-      "opp_pass_yards_allowed": 0.0,
-      "opp_rush_yards_allowed": 83.188,
-      "opp_rec_yards_allowed_pos": 41.875,
-      "opp_pass_tds_allowed": 0.0,
-      "opp_rush_tds_allowed": 0.625
-    },
-    "MIN": {
-      "opp_fantasy_allowed_pos": 17.694,
-      "opp_pass_yards_allowed": 0.0,
-      "opp_rush_yards_allowed": 73.0,
-      "opp_rec_yards_allowed_pos": 27.062,
-      "opp_pass_tds_allowed": 0.0,
-      "opp_rush_tds_allowed": 0.5
-    },
-    "LA": {
-      "opp_fantasy_allowed_pos": 21.669,
-      "opp_pass_yards_allowed": 0.0,
-      "opp_rush_yards_allowed": 101.062,
-      "opp_rec_yards_allowed_pos": 34.375,
-      "opp_pass_tds_allowed": 0.0,
-      "opp_rush_tds_allowed": 0.562
-    },
-    "DEN": {
-      "opp_fantasy_allowed_pos": 21.869,
-      "opp_pass_yards_allowed": 0.0,
-      "opp_rush_yards_allowed": 81.438,
-      "opp_rec_yards_allowed_pos": 39.125,
-      "opp_pass_tds_allowed": 0.0,
-      "opp_rush_tds_allowed": 0.438
-    },
-    "NO": {
-      "opp_fantasy_allowed_pos": 24.744,
-      "opp_pass_yards_allowed": 0.0,
-      "opp_rush_yards_allowed": 110.312,
-      "opp_rec_yards_allowed_pos": 30.875,
-      "opp_pass_tds_allowed": 0.0,
-      "opp_rush_tds_allowed": 1.062
-    },
-    "ARI": {
-      "opp_fantasy_allowed_pos": 24.294,
-      "opp_pass_yards_allowed": 0.0,
-      "opp_rush_yards_allowed": 105.125,
-      "opp_rec_yards_allowed_pos": 36.562,
-      "opp_pass_tds_allowed": 0.0,
-      "opp_rush_tds_allowed": 0.75
-    },
-    "KC": {
-      "opp_fantasy_allowed_pos": 15.531,
-      "opp_pass_yards_allowed": 0.0,
-      "opp_rush_yards_allowed": 68.312,
-      "opp_rec_yards_allowed_pos": 22.625,
-      "opp_pass_tds_allowed": 0.0,
-      "opp_rush_tds_allowed": 0.5
-    },
-    "PHI": {
-      "opp_fantasy_allowed_pos": 16.419,
-      "opp_pass_yards_allowed": 0.0,
-      "opp_rush_yards_allowed": 79.375,
-      "opp_rec_yards_allowed_pos": 29.188,
-      "opp_pass_tds_allowed": 0.0,
-      "opp_rush_tds_allowed": 0.312
-    },
-    "LAC": {
-      "opp_fantasy_allowed_pos": 19.85,
-      "opp_pass_yards_allowed": 0.0,
-      "opp_rush_yards_allowed": 96.875,
-      "opp_rec_yards_allowed_pos": 29.75,
-      "opp_pass_tds_allowed": 0.0,
-      "opp_rush_tds_allowed": 0.25
+      "opp_rush_tds_allowed": 1.125
     },
     "BAL": {
-      "opp_fantasy_allowed_pos": 19.863,
+      "opp_fantasy_allowed_pos": 22.312,
       "opp_pass_yards_allowed": 0.0,
-      "opp_rush_yards_allowed": 64.625,
-      "opp_rec_yards_allowed_pos": 40.875,
-      "opp_pass_tds_allowed": 0.0,
-      "opp_rush_tds_allowed": 0.5
-    },
-    "SEA": {
-      "opp_fantasy_allowed_pos": 22.075,
-      "opp_pass_yards_allowed": 0.0,
-      "opp_rush_yards_allowed": 103.75,
-      "opp_rec_yards_allowed_pos": 35.75,
-      "opp_pass_tds_allowed": 0.0,
-      "opp_rush_tds_allowed": 0.562
-    },
-    "NYG": {
-      "opp_fantasy_allowed_pos": 25.613,
-      "opp_pass_yards_allowed": 0.0,
-      "opp_rush_yards_allowed": 115.312,
-      "opp_rec_yards_allowed_pos": 37.688,
-      "opp_pass_tds_allowed": 0.0,
-      "opp_rush_tds_allowed": 0.875
-    },
-    "BUF": {
-      "opp_fantasy_allowed_pos": 25.488,
-      "opp_pass_yards_allowed": 0.0,
-      "opp_rush_yards_allowed": 98.0,
-      "opp_rec_yards_allowed_pos": 45.625,
-      "opp_pass_tds_allowed": 0.0,
-      "opp_rush_tds_allowed": 0.625
-    },
-    "CLE": {
-      "opp_fantasy_allowed_pos": 18.3,
-      "opp_pass_yards_allowed": 0.0,
-      "opp_rush_yards_allowed": 83.312,
-      "opp_rec_yards_allowed_pos": 24.062,
-      "opp_pass_tds_allowed": 0.0,
-      "opp_rush_tds_allowed": 0.812
-    },
-    "MIA": {
-      "opp_fantasy_allowed_pos": 21.319,
-      "opp_pass_yards_allowed": 0.0,
-      "opp_rush_yards_allowed": 84.625,
-      "opp_rec_yards_allowed_pos": 34.188,
-      "opp_pass_tds_allowed": 0.0,
-      "opp_rush_tds_allowed": 0.75
-    },
-    "NYJ": {
-      "opp_fantasy_allowed_pos": 20.225,
-      "opp_pass_yards_allowed": 0.0,
-      "opp_rush_yards_allowed": 97.5,
-      "opp_rec_yards_allowed_pos": 28.5,
+      "opp_rush_yards_allowed": 82.625,
+      "opp_rec_yards_allowed_pos": 39.875,
       "opp_pass_tds_allowed": 0.0,
       "opp_rush_tds_allowed": 0.688
     },
-    "NE": {
-      "opp_fantasy_allowed_pos": 24.269,
+    "SEA": {
+      "opp_fantasy_allowed_pos": 19.275,
       "opp_pass_yards_allowed": 0.0,
-      "opp_rush_yards_allowed": 116.438,
-      "opp_rec_yards_allowed_pos": 25.0,
+      "opp_rush_yards_allowed": 75.438,
+      "opp_rec_yards_allowed_pos": 37.938,
       "opp_pass_tds_allowed": 0.0,
-      "opp_rush_tds_allowed": 0.875
+      "opp_rush_tds_allowed": 0.312
+    },
+    "GB": {
+      "opp_fantasy_allowed_pos": 21.394,
+      "opp_pass_yards_allowed": 0.0,
+      "opp_rush_yards_allowed": 98.812,
+      "opp_rec_yards_allowed_pos": 27.0,
+      "opp_pass_tds_allowed": 0.0,
+      "opp_rush_tds_allowed": 0.75
+    },
+    "NO": {
+      "opp_fantasy_allowed_pos": 21.344,
+      "opp_pass_yards_allowed": 0.0,
+      "opp_rush_yards_allowed": 106.062,
+      "opp_rec_yards_allowed_pos": 24.25,
+      "opp_pass_tds_allowed": 0.0,
+      "opp_rush_tds_allowed": 0.688
+    },
+    "CLE": {
+      "opp_fantasy_allowed_pos": 22.111,
+      "opp_pass_yards_allowed": 2.0,
+      "opp_rush_yards_allowed": 96.875,
+      "opp_rec_yards_allowed_pos": 28.438,
+      "opp_pass_tds_allowed": 0.062,
+      "opp_rush_tds_allowed": 0.75
+    },
+    "MIN": {
+      "opp_fantasy_allowed_pos": 20.069,
+      "opp_pass_yards_allowed": 0.0,
+      "opp_rush_yards_allowed": 105.25,
+      "opp_rec_yards_allowed_pos": 20.438,
+      "opp_pass_tds_allowed": 0.0,
+      "opp_rush_tds_allowed": 0.75
+    },
+    "JAX": {
+      "opp_fantasy_allowed_pos": 18.688,
+      "opp_pass_yards_allowed": 0.0,
+      "opp_rush_yards_allowed": 68.125,
+      "opp_rec_yards_allowed_pos": 35.0,
+      "opp_pass_tds_allowed": 0.0,
+      "opp_rush_tds_allowed": 0.5
+    },
+    "SF": {
+      "opp_fantasy_allowed_pos": 22.556,
+      "opp_pass_yards_allowed": 0.0,
+      "opp_rush_yards_allowed": 88.188,
+      "opp_rec_yards_allowed_pos": 34.25,
+      "opp_pass_tds_allowed": 0.0,
+      "opp_rush_tds_allowed": 0.688
+    },
+    "CAR": {
+      "opp_fantasy_allowed_pos": 24.625,
+      "opp_pass_yards_allowed": 0.0,
+      "opp_rush_yards_allowed": 106.5,
+      "opp_rec_yards_allowed_pos": 28.5,
+      "opp_pass_tds_allowed": 0.0,
+      "opp_rush_tds_allowed": 1.0
+    },
+    "CHI": {
+      "opp_fantasy_allowed_pos": 21.4,
+      "opp_pass_yards_allowed": 0.0,
+      "opp_rush_yards_allowed": 103.125,
+      "opp_rec_yards_allowed_pos": 26.5,
+      "opp_pass_tds_allowed": 0.0,
+      "opp_rush_tds_allowed": 0.562
+    },
+    "ATL": {
+      "opp_fantasy_allowed_pos": 21.863,
+      "opp_pass_yards_allowed": 0.0,
+      "opp_rush_yards_allowed": 101.312,
+      "opp_rec_yards_allowed_pos": 29.812,
+      "opp_pass_tds_allowed": 0.0,
+      "opp_rush_tds_allowed": 0.562
+    },
+    "DAL": {
+      "opp_fantasy_allowed_pos": 24.869,
+      "opp_pass_yards_allowed": 0.0,
+      "opp_rush_yards_allowed": 93.125,
+      "opp_rec_yards_allowed_pos": 42.438,
+      "opp_pass_tds_allowed": 0.0,
+      "opp_rush_tds_allowed": 0.938
+    },
+    "DEN": {
+      "opp_fantasy_allowed_pos": 17.544,
+      "opp_pass_yards_allowed": 0.0,
+      "opp_rush_yards_allowed": 73.5,
+      "opp_rec_yards_allowed_pos": 22.562,
+      "opp_pass_tds_allowed": 0.0,
+      "opp_rush_tds_allowed": 0.5
+    },
+    "ARI": {
+      "opp_fantasy_allowed_pos": 27.406,
+      "opp_pass_yards_allowed": 0.0,
+      "opp_rush_yards_allowed": 112.938,
+      "opp_rec_yards_allowed_pos": 36.125,
+      "opp_pass_tds_allowed": 0.0,
+      "opp_rush_tds_allowed": 1.062
+    },
+    "WAS": {
+      "opp_fantasy_allowed_pos": 25.431,
+      "opp_pass_yards_allowed": 0.0,
+      "opp_rush_yards_allowed": 118.062,
+      "opp_rec_yards_allowed_pos": 32.5,
+      "opp_pass_tds_allowed": 0.0,
+      "opp_rush_tds_allowed": 0.938
+    },
+    "PIT": {
+      "opp_fantasy_allowed_pos": 19.481,
+      "opp_pass_yards_allowed": 0.0,
+      "opp_rush_yards_allowed": 94.438,
+      "opp_rec_yards_allowed_pos": 32.875,
+      "opp_pass_tds_allowed": 0.0,
+      "opp_rush_tds_allowed": 0.312
+    },
+    "NYJ": {
+      "opp_fantasy_allowed_pos": 26.619,
+      "opp_pass_yards_allowed": 0.0,
+      "opp_rush_yards_allowed": 104.188,
+      "opp_rec_yards_allowed_pos": 32.625,
+      "opp_pass_tds_allowed": 0.0,
+      "opp_rush_tds_allowed": 1.0
+    },
+    "LV": {
+      "opp_fantasy_allowed_pos": 23.775,
+      "opp_pass_yards_allowed": 0.0,
+      "opp_rush_yards_allowed": 100.188,
+      "opp_rec_yards_allowed_pos": 28.188,
+      "opp_pass_tds_allowed": 0.0,
+      "opp_rush_tds_allowed": 1.0
+    },
+    "KC": {
+      "opp_fantasy_allowed_pos": 19.669,
+      "opp_pass_yards_allowed": 0.0,
+      "opp_rush_yards_allowed": 82.688,
+      "opp_rec_yards_allowed_pos": 29.625,
+      "opp_pass_tds_allowed": 0.0,
+      "opp_rush_tds_allowed": 0.5
+    },
+    "HOU": {
+      "opp_fantasy_allowed_pos": 20.088,
+      "opp_pass_yards_allowed": 0.0,
+      "opp_rush_yards_allowed": 74.375,
+      "opp_rec_yards_allowed_pos": 31.5,
+      "opp_pass_tds_allowed": 0.0,
+      "opp_rush_tds_allowed": 0.75
+    },
+    "NE": {
+      "opp_fantasy_allowed_pos": 19.756,
+      "opp_pass_yards_allowed": 0.0,
+      "opp_rush_yards_allowed": 79.938,
+      "opp_rec_yards_allowed_pos": 31.375,
+      "opp_pass_tds_allowed": 0.0,
+      "opp_rush_tds_allowed": 0.5
+    },
+    "DET": {
+      "opp_fantasy_allowed_pos": 19.85,
+      "opp_pass_yards_allowed": 0.0,
+      "opp_rush_yards_allowed": 91.312,
+      "opp_rec_yards_allowed_pos": 24.688,
+      "opp_pass_tds_allowed": 0.0,
+      "opp_rush_tds_allowed": 0.75
+    },
+    "PHI": {
+      "opp_fantasy_allowed_pos": 22.925,
+      "opp_pass_yards_allowed": 0.0,
+      "opp_rush_yards_allowed": 96.562,
+      "opp_rec_yards_allowed_pos": 38.312,
+      "opp_pass_tds_allowed": 0.0,
+      "opp_rush_tds_allowed": 0.75
+    },
+    "CIN": {
+      "opp_fantasy_allowed_pos": 29.367,
+      "opp_pass_yards_allowed": 0.438,
+      "opp_rush_yards_allowed": 123.062,
+      "opp_rec_yards_allowed_pos": 43.562,
+      "opp_pass_tds_allowed": 0.125,
+      "opp_rush_tds_allowed": 0.812
+    },
+    "LA": {
+      "opp_fantasy_allowed_pos": 20.631,
+      "opp_pass_yards_allowed": 0.0,
+      "opp_rush_yards_allowed": 90.312,
+      "opp_rec_yards_allowed_pos": 36.625,
+      "opp_pass_tds_allowed": 0.0,
+      "opp_rush_tds_allowed": 0.375
+    },
+    "IND": {
+      "opp_fantasy_allowed_pos": 20.319,
+      "opp_pass_yards_allowed": 0.0,
+      "opp_rush_yards_allowed": 85.125,
+      "opp_rec_yards_allowed_pos": 25.562,
+      "opp_pass_tds_allowed": 0.0,
+      "opp_rush_tds_allowed": 0.75
+    },
+    "NYG": {
+      "opp_fantasy_allowed_pos": 25.719,
+      "opp_pass_yards_allowed": 0.0,
+      "opp_rush_yards_allowed": 118.125,
+      "opp_rec_yards_allowed_pos": 31.562,
+      "opp_pass_tds_allowed": 0.0,
+      "opp_rush_tds_allowed": 0.812
+    },
+    "TB": {
+      "opp_fantasy_allowed_pos": 23.144,
+      "opp_pass_yards_allowed": 0.0,
+      "opp_rush_yards_allowed": 82.5,
+      "opp_rec_yards_allowed_pos": 52.062,
+      "opp_pass_tds_allowed": 0.0,
+      "opp_rush_tds_allowed": 0.625
+    },
+    "TEN": {
+      "opp_fantasy_allowed_pos": 22.125,
+      "opp_pass_yards_allowed": 0.0,
+      "opp_rush_yards_allowed": 93.625,
+      "opp_rec_yards_allowed_pos": 28.25,
+      "opp_pass_tds_allowed": 0.0,
+      "opp_rush_tds_allowed": 1.0
+    },
+    "LAC": {
+      "opp_fantasy_allowed_pos": 18.794,
+      "opp_pass_yards_allowed": 0.0,
+      "opp_rush_yards_allowed": 86.062,
+      "opp_rec_yards_allowed_pos": 23.75,
+      "opp_pass_tds_allowed": 0.0,
+      "opp_rush_tds_allowed": 0.75
+    },
+    "MIA": {
+      "opp_fantasy_allowed_pos": 23.113,
+      "opp_pass_yards_allowed": 0.0,
+      "opp_rush_yards_allowed": 101.812,
+      "opp_rec_yards_allowed_pos": 37.438,
+      "opp_pass_tds_allowed": 0.0,
+      "opp_rush_tds_allowed": 0.562
     }
   },
   "WR": {
-    "DAL": {
-      "opp_fantasy_allowed_pos": 36.263,
-      "opp_pass_yards_allowed": 0.0,
-      "opp_rush_yards_allowed": 8.938,
-      "opp_rec_yards_allowed_pos": 159.938,
-      "opp_pass_tds_allowed": 0.0,
-      "opp_rush_tds_allowed": 0.0
-    },
-    "TB": {
-      "opp_fantasy_allowed_pos": 36.519,
-      "opp_pass_yards_allowed": 0.0,
-      "opp_rush_yards_allowed": 4.25,
-      "opp_rec_yards_allowed_pos": 160.938,
-      "opp_pass_tds_allowed": 0.0,
-      "opp_rush_tds_allowed": 0.0
-    },
-    "CAR": {
-      "opp_fantasy_allowed_pos": 32.932,
-      "opp_pass_yards_allowed": 1.75,
-      "opp_rush_yards_allowed": 4.875,
-      "opp_rec_yards_allowed_pos": 140.0,
-      "opp_pass_tds_allowed": 0.0,
-      "opp_rush_tds_allowed": 0.0
-    },
-    "MIN": {
-      "opp_fantasy_allowed_pos": 40.639,
-      "opp_pass_yards_allowed": 0.812,
-      "opp_rush_yards_allowed": 4.938,
-      "opp_rec_yards_allowed_pos": 186.125,
-      "opp_pass_tds_allowed": 0.0,
-      "opp_rush_tds_allowed": 0.0
-    },
-    "CIN": {
-      "opp_fantasy_allowed_pos": 32.506,
-      "opp_pass_yards_allowed": 0.0,
-      "opp_rush_yards_allowed": 4.0,
-      "opp_rec_yards_allowed_pos": 145.438,
-      "opp_pass_tds_allowed": 0.0,
-      "opp_rush_tds_allowed": 0.0
-    },
-    "MIA": {
-      "opp_fantasy_allowed_pos": 29.481,
-      "opp_pass_yards_allowed": 0.0,
-      "opp_rush_yards_allowed": 7.375,
-      "opp_rec_yards_allowed_pos": 131.188,
-      "opp_pass_tds_allowed": 0.0,
-      "opp_rush_tds_allowed": 0.0
-    },
-    "DEN": {
-      "opp_fantasy_allowed_pos": 32.756,
-      "opp_pass_yards_allowed": 0.0,
-      "opp_rush_yards_allowed": 1.188,
-      "opp_rec_yards_allowed_pos": 160.75,
-      "opp_pass_tds_allowed": 0.0,
-      "opp_rush_tds_allowed": 0.0
-    },
-    "LAC": {
-      "opp_fantasy_allowed_pos": 32.75,
-      "opp_pass_yards_allowed": 0.0,
-      "opp_rush_yards_allowed": 0.688,
-      "opp_rec_yards_allowed_pos": 147.438,
-      "opp_pass_tds_allowed": 0.0,
-      "opp_rush_tds_allowed": 0.0
-    },
-    "TEN": {
-      "opp_fantasy_allowed_pos": 29.469,
-      "opp_pass_yards_allowed": 0.0,
-      "opp_rush_yards_allowed": 5.375,
-      "opp_rec_yards_allowed_pos": 128.688,
-      "opp_pass_tds_allowed": 0.0,
-      "opp_rush_tds_allowed": 0.0
-    },
-    "LA": {
-      "opp_fantasy_allowed_pos": 32.613,
-      "opp_pass_yards_allowed": 0.0,
-      "opp_rush_yards_allowed": 6.688,
-      "opp_rec_yards_allowed_pos": 145.062,
-      "opp_pass_tds_allowed": 0.0,
-      "opp_rush_tds_allowed": 0.062
-    },
-    "DET": {
-      "opp_fantasy_allowed_pos": 38.269,
-      "opp_pass_yards_allowed": 0.0,
-      "opp_rush_yards_allowed": 3.312,
-      "opp_rec_yards_allowed_pos": 190.0,
-      "opp_pass_tds_allowed": 0.0,
-      "opp_rush_tds_allowed": 0.0
-    },
-    "CLE": {
-      "opp_fantasy_allowed_pos": 35.581,
-      "opp_pass_yards_allowed": 0.0,
-      "opp_rush_yards_allowed": 8.0,
-      "opp_rec_yards_allowed_pos": 158.438,
-      "opp_pass_tds_allowed": 0.0,
-      "opp_rush_tds_allowed": 0.188
-    },
-    "CHI": {
-      "opp_fantasy_allowed_pos": 29.294,
-      "opp_pass_yards_allowed": 0.0,
-      "opp_rush_yards_allowed": 3.5,
-      "opp_rec_yards_allowed_pos": 140.688,
-      "opp_pass_tds_allowed": 0.0,
-      "opp_rush_tds_allowed": 0.0
-    },
     "PHI": {
-      "opp_fantasy_allowed_pos": 30.838,
+      "opp_fantasy_allowed_pos": 27.262,
       "opp_pass_yards_allowed": 0.0,
-      "opp_rush_yards_allowed": 3.062,
-      "opp_rec_yards_allowed_pos": 130.938,
+      "opp_rush_yards_allowed": 4.438,
+      "opp_rec_yards_allowed_pos": 140.062,
       "opp_pass_tds_allowed": 0.0,
-      "opp_rush_tds_allowed": 0.062
+      "opp_rush_tds_allowed": 0.0
     },
     "BAL": {
-      "opp_fantasy_allowed_pos": 37.38,
-      "opp_pass_yards_allowed": 0.125,
-      "opp_rush_yards_allowed": 2.625,
-      "opp_rec_yards_allowed_pos": 170.5,
-      "opp_pass_tds_allowed": 0.062,
-      "opp_rush_tds_allowed": 0.062
-    },
-    "WAS": {
-      "opp_fantasy_allowed_pos": 31.334,
-      "opp_pass_yards_allowed": 1.312,
-      "opp_rush_yards_allowed": 3.875,
-      "opp_rec_yards_allowed_pos": 138.938,
-      "opp_pass_tds_allowed": 0.062,
-      "opp_rush_tds_allowed": 0.0
-    },
-    "PIT": {
-      "opp_fantasy_allowed_pos": 32.2,
+      "opp_fantasy_allowed_pos": 36.013,
       "opp_pass_yards_allowed": 0.0,
-      "opp_rush_yards_allowed": 1.75,
-      "opp_rec_yards_allowed_pos": 154.625,
-      "opp_pass_tds_allowed": 0.0,
-      "opp_rush_tds_allowed": 0.0
-    },
-    "ATL": {
-      "opp_fantasy_allowed_pos": 36.938,
-      "opp_pass_yards_allowed": 2.188,
-      "opp_rush_yards_allowed": 4.562,
-      "opp_rec_yards_allowed_pos": 152.688,
-      "opp_pass_tds_allowed": 0.0,
-      "opp_rush_tds_allowed": 0.0
-    },
-    "HOU": {
-      "opp_fantasy_allowed_pos": 33.775,
-      "opp_pass_yards_allowed": 0.0,
-      "opp_rush_yards_allowed": 4.688,
-      "opp_rec_yards_allowed_pos": 148.688,
-      "opp_pass_tds_allowed": 0.0,
-      "opp_rush_tds_allowed": 0.0
-    },
-    "NYG": {
-      "opp_fantasy_allowed_pos": 32.7,
-      "opp_pass_yards_allowed": 0.0,
-      "opp_rush_yards_allowed": 1.125,
-      "opp_rec_yards_allowed_pos": 149.625,
+      "opp_rush_yards_allowed": 6.25,
+      "opp_rec_yards_allowed_pos": 171.375,
       "opp_pass_tds_allowed": 0.0,
       "opp_rush_tds_allowed": 0.0
     },
     "SEA": {
-      "opp_fantasy_allowed_pos": 33.117,
-      "opp_pass_yards_allowed": 0.438,
-      "opp_rush_yards_allowed": 3.938,
-      "opp_rec_yards_allowed_pos": 137.062,
-      "opp_pass_tds_allowed": 0.062,
-      "opp_rush_tds_allowed": 0.0
+      "opp_fantasy_allowed_pos": 26.35,
+      "opp_pass_yards_allowed": 0.0,
+      "opp_rush_yards_allowed": 1.938,
+      "opp_rec_yards_allowed_pos": 114.062,
+      "opp_pass_tds_allowed": 0.0,
+      "opp_rush_tds_allowed": 0.062
     },
     "SF": {
-      "opp_fantasy_allowed_pos": 29.444,
+      "opp_fantasy_allowed_pos": 32.388,
       "opp_pass_yards_allowed": 0.0,
-      "opp_rush_yards_allowed": 5.625,
-      "opp_rec_yards_allowed_pos": 125.062,
+      "opp_rush_yards_allowed": 1.562,
+      "opp_rec_yards_allowed_pos": 148.562,
       "opp_pass_tds_allowed": 0.0,
-      "opp_rush_tds_allowed": 0.125
+      "opp_rush_tds_allowed": 0.0
     },
-    "BUF": {
-      "opp_fantasy_allowed_pos": 33.019,
+    "LA": {
+      "opp_fantasy_allowed_pos": 31.881,
       "opp_pass_yards_allowed": 0.0,
-      "opp_rush_yards_allowed": 4.312,
-      "opp_rec_yards_allowed_pos": 146.5,
+      "opp_rush_yards_allowed": 5.5,
+      "opp_rec_yards_allowed_pos": 147.688,
       "opp_pass_tds_allowed": 0.0,
-      "opp_rush_tds_allowed": 0.062
+      "opp_rush_tds_allowed": 0.0
+    },
+    "ATL": {
+      "opp_fantasy_allowed_pos": 33.087,
+      "opp_pass_yards_allowed": 0.0,
+      "opp_rush_yards_allowed": 5.562,
+      "opp_rec_yards_allowed_pos": 144.688,
+      "opp_pass_tds_allowed": 0.0,
+      "opp_rush_tds_allowed": 0.0
     },
     "NO": {
-      "opp_fantasy_allowed_pos": 35.656,
+      "opp_fantasy_allowed_pos": 27.581,
       "opp_pass_yards_allowed": 0.0,
-      "opp_rush_yards_allowed": 5.812,
-      "opp_rec_yards_allowed_pos": 165.75,
+      "opp_rush_yards_allowed": 1.0,
+      "opp_rec_yards_allowed_pos": 122.312,
+      "opp_pass_tds_allowed": 0.0,
+      "opp_rush_tds_allowed": 0.0
+    },
+    "HOU": {
+      "opp_fantasy_allowed_pos": 24.062,
+      "opp_pass_yards_allowed": 0.0,
+      "opp_rush_yards_allowed": 0.75,
+      "opp_rec_yards_allowed_pos": 122.375,
+      "opp_pass_tds_allowed": 0.0,
+      "opp_rush_tds_allowed": 0.0
+    },
+    "NYG": {
+      "opp_fantasy_allowed_pos": 34.281,
+      "opp_pass_yards_allowed": 0.0,
+      "opp_rush_yards_allowed": 4.125,
+      "opp_rec_yards_allowed_pos": 156.188,
       "opp_pass_tds_allowed": 0.0,
       "opp_rush_tds_allowed": 0.062
     },
-    "KC": {
-      "opp_fantasy_allowed_pos": 31.188,
+    "TEN": {
+      "opp_fantasy_allowed_pos": 35.169,
       "opp_pass_yards_allowed": 0.0,
-      "opp_rush_yards_allowed": 6.125,
-      "opp_rec_yards_allowed_pos": 132.625,
+      "opp_rush_yards_allowed": 4.062,
+      "opp_rec_yards_allowed_pos": 163.875,
       "opp_pass_tds_allowed": 0.0,
-      "opp_rush_tds_allowed": 0.0
+      "opp_rush_tds_allowed": 0.062
     },
     "NYJ": {
-      "opp_fantasy_allowed_pos": 30.3,
+      "opp_fantasy_allowed_pos": 30.55,
       "opp_pass_yards_allowed": 0.0,
-      "opp_rush_yards_allowed": 3.438,
-      "opp_rec_yards_allowed_pos": 138.938,
-      "opp_pass_tds_allowed": 0.0,
-      "opp_rush_tds_allowed": 0.125
-    },
-    "JAX": {
-      "opp_fantasy_allowed_pos": 35.791,
-      "opp_pass_yards_allowed": 1.5,
-      "opp_rush_yards_allowed": 1.125,
-      "opp_rec_yards_allowed_pos": 171.812,
+      "opp_rush_yards_allowed": 7.25,
+      "opp_rec_yards_allowed_pos": 138.875,
       "opp_pass_tds_allowed": 0.0,
       "opp_rush_tds_allowed": 0.062
     },
-    "IND": {
-      "opp_fantasy_allowed_pos": 33.343,
-      "opp_pass_yards_allowed": 1.375,
-      "opp_rush_yards_allowed": 6.125,
-      "opp_rec_yards_allowed_pos": 152.375,
+    "WAS": {
+      "opp_fantasy_allowed_pos": 35.494,
+      "opp_pass_yards_allowed": 0.0,
+      "opp_rush_yards_allowed": 6.75,
+      "opp_rec_yards_allowed_pos": 163.812,
       "opp_pass_tds_allowed": 0.0,
       "opp_rush_tds_allowed": 0.0
     },
-    "NE": {
-      "opp_fantasy_allowed_pos": 32.925,
+    "PIT": {
+      "opp_fantasy_allowed_pos": 34.288,
       "opp_pass_yards_allowed": 0.0,
-      "opp_rush_yards_allowed": 1.375,
-      "opp_rec_yards_allowed_pos": 149.125,
+      "opp_rush_yards_allowed": 1.125,
+      "opp_rec_yards_allowed_pos": 162.375,
+      "opp_pass_tds_allowed": 0.0,
+      "opp_rush_tds_allowed": 0.0
+    },
+    "LAC": {
+      "opp_fantasy_allowed_pos": 27.783,
+      "opp_pass_yards_allowed": 0.5,
+      "opp_rush_yards_allowed": 1.938,
+      "opp_rec_yards_allowed_pos": 132.562,
+      "opp_pass_tds_allowed": 0.0,
+      "opp_rush_tds_allowed": 0.0
+    },
+    "IND": {
+      "opp_fantasy_allowed_pos": 36.469,
+      "opp_pass_yards_allowed": 0.0,
+      "opp_rush_yards_allowed": 2.562,
+      "opp_rec_yards_allowed_pos": 171.5,
+      "opp_pass_tds_allowed": 0.0,
+      "opp_rush_tds_allowed": 0.062
+    },
+    "GB": {
+      "opp_fantasy_allowed_pos": 31.2,
+      "opp_pass_yards_allowed": 0.0,
+      "opp_rush_yards_allowed": 2.75,
+      "opp_rec_yards_allowed_pos": 133.625,
+      "opp_pass_tds_allowed": 0.0,
+      "opp_rush_tds_allowed": 0.0
+    },
+    "TB": {
+      "opp_fantasy_allowed_pos": 30.706,
+      "opp_pass_yards_allowed": 0.0,
+      "opp_rush_yards_allowed": 1.875,
+      "opp_rec_yards_allowed_pos": 144.562,
+      "opp_pass_tds_allowed": 0.0,
+      "opp_rush_tds_allowed": 0.0
+    },
+    "CAR": {
+      "opp_fantasy_allowed_pos": 27.344,
+      "opp_pass_yards_allowed": 0.0,
+      "opp_rush_yards_allowed": 0.938,
+      "opp_rec_yards_allowed_pos": 127.5,
+      "opp_pass_tds_allowed": 0.0,
+      "opp_rush_tds_allowed": 0.062
+    },
+    "NE": {
+      "opp_fantasy_allowed_pos": 28.906,
+      "opp_pass_yards_allowed": 0.0,
+      "opp_rush_yards_allowed": 7.938,
+      "opp_rec_yards_allowed_pos": 121.125,
+      "opp_pass_tds_allowed": 0.0,
+      "opp_rush_tds_allowed": 0.062
+    },
+    "DAL": {
+      "opp_fantasy_allowed_pos": 39.794,
+      "opp_pass_yards_allowed": 0.0,
+      "opp_rush_yards_allowed": 7.25,
+      "opp_rec_yards_allowed_pos": 173.188,
+      "opp_pass_tds_allowed": 0.0,
+      "opp_rush_tds_allowed": 0.0
+    },
+    "CLE": {
+      "opp_fantasy_allowed_pos": 24.706,
+      "opp_pass_yards_allowed": 0.0,
+      "opp_rush_yards_allowed": 2.75,
+      "opp_rec_yards_allowed_pos": 105.562,
+      "opp_pass_tds_allowed": 0.0,
+      "opp_rush_tds_allowed": 0.0
+    },
+    "MIA": {
+      "opp_fantasy_allowed_pos": 29.888,
+      "opp_pass_yards_allowed": 0.0,
+      "opp_rush_yards_allowed": 2.375,
+      "opp_rec_yards_allowed_pos": 127.125,
+      "opp_pass_tds_allowed": 0.0,
+      "opp_rush_tds_allowed": 0.0
+    },
+    "BUF": {
+      "opp_fantasy_allowed_pos": 27.081,
+      "opp_pass_yards_allowed": 0.0,
+      "opp_rush_yards_allowed": 7.0,
+      "opp_rec_yards_allowed_pos": 119.438,
+      "opp_pass_tds_allowed": 0.0,
+      "opp_rush_tds_allowed": 0.062
+    },
+    "ARI": {
+      "opp_fantasy_allowed_pos": 30.144,
+      "opp_pass_yards_allowed": 0.0,
+      "opp_rush_yards_allowed": 2.125,
+      "opp_rec_yards_allowed_pos": 139.312,
       "opp_pass_tds_allowed": 0.0,
       "opp_rush_tds_allowed": 0.0
     },
     "LV": {
-      "opp_fantasy_allowed_pos": 30.281,
+      "opp_fantasy_allowed_pos": 33.906,
       "opp_pass_yards_allowed": 0.0,
-      "opp_rush_yards_allowed": 3.938,
-      "opp_rec_yards_allowed_pos": 132.625,
+      "opp_rush_yards_allowed": 2.062,
+      "opp_rec_yards_allowed_pos": 151.375,
       "opp_pass_tds_allowed": 0.0,
       "opp_rush_tds_allowed": 0.0
     },
-    "ARI": {
-      "opp_fantasy_allowed_pos": 31.419,
+    "MIN": {
+      "opp_fantasy_allowed_pos": 24.619,
       "opp_pass_yards_allowed": 0.0,
-      "opp_rush_yards_allowed": 2.562,
-      "opp_rec_yards_allowed_pos": 145.375,
+      "opp_rush_yards_allowed": 3.188,
+      "opp_rec_yards_allowed_pos": 121.75,
       "opp_pass_tds_allowed": 0.0,
       "opp_rush_tds_allowed": 0.0
     },
-    "GB": {
-      "opp_fantasy_allowed_pos": 30.381,
+    "CHI": {
+      "opp_fantasy_allowed_pos": 34.638,
       "opp_pass_yards_allowed": 0.0,
-      "opp_rush_yards_allowed": 1.062,
-      "opp_rec_yards_allowed_pos": 135.875,
+      "opp_rush_yards_allowed": 7.125,
+      "opp_rec_yards_allowed_pos": 152.375,
       "opp_pass_tds_allowed": 0.0,
       "opp_rush_tds_allowed": 0.062
+    },
+    "JAX": {
+      "opp_fantasy_allowed_pos": 31.869,
+      "opp_pass_yards_allowed": 0.0,
+      "opp_rush_yards_allowed": 0.5,
+      "opp_rec_yards_allowed_pos": 141.312,
+      "opp_pass_tds_allowed": 0.0,
+      "opp_rush_tds_allowed": 0.0
+    },
+    "DEN": {
+      "opp_fantasy_allowed_pos": 27.25,
+      "opp_pass_yards_allowed": 0.0,
+      "opp_rush_yards_allowed": 1.312,
+      "opp_rec_yards_allowed_pos": 133.062,
+      "opp_pass_tds_allowed": 0.0,
+      "opp_rush_tds_allowed": 0.0
+    },
+    "KC": {
+      "opp_fantasy_allowed_pos": 28.344,
+      "opp_pass_yards_allowed": 0.0,
+      "opp_rush_yards_allowed": 2.625,
+      "opp_rec_yards_allowed_pos": 129.562,
+      "opp_pass_tds_allowed": 0.0,
+      "opp_rush_tds_allowed": 0.0
+    },
+    "DET": {
+      "opp_fantasy_allowed_pos": 36.608,
+      "opp_pass_yards_allowed": 2.062,
+      "opp_rush_yards_allowed": 8.25,
+      "opp_rec_yards_allowed_pos": 160.125,
+      "opp_pass_tds_allowed": 0.062,
+      "opp_rush_tds_allowed": 0.062
+    },
+    "CIN": {
+      "opp_fantasy_allowed_pos": 25.867,
+      "opp_pass_yards_allowed": 0.125,
+      "opp_rush_yards_allowed": 7.062,
+      "opp_rec_yards_allowed_pos": 117.812,
+      "opp_pass_tds_allowed": 0.062,
+      "opp_rush_tds_allowed": 0.188
     }
   }
 }
