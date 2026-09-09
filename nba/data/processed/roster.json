@@ -3,2380 +3,2450 @@
     "id": "greenaj01",
     "name": "A.J. Green",
     "pos": "SG",
-    "games": 73,
-    "mpg": 22.7
-  },
-  {
-    "id": "lawsoaj01",
-    "name": "A.J. Lawson",
-    "pos": "SG",
-    "games": 26,
-    "mpg": 18.7
-  },
-  {
-    "id": "johnsaj01",
-    "name": "AJ Johnson",
-    "pos": "SG",
-    "games": 29,
-    "mpg": 22.0
+    "games": 78,
+    "mpg": 29.1
   },
   {
     "id": "gordoaa01",
     "name": "Aaron Gordon",
     "pos": "PF",
-    "games": 51,
-    "mpg": 28.4
+    "games": 36,
+    "mpg": 27.9
   },
   {
     "id": "nesmiaa01",
     "name": "Aaron Nesmith",
     "pos": "SF",
     "games": 45,
-    "mpg": 24.9
+    "mpg": 29.7
   },
   {
     "id": "wiggiaa01",
     "name": "Aaron Wiggins",
     "pos": "SG",
-    "games": 76,
-    "mpg": 22.9
+    "games": 65,
+    "mpg": 21.8
+  },
+  {
+    "id": "baileac01",
+    "name": "Ace Bailey",
+    "pos": "SF",
+    "games": 72,
+    "mpg": 27.6
   },
   {
     "id": "bonaad01",
     "name": "Adem Bona",
     "pos": "C",
-    "games": 58,
-    "mpg": 15.6
+    "games": 71,
+    "mpg": 17.4
   },
   {
     "id": "mitchaj01",
     "name": "Ajay Mitchell",
     "pos": "SG",
-    "games": 36,
-    "mpg": 16.6
+    "games": 57,
+    "mpg": 25.8
   },
   {
     "id": "horfoal01",
     "name": "Al Horford",
     "pos": "C",
-    "games": 60,
-    "mpg": 27.7
-  },
-  {
-    "id": "burksal01",
-    "name": "Alec Burks",
-    "pos": "SG",
-    "games": 49,
-    "mpg": 17.6
+    "games": 45,
+    "mpg": 21.5
   },
   {
     "id": "carusal01",
     "name": "Alex Caruso",
     "pos": "SG",
-    "games": 54,
-    "mpg": 19.3
+    "games": 56,
+    "mpg": 18.2
   },
   {
     "id": "sarral01",
     "name": "Alex Sarr",
     "pos": "C",
-    "games": 67,
-    "mpg": 27.1
+    "games": 48,
+    "mpg": 27.2
   },
   {
     "id": "sengual01",
     "name": "Alperen \u00c5\u009eeng\u00c3\u00bcn",
     "pos": "C",
-    "games": 76,
-    "mpg": 31.5
+    "games": 72,
+    "mpg": 33.3
   },
   {
     "id": "thompam01",
     "name": "Amen Thompson",
-    "pos": "SF",
-    "games": 69,
-    "mpg": 32.2
-  },
-  {
-    "id": "coffeam01",
-    "name": "Amir Coffey",
-    "pos": "SG",
-    "games": 72,
-    "mpg": 24.3
+    "pos": "PG",
+    "games": 79,
+    "mpg": 37.4
   },
   {
     "id": "drumman01",
     "name": "Andre Drummond",
     "pos": "C",
-    "games": 40,
-    "mpg": 18.8
+    "games": 63,
+    "mpg": 19.5
   },
   {
     "id": "nembhan01",
     "name": "Andrew Nembhard",
-    "pos": "SG",
-    "games": 65,
-    "mpg": 28.9
+    "pos": "PG",
+    "games": 57,
+    "mpg": 31.3
   },
   {
     "id": "wiggian01",
     "name": "Andrew Wiggins",
     "pos": "SF",
-    "games": 60,
-    "mpg": 30.7
+    "games": 68,
+    "mpg": 30.3
   },
   {
     "id": "simonan01",
     "name": "Anfernee Simons",
     "pos": "SG",
-    "games": 70,
-    "mpg": 32.7
+    "games": 55,
+    "mpg": 24.9
   },
   {
     "id": "blackan01",
     "name": "Anthony Black",
     "pos": "PG",
-    "games": 78,
-    "mpg": 24.2
+    "games": 64,
+    "mpg": 29.8
   },
   {
     "id": "davisan02",
     "name": "Anthony Davis",
-    "pos": "C",
-    "games": 51,
-    "mpg": 33.5
+    "pos": "PF",
+    "games": 20,
+    "mpg": 31.3
   },
   {
     "id": "edwaran01",
     "name": "Anthony Edwards",
     "pos": "SG",
-    "games": 79,
-    "mpg": 36.3
+    "games": 61,
+    "mpg": 35.0
   },
   {
-    "id": "reevean01",
-    "name": "Antonio Reeves",
-    "pos": "SG",
-    "games": 44,
-    "mpg": 15.0
+    "id": "gillan01",
+    "name": "Anthony Gill",
+    "pos": "PF",
+    "games": 55,
+    "mpg": 17.3
   },
   {
     "id": "thompau01",
     "name": "Ausar Thompson",
     "pos": "SF",
-    "games": 59,
-    "mpg": 22.5
+    "games": 73,
+    "mpg": 26.0
   },
   {
     "id": "reaveau01",
     "name": "Austin Reaves",
     "pos": "SG",
-    "games": 73,
-    "mpg": 34.9
+    "games": 51,
+    "mpg": 34.5
   },
   {
     "id": "dosunay01",
     "name": "Ayo Dosunmu",
     "pos": "SG",
-    "games": 46,
-    "mpg": 30.3
+    "games": 69,
+    "mpg": 27.3
   },
   {
     "id": "adebaba01",
     "name": "Bam Adebayo",
     "pos": "C",
-    "games": 78,
-    "mpg": 34.3
+    "games": 73,
+    "mpg": 32.4
+  },
+  {
+    "id": "scheiba01",
+    "name": "Baylor Scheierman",
+    "pos": "SG",
+    "games": 77,
+    "mpg": 18.6
+  },
+  {
+    "id": "sarafbe01",
+    "name": "Ben Saraf",
+    "pos": "SG",
+    "games": 44,
+    "mpg": 20.8
   },
   {
     "id": "sheppbe01",
     "name": "Ben Sheppard",
     "pos": "SG",
-    "games": 63,
-    "mpg": 19.5
-  },
-  {
-    "id": "simmobe01",
-    "name": "Ben Simmons",
-    "pos": "PG",
-    "games": 51,
-    "mpg": 22.0
+    "games": 65,
+    "mpg": 21.4
   },
   {
     "id": "mathube01",
     "name": "Bennedict Mathurin",
     "pos": "SF",
-    "games": 72,
-    "mpg": 29.8
+    "games": 54,
+    "mpg": 30.0
   },
   {
     "id": "coulibi01",
     "name": "Bilal Coulibaly",
-    "pos": "SF",
-    "games": 59,
-    "mpg": 33.0
-  },
-  {
-    "id": "biyombi01",
-    "name": "Bismack Biyombo",
-    "pos": "C",
-    "games": 28,
-    "mpg": 18.9
+    "pos": "SG",
+    "games": 56,
+    "mpg": 26.2
   },
   {
     "id": "portibo01",
     "name": "Bobby Portis",
     "pos": "PF",
-    "games": 49,
-    "mpg": 25.4
+    "games": 67,
+    "mpg": 24.2
   },
   {
     "id": "bogdabo01",
     "name": "Bogdan Bogdanovi\u00c4\u0087",
     "pos": "SG",
-    "games": 54,
-    "mpg": 25.0
+    "games": 23,
+    "mpg": 19.7
   },
   {
-    "id": "bealbr01",
-    "name": "Bradley Beal",
-    "pos": "SG",
-    "games": 53,
-    "mpg": 32.1
+    "id": "hylanbo01",
+    "name": "Bones Hyland",
+    "pos": "PG",
+    "games": 71,
+    "mpg": 16.6
   },
   {
     "id": "podzibr01",
     "name": "Brandin Podziemski",
     "pos": "SG",
-    "games": 64,
-    "mpg": 26.8
+    "games": 82,
+    "mpg": 28.5
   },
   {
-    "id": "bostobr01",
-    "name": "Brandon Boston Jr.",
-    "pos": "SG",
-    "games": 42,
-    "mpg": 23.6
-  },
-  {
-    "id": "clarkbr01",
-    "name": "Brandon Clarke",
-    "pos": "PF",
-    "games": 64,
-    "mpg": 18.9
+    "id": "ingrabr01",
+    "name": "Brandon Ingram",
+    "pos": "SF",
+    "games": 77,
+    "mpg": 33.8
   },
   {
     "id": "millebr02",
     "name": "Brandon Miller",
     "pos": "SF",
-    "games": 27,
-    "mpg": 34.2
+    "games": 65,
+    "mpg": 30.3
+  },
+  {
+    "id": "willibr03",
+    "name": "Brandon Williams",
+    "pos": "PG",
+    "games": 66,
+    "mpg": 22.2
   },
   {
     "id": "sensabr01",
     "name": "Brice Sensabaugh",
     "pos": "SF",
-    "games": 71,
-    "mpg": 20.2
+    "games": 75,
+    "mpg": 23.5
   },
   {
     "id": "lopezbr01",
     "name": "Brook Lopez",
     "pos": "C",
-    "games": 80,
-    "mpg": 31.8
+    "games": 75,
+    "mpg": 21.8
   },
   {
     "id": "brownbr01",
     "name": "Bruce Brown",
-    "pos": "PG",
-    "games": 41,
-    "mpg": 22.5
+    "pos": "SG",
+    "games": 82,
+    "mpg": 24.4
+  },
+  {
+    "id": "mcgowbr01",
+    "name": "Bryce McGowens",
+    "pos": "SG",
+    "games": 42,
+    "mpg": 21.0
   },
   {
     "id": "carrica01",
     "name": "Bub Carrington",
     "pos": "PG",
     "games": 82,
-    "mpg": 30.0
+    "mpg": 27.7
   },
   {
     "id": "hieldbu01",
     "name": "Buddy Hield",
     "pos": "SG",
-    "games": 82,
-    "mpg": 22.7
+    "games": 51,
+    "mpg": 16.1
   },
   {
     "id": "mccolcj01",
     "name": "CJ McCollum",
     "pos": "PG",
-    "games": 56,
-    "mpg": 32.7
+    "games": 76,
+    "mpg": 29.8
   },
   {
     "id": "cunnica01",
     "name": "Cade Cunningham",
     "pos": "PG",
-    "games": 70,
-    "mpg": 35.0
+    "games": 64,
+    "mpg": 33.9
   },
   {
-    "id": "martica02",
-    "name": "Caleb Martin",
-    "pos": "SF",
-    "games": 45,
-    "mpg": 27.1
+    "id": "loveca01",
+    "name": "Caleb Love",
+    "pos": "SG",
+    "games": 49,
+    "mpg": 20.7
   },
   {
-    "id": "reddica01",
-    "name": "Cam Reddish",
-    "pos": "SF",
-    "games": 33,
-    "mpg": 17.8
+    "id": "spencca01",
+    "name": "Cam Spencer",
+    "pos": "SG",
+    "games": 72,
+    "mpg": 23.8
   },
   {
     "id": "thomaca02",
     "name": "Cam Thomas",
     "pos": "SG",
-    "games": 25,
-    "mpg": 31.2
+    "games": 42,
+    "mpg": 21.0
   },
   {
     "id": "whitmca01",
     "name": "Cam Whitmore",
     "pos": "SF",
-    "games": 51,
-    "mpg": 16.2
+    "games": 21,
+    "mpg": 16.9
   },
   {
     "id": "johnsca02",
     "name": "Cameron Johnson",
-    "pos": "PF",
-    "games": 57,
-    "mpg": 31.6
+    "pos": "SF",
+    "games": 54,
+    "mpg": 30.5
   },
   {
     "id": "payneca01",
     "name": "Cameron Payne",
     "pos": "PG",
-    "games": 72,
-    "mpg": 15.1
+    "games": 22,
+    "mpg": 17.0
   },
   {
     "id": "leverca01",
     "name": "Caris LeVert",
     "pos": "SG",
-    "games": 64,
-    "mpg": 24.9
+    "games": 60,
+    "mpg": 19.2
   },
   {
     "id": "wallaca01",
     "name": "Cason Wallace",
     "pos": "SG",
-    "games": 68,
-    "mpg": 27.6
+    "games": 77,
+    "mpg": 26.6
+  },
+  {
+    "id": "cowarce01",
+    "name": "Cedric Coward",
+    "pos": "SG",
+    "games": 62,
+    "mpg": 25.8
   },
   {
     "id": "holmgch01",
     "name": "Chet Holmgren",
-    "pos": "C",
-    "games": 32,
-    "mpg": 27.4
-  },
-  {
-    "id": "bouchch01",
-    "name": "Chris Boucher",
     "pos": "PF",
-    "games": 50,
-    "mpg": 17.2
-  },
-  {
-    "id": "paulch01",
-    "name": "Chris Paul",
-    "pos": "PG",
-    "games": 82,
-    "mpg": 28.0
+    "games": 69,
+    "mpg": 28.9
   },
   {
     "id": "braunch01",
     "name": "Christian Braun",
     "pos": "SG",
-    "games": 79,
-    "mpg": 33.9
-  },
-  {
-    "id": "capelca01",
-    "name": "Clint Capela",
-    "pos": "C",
-    "games": 55,
-    "mpg": 21.4
+    "games": 44,
+    "mpg": 31.8
   },
   {
     "id": "whiteco01",
     "name": "Coby White",
     "pos": "SG",
-    "games": 74,
-    "mpg": 33.1
-  },
-  {
-    "id": "martico01",
-    "name": "Cody Martin",
-    "pos": "SF",
-    "games": 53,
-    "mpg": 22.1
+    "games": 50,
+    "mpg": 25.0
   },
   {
     "id": "willico04",
     "name": "Cody Williams",
     "pos": "SG",
-    "games": 50,
-    "mpg": 21.2
+    "games": 67,
+    "mpg": 24.3
   },
   {
     "id": "anthoco01",
     "name": "Cole Anthony",
     "pos": "PG",
-    "games": 67,
-    "mpg": 18.4
+    "games": 35,
+    "mpg": 15.1
   },
   {
-    "id": "castlco01",
-    "name": "Colin Castleton",
-    "pos": "C",
-    "games": 26,
-    "mpg": 16.6
+    "id": "gilleco01",
+    "name": "Collin Gillespie",
+    "pos": "PG",
+    "games": 80,
+    "mpg": 28.5
+  },
+  {
+    "id": "murraco01",
+    "name": "Collin Murray-Boyles",
+    "pos": "PF",
+    "games": 57,
+    "mpg": 21.9
   },
   {
     "id": "sextoco01",
     "name": "Collin Sexton",
     "pos": "SG",
-    "games": 63,
-    "mpg": 27.9
+    "games": 68,
+    "mpg": 23.7
+  },
+  {
+    "id": "flaggco01",
+    "name": "Cooper Flagg",
+    "pos": "SF",
+    "games": 70,
+    "mpg": 33.5
   },
   {
     "id": "kispeco01",
     "name": "Corey Kispert",
     "pos": "SF",
-    "games": 61,
-    "mpg": 26.3
+    "games": 58,
+    "mpg": 18.6
+  },
+  {
+    "id": "portecr01",
+    "name": "Craig Porter Jr.",
+    "pos": "PG",
+    "games": 64,
+    "mpg": 17.9
   },
   {
     "id": "russeda01",
     "name": "D'Angelo Russell",
     "pos": "PG",
-    "games": 58,
-    "mpg": 25.5
+    "games": 26,
+    "mpg": 19.0
   },
   {
-    "id": "jeffrda01",
-    "name": "DaQuan Jeffries",
+    "id": "plowdda01",
+    "name": "Daeqwon Plowden",
     "pos": "SG",
-    "games": 47,
-    "mpg": 22.8
-  },
-  {
-    "id": "bantoda01",
-    "name": "Dalano Banton",
-    "pos": "PG",
-    "games": 67,
-    "mpg": 16.7
-  },
-  {
-    "id": "knechda01",
-    "name": "Dalton Knecht",
-    "pos": "SF",
-    "games": 78,
-    "mpg": 19.2
-  },
-  {
-    "id": "lillada01",
-    "name": "Damian Lillard",
-    "pos": "PG",
-    "games": 58,
-    "mpg": 36.1
+    "games": 32,
+    "mpg": 26.4
   },
   {
     "id": "gaffoda01",
     "name": "Daniel Gafford",
     "pos": "C",
-    "games": 57,
-    "mpg": 21.5
+    "games": 55,
+    "mpg": 21.7
   },
   {
-    "id": "theisda01",
-    "name": "Daniel Theis",
-    "pos": "C",
-    "games": 38,
-    "mpg": 16.3
-  },
-  {
-    "id": "exumda01",
-    "name": "Dant\u00c3\u00a9 Exum",
+    "id": "jenkida01",
+    "name": "Daniss Jenkins",
     "pos": "PG",
-    "games": 20,
-    "mpg": 18.6
+    "games": 72,
+    "mpg": 20.2
+  },
+  {
+    "id": "wolfda01",
+    "name": "Danny Wolf",
+    "pos": "PF",
+    "games": 57,
+    "mpg": 20.8
   },
   {
     "id": "garlada01",
     "name": "Darius Garland",
     "pos": "PG",
-    "games": 75,
-    "mpg": 30.7
+    "games": 45,
+    "mpg": 29.9
   },
   {
     "id": "mitchda01",
     "name": "Davion Mitchell",
     "pos": "PG",
-    "games": 74,
-    "mpg": 27.4
+    "games": 70,
+    "mpg": 28.6
   },
   {
     "id": "sharpda01",
     "name": "Day'Ron Sharpe",
     "pos": "C",
-    "games": 50,
-    "mpg": 18.2
+    "games": 62,
+    "mpg": 18.7
   },
   {
     "id": "foxde01",
     "name": "De'Aaron Fox",
     "pos": "PG",
-    "games": 62,
-    "mpg": 36.1
+    "games": 72,
+    "mpg": 31.0
   },
   {
     "id": "huntede01",
     "name": "De'Andre Hunter",
     "pos": "SF",
-    "games": 64,
-    "mpg": 27.2
+    "games": 45,
+    "mpg": 26.1
+  },
+  {
+    "id": "meltode01",
+    "name": "De'Anthony Melton",
+    "pos": "PG",
+    "games": 49,
+    "mpg": 23.0
   },
   {
     "id": "derozde01",
     "name": "DeMar DeRozan",
-    "pos": "SF",
+    "pos": "PF",
     "games": 77,
-    "mpg": 35.9
+    "mpg": 31.2
   },
   {
     "id": "wadede01",
     "name": "Dean Wade",
     "pos": "PF",
     "games": 59,
-    "mpg": 21.2
+    "mpg": 22.3
   },
   {
     "id": "aytonde01",
     "name": "Deandre Ayton",
     "pos": "C",
-    "games": 40,
-    "mpg": 30.2
-  },
-  {
-    "id": "murrade01",
-    "name": "Dejounte Murray",
-    "pos": "PG",
-    "games": 31,
-    "mpg": 32.6
-  },
-  {
-    "id": "wrighde01",
-    "name": "Delon Wright",
-    "pos": "PG",
-    "games": 40,
-    "mpg": 15.9
+    "games": 72,
+    "mpg": 27.2
   },
   {
     "id": "avdijde01",
     "name": "Deni Avdija",
     "pos": "SF",
-    "games": 72,
-    "mpg": 30.0
+    "games": 66,
+    "mpg": 33.3
   },
   {
     "id": "schrode01",
     "name": "Dennis Schr\u00c3\u00b6der",
     "pos": "PG",
-    "games": 75,
-    "mpg": 28.1
+    "games": 70,
+    "mpg": 24.2
   },
   {
-    "id": "livelde01",
-    "name": "Dereck Lively II",
+    "id": "queende01",
+    "name": "Derik Queen",
     "pos": "C",
-    "games": 36,
-    "mpg": 23.1
+    "games": 81,
+    "mpg": 25.0
   },
   {
     "id": "jonesde02",
     "name": "Derrick Jones Jr.",
     "pos": "SF",
-    "games": 77,
-    "mpg": 24.3
+    "games": 50,
+    "mpg": 27.0
   },
   {
     "id": "whitede01",
     "name": "Derrick White",
     "pos": "SG",
-    "games": 76,
-    "mpg": 33.9
+    "games": 77,
+    "mpg": 34.1
   },
   {
     "id": "banede01",
     "name": "Desmond Bane",
     "pos": "SG",
-    "games": 69,
-    "mpg": 32.0
+    "games": 82,
+    "mpg": 33.6
   },
   {
     "id": "bookede01",
     "name": "Devin Booker",
     "pos": "SG",
-    "games": 75,
-    "mpg": 37.3
+    "games": 64,
+    "mpg": 33.5
+  },
+  {
+    "id": "cartede02",
+    "name": "Devin Carter",
+    "pos": "PG",
+    "games": 38,
+    "mpg": 18.4
   },
   {
     "id": "vassede01",
     "name": "Devin Vassell",
     "pos": "SG",
-    "games": 64,
-    "mpg": 31.0
+    "games": 67,
+    "mpg": 30.5
   },
   {
     "id": "brookdi01",
     "name": "Dillon Brooks",
     "pos": "SF",
-    "games": 75,
-    "mpg": 31.8
+    "games": 56,
+    "mpg": 30.4
   },
   {
-    "id": "sabondo01",
-    "name": "Domantas Sabonis",
-    "pos": "C",
-    "games": 70,
-    "mpg": 34.7
+    "id": "barlodo01",
+    "name": "Dominick Barlow",
+    "pos": "PF",
+    "games": 71,
+    "mpg": 23.8
   },
   {
     "id": "clingdo01",
     "name": "Donovan Clingan",
     "pos": "C",
-    "games": 67,
-    "mpg": 19.8
+    "games": 77,
+    "mpg": 27.2
   },
   {
     "id": "mitchdo01",
     "name": "Donovan Mitchell",
     "pos": "SG",
-    "games": 71,
-    "mpg": 31.4
+    "games": 70,
+    "mpg": 33.5
   },
   {
     "id": "divindo01",
     "name": "Donte DiVincenzo",
     "pos": "SG",
-    "games": 62,
-    "mpg": 25.9
+    "games": 82,
+    "mpg": 30.4
   },
   {
     "id": "finnedo01",
     "name": "Dorian Finney-Smith",
     "pos": "PF",
+    "games": 37,
+    "mpg": 16.8
+  },
+  {
+    "id": "mcderdo01",
+    "name": "Doug McDermott",
+    "pos": "SF",
+    "games": 29,
+    "mpg": 15.1
+  },
+  {
+    "id": "poweldr01",
+    "name": "Drake Powell",
+    "pos": "SG",
     "games": 63,
-    "mpg": 28.9
+    "mpg": 21.0
   },
   {
     "id": "greendr01",
     "name": "Draymond Green",
     "pos": "PF",
     "games": 68,
-    "mpg": 29.2
+    "mpg": 27.5
+  },
+  {
+    "id": "smithdr01",
+    "name": "Dru Smith",
+    "pos": "SG",
+    "games": 70,
+    "mpg": 16.3
   },
   {
     "id": "robindu01",
     "name": "Duncan Robinson",
-    "pos": "SF",
-    "games": 74,
-    "mpg": 24.1
+    "pos": "SG",
+    "games": 77,
+    "mpg": 27.4
+  },
+  {
+    "id": "cardwdy01",
+    "name": "Dylan Cardwell",
+    "pos": "C",
+    "games": 44,
+    "mpg": 20.6
+  },
+  {
+    "id": "harpedy01",
+    "name": "Dylan Harper",
+    "pos": "SG",
+    "games": 69,
+    "mpg": 22.6
   },
   {
     "id": "daniedy01",
     "name": "Dyson Daniels",
     "pos": "SG",
     "games": 76,
-    "mpg": 33.8
+    "mpg": 33.2
   },
   {
-    "id": "paytoel01",
-    "name": "Elfrid Payton",
+    "id": "demineg01",
+    "name": "Egor D\u00c3\u00abmin",
     "pos": "PG",
-    "games": 24,
-    "mpg": 21.3
+    "games": 52,
+    "mpg": 25.2
   },
   {
-    "id": "gordoer01",
-    "name": "Eric Gordon",
+    "id": "harklej01",
+    "name": "Elijah Harkless",
     "pos": "SG",
-    "games": 39,
-    "mpg": 19.7
+    "games": 26,
+    "mpg": 21.0
+  },
+  {
+    "id": "thompet01",
+    "name": "Ethan Thompson",
+    "pos": "SG",
+    "games": 32,
+    "mpg": 20.4
   },
   {
     "id": "mobleev01",
     "name": "Evan Mobley",
     "pos": "PF",
-    "games": 71,
-    "mpg": 30.5
+    "games": 65,
+    "mpg": 31.9
   },
   {
     "id": "wagnefr01",
     "name": "Franz Wagner",
     "pos": "SF",
-    "games": 60,
-    "mpg": 33.7
-  },
-  {
-    "id": "vanvlfr01",
-    "name": "Fred VanVleet",
-    "pos": "PG",
-    "games": 60,
-    "mpg": 35.2
+    "games": 34,
+    "mpg": 30.0
   },
   {
     "id": "jacksgg01",
     "name": "GG Jackson II",
     "pos": "PF",
-    "games": 29,
-    "mpg": 15.8
+    "games": 55,
+    "mpg": 21.4
   },
   {
     "id": "vincega01",
     "name": "Gabe Vincent",
     "pos": "PG",
-    "games": 72,
-    "mpg": 21.2
-  },
-  {
-    "id": "mathega01",
-    "name": "Garrison Mathews",
-    "pos": "SG",
-    "games": 47,
-    "mpg": 17.7
+    "games": 53,
+    "mpg": 16.6
   },
   {
     "id": "paytoga02",
     "name": "Gary Payton II",
     "pos": "SG",
-    "games": 62,
-    "mpg": 15.0
+    "games": 73,
+    "mpg": 15.6
   },
   {
     "id": "trentga02",
     "name": "Gary Trent Jr.",
     "pos": "SG",
-    "games": 74,
-    "mpg": 25.6
-  },
-  {
-    "id": "niangge01",
-    "name": "Georges Niang",
-    "pos": "PF",
-    "games": 79,
-    "mpg": 21.5
+    "games": 65,
+    "mpg": 21.2
   },
   {
     "id": "antetgi01",
     "name": "Giannis Antetokounmpo",
     "pos": "PF",
-    "games": 67,
-    "mpg": 34.2
+    "games": 36,
+    "mpg": 28.9
   },
   {
     "id": "bitadgo01",
     "name": "Goga Bitadze",
     "pos": "C",
-    "games": 70,
-    "mpg": 20.4
+    "games": 64,
+    "mpg": 15.2
   },
   {
-    "id": "dickgr01",
-    "name": "Gradey Dick",
-    "pos": "SG",
-    "games": 54,
-    "mpg": 29.4
+    "id": "willigr01",
+    "name": "Grant Williams",
+    "pos": "PF",
+    "games": 36,
+    "mpg": 19.8
   },
   {
     "id": "allengr01",
     "name": "Grayson Allen",
     "pos": "SG",
-    "games": 64,
-    "mpg": 24.1
+    "games": 51,
+    "mpg": 28.8
   },
   {
     "id": "yabusgu01",
     "name": "Guerschon Yabusele",
     "pos": "C",
-    "games": 70,
-    "mpg": 27.1
+    "games": 67,
+    "mpg": 15.0
+  },
+  {
+    "id": "santogu01",
+    "name": "Gui Santos",
+    "pos": "PF",
+    "games": 68,
+    "mpg": 20.5
   },
   {
     "id": "barneha02",
     "name": "Harrison Barnes",
     "pos": "PF",
-    "games": 82,
-    "mpg": 27.2
-  },
-  {
-    "id": "highsha01",
-    "name": "Haywood Highsmith",
-    "pos": "SF",
-    "games": 74,
-    "mpg": 24.6
+    "games": 77,
+    "mpg": 25.8
   },
   {
     "id": "joneshe01",
     "name": "Herbert Jones",
     "pos": "SF",
-    "games": 20,
-    "mpg": 32.4
+    "games": 56,
+    "mpg": 28.4
   },
   {
     "id": "quickim01",
     "name": "Immanuel Quickley",
     "pos": "PG",
-    "games": 33,
-    "mpg": 27.8
+    "games": 70,
+    "mpg": 31.9
   },
   {
     "id": "okorois01",
     "name": "Isaac Okoro",
     "pos": "SG",
-    "games": 55,
-    "mpg": 19.1
+    "games": 63,
+    "mpg": 26.9
   },
   {
     "id": "colliis01",
     "name": "Isaiah Collier",
     "pos": "PG",
-    "games": 71,
-    "mpg": 25.9
+    "games": 59,
+    "mpg": 25.7
   },
   {
     "id": "harteis01",
     "name": "Isaiah Hartenstein",
     "pos": "C",
-    "games": 57,
-    "mpg": 27.9
+    "games": 47,
+    "mpg": 24.2
+  },
+  {
+    "id": "jacksis01",
+    "name": "Isaiah Jackson",
+    "pos": "C",
+    "games": 55,
+    "mpg": 16.5
   },
   {
     "id": "joeis01",
     "name": "Isaiah Joe",
     "pos": "SG",
-    "games": 74,
-    "mpg": 21.7
+    "games": 71,
+    "mpg": 21.2
   },
   {
     "id": "stewais01",
     "name": "Isaiah Stewart",
     "pos": "C",
-    "games": 72,
-    "mpg": 19.9
+    "games": 58,
+    "mpg": 22.7
   },
   {
     "id": "zubaciv01",
     "name": "Ivica Zubac",
     "pos": "C",
-    "games": 80,
-    "mpg": 32.8
+    "games": 48,
+    "mpg": 30.1
   },
   {
     "id": "moranja01",
     "name": "Ja Morant",
     "pos": "PG",
-    "games": 50,
-    "mpg": 30.4
+    "games": 20,
+    "mpg": 28.5
   },
   {
     "id": "walteja01",
     "name": "Ja'Kobe Walter",
     "pos": "SG",
-    "games": 52,
-    "mpg": 21.2
+    "games": 72,
+    "mpg": 20.5
   },
   {
     "id": "smithja05",
     "name": "Jabari Smith Jr.",
     "pos": "PF",
-    "games": 57,
-    "mpg": 30.1
+    "games": 77,
+    "mpg": 35.1
   },
   {
     "id": "hardyja02",
     "name": "Jaden Hardy",
     "pos": "SG",
     "games": 57,
-    "mpg": 15.9
+    "mpg": 15.8
   },
   {
     "id": "iveyja01",
     "name": "Jaden Ivey",
     "pos": "SG",
-    "games": 30,
-    "mpg": 29.9
+    "games": 37,
+    "mpg": 18.1
   },
   {
     "id": "mcdanja02",
     "name": "Jaden McDaniels",
     "pos": "PF",
-    "games": 82,
-    "mpg": 31.9
+    "games": 73,
+    "mpg": 31.7
+  },
+  {
+    "id": "mashaja01",
+    "name": "Jahmai Mashack",
+    "pos": "SG",
+    "games": 31,
+    "mpg": 21.7
   },
   {
     "id": "jaqueja01",
     "name": "Jaime Jaquez Jr.",
     "pos": "SF",
-    "games": 66,
-    "mpg": 20.7
+    "games": 75,
+    "mpg": 28.3
   },
   {
     "id": "laravja01",
     "name": "Jake LaRavia",
     "pos": "PF",
-    "games": 66,
-    "mpg": 20.4
+    "games": 82,
+    "mpg": 25.1
   },
   {
     "id": "poeltja01",
     "name": "Jakob Poeltl",
     "pos": "C",
-    "games": 57,
-    "mpg": 29.6
+    "games": 46,
+    "mpg": 25.0
   },
   {
     "id": "brunsja01",
     "name": "Jalen Brunson",
     "pos": "PG",
-    "games": 65,
-    "mpg": 35.4
+    "games": 74,
+    "mpg": 35.0
   },
   {
     "id": "durenja01",
     "name": "Jalen Duren",
     "pos": "C",
-    "games": 78,
-    "mpg": 26.1
+    "games": 70,
+    "mpg": 28.2
   },
   {
     "id": "greenja05",
     "name": "Jalen Green",
     "pos": "SG",
-    "games": 82,
-    "mpg": 32.9
+    "games": 32,
+    "mpg": 25.9
   },
   {
     "id": "johnsja05",
     "name": "Jalen Johnson",
     "pos": "SF",
-    "games": 36,
-    "mpg": 35.7
+    "games": 72,
+    "mpg": 35.2
+  },
+  {
+    "id": "pickeja02",
+    "name": "Jalen Pickett",
+    "pos": "SG",
+    "games": 50,
+    "mpg": 16.1
   },
   {
     "id": "smithja04",
     "name": "Jalen Smith",
     "pos": "C",
-    "games": 64,
-    "mpg": 15.0
+    "games": 53,
+    "mpg": 20.7
   },
   {
     "id": "suggsja01",
     "name": "Jalen Suggs",
     "pos": "PG",
-    "games": 35,
-    "mpg": 28.6
+    "games": 57,
+    "mpg": 27.6
   },
   {
     "id": "willija06",
     "name": "Jalen Williams",
     "pos": "SG",
-    "games": 69,
-    "mpg": 32.4
+    "games": 33,
+    "mpg": 28.4
   },
   {
     "id": "wilsoja03",
     "name": "Jalen Wilson",
     "pos": "PF",
-    "games": 79,
-    "mpg": 25.7
+    "games": 54,
+    "mpg": 15.9
   },
   {
     "id": "murraja01",
     "name": "Jamal Murray",
     "pos": "PG",
-    "games": 67,
-    "mpg": 36.1
+    "games": 75,
+    "mpg": 35.4
   },
   {
     "id": "sheadja01",
     "name": "Jamal Shead",
     "pos": "PG",
-    "games": 75,
-    "mpg": 19.6
+    "games": 82,
+    "mpg": 22.6
   },
   {
     "id": "hardeja01",
     "name": "James Harden",
     "pos": "PG",
-    "games": 79,
-    "mpg": 35.3
+    "games": 70,
+    "mpg": 34.8
   },
   {
-    "id": "battlja01",
-    "name": "Jamison Battle",
-    "pos": "SF",
-    "games": 59,
-    "mpg": 17.7
+    "id": "watkija01",
+    "name": "Jamir Watkins",
+    "pos": "SG",
+    "games": 50,
+    "mpg": 20.6
   },
   {
     "id": "walkeja02",
     "name": "Jarace Walker",
     "pos": "PF",
-    "games": 75,
-    "mpg": 15.8
-  },
-  {
-    "id": "butleja02",
-    "name": "Jared Butler",
-    "pos": "SG",
-    "games": 60,
-    "mpg": 17.4
+    "games": 76,
+    "mpg": 25.7
   },
   {
     "id": "mccaija01",
     "name": "Jared McCain",
     "pos": "SG",
-    "games": 23,
-    "mpg": 25.7
+    "games": 67,
+    "mpg": 17.3
   },
   {
     "id": "jacksja02",
     "name": "Jaren Jackson Jr.",
     "pos": "C",
-    "games": 74,
-    "mpg": 29.8
+    "games": 48,
+    "mpg": 30.3
   },
   {
     "id": "vandeja01",
     "name": "Jarred Vanderbilt",
     "pos": "PF",
-    "games": 36,
-    "mpg": 16.1
+    "games": 65,
+    "mpg": 17.4
   },
   {
     "id": "allenja01",
     "name": "Jarrett Allen",
     "pos": "C",
-    "games": 82,
-    "mpg": 28.0
+    "games": 56,
+    "mpg": 27.1
+  },
+  {
+    "id": "smallja01",
+    "name": "Javon Small",
+    "pos": "PG",
+    "games": 41,
+    "mpg": 20.2
   },
   {
     "id": "greenja02",
     "name": "Javonte Green",
     "pos": "SG",
-    "games": 68,
-    "mpg": 18.5
+    "games": 82,
+    "mpg": 17.6
   },
   {
     "id": "hayesja02",
     "name": "Jaxson Hayes",
     "pos": "C",
-    "games": 56,
-    "mpg": 19.5
+    "games": 66,
+    "mpg": 18.3
+  },
+  {
+    "id": "huffja01",
+    "name": "Jay Huff",
+    "pos": "C",
+    "games": 82,
+    "mpg": 21.0
   },
   {
     "id": "brownja02",
     "name": "Jaylen Brown",
     "pos": "SF",
-    "games": 63,
-    "mpg": 34.3
+    "games": 71,
+    "mpg": 34.4
   },
   {
     "id": "wellsja01",
     "name": "Jaylen Wells",
     "pos": "SG",
-    "games": 79,
-    "mpg": 25.9
+    "games": 69,
+    "mpg": 26.4
   },
   {
     "id": "willija07",
     "name": "Jaylin Williams",
     "pos": "PF",
-    "games": 47,
-    "mpg": 16.7
+    "games": 65,
+    "mpg": 19.6
   },
   {
-    "id": "tatumja01",
-    "name": "Jayson Tatum",
-    "pos": "PF",
-    "games": 72,
-    "mpg": 36.4
-  },
-  {
-    "id": "dowtije01",
-    "name": "Jeff Dowtin Jr.",
-    "pos": "PG",
-    "games": 41,
-    "mpg": 15.1
+    "id": "tysonja01",
+    "name": "Jaylon Tyson",
+    "pos": "SG",
+    "games": 66,
+    "mpg": 26.9
   },
   {
     "id": "grantje01",
     "name": "Jerami Grant",
     "pos": "PF",
-    "games": 47,
-    "mpg": 32.4
+    "games": 57,
+    "mpg": 29.7
+  },
+  {
+    "id": "fearsje01",
+    "name": "Jeremiah Fears",
+    "pos": "PG",
+    "games": 82,
+    "mpg": 25.8
   },
   {
     "id": "robinje02",
     "name": "Jeremiah Robinson-Earl",
     "pos": "PF",
-    "games": 66,
-    "mpg": 18.8
+    "games": 22,
+    "mpg": 16.4
   },
   {
-    "id": "sochaje01",
-    "name": "Jeremy Sochan",
-    "pos": "PF",
-    "games": 54,
-    "mpg": 25.3
+    "id": "simsje01",
+    "name": "Jericho Sims",
+    "pos": "C",
+    "games": 67,
+    "mpg": 19.7
+  },
+  {
+    "id": "carteje01",
+    "name": "Jevon Carter",
+    "pos": "PG",
+    "games": 53,
+    "mpg": 16.4
   },
   {
     "id": "butleji01",
     "name": "Jimmy Butler",
     "pos": "SF",
-    "games": 55,
-    "mpg": 31.7
+    "games": 38,
+    "mpg": 31.1
+  },
+  {
+    "id": "landajo01",
+    "name": "Jock Landale",
+    "pos": "C",
+    "games": 68,
+    "mpg": 22.1
+  },
+  {
+    "id": "embiijo01",
+    "name": "Joel Embiid",
+    "pos": "C",
+    "games": 38,
+    "mpg": 31.6
   },
   {
     "id": "collijo01",
     "name": "John Collins",
     "pos": "PF",
-    "games": 40,
-    "mpg": 30.5
+    "games": 69,
+    "mpg": 27.1
   },
   {
-    "id": "juzanjo01",
-    "name": "Johnny Juzang",
+    "id": "konchjo01",
+    "name": "John Konchar",
     "pos": "SG",
-    "games": 64,
-    "mpg": 19.8
+    "games": 56,
+    "mpg": 19.9
   },
   {
-    "id": "valanjo01",
-    "name": "Jonas Valan\u00c4\u008di\u00c5\u00abnas",
-    "pos": "C",
-    "games": 81,
-    "mpg": 18.8
-  },
-  {
-    "id": "isaacjo01",
-    "name": "Jonathan Isaac",
-    "pos": "PF",
-    "games": 71,
-    "mpg": 15.4
+    "id": "furphjo01",
+    "name": "Johnny Furphy",
+    "pos": "SG",
+    "games": 35,
+    "mpg": 18.4
   },
   {
     "id": "kuminjo01",
     "name": "Jonathan Kuminga",
     "pos": "PF",
-    "games": 47,
-    "mpg": 24.3
-  },
-  {
-    "id": "mogbojo01",
-    "name": "Jonathan Mogbo",
-    "pos": "PF",
-    "games": 63,
-    "mpg": 20.4
+    "games": 36,
+    "mpg": 23.1
   },
   {
     "id": "clarkjo01",
     "name": "Jordan Clarkson",
     "pos": "SG",
-    "games": 37,
-    "mpg": 26.0
+    "games": 72,
+    "mpg": 17.8
   },
   {
     "id": "goodwjo01",
     "name": "Jordan Goodwin",
     "pos": "PG",
-    "games": 29,
-    "mpg": 18.7
+    "games": 70,
+    "mpg": 22.5
   },
   {
-    "id": "hawkijo01",
-    "name": "Jordan Hawkins",
-    "pos": "SG",
-    "games": 56,
-    "mpg": 23.6
+    "id": "millejo02",
+    "name": "Jordan Miller",
+    "pos": "SF",
+    "games": 60,
+    "mpg": 22.1
   },
   {
     "id": "poolejo01",
     "name": "Jordan Poole",
-    "pos": "SG",
+    "pos": "PG",
+    "games": 39,
+    "mpg": 23.9
+  },
+  {
+    "id": "walshjo01",
+    "name": "Jordan Walsh",
+    "pos": "PF",
     "games": 68,
-    "mpg": 29.4
+    "mpg": 17.8
   },
   {
     "id": "alvarjo01",
     "name": "Jose Alvarado",
     "pos": "PG",
-    "games": 56,
-    "mpg": 24.4
+    "games": 69,
+    "mpg": 19.9
   },
   {
     "id": "giddejo01",
     "name": "Josh Giddey",
     "pos": "PG",
-    "games": 70,
-    "mpg": 30.2
+    "games": 54,
+    "mpg": 32.1
   },
   {
     "id": "greenjo02",
     "name": "Josh Green",
     "pos": "SG",
-    "games": 68,
-    "mpg": 27.8
+    "games": 58,
+    "mpg": 15.7
   },
   {
     "id": "hartjo01",
     "name": "Josh Hart",
-    "pos": "SG",
-    "games": 77,
-    "mpg": 37.6
+    "pos": "SF",
+    "games": 66,
+    "mpg": 30.2
+  },
+  {
+    "id": "minotjo01",
+    "name": "Josh Minott",
+    "pos": "PF",
+    "games": 49,
+    "mpg": 17.0
   },
   {
     "id": "okogijo01",
     "name": "Josh Okogie",
     "pos": "SG",
-    "games": 40,
-    "mpg": 15.6
+    "games": 78,
+    "mpg": 17.4
   },
   {
     "id": "holidjr01",
     "name": "Jrue Holiday",
     "pos": "PG",
-    "games": 62,
-    "mpg": 30.6
+    "games": 53,
+    "mpg": 29.4
   },
   {
     "id": "champju02",
     "name": "Julian Champagnie",
     "pos": "SF",
     "games": 82,
-    "mpg": 23.6
+    "mpg": 27.6
   },
   {
     "id": "strawju01",
     "name": "Julian Strawther",
     "pos": "SG",
-    "games": 65,
-    "mpg": 21.3
+    "games": 57,
+    "mpg": 15.1
   },
   {
     "id": "randlju01",
     "name": "Julius Randle",
     "pos": "PF",
-    "games": 69,
-    "mpg": 32.3
+    "games": 79,
+    "mpg": 33.0
   },
   {
     "id": "champju01",
     "name": "Justin Champagnie",
     "pos": "SF",
-    "games": 62,
-    "mpg": 21.6
+    "games": 69,
+    "mpg": 20.0
   },
   {
     "id": "edwarju01",
     "name": "Justin Edwards",
     "pos": "SF",
-    "games": 44,
-    "mpg": 26.3
+    "games": 64,
+    "mpg": 15.3
   },
   {
     "id": "nurkiju01",
     "name": "Jusuf Nurki\u00c4\u0087",
     "pos": "C",
-    "games": 51,
-    "mpg": 20.8
+    "games": 41,
+    "mpg": 26.4
   },
   {
-    "id": "martike04",
-    "name": "KJ Martin",
-    "pos": "PF",
-    "games": 43,
-    "mpg": 21.2
-  },
-  {
-    "id": "simpskj01",
-    "name": "KJ Simpson",
-    "pos": "PG",
-    "games": 36,
-    "mpg": 23.4
+    "id": "joneska03",
+    "name": "Kam Jones",
+    "pos": "SG",
+    "games": 37,
+    "mpg": 16.6
   },
   {
     "id": "townska01",
     "name": "Karl-Anthony Towns",
     "pos": "C",
-    "games": 72,
-    "mpg": 35.0
+    "games": 75,
+    "mpg": 31.0
   },
   {
-    "id": "matkoka01",
-    "name": "Karlo Matkovi\u00c4\u0087",
-    "pos": "PF",
-    "games": 42,
-    "mpg": 18.8
+    "id": "jakucka01",
+    "name": "Kasparas Jaku\u00c4\u008dionis",
+    "pos": "PG",
+    "games": 53,
+    "mpg": 17.8
   },
   {
     "id": "leonaka01",
     "name": "Kawhi Leonard",
     "pos": "SF",
-    "games": 37,
-    "mpg": 31.9
-  },
-  {
-    "id": "wallake01",
-    "name": "Keaton Wallace",
-    "pos": "PG",
-    "games": 31,
-    "mpg": 16.2
+    "games": 65,
+    "mpg": 32.1
   },
   {
     "id": "murrake02",
     "name": "Keegan Murray",
     "pos": "PF",
-    "games": 76,
-    "mpg": 34.3
+    "games": 23,
+    "mpg": 34.5
   },
   {
     "id": "wareke01",
     "name": "Kel'el Ware",
     "pos": "C",
-    "games": 64,
-    "mpg": 22.2
+    "games": 77,
+    "mpg": 22.1
   },
   {
     "id": "johnske04",
     "name": "Keldon Johnson",
     "pos": "SF",
-    "games": 77,
-    "mpg": 23.9
-  },
-  {
-    "id": "olynyke01",
-    "name": "Kelly Olynyk",
-    "pos": "C",
-    "games": 44,
-    "mpg": 20.3
+    "games": 82,
+    "mpg": 23.3
   },
   {
     "id": "oubreke01",
     "name": "Kelly Oubre Jr.",
     "pos": "SF",
-    "games": 60,
-    "mpg": 34.6
+    "games": 50,
+    "mpg": 31.5
   },
   {
     "id": "willike04",
     "name": "Kenrich Williams",
     "pos": "PF",
-    "games": 69,
-    "mpg": 16.4
+    "games": 56,
+    "mpg": 15.3
   },
   {
     "id": "caldwke01",
     "name": "Kentavious Caldwell-Pope",
     "pos": "SG",
-    "games": 77,
-    "mpg": 29.6
+    "games": 51,
+    "mpg": 21.3
   },
   {
     "id": "elliske01",
     "name": "Keon Ellis",
     "pos": "SG",
-    "games": 80,
-    "mpg": 24.4
-  },
-  {
-    "id": "johnske07",
-    "name": "Keon Johnson",
-    "pos": "SG",
-    "games": 79,
-    "mpg": 24.4
-  },
-  {
-    "id": "edwarke02",
-    "name": "Kessler Edwards",
-    "pos": "SF",
-    "games": 40,
-    "mpg": 15.2
+    "games": 72,
+    "mpg": 20.5
   },
   {
     "id": "duranke01",
     "name": "Kevin Durant",
-    "pos": "PF",
-    "games": 62,
-    "mpg": 36.5
+    "pos": "SF",
+    "games": 78,
+    "mpg": 36.4
   },
   {
     "id": "huertke01",
     "name": "Kevin Huerter",
-    "pos": "SG",
+    "pos": "SF",
     "games": 69,
-    "mpg": 24.3
+    "mpg": 22.4
+  },
+  {
+    "id": "loveke01",
+    "name": "Kevin Love",
+    "pos": "PF",
+    "games": 37,
+    "mpg": 16.6
   },
   {
     "id": "porteke02",
     "name": "Kevin Porter Jr.",
-    "pos": "SG",
-    "games": 75,
-    "mpg": 19.8
-  },
-  {
-    "id": "looneke01",
-    "name": "Kevon Looney",
-    "pos": "C",
-    "games": 76,
-    "mpg": 15.0
+    "pos": "PG",
+    "games": 38,
+    "mpg": 33.2
   },
   {
     "id": "georgke01",
     "name": "Keyonte George",
     "pos": "PG",
-    "games": 67,
-    "mpg": 31.5
+    "games": 54,
+    "mpg": 33.1
   },
   {
     "id": "middlkh01",
     "name": "Khris Middleton",
     "pos": "SF",
-    "games": 37,
+    "games": 63,
     "mpg": 22.8
+  },
+  {
+    "id": "hayeski01",
+    "name": "Killian Hayes",
+    "pos": "PG",
+    "games": 23,
+    "mpg": 17.7
   },
   {
     "id": "thompkl01",
     "name": "Klay Thompson",
     "pos": "SF",
-    "games": 72,
-    "mpg": 27.3
+    "games": 69,
+    "mpg": 21.7
+  },
+  {
+    "id": "brownko01",
+    "name": "Kobe Brown",
+    "pos": "PF",
+    "games": 61,
+    "mpg": 15.8
+  },
+  {
+    "id": "sandeko01",
+    "name": "Kobe Sanders",
+    "pos": "SG",
+    "games": 68,
+    "mpg": 19.9
+  },
+  {
+    "id": "knuepko01",
+    "name": "Kon Knueppel",
+    "pos": "SF",
+    "games": 81,
+    "mpg": 31.5
   },
   {
     "id": "dunnkr01",
     "name": "Kris Dunn",
     "pos": "PG",
-    "games": 74,
-    "mpg": 24.1
+    "games": 82,
+    "mpg": 27.2
   },
   {
     "id": "murrakr01",
     "name": "Kris Murray",
     "pos": "SF",
-    "games": 69,
-    "mpg": 15.1
+    "games": 57,
+    "mpg": 23.4
   },
   {
     "id": "porzikr01",
     "name": "Kristaps Porzi\u00c5\u0086\u00c4\u00a3is",
     "pos": "C",
-    "games": 42,
-    "mpg": 28.8
+    "games": 32,
+    "mpg": 24.0
   },
   {
     "id": "anderky01",
     "name": "Kyle Anderson",
-    "pos": "PF",
-    "games": 61,
-    "mpg": 16.4
+    "pos": "SF",
+    "games": 43,
+    "mpg": 19.8
   },
   {
     "id": "filipky01",
     "name": "Kyle Filipowski",
     "pos": "C",
-    "games": 72,
-    "mpg": 21.1
+    "games": 77,
+    "mpg": 23.4
   },
   {
     "id": "kuzmaky01",
     "name": "Kyle Kuzma",
     "pos": "PF",
-    "games": 65,
-    "mpg": 29.8
-  },
-  {
-    "id": "lowryky01",
-    "name": "Kyle Lowry",
-    "pos": "PG",
-    "games": 35,
-    "mpg": 18.8
-  },
-  {
-    "id": "irvinky01",
-    "name": "Kyrie Irving",
-    "pos": "SG",
-    "games": 50,
-    "mpg": 36.1
+    "games": 69,
+    "mpg": 26.2
   },
   {
     "id": "georgky01",
     "name": "Kyshawn George",
-    "pos": "SG",
-    "games": 68,
-    "mpg": 26.5
+    "pos": "SF",
+    "games": 48,
+    "mpg": 29.0
   },
   {
     "id": "ballla01",
     "name": "LaMelo Ball",
     "pos": "PG",
-    "games": 47,
-    "mpg": 32.0
+    "games": 72,
+    "mpg": 28.0
   },
   {
     "id": "shamela01",
     "name": "Landry Shamet",
     "pos": "SG",
-    "games": 50,
-    "mpg": 15.2
-  },
-  {
-    "id": "nancela02",
-    "name": "Larry Nance Jr.",
-    "pos": "PF",
-    "games": 24,
-    "mpg": 19.3
+    "games": 51,
+    "mpg": 23.0
   },
   {
     "id": "markkla01",
     "name": "Lauri Markkanen",
     "pos": "PF",
-    "games": 47,
-    "mpg": 31.4
+    "games": 42,
+    "mpg": 34.4
   },
   {
     "id": "jamesle01",
     "name": "LeBron James",
     "pos": "SF",
-    "games": 70,
-    "mpg": 34.9
+    "games": 60,
+    "mpg": 33.2
   },
   {
-    "id": "waterli01",
-    "name": "Lindy Waters III",
-    "pos": "SG",
-    "games": 52,
-    "mpg": 15.0
-  },
-  {
-    "id": "walkelo01",
-    "name": "Lonnie Walker IV",
-    "pos": "SG",
-    "games": 20,
-    "mpg": 23.9
+    "id": "millele01",
+    "name": "Leonard Miller",
+    "pos": "SF",
+    "games": 46,
+    "mpg": 15.6
   },
   {
     "id": "balllo01",
     "name": "Lonzo Ball",
     "pos": "PG",
     "games": 35,
-    "mpg": 22.2
+    "mpg": 20.8
   },
   {
     "id": "dortlu01",
     "name": "Luguentz Dort",
     "pos": "SF",
-    "games": 71,
-    "mpg": 29.2
+    "games": 69,
+    "mpg": 26.8
   },
   {
     "id": "doncilu01",
     "name": "Luka Don\u00c4\u008di\u00c4\u0087",
     "pos": "PG",
-    "games": 50,
-    "mpg": 35.4
+    "games": 64,
+    "mpg": 35.8
+  },
+  {
+    "id": "garzalu01",
+    "name": "Luka Garza",
+    "pos": "C",
+    "games": 69,
+    "mpg": 16.2
   },
   {
     "id": "kennalu01",
     "name": "Luke Kennard",
     "pos": "SG",
-    "games": 65,
-    "mpg": 22.6
+    "games": 78,
+    "mpg": 21.6
   },
   {
     "id": "kornelu01",
     "name": "Luke Kornet",
     "pos": "C",
-    "games": 73,
-    "mpg": 18.6
-  },
-  {
-    "id": "brogdma01",
-    "name": "Malcolm Brogdon",
-    "pos": "PG",
-    "games": 24,
-    "mpg": 23.5
-  },
-  {
-    "id": "beaslma01",
-    "name": "Malik Beasley",
-    "pos": "SG",
-    "games": 82,
-    "mpg": 27.8
+    "games": 68,
+    "mpg": 21.0
   },
   {
     "id": "monkma01",
     "name": "Malik Monk",
     "pos": "SG",
-    "games": 65,
-    "mpg": 31.6
+    "games": 62,
+    "mpg": 22.0
   },
   {
     "id": "smartma01",
     "name": "Marcus Smart",
-    "pos": "PG",
-    "games": 34,
-    "mpg": 20.0
+    "pos": "SG",
+    "games": 62,
+    "mpg": 28.5
   },
   {
     "id": "willima07",
     "name": "Mark Williams",
     "pos": "C",
-    "games": 44,
-    "mpg": 26.6
+    "games": 60,
+    "mpg": 23.6
   },
   {
-    "id": "plumlma01",
-    "name": "Mason Plumlee",
-    "pos": "C",
-    "games": 74,
-    "mpg": 17.6
+    "id": "baglema01",
+    "name": "Marvin Bagley III",
+    "pos": "PF",
+    "games": 60,
+    "mpg": 20.0
   },
   {
     "id": "buzelma01",
     "name": "Matas Buzelis",
-    "pos": "SF",
-    "games": 80,
-    "mpg": 18.9
+    "pos": "PF",
+    "games": 77,
+    "mpg": 29.2
+  },
+  {
+    "id": "thybuma01",
+    "name": "Matisse Thybulle",
+    "pos": "SG",
+    "games": 30,
+    "mpg": 16.0
   },
   {
     "id": "chrisma02",
     "name": "Max Christie",
     "pos": "SG",
-    "games": 78,
-    "mpg": 27.3
+    "games": 77,
+    "mpg": 29.1
   },
   {
-    "id": "strusma01",
-    "name": "Max Strus",
-    "pos": "SF",
-    "games": 50,
-    "mpg": 25.5
+    "id": "raynama01",
+    "name": "Maxime Raynaud",
+    "pos": "C",
+    "games": 74,
+    "mpg": 26.5
   },
   {
-    "id": "klebima01",
-    "name": "Maxi Kleber",
-    "pos": "PF",
-    "games": 34,
-    "mpg": 18.7
+    "id": "peavymi01",
+    "name": "Micah Peavy",
+    "pos": "SG",
+    "games": 61,
+    "mpg": 15.0
   },
   {
     "id": "pottemi01",
     "name": "Micah Potter",
     "pos": "C",
-    "games": 38,
-    "mpg": 18.6
+    "games": 47,
+    "mpg": 19.3
   },
   {
     "id": "portemi01",
     "name": "Michael Porter Jr.",
     "pos": "SF",
-    "games": 77,
-    "mpg": 33.7
+    "games": 52,
+    "mpg": 32.5
   },
   {
     "id": "bridgmi01",
     "name": "Mikal Bridges",
     "pos": "SF",
     "games": 82,
-    "mpg": 37.0
+    "mpg": 32.8
   },
   {
     "id": "conlemi01",
     "name": "Mike Conley",
     "pos": "PG",
-    "games": 71,
-    "mpg": 24.7
+    "games": 54,
+    "mpg": 18.4
   },
   {
     "id": "bridgmi02",
     "name": "Miles Bridges",
     "pos": "PF",
-    "games": 64,
-    "mpg": 31.7
+    "games": 77,
+    "mpg": 31.0
   },
   {
     "id": "mcbrimi01",
     "name": "Miles McBride",
     "pos": "SG",
-    "games": 64,
-    "mpg": 24.9
+    "games": 41,
+    "mpg": 26.3
   },
   {
-    "id": "wagnemo01",
-    "name": "Moritz Wagner",
+    "id": "robinmi01",
+    "name": "Mitchell Robinson",
     "pos": "C",
-    "games": 30,
-    "mpg": 18.8
+    "games": 60,
+    "mpg": 19.6
   },
   {
     "id": "moodymo01",
     "name": "Moses Moody",
     "pos": "SG",
-    "games": 74,
-    "mpg": 22.3
+    "games": 60,
+    "mpg": 25.7
   },
   {
     "id": "gueyemo02",
     "name": "Mouhamed Gueye",
     "pos": "PF",
-    "games": 33,
-    "mpg": 16.2
+    "games": 77,
+    "mpg": 15.3
   },
   {
     "id": "diabamo01",
     "name": "Moussa Diabat\u00c3\u00a9",
     "pos": "C",
-    "games": 71,
-    "mpg": 17.5
+    "games": 73,
+    "mpg": 26.0
   },
   {
     "id": "turnemy01",
     "name": "Myles Turner",
     "pos": "C",
-    "games": 72,
-    "mpg": 30.2
+    "games": 71,
+    "mpg": 26.9
+  },
+  {
+    "id": "tomlina01",
+    "name": "Nae'Qwan Tomlin",
+    "pos": "PF",
+    "games": 64,
+    "mpg": 15.7
   },
   {
     "id": "marshna01",
     "name": "Naji Marshall",
     "pos": "SF",
-    "games": 69,
-    "mpg": 27.8
+    "games": 74,
+    "mpg": 29.5
   },
   {
     "id": "reidna01",
     "name": "Naz Reid",
     "pos": "C",
-    "games": 80,
-    "mpg": 27.5
+    "games": 77,
+    "mpg": 26.1
+  },
+  {
+    "id": "quetane01",
+    "name": "Neemias Queta",
+    "pos": "C",
+    "games": 76,
+    "mpg": 25.3
   },
   {
     "id": "claxtni01",
     "name": "Nic Claxton",
     "pos": "C",
-    "games": 70,
-    "mpg": 26.9
-  },
-  {
-    "id": "richani01",
-    "name": "Nick Richards",
-    "pos": "C",
-    "games": 57,
-    "mpg": 22.0
-  },
-  {
-    "id": "smithni01",
-    "name": "Nick Smith Jr.",
-    "pos": "SG",
-    "games": 60,
-    "mpg": 22.8
+    "games": 69,
+    "mpg": 27.8
   },
   {
     "id": "alexani01",
     "name": "Nickeil Alexander-Walker",
     "pos": "SG",
-    "games": 82,
-    "mpg": 25.3
+    "games": 78,
+    "mpg": 33.4
   },
   {
     "id": "batumni01",
     "name": "Nicolas Batum",
     "pos": "PF",
-    "games": 78,
+    "games": 74,
     "mpg": 17.5
   },
   {
     "id": "jokicni01",
     "name": "Nikola Joki\u00c4\u0087",
     "pos": "C",
-    "games": 70,
-    "mpg": 36.7
+    "games": 65,
+    "mpg": 34.8
   },
   {
     "id": "jovicni01",
     "name": "Nikola Jovi\u00c4\u0087",
     "pos": "PF",
-    "games": 46,
-    "mpg": 25.1
+    "games": 47,
+    "mpg": 17.2
   },
   {
     "id": "vucevni01",
     "name": "Nikola Vu\u00c4\u008devi\u00c4\u0087",
     "pos": "C",
-    "games": 73,
-    "mpg": 31.2
+    "games": 64,
+    "mpg": 28.4
+  },
+  {
+    "id": "cliffni01",
+    "name": "Nique Clifford",
+    "pos": "SG",
+    "games": 75,
+    "mpg": 25.1
   },
   {
     "id": "clownno01",
     "name": "Noah Clowney",
     "pos": "PF",
-    "games": 46,
-    "mpg": 22.7
+    "games": 66,
+    "mpg": 27.0
+  },
+  {
+    "id": "traorno01",
+    "name": "Nolan Traor\u00c3\u00a9",
+    "pos": "PG",
+    "games": 56,
+    "mpg": 22.2
   },
   {
     "id": "powelno01",
     "name": "Norman Powell",
     "pos": "SG",
-    "games": 60,
-    "mpg": 32.6
+    "games": 58,
+    "mpg": 29.6
   },
   {
     "id": "anunoog01",
     "name": "OG Anunoby",
     "pos": "PF",
-    "games": 74,
-    "mpg": 36.6
+    "games": 67,
+    "mpg": 33.2
   },
   {
     "id": "toppiob01",
     "name": "Obi Toppin",
     "pos": "PF",
-    "games": 79,
-    "mpg": 19.6
+    "games": 24,
+    "mpg": 17.7
   },
   {
     "id": "agbajoc01",
     "name": "Ochai Agbaji",
     "pos": "SG",
-    "games": 64,
-    "mpg": 27.2
+    "games": 62,
+    "mpg": 15.7
+  },
+  {
+    "id": "prospol01",
+    "name": "Olivier-Maxence Prosper",
+    "pos": "PF",
+    "games": 53,
+    "mpg": 18.6
   },
   {
     "id": "okongon01",
     "name": "Onyeka Okongwu",
     "pos": "C",
     "games": 74,
-    "mpg": 27.9
+    "mpg": 31.0
   },
   {
-    "id": "robinor01",
-    "name": "Orlando Robinson",
+    "id": "tshieos01",
+    "name": "Oscar Tshiebwe",
     "pos": "C",
-    "games": 44,
-    "mpg": 17.5
+    "games": 27,
+    "mpg": 16.6
   },
   {
     "id": "ighodos01",
     "name": "Oso Ighodaro",
     "pos": "PF",
-    "games": 61,
-    "mpg": 17.1
+    "games": 82,
+    "mpg": 22.0
+  },
+  {
+    "id": "diengou01",
+    "name": "Ousmane Dieng",
+    "pos": "C",
+    "games": 57,
+    "mpg": 19.3
   },
   {
     "id": "washipj01",
     "name": "P.J. Washington",
     "pos": "PF",
-    "games": 57,
-    "mpg": 32.2
+    "games": 56,
+    "mpg": 31.0
   },
   {
     "id": "banchpa01",
     "name": "Paolo Banchero",
     "pos": "PF",
-    "games": 46,
-    "mpg": 34.4
+    "games": 72,
+    "mpg": 34.8
   },
   {
     "id": "siakapa01",
     "name": "Pascal Siakam",
     "pos": "PF",
-    "games": 78,
-    "mpg": 32.7
+    "games": 62,
+    "mpg": 33.2
+  },
+  {
+    "id": "spencpa01",
+    "name": "Pat Spencer",
+    "pos": "PG",
+    "games": 66,
+    "mpg": 18.6
   },
   {
     "id": "willipa01",
     "name": "Patrick Williams",
     "pos": "PF",
-    "games": 63,
-    "mpg": 25.0
+    "games": 72,
+    "mpg": 20.5
   },
   {
     "id": "georgpa01",
     "name": "Paul George",
     "pos": "PF",
-    "games": 41,
-    "mpg": 32.5
+    "games": 37,
+    "mpg": 30.7
   },
   {
     "id": "pritcpa01",
     "name": "Payton Pritchard",
     "pos": "PG",
-    "games": 80,
-    "mpg": 28.4
+    "games": 79,
+    "mpg": 32.4
+  },
+  {
+    "id": "larsspe01",
+    "name": "Pelle Larsson",
+    "pos": "SG",
+    "games": 70,
+    "mpg": 26.4
+  },
+  {
+    "id": "nancepe01",
+    "name": "Pete Nance",
+    "pos": "PF",
+    "games": 47,
+    "mpg": 15.7
   },
   {
     "id": "watsope01",
     "name": "Peyton Watson",
     "pos": "SF",
-    "games": 68,
-    "mpg": 24.4
+    "games": 54,
+    "mpg": 29.6
   },
   {
     "id": "achiupr01",
     "name": "Precious Achiuwa",
     "pos": "C",
-    "games": 57,
-    "mpg": 20.5
+    "games": 73,
+    "mpg": 23.9
   },
   {
     "id": "grimequ01",
     "name": "Quentin Grimes",
     "pos": "SG",
     "games": 75,
-    "mpg": 26.8
+    "mpg": 29.4
+  },
+  {
+    "id": "jacksqu01",
+    "name": "Quenton Jackson",
+    "pos": "PG",
+    "games": 49,
+    "mpg": 18.3
   },
   {
     "id": "postqu01",
     "name": "Quinten Post",
     "pos": "PF",
-    "games": 42,
-    "mpg": 16.3
+    "games": 67,
+    "mpg": 17.3
   },
   {
     "id": "barrerj01",
     "name": "RJ Barrett",
     "pos": "SF",
-    "games": 58,
-    "mpg": 32.2
+    "games": 57,
+    "mpg": 30.3
   },
   {
-    "id": "holmeri01",
-    "name": "Richaun Holmes",
-    "pos": "PF",
-    "games": 31,
-    "mpg": 17.2
+    "id": "ruperra01",
+    "name": "Rayan Rupert",
+    "pos": "SG",
+    "games": 64,
+    "mpg": 16.8
   },
   {
-    "id": "councri01",
-    "name": "Ricky Council IV",
-    "pos": "SF",
-    "games": 73,
-    "mpg": 17.1
+    "id": "sheppre01",
+    "name": "Reed Sheppard",
+    "pos": "SG",
+    "games": 82,
+    "mpg": 26.2
   },
   {
     "id": "williro04",
     "name": "Robert Williams",
     "pos": "C",
-    "games": 20,
-    "mpg": 17.6
+    "games": 59,
+    "mpg": 17.1
   },
   {
     "id": "hollaro01",
     "name": "Ron Holland",
     "pos": "SF",
-    "games": 81,
-    "mpg": 15.6
+    "games": 78,
+    "mpg": 19.9
   },
   {
     "id": "onealro01",
     "name": "Royce O'Neale",
     "pos": "SF",
-    "games": 75,
-    "mpg": 24.5
+    "games": 78,
+    "mpg": 28.4
   },
   {
     "id": "goberru01",
     "name": "Rudy Gobert",
     "pos": "C",
-    "games": 72,
-    "mpg": 33.2
+    "games": 76,
+    "mpg": 31.3
   },
   {
     "id": "hachiru01",
     "name": "Rui Hachimura",
     "pos": "PF",
-    "games": 59,
-    "mpg": 31.7
+    "games": 68,
+    "mpg": 28.3
   },
   {
     "id": "westbru01",
     "name": "Russell Westbrook",
-    "pos": "PG",
-    "games": 75,
-    "mpg": 27.9
+    "pos": "SF",
+    "games": 64,
+    "mpg": 29.0
   },
   {
     "id": "dunnry01",
     "name": "Ryan Dunn",
     "pos": "SF",
+    "games": 70,
+    "mpg": 19.4
+  },
+  {
+    "id": "kalkbry01",
+    "name": "Ryan Kalkbrenner",
+    "pos": "C",
+    "games": 69,
+    "mpg": 21.4
+  },
+  {
+    "id": "nembhry01",
+    "name": "Ryan Nembhard",
+    "pos": "PG",
+    "games": 60,
+    "mpg": 19.5
+  },
+  {
+    "id": "rolliry01",
+    "name": "Ryan Rollins",
+    "pos": "PG",
     "games": 74,
-    "mpg": 19.1
+    "mpg": 32.1
+  },
+  {
+    "id": "beysa01",
+    "name": "Saddiq Bey",
+    "pos": "SF",
+    "games": 72,
+    "mpg": 31.2
   },
   {
     "id": "hausesa01",
     "name": "Sam Hauser",
     "pos": "PF",
-    "games": 71,
-    "mpg": 21.7
+    "games": 78,
+    "mpg": 24.8
   },
   {
     "id": "merrisa01",
     "name": "Sam Merrill",
     "pos": "SG",
-    "games": 71,
-    "mpg": 19.7
+    "games": 52,
+    "mpg": 26.5
+  },
+  {
+    "id": "mamuksa01",
+    "name": "Sandro Mamukelashvili",
+    "pos": "C",
+    "games": 80,
+    "mpg": 21.9
   },
   {
     "id": "aldamsa01",
     "name": "Santi Aldama",
     "pos": "PF",
-    "games": 65,
-    "mpg": 25.5
+    "games": 43,
+    "mpg": 27.9
   },
   {
     "id": "hendesc01",
     "name": "Scoot Henderson",
     "pos": "PG",
-    "games": 66,
-    "mpg": 26.7
+    "games": 30,
+    "mpg": 24.9
   },
   {
     "id": "barnesc01",
     "name": "Scottie Barnes",
     "pos": "PF",
-    "games": 65,
-    "mpg": 32.8
-  },
-  {
-    "id": "pippesc02",
-    "name": "Scotty Pippen Jr.",
-    "pos": "PG",
-    "games": 79,
-    "mpg": 21.3
-  },
-  {
-    "id": "curryse01",
-    "name": "Seth Curry",
-    "pos": "SG",
-    "games": 68,
-    "mpg": 15.6
+    "games": 80,
+    "mpg": 33.5
   },
   {
     "id": "sharpsh01",
     "name": "Shaedon Sharpe",
     "pos": "SG",
-    "games": 72,
-    "mpg": 31.3
+    "games": 50,
+    "mpg": 29.4
   },
   {
     "id": "gilgesh01",
     "name": "Shai Gilgeous-Alexander",
     "pos": "PG",
-    "games": 76,
-    "mpg": 34.2
+    "games": 68,
+    "mpg": 33.2
+  },
+  {
+    "id": "coopesh01",
+    "name": "Sharife Cooper",
+    "pos": "PG",
+    "games": 41,
+    "mpg": 17.1
+  },
+  {
+    "id": "cissosi01",
+    "name": "Sidy Cissoko",
+    "pos": "SF",
+    "games": 75,
+    "mpg": 19.1
   },
   {
     "id": "fontesi01",
     "name": "Simone Fontecchio",
     "pos": "SF",
-    "games": 75,
-    "mpg": 16.5
+    "games": 70,
+    "mpg": 16.8
   },
   {
-    "id": "dinwisp01",
-    "name": "Spencer Dinwiddie",
-    "pos": "PG",
-    "games": 79,
-    "mpg": 27.0
+    "id": "jamessi01",
+    "name": "Sion James",
+    "pos": "SG",
+    "games": 82,
+    "mpg": 22.5
+  },
+  {
+    "id": "jonessp01",
+    "name": "Spencer Jones",
+    "pos": "SF",
+    "games": 64,
+    "mpg": 22.1
   },
   {
     "id": "curryst01",
     "name": "Stephen Curry",
     "pos": "PG",
-    "games": 70,
-    "mpg": 32.2
+    "games": 43,
+    "mpg": 30.9
   },
   {
     "id": "castlst01",
     "name": "Stephon Castle",
-    "pos": "SG",
-    "games": 81,
-    "mpg": 26.7
+    "pos": "PG",
+    "games": 68,
+    "mpg": 30.0
+  },
+  {
+    "id": "adamsst01",
+    "name": "Steven Adams",
+    "pos": "C",
+    "games": 32,
+    "mpg": 22.8
   },
   {
     "id": "mykhasv01",
     "name": "Svi Mykhailiuk",
     "pos": "SF",
-    "games": 38,
-    "mpg": 20.0
+    "games": 50,
+    "mpg": 23.1
   },
   {
     "id": "mccontj01",
     "name": "T.J. McConnell",
     "pos": "PG",
-    "games": 79,
-    "mpg": 17.9
+    "games": 56,
+    "mpg": 17.2
   },
   {
     "id": "easonta01",
     "name": "Tari Eason",
     "pos": "PF",
-    "games": 57,
-    "mpg": 24.9
+    "games": 60,
+    "mpg": 25.8
   },
   {
     "id": "princta02",
     "name": "Taurean Prince",
     "pos": "SF",
-    "games": 80,
-    "mpg": 27.1
+    "games": 26,
+    "mpg": 23.5
+  },
+  {
+    "id": "hendrta01",
+    "name": "Taylor Hendricks",
+    "pos": "PF",
+    "games": 59,
+    "mpg": 18.9
   },
   {
     "id": "mannte01",
     "name": "Terance Mann",
     "pos": "SG",
-    "games": 67,
-    "mpg": 21.1
-  },
-  {
-    "id": "roziete01",
-    "name": "Terry Rozier",
-    "pos": "PG",
-    "games": 64,
-    "mpg": 25.9
+    "games": 63,
+    "mpg": 24.3
   },
   {
     "id": "salauti01",
     "name": "Tidjane Sala\u00c3\u00bcn",
     "pos": "PF",
-    "games": 60,
-    "mpg": 20.7
+    "games": 37,
+    "mpg": 15.5
   },
   {
     "id": "hardati02",
     "name": "Tim Hardaway Jr.",
     "pos": "SG",
-    "games": 77,
-    "mpg": 28.0
+    "games": 80,
+    "mpg": 26.6
   },
   {
     "id": "harrito02",
     "name": "Tobias Harris",
     "pos": "PF",
-    "games": 73,
-    "mpg": 31.6
-  },
-  {
-    "id": "evbuoto01",
-    "name": "Tosan Evbuomwan",
-    "pos": "SF",
-    "games": 28,
-    "mpg": 23.8
+    "games": 63,
+    "mpg": 27.7
   },
   {
     "id": "camarto01",
     "name": "Toumani Camara",
     "pos": "PF",
-    "games": 78,
-    "mpg": 32.7
+    "games": 82,
+    "mpg": 33.3
   },
   {
-    "id": "youngtr01",
-    "name": "Trae Young",
-    "pos": "PG",
-    "games": 76,
-    "mpg": 36.0
-  },
-  {
-    "id": "jackstr02",
-    "name": "Trayce Jackson-Davis",
-    "pos": "C",
-    "games": 62,
-    "mpg": 15.6
+    "id": "johnstr03",
+    "name": "Tre Johnson",
+    "pos": "SG",
+    "games": 60,
+    "mpg": 24.1
   },
   {
     "id": "jonestr01",
     "name": "Tre Jones",
     "pos": "PG",
-    "games": 46,
-    "mpg": 19.7
+    "games": 65,
+    "mpg": 27.0
   },
   {
     "id": "watfotr01",
     "name": "Trendon Watford",
     "pos": "PF",
-    "games": 44,
-    "mpg": 20.8
-  },
-  {
-    "id": "lylestr01",
-    "name": "Trey Lyles",
-    "pos": "PF",
-    "games": 69,
-    "mpg": 19.6
+    "games": 53,
+    "mpg": 16.3
   },
   {
     "id": "murphtr02",
     "name": "Trey Murphy III",
     "pos": "SF",
-    "games": 53,
-    "mpg": 35.0
+    "games": 66,
+    "mpg": 35.5
   },
   {
     "id": "dasiltr01",
     "name": "Tristan Da Silva",
     "pos": "SF",
-    "games": 74,
-    "mpg": 22.0
-  },
-  {
-    "id": "jeromty01",
-    "name": "Ty Jerome",
-    "pos": "SG",
-    "games": 70,
-    "mpg": 19.9
+    "games": 77,
+    "mpg": 24.7
   },
   {
     "id": "herroty01",
     "name": "Tyler Herro",
     "pos": "SG",
-    "games": 77,
-    "mpg": 35.4
-  },
-  {
-    "id": "halibty01",
-    "name": "Tyrese Haliburton",
-    "pos": "PG",
-    "games": 73,
-    "mpg": 33.6
+    "games": 33,
+    "mpg": 31.3
   },
   {
     "id": "martity01",
     "name": "Tyrese Martin",
     "pos": "SG",
-    "games": 60,
-    "mpg": 21.9
+    "games": 46,
+    "mpg": 16.9
   },
   {
     "id": "maxeyty01",
     "name": "Tyrese Maxey",
     "pos": "PG",
-    "games": 52,
-    "mpg": 37.7
+    "games": 70,
+    "mpg": 38.0
   },
   {
-    "id": "jonesty01",
-    "name": "Tyus Jones",
+    "id": "etienty01",
+    "name": "Tyson Etienne",
     "pos": "PG",
-    "games": 81,
-    "mpg": 26.8
+    "games": 24,
+    "mpg": 15.8
   },
   {
-    "id": "micicva01",
-    "name": "Vasilije Mici\u00c4\u0087",
-    "pos": "PG",
-    "games": 41,
-    "mpg": 19.1
+    "id": "edgecvj01",
+    "name": "VJ Edgecombe",
+    "pos": "SG",
+    "games": 75,
+    "mpg": 35.0
   },
   {
     "id": "wembavi01",
     "name": "Victor Wembanyama",
     "pos": "C",
-    "games": 46,
-    "mpg": 33.2
+    "games": 64,
+    "mpg": 29.2
   },
   {
     "id": "willivi01",
     "name": "Vince Williams Jr.",
     "pos": "SG",
-    "games": 27,
-    "mpg": 18.5
+    "games": 40,
+    "mpg": 20.5
   },
   {
     "id": "krejcvi01",
     "name": "V\u00c3\u00adt Krej\u00c4\u008d\u00c3\u00ad",
     "pos": "PG",
-    "games": 57,
-    "mpg": 20.2
+    "games": 65,
+    "mpg": 21.4
   },
   {
-    "id": "kesslwa01",
-    "name": "Walker Kessler",
-    "pos": "C",
-    "games": 58,
-    "mpg": 30.0
+    "id": "claytwa01",
+    "name": "Walter Clayton",
+    "pos": "PG",
+    "games": 69,
+    "mpg": 20.4
   },
   {
     "id": "cartewe01",
     "name": "Wendell Carter Jr.",
     "pos": "C",
-    "games": 68,
-    "mpg": 25.9
+    "games": 78,
+    "mpg": 29.3
+  },
+  {
+    "id": "richawi02",
+    "name": "Will Richard",
+    "pos": "SG",
+    "games": 69,
+    "mpg": 20.0
+  },
+  {
+    "id": "rileywi01",
+    "name": "Will Riley",
+    "pos": "SF",
+    "games": 74,
+    "mpg": 22.1
   },
   {
     "id": "missiyv01",
     "name": "Yves Missi",
     "pos": "C",
-    "games": 73,
-    "mpg": 26.8
+    "games": 66,
+    "mpg": 19.7
   },
   {
     "id": "risacza01",
     "name": "Zaccharie Risacher",
     "pos": "SF",
-    "games": 75,
-    "mpg": 24.6
-  },
-  {
-    "id": "colliza01",
-    "name": "Zach Collins",
-    "pos": "PF",
-    "games": 64,
-    "mpg": 15.3
-  },
-  {
-    "id": "edeyza01",
-    "name": "Zach Edey",
-    "pos": "C",
-    "games": 66,
-    "mpg": 21.5
+    "games": 67,
+    "mpg": 22.4
   },
   {
     "id": "lavinza01",
     "name": "Zach LaVine",
     "pos": "SG",
-    "games": 74,
-    "mpg": 35.2
+    "games": 39,
+    "mpg": 31.4
   },
   {
     "id": "willizi02",
     "name": "Ziaire Williams",
     "pos": "SF",
-    "games": 63,
-    "mpg": 24.5
+    "games": 56,
+    "mpg": 22.9
   },
   {
     "id": "willizi01",
     "name": "Zion Williamson",
     "pos": "PF",
-    "games": 30,
-    "mpg": 28.6
+    "games": 62,
+    "mpg": 29.7
   }
 ]
